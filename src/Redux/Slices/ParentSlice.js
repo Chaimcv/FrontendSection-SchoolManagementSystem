@@ -35,6 +35,9 @@ const ParentSlice=createSlice({
             },
             setDeleteParent:(state,action)=>{
                 state.deleteparent=action.payload;
+            },
+            setParentLogin:(state,action)=>{
+                state.loginParent=action.payload;
             }
          
     }
@@ -129,5 +132,5 @@ const ParentSlice=createSlice({
   }
  }
 
- export const{setError,setParentData,setMessage,setOneParentData,setAddNewParentToDb,setPostEditedParentData,setDeleteParent,LoginParent}=ParentSlice.actions;
+ export const{setError,setParentData,setMessage,setOneParentData,setAddNewParentToDb,setPostEditedParentData,setDeleteParent,setParentLogin}=ParentSlice.actions;
 export default ParentSlice.reducer;

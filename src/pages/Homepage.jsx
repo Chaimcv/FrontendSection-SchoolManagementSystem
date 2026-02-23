@@ -1,11 +1,11 @@
 import React from 'react'
-import NoticeSection from './NoticeSection'
 import PostsSection from './PostsSection'
+import Announcements from './Announcements'
 
 const Homepage = () => {
   return (
     <div>
-        <div><NoticeSection /></div>
+        <div><Announcements /></div>
          <div><PostsSection /></div>
     </div>
   )
