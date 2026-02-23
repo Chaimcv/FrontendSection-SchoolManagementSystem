@@ -13,22 +13,18 @@ const AdminDashboard = () => {
    const ViewClasses=()=>{
     navigate("/classDashboard");
    }
-   const ViewPTA=()=>{
+   const ViewParents=()=>{
     navigate("/ptaDashboard");
    }
 
-  //  const AddNewTeachers=()=>{
-
-  //  }
-
   return (
     
-    <div>
-        <button className="bg-blue-500" onClick={ViewProfile}>Profile</button><br/>
-        <label>Teachers</label> <button className="bg-blue-300"onClick={ViewTeachers}>View Teachers</button>
-        {/* <button className="bg-blue-300"onClick={AddNewTeachers}>Add Teacher</button><br/> */}
-        <label>Class</label> <button className="bg-blue-300" onClick={ViewClasses}>View Classes</button><br/>
-        <label>PTA</label> <button className="bg-blue-300" onClick={ViewPTA}>View PTA</button>
+    <div className='bg-amber-200 flex-wrap'>
+        <button className="bg-amber-400 rounded-2xl py-1 px-2 m-3" onClick={ViewProfile}>My Profile</button><br/>
+        <label>Teachers <button className="bg-amber-400 rounded-2xl py-1 px-2 m-3" onClick={ViewTeachers}>View Teachers</button></label><br />
+        {/* <button className="bg-amber-400"onClick={AddNewTeachers}>Add Teacher</button><br/> */}
+        <label>Class <button className="bg-amber-400 rounded-2xl py-1 px-2 m-3" onClick={ViewClasses}>View Classes</button></label><br/>
+        <label>Parents<button className="bg-amber-400 rounded-2xl py-1 px-2 m-3" onClick={ViewParents}>View Parents</button></label>
     
     </div>
   )

@@ -56,7 +56,7 @@ const TeachersDashboard = () => {
         <h3>Add New Teacher  <button onClick={AddTeacher}>+</button></h3></div>
       <div>
         <h3>List of teachers</h3>
-          <table className='auto p-2 m-2'>
+          <table className='auto p-2 my-2 mx-10 rounded-md'>
             <thead>
               <tr>
                 <th>NAME</th>
@@ -66,13 +66,13 @@ const TeachersDashboard = () => {
               </tr>
             </thead>
             
-            <tbody  className='bg-green-200' >
+            <tbody  className='bg-amber-200' >
                {TeachersDataInfo.map((item)=>(
               <tr key={item._id}>
                 <td>{item?.name}</td>
                    <td>{item?.standard}</td>
-                      <td><button className='bg-green-400 rounded-lg m-2 p-2' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
-                         <td><button className='bg-green-400 rounded-lg m-2 p-2' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
+                      <td><button className='bg-amber-400 rounded-lg m-2 p-2' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
+                         <td><button className='bg-amber-400 rounded-lg m-2 p-2' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>
