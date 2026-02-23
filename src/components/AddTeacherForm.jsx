@@ -61,7 +61,7 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
   return (
     <div>
       {OnAddTeacherClick && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-40 z-50">
      
       <form onSubmit={AddNewTeacher}>
         <div className='border border-black flex flex-col m-5 p-5 space-y-5'>

@@ -7,16 +7,21 @@ import {Provider} from "react-redux";  //
 import store from './Redux/Store';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+   
   <React.StrictMode>
-                                {/* reduxstore wrapped here ,now store can be accessed by every page */}
+                            {/* reduxstore wrapped here ,now store can be accessed by every page */}
+
    <Provider store={store}>                
-  
+ 
     <App />
+   
    </Provider>
-  
+
   </React.StrictMode>
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -30,10 +30,11 @@ function App() {
   
   return (
     <div className="App">
-         <Header />
+       
       <BrowserRouter>
+      <Header />
       <Routes>
-     
+       
         <Route path="/admin/*" element={<AdminRoutes />}/>
         <Route path='/teacher/*' element={<TeacherRoutes />}/>
 
