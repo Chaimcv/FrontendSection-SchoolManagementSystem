@@ -14,7 +14,7 @@ const AdminDashboard = () => {
     navigate("/classDashboard");
    }
    const ViewParents=()=>{
-    navigate("/ptaDashboard");
+    navigate("/parentslist");
    }
 
   return (
