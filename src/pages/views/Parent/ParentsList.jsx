@@ -18,7 +18,7 @@ const ParentsList = () => {
         }
   
         const deleteParent = async (parententIdToDelete) => {
-    await dispatch(deleteAStudent(parentIdToDelete));
+    await dispatch(deleteParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };
   
