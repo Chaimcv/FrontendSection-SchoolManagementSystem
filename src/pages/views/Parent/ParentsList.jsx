@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,9 +13,9 @@ const ParentsList = () => {
           dispatch(fetchParentsData());
         },[]);
   
-        const viewParentDetails=(parenttID)=>{
-          navigate(`//${parentID}`);
-        }
+        // const viewParentDetails=(parenttID)=>{
+        //   navigate(`//${parentID}`);
+        // }
   
         const deleteParent = async (parententIdToDelete) => {
     await dispatch(deleteParent(parentIdToDelete));
