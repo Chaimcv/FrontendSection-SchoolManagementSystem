@@ -31,7 +31,7 @@ const TeachersDashboard = () => {
    const viewTeacherDetails=(teacherid)=>{
     console.log(teacherid,"teacher id got inside view function");
     
-     navigate(`/teacher/${teacherid}`);
+     navigate(`/teacher/details/${teacherid}`);
    }
 
    const deleteTeacher = async(deletionId) =>{
@@ -59,7 +59,7 @@ const TeachersDashboard = () => {
           <table className='auto p-2 my-2 mx-10 rounded-md'>
             <thead>
               <tr>
-                <th>NAME</th>
+                <th className='m-3'>NAME</th>
                 <th>CLASS</th>
                 <th></th>
                 <th></th>

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { fetchParentsData,deleteParent } from '../../../Redux/Slices/ParentSlice';
 
 const ParentsList = () => {
    const dispatch=useDispatch();
         const navigate=useNavigate();
    
-        const AllParents=useSelector((state)=>state.student.parentData)||[]; 
+        const AllParents=useSelector((state)=>state.parent.parentData)||[]; 
         console.log(AllParents,"All");
   
         useEffect(()=>{
@@ -17,7 +18,7 @@ const ParentsList = () => {
         //   navigate(`//${parentID}`);
         // }
   
-        const deleteParent = async (parententIdToDelete) => {
+        const deleteParent = async (parentIdToDelete) => {
     await dispatch(deleteParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };

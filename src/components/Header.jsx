@@ -1,6 +1,6 @@
 import React from "react";
 import HeaderImage from "../assets/HeaderImage.png";
-import Emblem from "../assets/central_school_emblem.png";
+import Emblem from "../assets/emblem.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -17,9 +17,10 @@ const navigate=useNavigate();
       </div> */}
 
       <div className=" flex justify-around w-full">
-         <div><img src={Emblem} alt="emblem" className="h-[20%] w-[10%] " /></div>
+         <div className="w-[30%]"><img src={Emblem} alt="emblem" className="h-[100%] w-[25%] ml-3" /></div>
+         <div className=" w-[50%]"><h2 className="font-serif font-semibold mt-9 text-red-950 text-start text-3xl">CENTRAL  PUBLIC  SCHOOL</h2></div>
           {/* <div><input type="text" className="rounded-3xl py-1 px-3 m-6" placeholder="search" /></div> */}
-           <div><button className="rounded-3xl bg-amber-600 p-2 m-5"><Link to="/login">Login</Link></button></div>
+           <div className="w-[20%]"><button className="rounded-3xl bg-amber-600 p-2 m-5"><Link to="/login">Login</Link></button></div>
       </div>
     </div>
   );

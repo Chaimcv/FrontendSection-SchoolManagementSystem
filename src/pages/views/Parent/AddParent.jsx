@@ -69,7 +69,7 @@ const AddNewParent=()=>{
 //   };
 // //.....
   return (
-    <div className='bg-green-300 h-screen '>
+    <div className='bg-amber-300 h-screen '>
        
         <form onSubmit={AddNewParent}>
             <div className='flex flex-col m-16 p-4 space-y-4'>
@@ -91,7 +91,7 @@ const AddNewParent=()=>{
                <label>ADDRESS :  <input type='text' name="address" value={formData.address} onChange={handleChange}></input></label>
                 <label>PINCODE :<input type='number' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
                <label>PHONENUMBER:  <input type='number' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
-                <button className='bg-green-600 p-2 rounded-lg'>Sumbit</button>
+                <button className='bg-amber-400 p-2 rounded-lg'>Sumbit</button>
             </div>
         </form>
     </div>

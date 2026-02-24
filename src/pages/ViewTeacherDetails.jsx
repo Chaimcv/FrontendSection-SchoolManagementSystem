@@ -27,11 +27,12 @@ console.log(oneTeacherDetail,"oneteacher");
        }
       
   return (
-    <div>
+    <div  className='relative min-h-screen'>
       {editformVisibility &&(
         <EditTeacherForm
         OnEditBtnClick={()=>setEditFormVisibility(false)} />
       )}
+         <div className={`${editformVisibility ? "blur-sm" : ""}`}>
          <h1>Teacher Details</h1>
 
     {oneTeacherDetail ? (
@@ -46,6 +47,7 @@ console.log(oneTeacherDetail,"oneteacher");
       <h2>No teacher</h2>
     )}
     <button onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
+    </div>
     </div>
   )
 }
