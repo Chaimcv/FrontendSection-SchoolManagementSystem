@@ -7,20 +7,20 @@ const Footer = () => {
   return (
     <div className='bg-amber-700 w-full'>
       <div className='flex'>
-         <div className='m-5'>
-          <ul className='font-semibold list-disc pl-4'>
+         <div className='m-5 w-[50%]'>
+          <ul className='font-semibold list-disc ml-32'>
             <li>Online Admission</li>
             <li>Fee Collection</li>
             <li>Cyber Security Awareness</li>
             <li>Right to Information</li>
           </ul>
          </div>
-          <div>
+          <div className='w-[50%]'>
             <h3>Follow us</h3>
-             <div className='flex justify-around p-2'>
+             <div className='flex justify-around py-2'>
                <img src={facebook} alt='facebook'/>
-               <img src={instagram}/>
-               <img src={youtube}/>
+               <img src={instagram} alt='instagram'/>
+               <img src={youtube} alt='youtube'/>
              </div>
           </div>
       </div>
