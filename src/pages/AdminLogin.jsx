@@ -22,16 +22,21 @@ const AdminLogin = () => {
        
         alert("Invalid Credentials");
     }
-   } 
+   }
+    const BackToLogin=()=>{
+   navigate("/login");
+    } 
   return (
     <div className='flex rounded-lg h-80 w-[90%] m-2'>
       <div className='w-[40%] ml-20'>
               <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 ' />
              </div>
         <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
+          <h2>ADMIN LOGIN</h2>
             <label>Email <input className='p-1 mx-1 mt-20 rounded-lg w-[85%] ' type='email' placeholder='Enter  registered email' value={adminEmail} onChange={(e)=>setAdminemail(e.target.value)} /></label><br />
              <label>Password <input  className='p-1 m-1 rounded-lg w-[75%]' type='password' placeholder='Enter password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)} /></label><br />
-             <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={checkValidAdmin}>Login</button>
+             <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={checkValidAdmin}>Login</button> <br />
+              <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={BackToLogin}>BACK</button>      
         </div>
         {/* <div><h5>New Admin? Register here</h5><button onClick={navigateToRegistration()}>SignUp</button></div> */}
     </div>
