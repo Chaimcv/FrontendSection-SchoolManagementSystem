@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import AdminLogin from '../pages/AdminLogin'
 import AdminDashboard from '../pages/AdminDashboard'
 import AdminProfile from '../pages/AdminProfile'
-import Announcements from '../pages/Announcements'
+import AnnouncementDashboard from '../pages/AnnouncementDashboard'
 
 const AdminRoutes = () => {
   return (
@@ -12,7 +12,7 @@ const AdminRoutes = () => {
         <Route path="/" element={<AdminLogin />}></Route>
         < Route path='/dashboard' element={<AdminDashboard />}/>
         <Route path='/profile' element={<AdminProfile />}/>
-         <Route path='/announcements' element={<Announcements />}/>
+         <Route path='/announcementsDashboard' element={<AnnouncementDashboard />}/>
         </Routes>
     </div>
   )

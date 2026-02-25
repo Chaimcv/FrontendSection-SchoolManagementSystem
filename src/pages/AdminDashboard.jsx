@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     navigate("/parentslist");
    }
    const announcements=()=>{
-    navigate("/admin/announcements");
+    navigate("/admin/announcementsDashboard");
    }
 
   return (
