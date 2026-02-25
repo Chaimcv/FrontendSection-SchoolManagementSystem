@@ -18,7 +18,7 @@ const AnnouncementSlice=createSlice({
               state.errors=action.payload;
             },
             setAnnouncementData:(state,action)=>{
-                state.parentData=action.payload;
+                state.AnnouncementData=action.payload;
             },
             setMessage:(state,action)=>{
                 state.message=action.payload;
@@ -49,6 +49,33 @@ const AnnouncementSlice=createSlice({
         }
     }
 
+    export const addNotice=(formData)=>async(dispatch)=>{
+            try {
+                 const response=await axios.post(`${baseUrl}/announcements`,formData)
+                
+            } catch (error) {
+                 dispatch(setError(error));   
+            }
+        }
 
-    export const{setError,setAnnouncementData,setMessage}=AnnouncementSlice.actions;
+
+     export const deleteNotice=(deleteId)=>async(dispatch)=>{
+         console.log(deleteId,"deletion id");
+    try {
+      const response=await axios.delete(`${baseUrl}/announcements/${deleteId}`) 
+      console.log(response,"response checking");
+     
+      if(response.data)
+               {
+               
+                  dispatch(setDeleteNotice(response.data));
+    
+                 }
+    } catch (error) {
+         dispatch(setError(error)); 
+    }
+    };
+
+
+    export const{setError,setAnnouncementData,setMessage,setAddNotice,setDeleteNotice}=AnnouncementSlice.actions;
     export default AnnouncementSlice.reducer;
