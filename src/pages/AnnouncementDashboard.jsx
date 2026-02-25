@@ -19,12 +19,12 @@ const AnnouncementDashboard = () => {
   },[]);
  
 
-  // const Add=()=>{
-  //   setFormDiaplay(true);
-  // } 
+  const Add=()=>{
+    setFormDiaplay(true);
+  } 
   return (
     <div className='h-[50vh] w-full bg-amber-400'>
-      {/* <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={Add}>Add</button> */}
+      <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={Add}>Add</button>
       {AllAnnouncements?.map((item)=>(
      <div key={item._id} className='border-red-600 rounded-md p-[5%]'>
       <div> 
