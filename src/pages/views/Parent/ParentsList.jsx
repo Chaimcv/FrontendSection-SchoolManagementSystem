@@ -65,10 +65,8 @@ const ParentsList = () => {
                          <td><button className='bg-amber-500 rounded-lg m-2 p-2' onClick={ ()=> deleteParent(item?._id)}>Delete</button></td>
               </tr>
                ))}
-            </tbody>
-            
-          </table>
-          
+            </tbody>  
+          </table> 
       </div>
     </div>
   )
