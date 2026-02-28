@@ -16,7 +16,7 @@ const Announcements = () => {
       {AllAnnouncements?.map((item)=>(
      <div key={item._id} className='border-red-600 rounded-md p-[5%]'>
       <div> 
-         <img></img>
+         <img src=''></img>  
          </div>
         <p>{item?.Text}</p>
         </div>
