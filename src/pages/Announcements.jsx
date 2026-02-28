@@ -22,7 +22,6 @@ const Announcements = () => {
         </div>
       ))}
     </div>
-
   )
 }
 
