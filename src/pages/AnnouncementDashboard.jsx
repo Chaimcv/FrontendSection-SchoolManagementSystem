@@ -34,7 +34,6 @@ const AnnouncementDashboard = () => {
         </div>
       ))}
 
-
       {/* <div>
        <label>Image:<input type='file'></input></label>
         <label>Text:<input type='text' value={data.text} onChange={handleData}></input></label>
