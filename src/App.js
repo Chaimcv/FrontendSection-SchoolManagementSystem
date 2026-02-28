@@ -36,15 +36,15 @@ function App() {
       <Routes>
        
         <Route path="/admin/*" element={<AdminRoutes />}/>
-        <Route path='/teacher/*' element={<TeacherRoutes />}/>
-
-         
+        <Route path='/teacher/*' element={<TeacherRoutes />}/>  
         <Route path='/' element={<Homepage />}/>
         <Route path='/login' element={<Login />}/>
+
         {/* student */}
          <Route path='/allStudentslisted' element={<StudentListing />}/>
           <Route path='/addNewStudent' element={<AddNewStudent />}/>
            <Route path='/viewAStudent/:id' element={<ViewStudentDetails />}/>
+
 
            {/* parent */}
             <Route path='/addingParent' element={<AddParent />}/>
