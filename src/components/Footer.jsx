@@ -12,7 +12,7 @@ const Footer = () => {
             <li>Online Admission</li>
             <li>Fee Collection</li>
             <li>Cyber Security Awareness</li>
-            <li>Right to Informatio n</li>
+            <li>Right to Information</li>
           </ul>
          </div>
           <div className='w-[50%]'>
