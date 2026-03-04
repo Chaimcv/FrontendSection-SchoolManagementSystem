@@ -25,13 +25,13 @@ const ViewStudentDetails = () => {
             <h2 className='font-serif'>NAME : {getStudentDetails?.Name}</h2>
             <h2 className='font-serif'>EMAIL : {getStudentDetails?.Email}</h2>
             <h2  className='font-serif'>AGE : {getStudentDetails?.Age}</h2>
-             <h2  className='font-serif'>GENDER :{getStudentDetails?.Gender}</h2>
-             <h2  className='font-serif'>STANDARD :{getStudentDetails?.Standard}</h2>
-              <h2 className='font-serif'>DIVISION :{getStudentDetails?.Division}</h2>
-             <h2  className='font-serif'>GUARDIAN NAME :{getStudentDetails?.guardian}</h2>
+            <h2  className='font-serif'>GENDER :{getStudentDetails?.Gender}</h2>
+            <h2  className='font-serif'>STANDARD :{getStudentDetails?.Standard}</h2>
+            <h2 className='font-serif'>DIVISION :{getStudentDetails?.Division}</h2>
+            <h2  className='font-serif'>GUARDIAN NAME :{getStudentDetails?.guardian}</h2>
             <h2  className='font-serif'>GUARDIAN PHONENUMBER :{getStudentDetails?.Guardian_phonenumber}</h2>
-               <h2  className='font-serif'>ADDRESS :{getStudentDetails?.Address}</h2>
-                 <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>
+            <h2  className='font-serif'>ADDRESS :{getStudentDetails?.Address}</h2>
+            <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>
                     
               <button className='bg-amber-400 p-1 m-2 rounded-md '>EDIT</button>
                <button className='bg-amber-400 p-1 m-2 rounded-md ' onClick={BackToStudentListing}>BACK</button>
