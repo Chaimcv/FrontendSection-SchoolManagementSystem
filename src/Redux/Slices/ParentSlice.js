@@ -125,12 +125,27 @@ const ParentSlice=createSlice({
  export const loginParent=({inputtedEmail,inputtedPassword})=>async(dispatch)=>{
   console.log(inputtedEmail,"inputted email");
   try {
+   
     const response=await axios.post(`${baseUrl}/parent/login`,{inputtedEmail,inputtedPassword})
+     console.log("testing");
     console.log(response," login response");
+    
+ 
+ 
+    if (response.data.message === "Login Successful") {
+        dispatch(setParentLogin(response.data.data));
+
+        return {
+          success: true,
+          message: "Login Successful"
+        };
+    }
+
+
+
   } catch (error) {
      dispatch(setError(error)); 
   }
  }
-
  export const{setError,setParentData,setMessage,setOneParentData,setAddNewParentToDb,setPostEditedParentData,setDeleteParent,setParentLogin}=ParentSlice.actions;
 export default ParentSlice.reducer;

@@ -9,8 +9,15 @@ const ParentLogin = () => {
     const[inputtedPassword,setInputtedPassword]=useState("");
     const navigate=useNavigate();
     const dispatch=useDispatch();
-    const LoginAsParent=()=>{
-     dispatch(loginParent({inputtedEmail,inputtedPassword}));
+    const LoginAsParent=async()=>{
+     const result=await dispatch(loginParent({inputtedEmail,inputtedPassword}));
+
+  console.log(result);
+      if (result.success) {
+    navigate("/viewParentProfile");  //if success
+  } else {
+    alert(result.message);          // show error
+  }
 
     }
     const BackToLogin=()=>{
