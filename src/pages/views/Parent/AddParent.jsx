@@ -15,7 +15,8 @@ const AddParent = () => {
     studentId:"",
     phonenumber:"",
     address:"",
-    pincode:""
+    pincode:"",
+    image:null
 
    });
     console.log(students);
@@ -25,12 +26,20 @@ const AddParent = () => {
     }
 
      const handleChange = (e) => {
-  const { name, value } = e.target;
+  const { name, value,files } = e.target;
 
-  setFormData((prev) => ({
-    ...prev,
-    [name]: value
-  }));
+    if (name === "image") {
+    setFormData((prev) => ({
+      ...prev,
+      image: files[0],   // store file object
+    }));
+  } else {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+  
 };
 const AddNewParent=()=>{
   dispatch(addNewParentToDb(formData));
@@ -86,7 +95,13 @@ const AddNewParent=()=>{
         ))}
         </select>
         </label>
-             <label>NAME :   <input type='text' name="name" value={formData.name} onChange={handleChange}></input></label>
+              <label>NAME :   <input type='text' name="name" value={formData.name} onChange={handleChange}></input></label>
+              
+     <label>PROFILE PICTURE: <input
+        type="file"
+        accept="image/*"
+        onChange={handleChange}
+      /></label> 
               <label>EMAIL :  <input type='email' name="email" value={formData.email} onChange={handleChange}></input></label>
                <label>ADDRESS :  <input type='text' name="address" value={formData.address} onChange={handleChange}></input></label>
                 <label>PINCODE :<input type='number' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
