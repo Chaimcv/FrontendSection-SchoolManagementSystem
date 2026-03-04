@@ -16,7 +16,7 @@ const ViewStudentDetails = () => {
   console.log(getStudentDetails,"get Student details");
 
   const BackToStudentListing=()=>{
-
+  navigate("/allStudentslisted");
   }
   return (
     <div>
