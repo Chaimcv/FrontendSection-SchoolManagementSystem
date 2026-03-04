@@ -1,18 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchOneStudentDetails } from '../../../Redux/Slices/StudentSlice';
 
 const ViewStudentDetails = () => {
     const{id}=useParams();
     //console.log(id,"viewid");
     const dispatch=useDispatch();
+    const navigate=useNavigate();
     const getStudentDetails=useSelector((state)=>state.student.oneStudentDetailsData);
     useEffect(()=>{
      dispatch(fetchOneStudentDetails(id));
     },[])
    
   console.log(getStudentDetails,"get Student details");
+
+  const BackToStudentListing=()=>{
+
+  }
   return (
     <div>
         {getStudentDetails ?(
@@ -29,7 +34,7 @@ const ViewStudentDetails = () => {
                  <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>
                     
               <button className='bg-amber-400 p-1 m-2 rounded-md '>EDIT</button>
-               <button className='bg-amber-400 p-1 m-2 rounded-md '>BACK</button>
+               <button className='bg-amber-400 p-1 m-2 rounded-md ' onClick={BackToStudentListing}>BACK</button>
                </div>
                ):(
                 <h1>No data available</h1>
