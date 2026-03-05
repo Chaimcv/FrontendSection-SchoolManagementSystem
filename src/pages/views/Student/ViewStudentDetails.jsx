@@ -18,7 +18,7 @@ const ViewStudentDetails = () => {
     //incomplete.................
    }
   // const BackToStudentListing=()=>{
-  // navigate("/allStudentslisted/");
+  // navigate("/allStudentslisted/");  //teacher id is already passed issue
   // }
   return (
     <div>
