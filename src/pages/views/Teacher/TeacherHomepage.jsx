@@ -2,7 +2,8 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const TeacherHomepage = () => {
-    //const{id}=useParams();
+    const{ loggedteacherId }=useParams();
+    //console.log(loggedteacherId,"teacher-id");
     const navigate=useNavigate();
     const StudentList=()=>{
         navigate("/allStudentslisted");
@@ -10,14 +11,17 @@ const TeacherHomepage = () => {
     const ParentList=()=>{
         navigate("/parentslist");
     }
+    const ProfileView=()=>{
+        navigate(`/teacher/viewProfile/${loggedteacherId}`)
+    }
   return (
-    <div className='bg-green-200'>
+    <div className='bg-amber-200'>
         <div>
-            <button className='bg-green-500 rounded-lg p-2 m-2'>My Profile</button>
+            <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={ProfileView}>My Profile</button>
         </div>
         <div>
-            <button className='bg-green-500 rounded-lg p-2 m-2' onClick={StudentList}>Students</button><br />
-             <button className='bg-green-500 rounded-lg p-2 m-2' onClick={ParentList}>Parents</button>
+            <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={StudentList}>Students</button><br />
+             <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={ParentList}>Parents</button>
             <button></button>
         </div>
     </div>

@@ -4,6 +4,7 @@ import TeachersDashboard from '../pages/TeachersDashboard'
 import ViewTeacherDetails from '../pages/ViewTeacherDetails'
 import TeacherLogin from '../pages/views/Teacher/TeacherLogin'
 import TeacherHomepage from '../pages/views/Teacher/TeacherHomepage'
+import TeacherProfile from '../pages/views/Teacher/TeacherProfile'
 
 const TeacherRoutes = () => {
  
@@ -18,6 +19,7 @@ const TeacherRoutes = () => {
             <Route path="/teacherDashboard" element={<TeachersDashboard />}/>
              
              <Route path="/profile/:loggedteacherId" element={<TeacherHomepage />}/>
+             <Route path='/viewProfile/:myId' element={<TeacherProfile />} />
             <Route path="/details/:teacherid" element={<ViewTeacherDetails />}/>       
         </Routes>
     </div>
