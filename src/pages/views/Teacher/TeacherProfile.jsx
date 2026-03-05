@@ -21,12 +21,12 @@ const TeacherProfile = () => {
         <img />
         </div>    
       <div>
-        <h2>Name: {getDetails?.name}</h2>
-        <h2>Class: {getDetails?.standard}</h2>
-        <h2>Subject:{getDetails?.subject}</h2>
-        <h2>City: {getDetails?.city}</h2>
-        <h2>Pincode: {getDetails?.pin}</h2>
-        <h2>Phonenumber: {getDetails?.phoneNumber}</h2>
+        <h2>Name : {getDetails?.name}</h2>
+        <h2>Class : {getDetails?.standard}</h2>
+        <h2>Subject :{getDetails?.subject}</h2>
+        <h2>City : {getDetails?.city}</h2>
+        <h2>Pincode : {getDetails?.pin}</h2>
+        <h2>Phonenumber : {getDetails?.phoneNumber}</h2>
       </div>
       <button className='bg-amber-400 rounded-lg px-2 py-1' onClick={BackToTeacherHomePage}>Back</button>    
     </div>
