@@ -16,7 +16,7 @@ const AddParent = () => {
     phonenumber:"",
     address:"",
     pincode:"",
-    image:null
+    image:""
 
    });
     console.log(students);
@@ -26,12 +26,12 @@ const AddParent = () => {
     }
 
      const handleChange = (e) => {
-  const { name, value,files } = e.target;
+  const { name, value,file } = e.target;
 
     if (name === "image") {
     setFormData((prev) => ({
       ...prev,
-      image: files[0],   // store file object
+      image: file[0],   // store file object
     }));
   } else {
     setFormData((prev) => ({
@@ -41,29 +41,30 @@ const AddParent = () => {
   }
   
 };
-// const AddNewParent=(e)=>{
-//     e.preventDefault();
-//   dispatch(addNewParentToDb(formData));
-//   navigate("/allStudentslisted");
-// }
-
-const AddNewParent = (e) => {
-  e.preventDefault();
-
-  const data = new FormData();
-
-  data.append("name", formData.name);
-  data.append("email", formData.email);
-  data.append("studentname", formData.studentname);
-  data.append("studentId", formData.studentId);
-  data.append("phonenumber", formData.phonenumber);
-  data.append("address", formData.address);
-  data.append("pincode", formData.pincode);
-  data.append("image", formData.image);
-
-  dispatch(addNewParentToDb(data));
+const AddNewParent=(e)=>{
+    e.preventDefault();
+  dispatch(addNewParentToDb(formData));
   navigate("/allStudentslisted");
-};
+}
+
+// const AddNewParent = (e) => {
+//   e.preventDefault();
+
+//   const data = new FormData();
+
+//   data.append("name", formData.name);
+//   data.append("email", formData.email);
+//   data.append("studentname", formData.studentname);
+//   data.append("studentId", formData.studentId);
+//   data.append("phonenumber", formData.phonenumber);
+//   data.append("address", formData.address);
+//   data.append("pincode", formData.pincode);
+//   data.append("image", formData.image);
+
+//   dispatch(addNewParentToDb(data));
+//   console.log(data,"addded data");
+//   navigate("/allStudentslisted");
+// };
 
 
 //....
