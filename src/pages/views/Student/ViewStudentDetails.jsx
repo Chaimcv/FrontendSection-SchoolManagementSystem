@@ -15,7 +15,7 @@ const ViewStudentDetails = () => {
    
   console.log(getStudentDetails,"get Student details");
    const EditStudentForm=()=>{
-    //incomp
+    //incomplete.................
    }
   // const BackToStudentListing=()=>{
   // navigate("/allStudentslisted/");
