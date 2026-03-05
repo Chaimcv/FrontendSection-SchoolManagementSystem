@@ -42,7 +42,7 @@ function App() {
         <Route path='/login' element={<Login />}/>
 
         {/* student */}
-         <Route path='/allStudentslisted' element={<StudentListing />}/>
+         <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />}/>
           <Route path='/addNewStudent' element={<AddNewStudent />}/>
            <Route path='/viewAStudent/:id' element={<ViewStudentDetails />}/>
 

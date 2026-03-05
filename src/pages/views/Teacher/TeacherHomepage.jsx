@@ -6,7 +6,7 @@ const TeacherHomepage = () => {
     //console.log(loggedteacherId,"teacher-id");
     const navigate=useNavigate();
     const StudentList=()=>{
-        navigate("/allStudentslisted");
+        navigate(`/allStudentslisted/${loggedteacherId}`);
     }
     const ParentList=()=>{
         navigate("/parentslist");

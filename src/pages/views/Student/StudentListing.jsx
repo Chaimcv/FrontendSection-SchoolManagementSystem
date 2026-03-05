@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAStudent, fetchStudentsData } from '../../../Redux/Slices/StudentSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const StudentListing = () => {
-  
+     const{loggedteacherId}=useParams();
+     console.log(loggedteacherId,"id testing");
       const dispatch=useDispatch();
       const navigate=useNavigate();
  
@@ -29,6 +30,9 @@ const StudentListing = () => {
       }
       const AddParent=()=>{
         navigate("/addingParent");
+      }
+      const BackToProfile=()=>{
+         navigate(`/teacher/profile/${loggedteacherId}`);
       }
   return (
     <div className='bg-amber-100'>
@@ -67,7 +71,7 @@ const StudentListing = () => {
             </tbody>
             
           </table>
-          
+          <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={BackToProfile}>Back</button>
       </div>
     </div>
   )

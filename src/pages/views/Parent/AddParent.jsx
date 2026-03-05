@@ -129,6 +129,7 @@ const AddNewParent=(e)=>{
                 <button className='bg-amber-400 p-2 rounded-lg'>Sumbit</button>
             </div>
         </form>
+        {/* <button className='bg-amber-400 p-2 rounded-lg' onClick={BackTo}>Back</button> */}
     </div>
   )
 }
