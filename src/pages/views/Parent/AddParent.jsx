@@ -41,10 +41,29 @@ const AddParent = () => {
   }
   
 };
-const AddNewParent=()=>{
-  dispatch(addNewParentToDb(formData));
+// const AddNewParent=(e)=>{
+//     e.preventDefault();
+//   dispatch(addNewParentToDb(formData));
+//   navigate("/allStudentslisted");
+// }
+
+const AddNewParent = (e) => {
+  e.preventDefault();
+
+  const data = new FormData();
+
+  data.append("name", formData.name);
+  data.append("email", formData.email);
+  data.append("studentname", formData.studentname);
+  data.append("studentId", formData.studentId);
+  data.append("phonenumber", formData.phonenumber);
+  data.append("address", formData.address);
+  data.append("pincode", formData.pincode);
+  data.append("image", formData.image);
+
+  dispatch(addNewParentToDb(data));
   navigate("/allStudentslisted");
-}
+};
 
 
 //....
@@ -86,7 +105,7 @@ const AddNewParent=()=>{
                 <select 
               //    name="studentId"
               // value={formData.studentId}
-              // onChange={handleStudentChange}
+              // onChange={handleChange}>
                 name="studentname" value={formData.studentname} onChange={handleChange}>
                     {students.map((item)=>(  
             // <option key={students?._id} value={students.Name} >{item.Name}</option>
