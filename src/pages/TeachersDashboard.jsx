@@ -63,7 +63,7 @@ const TeachersDashboard = () => {
         <h3 className='font-bold p-2 underline'>List of teachers</h3>
           <table className='auto p-2 my-2 mx-10 rounded-lg'>
             <thead>
-              <tr>
+              <tr className='bg-amber-800'>
                 <th className='m-3 p-2'>NAME</th>
                 <th className='m-3 p-2'>CLASS IN CHARGE</th>
                 <th></th>

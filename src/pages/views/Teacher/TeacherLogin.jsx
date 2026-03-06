@@ -41,11 +41,11 @@ const TeacherLogin = () => {
    navigate("/login");
     }
   return (
-     <div className='flex rounded-lg h-80 w-[90%] m-2'>
+     <div className='flex rounded-lg h-80 w-[100%] my-2 bg-amber-100'>
           <div className='w-[40%] ml-20'>
                   <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 ' />
                  </div>
-            <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
+            <div className=' bg-amber-400  p-1 w-[25%] space-y-5'>
               <h2>TEACHER LOGIN</h2>
           <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] 'type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
             <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
