@@ -1,8 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const EditStudentForm = () => {
 const dispatch=useDispatch();
+const studentDetails=useSelector((state)=>state.student.)
   return (
     <div></div>
   )
