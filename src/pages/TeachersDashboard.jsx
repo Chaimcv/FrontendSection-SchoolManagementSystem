@@ -44,23 +44,28 @@ const TeachersDashboard = () => {
     console.log(deletionId);
     alert("Deleted successfully");
     dispatch(fetchTeachersData()); 
+
+   }
+
+   const BackToAdminDashboard=()=>{
+    navigate("/admin/dashboard");
    }
   return (
-                      <div  className='relative min-h-screen'>
+                      <div  className='relative min-h-screen bg-amber-100'>
       { formvisible && (
         <AddTeacherForm
         OnAddTeacherClick={()=>setFormvisible(false)} />
       )}
                        <div className={`${formvisible ? "blur-sm" : ""}`}>
+      <div >
+        <h3>Add New Teacher  <button className="bg-amber-400 rounded-lg py-1 px-4" onClick={AddTeacher}>+</button></h3></div>
       <div>
-        <h3>Add New Teacher  <button onClick={AddTeacher}>+</button></h3></div>
-      <div>
-        <h3>List of teachers</h3>
-          <table className='auto p-2 my-2 mx-10 rounded-md'>
+        <h3 className='font-bold p-2 underline'>List of teachers</h3>
+          <table className='auto p-2 my-2 mx-10 rounded-lg'>
             <thead>
               <tr>
-                <th className='m-3'>NAME</th>
-                <th>CLASS</th>
+                <th className='m-3 p-2'>NAME</th>
+                <th className='m-3 p-2'>CLASS IN CHARGE</th>
                 <th></th>
                 <th></th>
               </tr>
@@ -78,7 +83,7 @@ const TeachersDashboard = () => {
             </tbody>
             
           </table>
-          
+         <button className='bg-amber-400 rounded-lg m-2 p-2' onClick={BackToAdminDashboard}>Back</button> 
       </div>
                          </div>
       

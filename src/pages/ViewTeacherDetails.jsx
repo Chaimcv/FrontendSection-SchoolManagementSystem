@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { fetchOneTeacherDetails } from '../Redux/Slices/TeacherSlice';
 import EditTeacherForm from '../components/EditTeacherForm';
 
 const ViewTeacherDetails = () => {
 const[editformVisibility,setEditFormVisibility]=useState(false);
-
+const navigate=useNavigate();
 const dispatch=useDispatch();
 const oneTeacherDetail=useSelector((store)=>store.teacher.oneTeacherDetailsData);
 console.log(oneTeacherDetail,"oneteacher");
@@ -25,6 +25,9 @@ console.log(oneTeacherDetail,"oneteacher");
       console.log(EditId,"editid");                          
       dispatch(fetchOneTeacherDetails(EditId))                 //passed id
        }
+       const BackToTeacherDashboard=()=>{
+        navigate("/teacher/teacherDashboard");
+       }
       
   return (
     <div  className='relative min-h-screen'>
@@ -33,7 +36,7 @@ console.log(oneTeacherDetail,"oneteacher");
         OnEditBtnClick={()=>setEditFormVisibility(false)} />
       )}
          <div className={`${editformVisibility ? "blur-sm" : ""}`}>
-         <h1>Teacher Details</h1>
+         <h1 className='font-bold'>Teacher Details</h1>
 
     {oneTeacherDetail ? (
       <div>
@@ -46,9 +49,11 @@ console.log(oneTeacherDetail,"oneteacher");
     ) : (
       <h2>No teacher</h2>
     )}
-    <button onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
+    <button className='bg-amber-400 rounded-xl py-1 px-3 m-1' onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
+     <button className='bg-amber-400 rounded-xl py-1 px-3 m-1' onClick={BackToTeacherDashboard} >Back</button>
     </div>
     </div>
+    
   )
 }
 
