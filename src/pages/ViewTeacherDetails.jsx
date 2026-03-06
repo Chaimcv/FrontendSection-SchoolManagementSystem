@@ -22,7 +22,7 @@ console.log(oneTeacherDetail,"oneteacher");
 
        const EditTeacherDetails=(EditId)=>{
         setEditFormVisibility(true);
-      console.log(EditId,"editid");                          
+      //console.log(EditId,"editid");                          
       dispatch(fetchOneTeacherDetails(EditId))                 //passed id
        }
        const BackToTeacherDashboard=()=>{

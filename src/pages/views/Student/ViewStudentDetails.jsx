@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchOneStudentDetails } from '../../../Redux/Slices/StudentSlice';
 
 const ViewStudentDetails = () => {
     const{id}=useParams();
+    const[editform,setEditform]=useState(false);
     //console.log(id,"viewid");
     const dispatch=useDispatch();
     const navigate=useNavigate();
@@ -14,14 +15,20 @@ const ViewStudentDetails = () => {
     },[])
    
   console.log(getStudentDetails,"get Student details");
-   const EditStudentForm=()=>{
-    //incomplete.................
+   const EditStudentForm=(studentEditId)=>{
+    //console.log(studentEditId,"edit id");
+   setEditform(true);
+   dispatch(fetchOneStudentDetails(studentEditId))
    }
   // const BackToStudentListing=()=>{
   // navigate("/allStudentslisted/");  //teacher id is already passed issue
   // }
   return (
     <div>
+      {editform&&(
+      <EditStudentForm
+      OnEditClick={()=>setEditform(false)} />)}
+       <div className={`${editform? "blur-sm" : ""}`}>
         {getStudentDetails ?(
           <div className='bg-amber-100'>
             <h2 className='font-serif'>NAME : {getStudentDetails?.Name}</h2>
@@ -35,12 +42,13 @@ const ViewStudentDetails = () => {
             <h2  className='font-serif'>ADDRESS :{getStudentDetails?.Address}</h2>
             <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>
                     
-              <button className='bg-amber-400 p-1 m-2 rounded-md' onClick={EditStudentForm}>EDIT</button>
+              <button className='bg-amber-400 p-1 m-2 rounded-md' onClick={()=>EditStudentForm(getStudentDetails?._id)}>EDIT</button>
                {/* <button className='bg-amber-400 p-1 m-2 rounded-md ' onClick={BackToStudentListing}>BACK</button> */}
                </div>
                ):(
                 <h1>No data available</h1>
                )}
+               </div>
     </div>
   )
 }
