@@ -40,10 +40,11 @@ const ViewStudentDetails = () => {
             <h2  className='font-serif'>GUARDIAN NAME :{getStudentDetails?.guardian}</h2>
             <h2  className='font-serif'>GUARDIAN PHONENUMBER :{getStudentDetails?.Guardian_phonenumber}</h2>
             <h2  className='font-serif'>ADDRESS :{getStudentDetails?.Address}</h2>
-            <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>
-                    
+            <h2  className='font-serif'>PINCODE :{getStudentDetails?.Pincode}</h2>       
               <button className='bg-amber-400 p-1 m-2 rounded-md' onClick={()=>EditStudentForm(getStudentDetails?._id)}>EDIT</button>
-               {/* <button className='bg-amber-400 p-1 m-2 rounded-md ' onClick={BackToStudentListing}>BACK</button> */}
+               
+                {/* <button className='bg-amber-400 p-1 m-2 rounded-md ' onClick={BackToStudentListing}>BACK</button> */}
+               
                </div>
                ):(
                 <h1>No data available</h1>
