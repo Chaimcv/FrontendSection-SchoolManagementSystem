@@ -7,7 +7,7 @@ const studentDetails=useSelector((state)=>state.student.oneStudentDetailsData)
 console.log(studentDetails,"student details");
 const[studentForm,setStudentForm]=useState();
 useEffect(()=>{
-dispatch()
+dispatch(fetchOneStudentDetails())
 },[]);
   return (
     <div></div>
