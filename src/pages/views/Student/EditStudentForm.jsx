@@ -10,7 +10,9 @@ useEffect(()=>{
 dispatch(fetchOneStudentDetails())
 },[]);
   return (
-    <div></div>
+    <div>
+      <h2></h2>
+    </div>
   )
 }
 
