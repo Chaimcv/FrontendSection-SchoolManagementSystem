@@ -13,6 +13,7 @@ dispatch(fetchOneStudentDetails())
     <div>
       <h2></h2>
       <h2></h2>
+      <h2></h2>
     </div>
   )
 }
