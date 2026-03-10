@@ -9,7 +9,7 @@ const[studentForm,setStudentForm]=useState();
 useEffect(()=>{
 dispatch(fetchOneStudentDetails())
 },[]);
-const edited(id)=>{
+const edited=(id)=>{
  console.log(id,"student edit id");
  dispatch(postEditedStudentDetails({}))
 }
