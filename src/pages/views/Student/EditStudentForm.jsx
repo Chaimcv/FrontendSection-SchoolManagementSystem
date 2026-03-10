@@ -11,9 +11,14 @@ dispatch(fetchOneStudentDetails())
 },[]);
   return (
     <div>
+      <form>
+        <div>
+           <h2></h2>
       <h2></h2>
       <h2></h2>
-      <h2></h2>
+        </div>
+        </form>
+     
     </div>
   )
 }
