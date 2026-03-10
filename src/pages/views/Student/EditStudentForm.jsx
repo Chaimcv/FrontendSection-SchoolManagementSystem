@@ -9,7 +9,9 @@ const[studentForm,setStudentForm]=useState();
 useEffect(()=>{
 dispatch(fetchOneStudentDetails())
 },[]);
-const
+const edited(id)=>{
+ console.log(id,"student edit id")
+}
   return (
     <div>
       <form onSubmit={edited(studentDetails?._id)}>
