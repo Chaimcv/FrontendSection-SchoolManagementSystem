@@ -11,7 +11,7 @@ dispatch(fetchOneStudentDetails())
 },[]);
 const edited(id)=>{
  console.log(id,"student edit id");
- dispatch()
+ dispatch(postEditedStudentDetails({}))
 }
   return (
     <div>
