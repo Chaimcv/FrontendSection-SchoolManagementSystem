@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchOneTeacherDetails, postEditedTeacherDetails } from '../Redux/Slices/TeacherSlice';
+import { postEditedTeacherDetails } from '../Redux/Slices/TeacherSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const EditTeacherForm = () => {
