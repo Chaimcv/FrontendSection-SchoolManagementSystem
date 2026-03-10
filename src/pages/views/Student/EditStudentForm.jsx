@@ -10,7 +10,8 @@ useEffect(()=>{
 dispatch(fetchOneStudentDetails())
 },[]);
 const edited(id)=>{
- console.log(id,"student edit id")
+ console.log(id,"student edit id");
+ dispatch()
 }
   return (
     <div>
