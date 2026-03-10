@@ -21,7 +21,8 @@ console.log(TeacherDataFromDatabase,"teacherto beEdited");
         class: TeacherDataFromDatabase.class || "",
         pin: TeacherDataFromDatabase.pin || "",
         city: TeacherDataFromDatabase.city || "",
-        phonenumber:TeacherDataFromDatabase.phonenumber || ""
+        phonenumber:TeacherDataFromDatabase.phoneNumber || "",
+        subject:TeacherDataFromDatabase.subject || ""
       });
    }
  },[TeacherDataFromDatabase])
