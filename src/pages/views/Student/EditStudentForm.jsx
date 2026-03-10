@@ -9,16 +9,16 @@ const[studentForm,setStudentForm]=useState();
 useEffect(()=>{
 dispatch(fetchOneStudentDetails())
 },[]);
+const
   return (
     <div>
-      <form onSubmit={edited}>
+      <form onSubmit={edited(studentDetails?._id)}>
         <div>
            <h2></h2>
-      <h2></h2>
-      <h2></h2>
+           <h2></h2>
+           <h2></h2>
         </div>
-        </form>
-     
+      </form> 
     </div>
   )
 }
