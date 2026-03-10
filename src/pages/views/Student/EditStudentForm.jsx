@@ -11,7 +11,7 @@ dispatch(fetchOneStudentDetails())
 },[]);
   return (
     <div>
-      <form>
+      <form onSubmit={edited}>
         <div>
            <h2></h2>
       <h2></h2>
