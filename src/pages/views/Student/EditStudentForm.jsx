@@ -16,7 +16,7 @@ const edited=(id)=>{
   return (
     <div>
       <form onSubmit={edited(studentDetails?._id)}>
-        <div>
+        <div className='border border-black flex flex-col m-5 p-5 space-y-5'>
            <h2></h2>
            <h2></h2>
            <h2></h2>
