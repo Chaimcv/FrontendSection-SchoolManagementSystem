@@ -129,8 +129,6 @@ const ParentSlice=createSlice({
     const response=await axios.post(`${baseUrl}/parent/login`,{inputtedEmail,inputtedPassword})
      console.log("testing");
     console.log(response," login response");
-    
- 
  
     if (response.data.message === "Login Successful") {
         dispatch(setParentLogin(response.data.data));
