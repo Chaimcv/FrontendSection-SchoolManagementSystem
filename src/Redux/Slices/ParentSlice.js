@@ -135,7 +135,9 @@ const ParentSlice=createSlice({
 
         return {
           success: true,
-          message: "Login Successful"
+          message: "Login Successful",
+          response
+         
         };
     }
 

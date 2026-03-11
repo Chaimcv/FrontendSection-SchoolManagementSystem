@@ -12,9 +12,11 @@ const ParentLogin = () => {
     const LoginAsParent=async()=>{
      const result=await dispatch(loginParent({inputtedEmail,inputtedPassword}));
 
-  console.log(result);
+  console.log(result?.response?.data?.data,"data");
+  const{id,token}=result?.response?.data?.data;
+  console.log(id,"login id");
       if (result.success) {
-    navigate("/viewParentProfile");  //if success
+    navigate(`/viewParentProfile/${id}`);  //if success
   } else {
     alert(result.message);          // show error
   }
