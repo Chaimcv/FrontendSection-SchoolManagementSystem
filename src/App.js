@@ -51,7 +51,7 @@ function App() {
             <Route path='/addingParent' element={<AddParent />}/>
             <Route path='/parentLogin' element={<ParentLogin />}/>
              <Route path='/parentslist' element={<ParentsList />}/>
-             <Route path='/viewParentProfile' element={<ViewParentProfile />} />
+             <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
       </Routes>
       </BrowserRouter>
          <Footer />
