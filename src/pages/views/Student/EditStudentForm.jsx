@@ -19,10 +19,10 @@ const edited=(id)=>{
     <div>
       <form onSubmit={edited(studentDetails?._id)}>
         <div className='border border-black flex flex-col m-5 p-5 space-y-5'>
-           <h2>Name</h2>
-           <h2>Age</h2>
-           <h2>Gender</h2>
-           <h2>Standard</h2>
+           <h2>Name :</h2>
+           <h2>Age :</h2>
+           <h2>Gender :</h2>
+           <h2>Standard :</h2>
            <h2>Division</h2>
            <h2>Guardian Name</h2>
            <h2>Guardian Phonenumber</h2>
