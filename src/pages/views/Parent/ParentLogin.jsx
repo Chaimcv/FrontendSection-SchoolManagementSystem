@@ -5,6 +5,9 @@ import { loginParent } from '../../../Redux/Slices/ParentSlice';
 import SchoolImage from "../../../assets/SchoolImage.png";
 
 const ParentLogin = () => {
+                                                   //  email: 'sonumom@gmail.com',
+                                                   //   password: '5XVX1vSI1i'
+
     const[inputtedEmail,setInputtedEmail]=useState("");
     const[inputtedPassword,setInputtedPassword]=useState("");
     const navigate=useNavigate();
@@ -28,7 +31,7 @@ const ParentLogin = () => {
   return (
      <div className='flex rounded-lg h-80 w-[90%] m-2'>
       <div className='w-[40%] ml-20'>
-         <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 ' />
+         <img src={SchoolImage} alt='imageOf' className='h-[100%] w-[100%] ml-52 ' />
                      </div>
          
             <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
