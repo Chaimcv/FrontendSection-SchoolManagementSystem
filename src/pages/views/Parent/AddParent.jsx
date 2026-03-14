@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewParentToDb } from '../../../Redux/Slices/ParentSlice';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const AddParent = () => {
+  const loggedteacherId=useParams();
    const students= useSelector((state)=>state.student.studentData);
    const dispatch=useDispatch();
    const navigate=useNavigate();
@@ -44,7 +45,7 @@ const AddParent = () => {
 const AddNewParent=(e)=>{
     e.preventDefault();
   dispatch(addNewParentToDb(formData));
-  navigate("/allStudentslisted");
+  navigate(`/allStudentslisted/${loggedteacherId}`);
 }
 
 // const AddNewParent = (e) => {

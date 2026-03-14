@@ -23,15 +23,15 @@ const ParentsList = () => {
     dispatch(fetchParentsData());
   };
   
-        const AddParent=()=>{
-          navigate("/addingParent");
-        }
+        // const AddParent=()=>{
+        //   navigate("/addingParent");
+        // }
   return (
     <div className='bg-amber-100'>
-        
+{/*         
          <div >
         
-         <h3>Add Parent  <button className='rounded-md bg-amber-500 px-7 ml-14 mt-1' onClick={AddParent}>+</button></h3></div>
+         <h3>Add Parent  <button className='rounded-md bg-amber-500 px-7 ml-14 mt-1' onClick={AddParent}>+</button></h3></div> */}
       <div>
         <h3 className='font-semibold p-3'>Parents</h3>
           <table className='auto p-2 mx-10'>

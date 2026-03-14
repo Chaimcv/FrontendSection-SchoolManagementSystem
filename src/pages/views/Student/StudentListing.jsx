@@ -29,7 +29,7 @@ const StudentListing = () => {
         navigate("/addNewStudent");
       }
       const AddParent=()=>{
-        navigate("/addingParent");
+        navigate(`/addingParent/${loggedteacherId}`);
       }
       const BackToProfile=()=>{
          navigate(`/teacher/profile/${loggedteacherId}`);

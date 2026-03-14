@@ -48,7 +48,7 @@ function App() {
 
 
            {/* parent */}
-            <Route path='/addingParent' element={<AddParent />}/>
+            <Route path='/addingParent/:loggedteacherId' element={<AddParent />}/>
             <Route path='/parentLogin' element={<ParentLogin />}/>
              <Route path='/parentslist' element={<ParentsList />}/>
              <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
