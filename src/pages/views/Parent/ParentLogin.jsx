@@ -29,7 +29,7 @@ const ParentLogin = () => {
 
  const payload = await dispatch(
    loginParent({inputtedEmail,inputtedPassword})
- ).unwrap();
+ ).unwrap();                                                      //edit this
 
  localStorage.setItem("token", payload.token);
 
