@@ -128,11 +128,25 @@ const StudentSlice=createSlice({
       console.log(inputtedEmail,"inputted email in student slice");
       try{
 
-      }catch(error){
+    const response=await axios.post(`${baseUrl}/student/login`,{inputtedEmail,inputtedPassword}) 
+    console.log(response," login response");
+      console.log(response?.data,"response in parent slice");
+    if (response.data.message === "Login successful") {
+     
+        dispatch(setLoginStudent(response.data.data));
 
-      }
+        return {
+          success: true,
+          message: "Login Successful",
+          data:response.data
+         
+        };
+    }
+  } catch (error) {
+     dispatch(setError(error)); 
+  }
     }
    
 
-    export const{setError,setStudentData,setMessage,setOneStudentData,setAddNewStudentToDb,setPostEditedStudentData,setDeleteStudent}=StudentSlice.actions;
+    export const{setError,setStudentData,setMessage,setOneStudentData,setAddNewStudentToDb,setPostEditedStudentData,setDeleteStudent,setLoginStudent}=StudentSlice.actions;
 export default StudentSlice.reducer;
