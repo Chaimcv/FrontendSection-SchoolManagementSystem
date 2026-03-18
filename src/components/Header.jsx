@@ -30,7 +30,7 @@ const handleLogout = () => {
 {token ? (
   <div className="w-[20%]">
     <button className="rounded-3xl bg-amber-600 p-1 m-5" onClick={handleLogout}>Logout</button>
-    <h5 className="font-bold text-red-950">Welcome,  {name}</h5>
+    <h5 className="font-bold text-red-950">WELCOME,  {name}</h5>
   </div>
 ) : (
 <div className="w-[20%]"><button className="rounded-3xl bg-amber-600 p-2 m-5"><Link to="/login">Login</Link></button></div>
