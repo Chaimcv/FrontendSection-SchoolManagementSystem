@@ -14,35 +14,35 @@ const ParentLogin = () => {
     const dispatch=useDispatch();
 
     const LoginAsParent=async()=>{
-     //const result=await dispatch(loginParent({inputtedEmail,inputtedPassword}));
+     const result=await dispatch(loginParent({inputtedEmail,inputtedPassword}));
 
-  // console.log(result?.response?.data?.data,"data");
-  // const{id,token}=result?.response?.data?.data;
-  // console.log(id,"login id");
-  //     if (result.success) {
-  //   navigate(`/viewParentProfile/${id}`);  //if success
-  // } else {
-  //   alert(result.message);          // show error
-  // }
+//  console.log(result,"result testing");
+//   console.log(result?.data.id,"data");
+ const{id,token,name}=result?.data;
+//  console.log(id,"login id");
+      if (result.success) {
+         localStorage.setItem("token",token);
+         localStorage.setItem("name",name);
+    navigate(`/viewParentProfile/${id}`);  //if success
+  } else {
+    alert(result.message);          // show error
+  }
+}
   
- try {
+//  try {
+//  const payload = await dispatch(
+//    loginParent({inputtedEmail,inputtedPassword})
+//  ).unwrap();                                                      //edit this
 
- const payload = await dispatch(
-   loginParent({inputtedEmail,inputtedPassword})
- ).unwrap();                                                      //edit this
+//  localStorage.setItem("token", payload.token);
 
- localStorage.setItem("token", payload.token);
+//  navigate(`/viewParentProfile/${payload.id}`);
 
- navigate(`/viewParentProfile/${payload.id}`);
+// } catch(error) {
 
-} catch(error) {
-
- alert(error.message || "Login failed");
-
-}
-
-
-}
+//  alert(error.message || "Login failed");
+// }
+// }
 
 
 
