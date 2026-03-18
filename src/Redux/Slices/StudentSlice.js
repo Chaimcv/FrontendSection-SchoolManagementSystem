@@ -35,6 +35,9 @@ const StudentSlice=createSlice({
             },
             setDeleteStudent:(state,action)=>{
                 state.deleteStudent=action.payload;
+            },
+            setLoginStudent:(state,action)=>{
+                state.loginAsStudent=action.payload;
             }
          
     }
@@ -118,6 +121,16 @@ const StudentSlice=createSlice({
     } catch (error) {
          dispatch(setError(error)); 
     }
+    }
+
+    //login
+    export const LoginStudent=({inputtedEmail,inputtedPassword})=>async(dispatch)=>{
+      console.log(inputtedEmail,"inputted email in student slice");
+      try{
+
+      }catch(error){
+
+      }
     }
    
 
