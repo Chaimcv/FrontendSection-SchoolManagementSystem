@@ -3,21 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTeachersData } from '../Redux/Slices/TeacherSlice';
 import { useNavigate } from 'react-router-dom';
 import SchoolImage from "../assets/SchoolImage.png";
+import { LoginStudent } from '../Redux/Slices/StudentSlice';
 
 const Login = () => {
     const[inputtedEmail,setInputtedEmail]=useState();
     const[inputtedPassword,setInputtedPassword]=useState();
     const navigate=useNavigate();
 
-    const DatabaseValues=useSelector((state)=>state.teacher.teacherData);
-    console.log(DatabaseValues,"valuesss");
+    // const DatabaseValues=useSelector((state)=>state.teacher.teacherData);
+    // console.log(DatabaseValues,"valuesss");
 
      const dispatch=useDispatch();
      
-    const LoginFunction=()=>{
-     dispatch(fetchTeachersData());
-     console.log(inputtedEmail,"email");
-     console.log(inputtedPassword,"password");
+    const LoginFunction=async()=>{
+     const result=await dispatch(LoginStudent({inputtedEmail,inputtedPassword}));
+    //  console.log(inputtedEmail,"email");
+    //  console.log(inputtedPassword,"password");
+    console.log(result,"result data");
     }
    const TeacherLoginPage=()=>{
     navigate("/teacher/login");
