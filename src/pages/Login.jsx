@@ -10,8 +10,6 @@ const Login = () => {
     const[inputtedPassword,setInputtedPassword]=useState();
     const navigate=useNavigate();
 
-    
-
     //only student login function 
     // const DatabaseValues=useSelector((state)=>state.teacher.teacherData);
     // console.log(DatabaseValues,"valuesss");
