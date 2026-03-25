@@ -13,10 +13,10 @@ const Login = () => {
     
     // const DatabaseValues=useSelector((state)=>state.teacher.teacherData);
     // console.log(DatabaseValues,"valuesss");
-
     const dispatch=useDispatch(); 
-    const LoginFunction=async()=>{
-     const result=await dispatch(LoginStudent({inputtedEmail,inputtedPassword}));
+
+    const LoginFunction=()=>{
+     const result= dispatch(LoginStudent({inputtedEmail,inputtedPassword}));
     //  console.log(inputtedEmail,"email");
     //  console.log(inputtedPassword,"password");
     console.log(result,"result data");
