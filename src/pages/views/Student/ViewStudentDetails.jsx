@@ -16,7 +16,9 @@ const ViewStudentDetails = () => {
    
   console.log(getStudentDetails,"get Student details");
    const EditStudentForm=(studentEditId)=>{
+
     //console.log(studentEditId,"edit id");
+    
    setEditform(true);
    dispatch(fetchOneStudentDetails(studentEditId))
    }
