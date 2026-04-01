@@ -12,11 +12,15 @@ const AdminLogin = () => {
   console.log(adminEmailSaved,"admin emails");
    console.log(adminEmail);
    console.log(adminPassword);
-
-   const checkValidAdmin=()=>{
+   const adminToken= Math.random().toString(36).substr(2); // remove `0.`
+  //console.log(adminToken,"admin token");
+  const Admin="Principal";
+  const checkValidAdmin=()=>{
      if(adminEmailSaved.includes(adminEmail)&& adminPasswordSaved.includes(adminPassword)){
         alert("Login Successfull");
         navigate("/admin/dashboard");
+        localStorage.setItem("token",adminToken);
+        localStorage.setItem("name",Admin);
      }
     else{
        
