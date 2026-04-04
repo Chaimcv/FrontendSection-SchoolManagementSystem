@@ -12,8 +12,7 @@
       // "src": "logo192.png",
       "src": "emblem.png",
       "type": "image/png",
-      // "sizes": "192x192"
-       "sizes": "100x100"
+       "sizes": "192x192"
     },
     {
       "src": "logo512.png",

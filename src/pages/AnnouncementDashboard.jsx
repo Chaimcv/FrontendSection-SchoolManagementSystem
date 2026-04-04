@@ -27,13 +27,13 @@ const AnnouncementDashboard = () => {
       <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={Add}>Add</button>
       {AllAnnouncements?.map((item)=>(
      <div key={item._id} className='border-red-600 rounded-md p-[5%]'>
-      <div> 
+      <div className='bg-white'> 
          <img></img>
          </div>
         <p>{item?.Text}</p>
         </div>
       ))}
-  {/* image section should be added */}
+
       {/* <div>
        <label>Image:<input type='file'></input></label>
         <label>Text:<input type='text' value={data.text} onChange={handleData}></input></label>
