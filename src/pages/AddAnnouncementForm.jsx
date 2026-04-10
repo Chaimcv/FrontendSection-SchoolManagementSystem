@@ -3,7 +3,7 @@ import React from 'react'
 const AddAnnouncementForm = () => {
   return (
     <div>AddAnnouncementForm  
-        adding announcements
+        add
     </div>
   )
 }
