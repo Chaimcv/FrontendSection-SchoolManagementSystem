@@ -3,7 +3,7 @@ import React from 'react'
 const AddAnnouncementForm = () => {
   return (
     <div>Form  
-        add
+        add -title,description
     </div>
   )
 }
