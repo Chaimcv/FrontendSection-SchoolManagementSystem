@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchNoticeData } from '../Redux/Slices/AnnouncementSlice';
+import AddAnnouncementForm from './AddAnnouncementForm';
 
 const AnnouncementDashboard = () => {
     const navigate=useNavigate();
@@ -24,6 +25,10 @@ const AnnouncementDashboard = () => {
   } 
   return (
     <div className='h-[50vh] w-full bg-amber-400'>
+      {formDisplay&&(
+        <AddAnnouncementForm
+        OnAddAnnouncementClick={()=>setFormDiaplay(false)}/>
+      )}
       <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={Add}>Add</button>
       {AllAnnouncements?.map((item)=>(
      <div key={item._id} className='border-red-600 rounded-md p-[5%]'>
