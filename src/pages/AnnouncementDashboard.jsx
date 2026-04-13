@@ -24,11 +24,14 @@ const AnnouncementDashboard = () => {
     setFormDiaplay(true);
   } 
   return (
-    <div className='h-[50vh] w-full bg-amber-400'>
-      {formDisplay&&(
+    <div  className='relative min-h-screen bg-amber-100'>
+       {formDisplay&&(
         <AddAnnouncementForm
         OnAddAnnouncementClick={()=>setFormDiaplay(false)}/>
       )}
+     <div className={`${formDisplay ? "blur-sm" : ""}`}>
+    <div className='h-[50vh] w-full bg-amber-400'>
+     
       <button className='bg-amber-500 rounded-lg m-2 p-2' onClick={Add}>Add</button>
       {AllAnnouncements?.map((item)=>(
      <div key={item._id} className='border-red-600 rounded-md p-[5%]'>
@@ -45,8 +48,8 @@ const AnnouncementDashboard = () => {
         <button>Submit</button>
       </div> */}
     </div>
-
-
+   </div>
+</div>
   )
 }
 
