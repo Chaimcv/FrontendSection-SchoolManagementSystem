@@ -5,7 +5,7 @@ import youtube from "../assets/youTube.png";
 
 const Footer = () => {
   return (
-    <div className='bg-amber-700 w-full'>
+    <div className='bg-amber-700 w-full b-0'>
       <div className='flex'>
          <div className='m-5 w-[50%]'>
           <ul className='font-semibold list-disc ml-32'>
