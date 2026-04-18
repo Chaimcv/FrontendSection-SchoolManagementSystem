@@ -13,7 +13,7 @@ const Footer = () => {
             <li>Fee Collection</li>
             <li>Cyber Security Awareness </li>
             <li>Right to Information</li>
-            <></>
+            <>additions</>
           </ul>
          </div>
           <div className='w-[50%]'>
