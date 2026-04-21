@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewPost } from '../Redux/Slices/PostSlice';
 
+
 const AddPostForm = () => {
     const[text,setText]=useState();
     const[image,sstImage]=useState();
