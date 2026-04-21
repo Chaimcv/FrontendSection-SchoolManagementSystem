@@ -23,7 +23,7 @@ const AddPost=()=>{
     <>
     <div className='h-screen bg-amber-100'>
       {getStudentInfo?(
-        <div  className=''>
+        <div className={`${postForm ? "blur-sm" : ""}`}>
                         <img  className="w-[20%] h-[20%]" src={getStudentInfo?.ProfileImageUrl} alt='image'></img>
                         
                
@@ -35,7 +35,7 @@ const AddPost=()=>{
     ):(
       <>No data</>
     )}</div>
-    <div>
+   <div  className='relative min-h-screen bg-amber-100'>
       {postForm &&
       <AddPostForm />}
       <button onClick={AddPost}>Add Post</button>
