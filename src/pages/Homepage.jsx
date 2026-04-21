@@ -1,6 +1,7 @@
 import React from 'react'
 import PostsSection from './PostsSection'
-import Announcements from './Announcements'
+import Announcements from './views/announcements/Announcements'
+
 
 const Homepage = () => {
   return (

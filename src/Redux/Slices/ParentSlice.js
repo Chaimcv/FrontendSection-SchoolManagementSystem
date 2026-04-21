@@ -7,7 +7,7 @@ const initialState={
     errors:null,
     parentData:[],
     message:null,
-    oneParent:null
+    oneParentDetailsData:null
 
 }
 const ParentSlice=createSlice({

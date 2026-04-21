@@ -9,13 +9,13 @@ const TeacherHomepage = () => {
         navigate(`/allStudentslisted/${loggedteacherId}`);
     }
     const ParentList=()=>{
-        navigate("/parentslist");
+        navigate(`/parentslist/${loggedteacherId}`);
     }
     const ProfileView=()=>{
         navigate(`/teacher/viewProfile/${loggedteacherId}`)
     }
   return (
-    <div className='bg-amber-200'>
+    <div className='bg-amber-200 h-screen'>
         <div>
             <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={ProfileView}>My Profile</button>
         </div>

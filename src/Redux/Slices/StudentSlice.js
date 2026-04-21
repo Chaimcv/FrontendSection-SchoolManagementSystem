@@ -133,11 +133,11 @@ const StudentSlice=createSlice({
       console.log(response?.data,"response in parent slice");
     if (response.data.message === "Login successful") {
      
-        dispatch(setLoginStudent(response.data.data));
+        dispatch(setLoginStudent(response.data));
 
         return {
           success: true,
-          message: "Login Successful",
+          message: "Login successful",
           data:response.data
          
         };
@@ -146,6 +146,8 @@ const StudentSlice=createSlice({
      dispatch(setError(error)); 
   }
     }
+
+    
    
 
     export const{setError,setStudentData,setMessage,setOneStudentData,setAddNewStudentToDb,setPostEditedStudentData,setDeleteStudent,setLoginStudent}=StudentSlice.actions;

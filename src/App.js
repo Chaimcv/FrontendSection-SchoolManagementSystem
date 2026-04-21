@@ -14,6 +14,8 @@ import AddParent from './pages/views/Parent/AddParent';
 import ParentLogin from './pages/views/Parent/ParentLogin';
 import ParentsList from './pages/views/Parent/ParentsList';
 import ViewParentProfile from './pages/views/Parent/ViewParentProfile';
+import ParentDashboard from './pages/views/Parent/ParentDashboard';
+import StudentDashboard from './pages/views/Student/StudentDashboard';
 
 function App() {
 
@@ -43,15 +45,17 @@ function App() {
 
         {/* student */}
          <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />}/>
-          <Route path='/addNewStudent' element={<AddNewStudent />}/>
+          <Route path='/addNewStudent/:loggedteacherId' element={<AddNewStudent />}/>
            <Route path='/viewAStudent/:id' element={<ViewStudentDetails />}/>
+           <Route path='/studentDashboard/:id' element={<StudentDashboard/>}/>
 
 
            {/* parent */}
             <Route path='/addingParent/:loggedteacherId' element={<AddParent />}/>
             <Route path='/parentLogin' element={<ParentLogin />}/>
-             <Route path='/parentslist' element={<ParentsList />}/>
+             <Route path='/parentslist/:loggedteacherId' element={<ParentsList />}/>
              <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
+             <Route path='/parentDashboard/:id' element={<ParentDashboard/>}/>
       </Routes>
       </BrowserRouter>
          <Footer />

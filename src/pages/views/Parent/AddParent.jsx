@@ -5,8 +5,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const AddParent = () => {
   const loggedteacherId=useParams();
-   const students= useSelector((state)=>state.student.studentData);
-   const dispatch=useDispatch();
+const [selectedUser, setSelectedUser] = useState(null);
+const [disId,setDisId]=useState();
+    const students= useSelector((state)=>state.student.studentData);
+   const dispatch=useDispatch();                                              //email: 'q@gmail.com',
+                                                                                //password: 'sXRwzGHV1r'
    const navigate=useNavigate();
    //const[nameSelection,setNameSelection]=useState();
    const[formData,setFormData]=useState({
@@ -20,15 +23,33 @@ const AddParent = () => {
     image:""
 
    });
-    console.log(students);
-
-    const AllStudents=()=>{
-      
-    }
-
+    //console.log(students);
      const handleChange = (e) => {
   const { name, value,file } = e.target;
+   
+//   const selectedId = e.target.value;
+//    const selectedObj = users.find(user => user._id == selectedId);
+// console.log(selectedObj?._id,"id testing");
+//  setDisId(selectedObj?._id);
+//  console.log(disId);
+//   setSelectedUser(selectedObj);
 
+   // Dropdown selection
+  if (e.target.tagName === "SELECT") {
+    const selectedObj = students.find(student => student._id == value);
+    setDisId(selectedObj?._id);
+    setSelectedUser(selectedObj);
+
+    setFormData((prev) => ({
+      ...prev,
+      studentId: selectedObj?._id,
+      studentname: selectedObj?.Name,
+    }));
+
+    return;
+  }
+
+  // File input
     if (name === "image") {
     setFormData((prev) => ({
       ...prev,
@@ -47,77 +68,31 @@ const AddNewParent=(e)=>{
   dispatch(addNewParentToDb(formData));
   navigate(`/allStudentslisted/${loggedteacherId}`);
 }
-
-// const AddNewParent = (e) => {
-//   e.preventDefault();
-
-//   const data = new FormData();
-
-//   data.append("name", formData.name);
-//   data.append("email", formData.email);
-//   data.append("studentname", formData.studentname);
-//   data.append("studentId", formData.studentId);
-//   data.append("phonenumber", formData.phonenumber);
-//   data.append("address", formData.address);
-//   data.append("pincode", formData.pincode);
-//   data.append("image", formData.image);
-
-//   dispatch(addNewParentToDb(data));
-//   console.log(data,"addded data");
-//   navigate("/allStudentslisted");
-// };
-
-
-//....
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-
-//     setFormData((prev) => ({
-//       ...prev,
-//       [name]: value,
-//     }));
-//   };
-
-//   const handleStudentChange = (e) => {
-//     const selectedId = e.target.value;
-
-//     const selectedStudent = students.find(
-//       (student) => student._id === selectedId
-//     );
-
-//     setFormData((prev) => ({
-//       ...prev,
-//       studentId: selectedStudent?._id || "",
-//       studentname: selectedStudent?.Name || "",
-//     }));
-//   };
-
-//   const AddNewParent = (e) => {
-//     e.preventDefault();
-//     dispatch(addNewParentToDb(formData));
-//   };
-// //.....
   return (
     <div className='bg-amber-300 h-screen '>
        
         <form onSubmit={AddNewParent}>
             <div className='flex flex-col m-16 p-4 space-y-4'>
-                  <label>STUDENT NAME: 
+                  {/* <label>STUDENT NAME: 
                 <select 
-              //    name="studentId"
-              // value={formData.studentId}
-              // onChange={handleChange}>
                 name="studentname" value={formData.studentname} onChange={handleChange}>
                     {students.map((item)=>(  
-            // <option key={students?._id} value={students.Name} >{item.Name}</option>
               <option key={item?._id} value={item.Name} >{item.Name}</option>
-            
-        ))}
+             ))}
         </select>
-        </label>
+        </label> */}
+        <label> STUDENT NAME:
+        <select onChange={(e) => handleChange(e)}>
+  <option value="">Select Student</option>
+  {students.map(student => (
+    <option key={student?._id} value={student?._id}>
+      {student.Name}
+    </option>
+  ))}
+</select>
+</label>
               <label>NAME :   <input type='text' name="name" value={formData.name} onChange={handleChange}></input></label>
-              
+                 <label>STUDENT ID :  <input type='text' defaultValue={disId} ></input></label>
      <label>PROFILE PICTURE: <input
         type="file"
         accept="image/*"

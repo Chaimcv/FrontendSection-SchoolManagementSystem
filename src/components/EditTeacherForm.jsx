@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 const EditTeacherForm = () => {
     const dispatch=useDispatch();
 const TeacherDataFromDatabase=useSelector((store)=>store.teacher.oneTeacherDetailsData);
-console.log(TeacherDataFromDatabase,"teacherto beEdited");
+console.log(TeacherDataFromDatabase,"teacher to be Edited");
 
  const [formData, setFormData] = useState({
     name:"",
     pin:"",
     city:"",
-    phonenumber:""
+    phonenumber:"",
+    subject:""
  });
  
    useEffect(()=>{
@@ -22,7 +23,8 @@ console.log(TeacherDataFromDatabase,"teacherto beEdited");
         pin: TeacherDataFromDatabase.pin || "",
         city: TeacherDataFromDatabase.city || "",
         phonenumber:TeacherDataFromDatabase.phoneNumber || "",
-        subject:TeacherDataFromDatabase.subject || ""
+        subject:TeacherDataFromDatabase.subject || "",
+        standard:TeacherDataFromDatabase.standard || ""
       });
    }
  },[TeacherDataFromDatabase])
@@ -44,7 +46,7 @@ const handleChange=(e)=>{
     <div>
         <form onSubmit={EditTeacher(TeacherDataFromDatabase?._id)}>
             {TeacherDataFromDatabase ? (
-        <div className='border border-black flex flex-col m-5 p-5 space-y-5'>
+        <div className='border border-black flex flex-col m-5 p-5 space-y-5 bg-amber-100'>
 
           <label>NAME: <input type='text' name="name" value={formData.name}   onChange={handleChange} /></label>
           
@@ -53,6 +55,7 @@ const handleChange=(e)=>{
           <label>SUBJECT: <input type='text' name="subject"  value={formData.subject}  onChange={handleChange} /></label>
           <label>PHONE: <input type='number'  name="phonenumber"value={formData.phonenumber}  onChange={handleChange} /></label>
           <label>STANDARD: <input type='text'  name="standard" value={formData.standard}  onChange={handleChange} /></label>
+            <label>SUBJECT: <input type='text'  name="standard" value={formData.subject}  onChange={handleChange} /></label>
 
           <button type='submit'>SUBMIT</button>
 

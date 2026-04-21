@@ -30,6 +30,9 @@ const TeacherSlice=createSlice({
             },
             setEditedTeacherData:(state,action)=>{
                 state.postEditedTeacherDetails=action.payload;
+            },
+            setTeacherLogin:(state,action)=>{
+                state.loginTeacher=action.payload;
             }
          
     }
@@ -92,5 +95,31 @@ const TeacherSlice=createSlice({
            dispatch(setError(error));     
         }
     }
- export const{setError,setTeacherData,setMessage,setOneTeacherData,setAddNewTeacherDb,setEditedTeacherData}=TeacherSlice.actions;
+
+     //login
+     export const loginTeacher=({inputtedEmail,inputtedPassword})=>async(dispatch)=>{
+      console.log(inputtedEmail,"inputted email");
+      try {
+       
+        const response=await axios.post(`${baseUrl}/teacher/login`,{email:inputtedEmail,password:inputtedPassword}) 
+        console.log(response," login response");
+          console.log(response?.data?.data,"response in teacher slice");
+        if (response.data.message === "Login Successful") {
+         
+            dispatch(setTeacherLogin(response.data.data));
+    
+            return {
+              success: true,
+              message: "Login Successful",
+              data:response?.data?.data
+             
+            };
+            
+        }
+      } catch (error) {
+         dispatch(setError(error)); 
+      }
+     }
+
+ export const{setError,setTeacherData,setMessage,setOneTeacherData,setAddNewTeacherDb,setEditedTeacherData,setTeacherLogin}=TeacherSlice.actions;
  export default TeacherSlice.reducer;

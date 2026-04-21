@@ -30,7 +30,7 @@ console.log(oneTeacherDetail,"oneteacher");
        }
       
   return (
-    <div  className='relative min-h-screen'>
+    <div  className='relative min-h-screen bg-amber-300'>
       {editformVisibility &&(
         <EditTeacherForm
         OnEditBtnClick={()=>setEditFormVisibility(false)} />
@@ -39,7 +39,7 @@ console.log(oneTeacherDetail,"oneteacher");
          <h1 className='font-bold'>Teacher Details</h1>
 
     {oneTeacherDetail ? (
-      <div>
+      <div className='bg-amber-200 p-[1%] mx-[20%]'>
         <h2>Name: {oneTeacherDetail.name}</h2>
         <h2>Class: {oneTeacherDetail.standard}</h2>
         <h2>City: {oneTeacherDetail.city}</h2>

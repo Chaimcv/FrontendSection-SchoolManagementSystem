@@ -16,7 +16,7 @@ const TeacherProfile = () => {
                navigate(`/teacher/profile/${myId}`)
             }
   return (
-    <div className='bg-amber-200 '>
+    <div className='bg-amber-200 h-screen'>
        <div>
         <img />
         </div>    

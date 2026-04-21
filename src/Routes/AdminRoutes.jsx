@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import AdminLogin from '../pages/AdminLogin'
 import AdminDashboard from '../pages/AdminDashboard'
 import AdminProfile from '../pages/AdminProfile'
-import AnnouncementDashboard from '../pages/AnnouncementDashboard'
+import AnnouncementDashboard from '../pages/views/announcements/AnnouncementDashboard'
+
 
 const AdminRoutes = () => {
   return (

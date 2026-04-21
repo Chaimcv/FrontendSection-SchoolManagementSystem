@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchParentsData,deleteParent } from '../../../Redux/Slices/ParentSlice';
 
 const ParentsList = () => {
+    const { loggedteacherId } = useParams();
    const dispatch=useDispatch();
         const navigate=useNavigate();
    
@@ -18,16 +19,23 @@ const ParentsList = () => {
         //   navigate(`//${parentID}`);
         // }
   
-        const deleteParent = async (parentIdToDelete) => {
+        const deleteParent = async(parentIdToDelete) => {
     await dispatch(deleteParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };
   
-        // const AddParent=()=>{
-        //   navigate("/addingParent");
-        // }
+       const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
   return (
     <div className='bg-amber-100'>
+      <div> <button 
+                            className='bg-white border-2 border-amber-600 text-amber-600 hover:bg-amber-50 font-bold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2'
+                            onClick={AddParent}
+                        >
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                            </svg>
+                            Add Parent
+                        </button></div>
 {/*         
          <div >
         
