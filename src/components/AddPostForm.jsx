@@ -12,11 +12,11 @@ const AddPostForm = () => {
     }
   return (
     <div>AddPostForm
-        <>
+        <div>
         <label>Text<input type='text' onChange={handlechange} value={text}></input></label>
         <label>File Upload<input type='file' onChange={handlechange} value={image} accept='image/*'></input></label>
         <button >Submit</button>
-        </>
+        </div>
     </div>
   )
 }
