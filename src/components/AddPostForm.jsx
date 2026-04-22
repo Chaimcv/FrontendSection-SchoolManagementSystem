@@ -5,7 +5,7 @@ import { addNewPost } from '../Redux/Slices/PostSlice';
 
 const AddPostForm = () => {
     const[text,setText]=useState();
-    const[image,sstImage]=useState();
+    const[image,setImage]=useState();
     const dispatch=useDispatch();
     const handlechange=()=>{
         //dispatch(addNewPost(formdata));
