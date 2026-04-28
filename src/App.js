@@ -16,6 +16,7 @@ import ParentsList from './pages/views/Parent/ParentsList';
 import ViewParentProfile from './pages/views/Parent/ViewParentProfile';
 import ParentDashboard from './pages/views/Parent/ParentDashboard';
 import StudentDashboard from './pages/views/Student/StudentDashboard';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -29,13 +30,14 @@ function App() {
   
   // }, []);
   // console.log(data,"data accessed from backend");
-  
+   const token=localStorage.getItem("token");
   
   return (
     <div className="App">
        
       <BrowserRouter>
       <Header />
+         {token&&<div><Navbar /></div>}
       <Routes>
        
         <Route path="/admin/*" element={<AdminRoutes />}/>

@@ -33,11 +33,11 @@ const Navbar = () => {
     navigate("/");
   }
   return (//dashboard
-    <div className='bg-amber-100'>
-    <button className="bg-amber-400 rounded-lg p-2 m-1" onClick={BackToHomepage}>Home</button>
-    {studentId &&(<button className="bg-amber-400 rounded-lg p-2 m-1" onClick={BackToStudentDashboard}>Dashboard</button>)}
-     {TeacherId &&(<button className="bg-amber-400 rounded-lg p-2 m-1" onClick={BackToTeacherDashboard}>Dashboard</button>)}
-      {ifAdmin &&(<div className='bg-amber-100'><button className="bg-amber-400 rounded-lg p-2 m-1" onClick={BackToAdminDashboard}>Dashboard</button></div>)}
+    <div className='bg-amber-50 flex justify-center'>
+    <button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToHomepage}>Home</button>
+    {studentId &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToStudentDashboard}>Dashboard</button>)}
+     {TeacherId &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToTeacherDashboard}>Dashboard</button>)}
+      {ifAdmin &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToAdminDashboard}>Dashboard</button>)}
 
     </div>
   )
