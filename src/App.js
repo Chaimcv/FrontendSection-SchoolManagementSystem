@@ -41,7 +41,9 @@ function App() {
         <Route path="/admin/*" element={<AdminRoutes />}/>
         <Route path='/teacher/*' element={<TeacherRoutes />}/>  
         <Route path='/' element={<Homepage />}/>
+        <Route path='/:id' element={<Homepage />}/>
         <Route path='/login' element={<Login />}/>
+     
 
         {/* student */}
          <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />}/>
@@ -54,6 +56,7 @@ function App() {
             <Route path='/addingParent/:loggedteacherId' element={<AddParent />}/>
             <Route path='/parentLogin' element={<ParentLogin />}/>
              <Route path='/parentslist/:loggedteacherId' element={<ParentsList />}/>
+             <Route path='/parentslist' element={<ParentsList />}/>
              <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
              <Route path='/parentDashboard/:id' element={<ParentDashboard/>}/>
       </Routes>

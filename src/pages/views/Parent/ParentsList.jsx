@@ -27,7 +27,7 @@ const ParentsList = () => {
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
   return (
     <div className='bg-amber-100'>
-      <div> <button 
+      <div>{loggedteacherId&& <button 
                             className='bg-white border-2 border-amber-600 text-amber-600 hover:bg-amber-50 font-bold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2'
                             onClick={AddParent}
                         >
@@ -35,7 +35,7 @@ const ParentsList = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                             </svg>
                             Add Parent
-                        </button></div>
+                        </button>}</div>
 {/*         
          <div >
         
