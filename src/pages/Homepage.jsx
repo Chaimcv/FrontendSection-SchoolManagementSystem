@@ -8,9 +8,7 @@ const Homepage = () => {
   const token=localStorage.getItem("token");
   return (
     <div>
-     {token? (<div><Navbar /></div>):(
-      <></>
-     )}
+     {token&&<div><Navbar /></div>}
         <div><Announcements /></div>
          <div><PostsSection /></div>
     </div>
