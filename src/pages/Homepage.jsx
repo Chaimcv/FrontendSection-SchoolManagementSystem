@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 
 
 const Homepage = () => {
-  const token=localStorage.getItem("token");
+  // const token=localStorage.getItem("token");
   return (
     <div>
      {/* {token&&<div><Navbar /></div>} */}
