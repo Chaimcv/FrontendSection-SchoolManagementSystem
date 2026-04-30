@@ -9,7 +9,7 @@ const Footer = () => {
       <div className='flex' >
          <div className='m-5 w-[50%]'>
           <ul className='font-semibold list-disc ml-32'>
-            {/* <li>Online Admission</li>
+            {/* <li>Online Admissio. n</li>
             <li>Fee Collection</li>
             <li>Cyber Security Awareness </li>
             <li>Right to Information</li> */}
