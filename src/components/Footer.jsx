@@ -11,17 +11,10 @@ const Footer = () => {
       <div className='flex' >
          <div className='m-5 w-[50%]'>
           <ul className='font-semibold list-disc ml-32'>
-<<<<<<< HEAD
-            {/* <li>Online Admission</li>
+            <li>Online Admission</li>
             <li>Fee Collection</li>
             <li>Cyber Security Awareness </li>
-            <li>Right to Information</li>  */}
-=======
-          <li>Online Admission</li>
-            <li>Fee Collection</li>
-            <li>Cyber Security Awareness </li>
-           // <li>Right to Information</li> 
->>>>>>> b95c0e21cfdf7ea1d7f8e6dfe41bf4928306faa3
+            <li>Right to Information</li> 
           </ul>
          </div>
           <div className='w-[50%]'>
