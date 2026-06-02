@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchOneStudentDetails, postEditedStudentDetails } from '../../../Redux/Slices/StudentSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const EditStudentForm = () => {
 const dispatch=useDispatch();
 const studentDetails=useSelector((state)=>state.student.oneStudentDetailsData)
 console.log(studentDetails,"student details");
+const navigate=useNavigate();
 const[studentForm,setStudentForm]=useState({
 Name:"",
 Age:"",
@@ -38,8 +40,11 @@ if(studentDetails){
 }
 },[studentDetails]);
 const edited=(id)=>{
- console.log(id,"student edit id");
+ console.log(id,"student edit id in editform");
  dispatch(postEditedStudentDetails({}))
+}
+const BackToStudentDetails=()=>{
+  navigate(`/viewAStudent/id`);
 }
   return (
     <div>
@@ -58,6 +63,8 @@ const edited=(id)=>{
            <h2>Guardian Phonenumber :<input type='number' name='Guardian number' value={studentForm.Guardian_Phonenumber}></input> </h2>
            <h2>Address :<input type='text' name='Address' value={studentForm.Address}></input> </h2>
            <h2>Pincode : <input type='number' name='pincode' value={studentForm.Pincode}></input></h2>
+           <button type='submit'>Submit</button>
+           <button onClick={BackToStudentDetails}>Back</button>
         </div>
       </form> 
     </div>
