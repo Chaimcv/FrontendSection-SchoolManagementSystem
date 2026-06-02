@@ -10,17 +10,33 @@ console.log(studentDetails,"student details");
 const[studentForm,setStudentForm]=useState({
 Name:"",
 Age:"",
+Standard:"",
 Division:"",
 Gender:"",
-Guardian:"",
+Guardian_Name:"",
 Guardian_Phonenumber:"",
 Address:"",
 Pincode:"",
-ProfileImageUrl:"",
-Standard:""
+ProfileImageUrl:""
+
 });
 useEffect(()=>{
 //dispatch(fetchOneStudentDetails())
+if(studentDetails){
+  
+    setStudentForm({
+      Name:studentDetails.Name||"",
+      Age:studentDetails.Age||"",
+      Standard:studentDetails.Standard||"",
+      Division:studentDetails.Division||"",
+      Gender:studentDetails.Gender||"",
+      Guardian_Name:studentDetails.Guardian||"",
+      Guardian_Phonenumber:studentDetails.Guardian_Phonenumber||"",
+      Address:studentDetails.Address||"",
+      Pincode:studentDetails.Pincode
+    });
+  
+}
 },[]);
 const edited=(id)=>{
  console.log(id,"student edit id");

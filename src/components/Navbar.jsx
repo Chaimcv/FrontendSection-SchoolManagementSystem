@@ -34,10 +34,10 @@ const Navbar = () => {
   }
   return (//dashboard
     <div className='bg-amber-50 flex justify-center'>
-    <button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToHomepage}>Home</button>
-    {studentId &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToStudentDashboard}>Dashboard</button>)}
-     {TeacherId &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToTeacherDashboard}>Dashboard</button>)}
-      {ifAdmin &&(<button className="bg-amber-300 rounded-lg p-2 m-1" onClick={BackToAdminDashboard}>Dashboard</button>)}
+    <button className="bg-amber-300 rounded-lg p-1 m-1" onClick={BackToHomepage}>Home</button>
+    {studentId &&(<button className="bg-amber-300 rounded-lg p-1 m-1" onClick={BackToStudentDashboard}>Dashboard</button>)}
+     {TeacherId &&(<button className="bg-amber-300 rounded-lg p-1 m-1" onClick={BackToTeacherDashboard}>Dashboard</button>)}
+      {ifAdmin &&(<button className="bg-amber-300 rounded-lg p-1 m-1" onClick={BackToAdminDashboard}>Dashboard</button>)}
 
     </div>
   )
