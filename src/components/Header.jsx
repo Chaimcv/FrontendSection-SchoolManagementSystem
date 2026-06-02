@@ -33,7 +33,7 @@ const Header = () => {
           <img src={Emblem} alt="emblem" className="h-[80%] w-[20%] ml-[3%] mt-[3%]" />
         </div>
         <div className=" w-[50%]">
-          <h2 className="font-serif font-semibold mt-[5%] text-red-900 text-start text-2xl">
+          <h2 className="font-serif font-semibold mt-[5%] text-red-900 text-start text-2xl ml-[10%]">
             CENTRAL PUBLIC SCHOOL
           </h2>
           <h6 className="pr-[30%]">
