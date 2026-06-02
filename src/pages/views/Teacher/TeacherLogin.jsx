@@ -20,6 +20,7 @@ const TeacherLogin = () => {
          if (result) {
          localStorage.setItem("token",token);
          localStorage.setItem("name",name);
+          localStorage.setItem("id",id);
            navigate(`/teacher/profile/${id}`);
 
          }

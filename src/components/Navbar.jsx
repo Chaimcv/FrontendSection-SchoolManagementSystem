@@ -7,7 +7,7 @@ const Navbar = () => {
   const studentId=localStorage.getItem("studentId");
   console.log(studentId,"id of student");
   //console.log(idOfUser,"id of the logged user for navbar functions");
-  const TeacherId=localStorage.getItem("teacherId");
+  const TeacherId=localStorage.getItem("id");
   const Admin=localStorage.getItem("name");
   const[ifAdmin,setIfAdmin]=useState(false);
   useEffect(()=>{
