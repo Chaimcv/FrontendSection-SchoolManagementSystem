@@ -63,7 +63,7 @@ const AddPostForm = ({ onClose }) => {
                             <textarea
                                 onChange={handleTextChange}
                                 value={text}
-                                placeholder="What's evolving in your world?"
+                                placeholder="Text?"
                                 rows="3"
                                 className="w-full p-8 rounded-[2rem] border-2 border-indigo-50 focus:outline-none focus:ring-0 focus:border-indigo-400 transition-all resize-none text-gray-700 font-semibold placeholder-indigo-200 bg-gray-50/30"
                             />
@@ -84,12 +84,12 @@ const AddPostForm = ({ onClose }) => {
                                     className="flex items-center justify-center w-full p-10 border-2 border-dashed border-indigo-100 rounded-[2.5rem] cursor-pointer hover:border-indigo-400 hover:bg-indigo-50/50 transition-all group/upload"
                                 >
                                     <div className="flex flex-col items-center space-y-4">
-                                        <div className="p-4 bg-indigo-50 rounded-full group-hover/upload:scale-110 transition-transform duration-500">
+                                        {/* <div className="p-4 bg-indigo-50 rounded-full group-hover/upload:scale-110 transition-transform duration-500">
                                             <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                             </svg>
-                                        </div>
-                                        <span className="text-xs font-black text-indigo-300 uppercase tracking-widest">Enchant with visuals</span>
+                                        </div> */}
+                                        <span className="text-xs font-black text-indigo-300 uppercase tracking-widest">Image</span>
                                     </div>
                                 </label>
                             </div>
@@ -113,7 +113,7 @@ const AddPostForm = ({ onClose }) => {
                         <button
                             type="submit"
                             disabled={!text && !image}
-                            className="w-full py-6 bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-700 text-white font-[1000] rounded-[2rem] shadow-2xl shadow-indigo-200 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed uppercase text-sm tracking-[0.3em]"
+                            className="w-full py-6 bg-gradient-to-r from-amber-600 via-amber-700 to-amber-700 text-white font-[1000] rounded-[2rem] shadow-2xl shadow-indigo-200 hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-30 disabled:grayscale disabled:cursor-not-allowed uppercase text-sm tracking-[0.3em]"
                         >
                             Post
                         </button>
