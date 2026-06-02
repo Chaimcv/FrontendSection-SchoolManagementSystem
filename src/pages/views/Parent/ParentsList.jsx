@@ -26,7 +26,7 @@ const ParentsList = () => {
   
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
   return (
-    <div className='bg-amber-100'>
+    <div className='bg-amber-100 h-screen'>
       <div>{loggedteacherId&& <button 
                             className='bg-white border-2 border-amber-600 text-amber-600 hover:bg-amber-50 font-bold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2'
                             onClick={AddParent}
