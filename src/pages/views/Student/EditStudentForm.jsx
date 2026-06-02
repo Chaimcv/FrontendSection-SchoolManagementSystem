@@ -51,7 +51,8 @@ const edited=(id)=>{
  dispatch(postEditedStudentDetails({id,studentForm}))
 }
 const BackToStudentDetails=()=>{
-  navigate(`/viewAStudent/id`);
+  // navigate(`/viewAStudent/id`);
+  navigate(-1);
 }
   return (
     <div>
