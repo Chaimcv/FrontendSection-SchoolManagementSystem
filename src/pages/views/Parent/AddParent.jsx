@@ -7,6 +7,7 @@ const AddParent = () => {
   const loggedteacherId=useParams();
 const [selectedUser, setSelectedUser] = useState(null);
 const [disId,setDisId]=useState();
+const[parentName,setParentName]=useState();
     const students= useSelector((state)=>state.student.studentData);
    const dispatch=useDispatch();                                              //email: 'q@gmail.com',
                                                                                 //password: 'sXRwzGHV1r'

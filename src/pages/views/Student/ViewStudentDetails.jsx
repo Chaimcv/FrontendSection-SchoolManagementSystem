@@ -50,7 +50,7 @@ const ViewStudentDetails = () => {
                                     )}
                                 </div>
                                 <div className='mb-4'>
-                                    <h1 className='text-4xl font-black text-black drop-shadow-md'>{getStudentDetails.Name}</h1>
+                                    <h1 className='text-4xl font-black text-amber-950 drop-shadow-md'>{getStudentDetails.Name}</h1>
                                     <p className='text-amber-200 font-medium flex items-center gap-2'>
                                         <span className='bg-white/20 px-3 py-0.5 rounded-full text-sm capitalize'>{getStudentDetails.Gender}</span>
                                         <span>•</span>

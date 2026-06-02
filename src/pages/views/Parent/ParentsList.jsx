@@ -42,8 +42,8 @@ const ParentsList = () => {
          <h3>Add Parent  <button className='rounded-md bg-amber-500 px-7 ml-14 mt-1' onClick={AddParent}>+</button></h3></div> */}
       <div>
         <h3 className='font-semibold p-3'>Parents</h3>
-          <table className='auto p-2 mx-10'>
-            <thead className='bg-amber-700'>
+          <table className='auto p-2 mx-10 shadow-md rounded-md mb-3'>
+            <thead className='bg-amber-200 border rounded-md'>
               <tr className='p-5'>
                 <th className='p-5'> NAME </th>
                 <th className='p-5'> EMAIL </th>
@@ -59,7 +59,7 @@ const ParentsList = () => {
               </tr>
             </thead>
             
-            <tbody  className='bg-amber-200' >
+            <tbody  className='bg-amber-50' >
                {AllParents?.map((item)=>(
               <tr key={item._id}>
                 <td>{item?.Name}</td>
