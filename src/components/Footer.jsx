@@ -5,7 +5,7 @@ import youtube from "../assets/youTube.png";
 
 const Footer = () => {
   return (
-    //€dits
+
     //  footer section to be done
     <div className='bg-amber-700 w-full mb-0'>
       <div className='flex' >
@@ -13,7 +13,7 @@ const Footer = () => {
           <ul className='font-semibold list-disc ml-32'>
             <li>Online Admission</li>
             <li>Fee Collection</li>
-         //   <li>Cyber Security Awareness </li>
+           <li>Cyber Security Awareness </li>
             <li>Right to Information</li> 
           </ul>
          </div>
