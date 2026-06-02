@@ -8,10 +8,19 @@ const dispatch=useDispatch();
 const studentDetails=useSelector((state)=>state.student.oneStudentDetailsData)
 console.log(studentDetails,"student details");
 const[studentForm,setStudentForm]=useState({
-  
+Name:"",
+Age:"",
+Division:"",
+Gender:"",
+Guardian:"",
+Guardian_Phonenumber:"",
+Address:"",
+Pincode:"",
+ProfileImageUrl:"",
+Standard:""
 });
 useEffect(()=>{
-dispatch(fetchOneStudentDetails())
+//dispatch(fetchOneStudentDetails())
 },[]);
 const edited=(id)=>{
  console.log(id,"student edit id");

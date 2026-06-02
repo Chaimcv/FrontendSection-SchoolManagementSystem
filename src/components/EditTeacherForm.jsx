@@ -12,7 +12,9 @@ console.log(TeacherDataFromDatabase,"teacher to be Edited");
     pin:"",
     city:"",
     phonenumber:"",
-    subject:""
+    subject:"",
+    standard:"",
+    class:""
  });
  
    useEffect(()=>{

@@ -46,13 +46,13 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                     <div className="relative group-hover:scale-110 transition-transform duration-500">
                         <div className="absolute inset-0 bg-indigo-500 rounded-full blur-lg opacity-20 animate-pulse"></div>
                         <img
-                            src={post.student?.ProfileImageUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.student?._id}`}
+                            src={post.student?.ProfileImageUrl} //|| `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.student?._id}`}
                             alt="Avatar"
                             className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md relative z-10"
                         />
                     </div>
                     <div>
-                        <h4 className="font-extrabold text-gray-800 text-lg tracking-tight group-hover:text-indigo-600 transition-colors">{post.student?.Name || "Scholar"}</h4>
+                        <h4 className="font-extrabold text-gray-800 text-lg tracking-tight group-hover:text-indigo-600 transition-colors">{post.student?.Name}</h4>
                         <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.2em]">
                             {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                         </p>
@@ -143,7 +143,7 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                         {post.comments?.map((comment) => (
                             <div key={comment._id} className="group/comment flex gap-4 animate-in fade-in slide-in-from-left-4 duration-500">
                                 <img
-                                    src={comment.student?.ProfileImageUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.student?._id}`}
+                                    src={comment.student?.ProfileImageUrl} //|| `https://api.dicebear.com/7.x/avataaars/svg?seed=${comment.student?._id}`}
                                     alt="Avatar"
                                     className="w-10 h-10 rounded-full border-2 border-white shadow-sm flex-shrink-0"
                                 />
@@ -219,8 +219,8 @@ const PostsSection = () => {
                             <div className="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-10 animate-pulse"></div>
                             <svg className="w-12 h-12 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
                         </div>
-                        <h3 className="text-2xl font-black text-gray-800 mb-3 tracking-tight">The Verse is waiting...</h3>
-                        <p className="text-gray-400 font-semibold mb-10 max-w-sm mx-auto leading-relaxed">Every student has a story. Be the one to start the conversation today.</p>
+                        <h3 className="text-2xl font-black text-gray-800 mb-3 tracking-tight"> waiting...</h3>
+                        <p className="text-gray-400 font-semibold mb-10 max-w-sm mx-auto leading-relaxed">Student story</p>
                     </div>
                 )}
             </div>
