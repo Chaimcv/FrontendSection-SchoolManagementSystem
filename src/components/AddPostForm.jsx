@@ -64,7 +64,7 @@ const AddPostForm = ({ onClose }) => {
                                 onChange={handleTextChange}
                                 value={text}
                                 placeholder="What's evolving in your world?"
-                                rows="5"
+                                rows="3"
                                 className="w-full p-8 rounded-[2rem] border-2 border-indigo-50 focus:outline-none focus:ring-0 focus:border-indigo-400 transition-all resize-none text-gray-700 font-semibold placeholder-indigo-200 bg-gray-50/30"
                             />
                         </div>
@@ -95,7 +95,7 @@ const AddPostForm = ({ onClose }) => {
                             </div>
                         </div>
 
-                        {preview && (
+                        {/* {preview && (
                             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl animate-in zoom-in-95 duration-500 ring-4 ring-indigo-50">
                                 <img src={preview} alt="Aura Preview" className="w-full h-56 object-cover" />
                                 <button
@@ -108,7 +108,7 @@ const AddPostForm = ({ onClose }) => {
                                     </svg>
                                 </button>
                             </div>
-                        )}
+                        )} */}
 
                         <button
                             type="submit"
