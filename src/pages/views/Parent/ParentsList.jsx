@@ -23,6 +23,9 @@ const ParentsList = () => {
     await dispatch(deleteParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };
+  const BackToAdminDashboard=()=>{
+    navigate(-1);
+  }
   
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
   return (
@@ -53,13 +56,13 @@ const ParentsList = () => {
                 <th className='p-5'>ADDRESS </th>
                 <th className='p-5'>PINCODE </th>
                
-                  <th></th>
+                  <th className='p-5'> ACTION </th>
                    <th></th>
                 <th></th>
               </tr>
             </thead>
             
-            <tbody  className='bg-amber-50' >
+            <tbody  className='bg-amber-50 text-amber-500' >
                {AllParents?.map((item)=>(
               <tr key={item._id}>
                 <td>{item?.Name}</td>
@@ -70,11 +73,12 @@ const ParentsList = () => {
                       <td>{item?.address}</td>
                         <td>{item?.pincode}</td>
                       {/* <td><button className='bg-amber-500 rounded-lg m-2 p-2' onClick={ ()=> viewParentDetails(item?._id)}>View Details</button></td> */}
-                         <td><button className='bg-amber-500 rounded-lg m-2 p-2' onClick={ ()=> deleteParent(item?._id)}>Delete</button></td>
+                         <td><button className='bg-amber-100 rounded-lg m-2 p-2' onClick={ ()=> deleteParent(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>  
           </table> 
+          <button  className="text-white bg-amber-600  p-2 rounded-lg" onClick={BackToAdminDashboard()}> BACK </button>
       </div>
     </div>
   )

@@ -66,18 +66,18 @@ const TeachersDashboard = () => {
               <tr className='bg-white text-amber-700 rounded-md p-2 m-10'>
                 <th className='m-3 p-2'> NAME </th>
                 <th className='m-3 p-2'> CLASS IN CHARGE </th>
-                <th className='col-span-2'> ACTIONS </th>
-                {/* <th></th> */}
+                <th className='col-span-2 m-2'> ACTIONS </th>
+                <th></th>
               </tr>
             </thead>
             
-            <tbody  className='bg-amber-200' >
+            <tbody  className='bg-amber-50' >
                {TeachersDataInfo.map((item)=>(
               <tr key={item._id}>
                 <td>{item?.name}</td>
                    <td>{item?.standard}</td>
-                      <td><button className='text-amber-400  bg-white rounded-lg m-2 p-2' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
-                         <td><button className='text-amber-400 bg-white rounded-lg m-2 p-2' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
+                      <td><button className='text-amber-500  bg-white rounded-lg m-2 p-2 border-amber-500' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
+                         <td><button className='text-amber-500 bg-white rounded-lg m-2 p-2 border-amber-500' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>
