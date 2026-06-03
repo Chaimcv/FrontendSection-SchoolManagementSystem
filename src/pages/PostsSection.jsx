@@ -185,7 +185,7 @@ const PostsSection = () => {
             <div className="max-w-2xl mx-auto">
                 <header className="flex flex-col items-center mb-16 relative">
                     <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-indigo-500/10 blur-[80px] rounded-full"></div>
-                    <h2 className="text-5xl md:text-6xl font-[1000] text-amber-950">POST   
+                    <h2 className="text-5xl md:text-6xl font-[1000] text-amber-950">POSTS   
                         {/*  <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-rose-600 bg-clip-text text-transparent italic">Verse</span> */}
                     </h2>
                     <div className="w-20 h-2 bg-amber-600 rounded-full mb-8"></div>
