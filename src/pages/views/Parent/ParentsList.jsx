@@ -24,7 +24,7 @@ const ParentsList = () => {
     dispatch(fetchParentsData());
   };
   const BackToDashboard=()=>{
-   navigate("-1");
+   navigate(-1);
   }
   
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
