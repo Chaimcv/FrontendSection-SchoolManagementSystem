@@ -19,10 +19,10 @@ const StudentListing = () => {
     };
 
     const deleteStudent = async (studentIdToDelete) => {
-        // if (window.confirm("Are you sure you want to delete this student record?")) {
+      
             await dispatch(deleteAStudent(studentIdToDelete));
             dispatch(fetchStudentsData());
-        // }
+        
     };
 
     const AddStudent = () => navigate(`/addNewStudent/${loggedteacherId}`);

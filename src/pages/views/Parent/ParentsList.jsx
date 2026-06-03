@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchParentsData,deleteParent } from '../../../Redux/Slices/ParentSlice';
+import { fetchParentsData,deleteParent, deleteAParent } from '../../../Redux/Slices/ParentSlice';
 
 const ParentsList = () => {
     const { loggedteacherId } = useParams();
@@ -20,7 +20,7 @@ const ParentsList = () => {
         // }
   
         const deleteParent = async(parentIdToDelete) => {
-    await dispatch(deleteParent(parentIdToDelete));
+    await dispatch(deleteAParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };
   const BackToDashboard=()=>{
