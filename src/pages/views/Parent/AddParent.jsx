@@ -86,7 +86,7 @@ const Back=()=>{
         </select>
         </label> */}
         <label> STUDENT NAME:
-        <select onChange={(e) => handleChange(e)}>
+        <select onChange={(e) => handleChange(e)}  class='border border-amber-500 rounded-md'>
   <option value="">Select Student</option>
   {students.map(student => (
     <option key={student?._id} value={student?._id}>
@@ -95,17 +95,18 @@ const Back=()=>{
   ))}
 </select>
 </label>
-              <label>NAME :   <input type='text' class='border border-amber-700' name="name" value={formData.name} onChange={handleChange}></input></label>
-                 <label>STUDENT ID :  <input type='text' defaultValue={disId} ></input></label>
+              <label>NAME :   <input type='text' class='border border-amber-500 rounded-md' name="name" value={formData.name} onChange={handleChange}></input></label>
+                 <label>STUDENT ID :  <input type='text' defaultValue={disId}  class='border border-amber-500 rounded-md' ></input></label>
      <label>PROFILE PICTURE: <input
         type="file"
         accept="image/*"
         onChange={handleChange}
+         class='border border-amber-500 rounded-md'
       /></label> 
-              <label>EMAIL :  <input type='email' name="email" value={formData.email} onChange={handleChange}></input></label>
-               <label>ADDRESS :  <input type='text' name="address" value={formData.address} onChange={handleChange}></input></label>
-                <label>PINCODE :<input type='number' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
-               <label>PHONENUMBER:  <input type='number' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
+              <label>EMAIL :  <input type='email'  class='border border-amber-500 rounded-md' name="email" value={formData.email} onChange={handleChange}></input></label>
+               <label>ADDRESS :  <input type='text'  class='border border-amber-500 rounded-md' name="address" value={formData.address} onChange={handleChange}></input></label>
+                <label>PINCODE :<input type='number'   class='border border-amber-500 rounded-md' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
+               <label>PHONENUMBER:  <input type='number'  class='border border-amber-500 rounded-md' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
                 <button className='bg-amber-600 p-2 rounded-lg text-white shadow-lg font-bold'>Sumbit</button>
                  <button className='bg-amber-600  text-white p-2 rounded-lg shadow-lg font-bold' onClick={Back}>Back</button>
             </div>
