@@ -16,11 +16,11 @@ const TeacherProfile = () => {
                navigate(`/teacher/profile/${myId}`)
             }
   return (
-    <div className='bg-amber-200 h-screen'>
+    <div className='bg-amber-100 h-screen'>
        <div>
         <img />
         </div>    
-      <div>
+      <div className='bg-amber-50 border-amber-600 rounded-xl m-[5%]'>
         <h2>Name : {getDetails?.name}</h2>
         <h2>Class : {getDetails?.standard}</h2>
         <h2>Subject :{getDetails?.subject}</h2>
@@ -28,7 +28,7 @@ const TeacherProfile = () => {
         <h2>Pincode : {getDetails?.pin}</h2>
         <h2>Phonenumber : {getDetails?.phoneNumber}</h2>
       </div>
-      <button className='bg-amber-400 rounded-lg px-2 py-1' onClick={BackToTeacherHomePage}>Back</button>    
+      <button className='bg-amber-600 text-white rounded-lg px-4 py-1 shadow-lg' onClick={BackToTeacherHomePage}>Back</button>    
     </div>
   )
 }

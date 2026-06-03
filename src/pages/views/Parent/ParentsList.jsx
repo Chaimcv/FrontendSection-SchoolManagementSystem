@@ -23,8 +23,8 @@ const ParentsList = () => {
     await dispatch(deleteParent(parentIdToDelete));
     dispatch(fetchParentsData());
   };
-  const BackToAdminDashboard=()=>{
-   navigate("/admin/dashboard");
+  const BackToDashboard=()=>{
+   navigate("-1");
   }
   
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
@@ -78,7 +78,7 @@ const ParentsList = () => {
                ))}
             </tbody>  
           </table> 
-          <button  className="text-white bg-amber-600  p-2 rounded-lg px-4 shadow-lg m-[2%]" onClick={BackToAdminDashboard}> BACK </button>
+          <button  className="text-white bg-amber-600  p-2 rounded-lg px-4 shadow-lg m-[2%]" onClick={BackToDashboard}> BACK </button>
       </div>
     </div>
   )
