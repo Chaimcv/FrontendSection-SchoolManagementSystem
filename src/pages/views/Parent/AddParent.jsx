@@ -69,11 +69,14 @@ const AddNewParent=(e)=>{
   dispatch(addNewParentToDb(formData));
   navigate(`/allStudentslisted/${loggedteacherId}`);
 }
+const Back=()=>{
+  navigate(-1);
+}
   return (
-    <div className='bg-amber-300 h-screen '>
+    <div className='bg-white h-screen '>
        
         <form onSubmit={AddNewParent}>
-            <div className='flex flex-col m-16 p-4 space-y-4'>
+            <div className='flex flex-col m-16 p-4 space-y-4 bg-amber-50 rounded-xl shadow-xl'>
                   {/* <label>STUDENT NAME: 
                 <select 
                 name="studentname" value={formData.studentname} onChange={handleChange}>
@@ -92,7 +95,7 @@ const AddNewParent=(e)=>{
   ))}
 </select>
 </label>
-              <label>NAME :   <input type='text' name="name" value={formData.name} onChange={handleChange}></input></label>
+              <label>NAME :   <input type='text' className='border-amber-700' name="name" value={formData.name} onChange={handleChange}></input></label>
                  <label>STUDENT ID :  <input type='text' defaultValue={disId} ></input></label>
      <label>PROFILE PICTURE: <input
         type="file"
@@ -103,7 +106,8 @@ const AddNewParent=(e)=>{
                <label>ADDRESS :  <input type='text' name="address" value={formData.address} onChange={handleChange}></input></label>
                 <label>PINCODE :<input type='number' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
                <label>PHONENUMBER:  <input type='number' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
-                <button className='bg-amber-400 p-2 rounded-lg'>Sumbit</button>
+                <button className='bg-amber-600 p-2 rounded-lg text-white shadow-lg font-bold'>Sumbit</button>
+                 <button className='bg-amber-600  text-white p-2 rounded-lg shadow-lg font-bold' onClick={Back}>Back</button>
             </div>
         </form>
         {/* <button className='bg-amber-400 p-2 rounded-lg' onClick={BackTo}>Back</button> */}

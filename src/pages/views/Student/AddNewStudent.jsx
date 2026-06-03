@@ -63,14 +63,17 @@ const AddNewStudent = () => {
         //     setLoading(false);
         // }
     };
+    const Back=()=>{
+        navigate(-1);
+    }
 
     return (
         <div className='min-h-screen bg-amber-50 py-12 px-4'>
             <div className='max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden'>
-                <div className='bg-amber-600 py-6 px-8 text-white'>
+                {/* <div className='bg-amber-600 py-6 px-8 text-white'>
                     <h2 className='text-3xl font-bold'>Add New Student</h2>
-                    <p className='text-amber-100 mt-1 opacity-80'>Enter the student's personal and academic details.</p>
-                </div>
+                  
+                </div> */}
 
                 <form onSubmit={AddStudent} className='p-8'>
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
@@ -87,10 +90,10 @@ const AddNewStudent = () => {
                                     )}
                                 </div>
                                 <label className='absolute bottom-0 right-0 bg-amber-600 text-white p-2 rounded-full shadow-lg cursor-pointer hover:bg-amber-700 transition-colors'>
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    {/* <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg>
+                                    </svg> */}
                                     <input type='file' className='hidden' onChange={handleImageChange} accept="image/*" />
                                 </label>
                             </div>
@@ -157,10 +160,12 @@ const AddNewStudent = () => {
                         <button 
                             type="submit" 
                              disabled={loading}
-                            className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'
-                        >
+                            className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'>
                             {loading ? 'Adding student...' : 'REGISTER STUDENT'}
                         </button>
+                        <button
+                        onClick={Back} 
+                         className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'>CANCEL</button>
                     </div>
                 </form>
             </div>
