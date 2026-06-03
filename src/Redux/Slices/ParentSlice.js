@@ -120,7 +120,8 @@ const ParentSlice=createSlice({
     } catch (error) {
          dispatch(setError(error)); 
     }
-    };
+    }
+
  //login
  export const loginParent=({inputtedEmail,inputtedPassword})=>async(dispatch)=>{
   console.log(inputtedEmail,"inputted email");

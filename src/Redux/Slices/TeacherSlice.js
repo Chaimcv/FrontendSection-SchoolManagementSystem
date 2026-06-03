@@ -1,5 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import { setDeleteParent } from "./ParentSlice";
  
 const baseUrl=process.env.REACT_APP_API_SCHOOL
 const initialState={ 
@@ -27,6 +28,9 @@ const TeacherSlice=createSlice({
             },
             setAddNewTeacherDb:(state,action)=>{
                 state.addNewTeacherToDb=action.payload;
+            },
+            setDeleteParent:(state,action)=>{
+                state.deleteParent=action.payload;
             },
             setEditedTeacherData:(state,action)=>{
                 state.postEditedTeacherDetails=action.payload;
@@ -77,6 +81,20 @@ const TeacherSlice=createSlice({
             
         } catch (error) {
              dispatch(setError(error));   
+        }
+    }
+    
+    //delete a parent
+    export const deleteAParent=(deleteId)=>async(dispatch)=>{
+        try{
+            const response=await axios.delete(`${baseUrl}/teacher/${deleteId}`)
+            console.log(response,"response..");
+            if(response.data){
+                dispatch(setDeleteParent(response.data))
+            }
+        }
+        catch(error){
+            dispatch(setError(error));
         }
     }
 
