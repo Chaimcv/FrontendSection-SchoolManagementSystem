@@ -24,7 +24,7 @@ const ParentsList = () => {
     dispatch(fetchParentsData());
   };
   const BackToAdminDashboard=()=>{
-    navigate(-1);
+   navigate("/admin/dashboard");
   }
   
        const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
@@ -73,12 +73,12 @@ const ParentsList = () => {
                       <td>{item?.address}</td>
                         <td>{item?.pincode}</td>
                       {/* <td><button className='bg-amber-500 rounded-lg m-2 p-2' onClick={ ()=> viewParentDetails(item?._id)}>View Details</button></td> */}
-                         <td><button className='bg-amber-100 rounded-lg m-2 p-2' onClick={ ()=> deleteParent(item?._id)}>Delete</button></td>
+                         <td><button className='bg-amber-400 rounded-lg m-2 p-2 text-white  shadow-lg' onClick={ ()=> deleteParent(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>  
           </table> 
-          <button  className="text-white bg-amber-600  p-2 rounded-lg" onClick={BackToAdminDashboard()}> BACK </button>
+          <button  className="text-white bg-amber-600  p-2 rounded-lg px-4 shadow-lg m-[2%]" onClick={BackToAdminDashboard}> BACK </button>
       </div>
     </div>
   )

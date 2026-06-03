@@ -15,13 +15,12 @@ const TeacherHomepage = () => {
         navigate(`/teacher/viewProfile/${loggedteacherId}`)
     }
   return (
-    <div className='bg-amber-200 h-screen'>
-        <div>
-            <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={ProfileView}>My Profile</button>
-        </div>
-        <div>
-            <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={StudentList}>Students</button><br />
-             <button className='bg-amber-500 rounded-lg p-2 m-2' onClick={ParentList}>Parents</button>
+    <div className='bg-amber-100 h-screen '>
+        <div className='flex row-span-3'>
+            <button className='bg-white text-amber-600 text-2xl border-amber-700 rounded-xl  shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out' onClick={ProfileView}>My Profile</button>
+       
+            <button className='bg-white text-amber-600 text-2xl border-amber-700 rounded-xl  shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out' onClick={StudentList}>Students</button><br />
+             <button className='bg-white text-amber-600 text-2xl border-amber-700 rounded-xl  shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out' onClick={ParentList}>Parents</button>
             <button></button>
         </div>
     </div>

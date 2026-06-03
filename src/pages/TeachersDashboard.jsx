@@ -76,14 +76,14 @@ const TeachersDashboard = () => {
               <tr key={item._id}>
                 <td>{item?.name}</td>
                    <td>{item?.standard}</td>
-                      <td><button className='text-amber-500  bg-white rounded-lg m-2 p-2 border-amber-500' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
-                         <td><button className='text-amber-500 bg-white rounded-lg m-2 p-2 border-amber-500' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
+                      <td><button className='bg-amber-500  text-white rounded-lg m-2 p-2 px-4 shadow-lg ' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
+                         <td><button className='bg-amber-500 text-white rounded-lg m-2 p-2 px-4 shadow-lg' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>
             
           </table>
-         <button className='bg-white text-amber-700 rounded-lg m-1 p-2' onClick={BackToAdminDashboard}>Back</button> 
+         <button className='text-white bg-amber-500 rounded-lg m-1 py-2 px-4 shadow-lg' onClick={BackToAdminDashboard}>Back</button> 
       </div>
                          </div>
       

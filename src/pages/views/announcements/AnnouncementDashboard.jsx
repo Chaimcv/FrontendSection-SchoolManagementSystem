@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchNoticeData, deleteNotice } from '../../../Redux/Slices/AnnouncementSlice';
 
 import AddAnnouncementForm from './AddAnnouncementForm';
+import { useNavigate } from 'react-router-dom';
 
 const AnnouncementDashboard = () => {
   const dispatch = useDispatch();
   const allAnnouncements = useSelector((state) => state.announcement.AnnouncementData) || [];
   const [formDisplay, setFormDisplay] = useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
     dispatch(fetchNoticeData());
@@ -20,6 +22,9 @@ const AnnouncementDashboard = () => {
     //}
   };
 
+   const BackToAdminDashboard=()=>{
+    navigate("/admin/dashboard");
+   }
   return (
     <div className='min-h-screen bg-amber-100 pb-20'>
       {/* Header */}
@@ -66,7 +71,6 @@ const AnnouncementDashboard = () => {
                 </div>
               )}
 
-
               <div className='p-6'>
                 <h3 className='text-xl font-bold text-amber-950 mb-2 truncate'>{item.Title}</h3>
                 <p className='text-gray-600 text-sm line-clamp-3 h-15'>{item.Description}</p>
@@ -82,15 +86,11 @@ const AnnouncementDashboard = () => {
 
         {allAnnouncements.length === 0 && (
           <div className='text-center py-20'>
-            <div className='bg-amber-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4'>
-              <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z" />
-              </svg>
-            </div>
             <h3 className='text-xl font-medium text-gray-900'>No announcements yet</h3>
-            <p className='text-gray-500 mt-2'>Click the button above to create your first notice.</p>
           </div>
         )}
+       <button className='text-white bg-amber-700 font-bold shadow-xl rounded-lg m-1 p-2 px-4' onClick={BackToAdminDashboard}>Back</button> 
+     
       </div>
 
       {formDisplay && (

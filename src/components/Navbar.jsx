@@ -35,10 +35,10 @@ const Navbar = () => {
   }
   return (//dashboard
     <div className='bg-amber-50 flex justify-center'>
-    <button className=" rounded-lg mx-1" onClick={BackToHomepage}><img src={HomeIcon} className='w-[35%] h-[45%]'></img></button>
-    {studentId &&(<button className="bg-amber-300 rounded-lg p-1 m-1" onClick={BackToStudentDashboard}>Dashboard</button>)}
-     {TeacherId &&(<button className=" rounded-lg  text-amber-700 m-1" onClick={BackToTeacherDashboard}>Dashboard</button>)}
-      {ifAdmin &&(<button className=" text-amber-700 m-1 font-bold bg-white rounded-lg px-1" onClick={BackToAdminDashboard}>Dashboard</button>)}
+    <button className=" rounded-lg mx-1" onClick={BackToHomepage}><img src={HomeIcon} className='w-[35%] h-[45%] transition hover:scale-x-110 '></img></button>
+    {studentId &&(<button className=" text-amber-700 m-1 font-bold bg-white rounded-lg px-1 transition hover:scale-x-110 " onClick={BackToStudentDashboard}>Dashboard</button>)}
+     {TeacherId &&(<button className=" text-amber-700 m-1 font-bold bg-white rounded-lg px-1 transition hover:scale-x-110 " onClick={BackToTeacherDashboard}>Dashboard</button>)}
+      {ifAdmin &&(<button className=" text-amber-700 m-1 font-bold bg-white rounded-lg px-1 transition hover:scale-x-110 " onClick={BackToAdminDashboard}>Dashboard</button>)}
 
     </div>
   )

@@ -32,7 +32,7 @@ const TeacherLogin = () => {
    navigate("/login");
     }
   return (
-     <div className='flex rounded-lg h-80 w-[100%] my-2 bg-amber-100 h-screen'>
+     <div className='flex rounded-lg  w-[100%] my-2 bg-amber-100 h-screen'>
           <div className='w-[40%] ml-20'>
                   <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 ' />
                  </div>
