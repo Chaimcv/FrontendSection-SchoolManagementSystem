@@ -216,8 +216,8 @@ const PostsSection = () => {
                 ) : (
                     <div className="text-center py-24 bg-white/50 backdrop-blur-xl rounded-[3rem] border border-white shadow-xl p-12">
                         <div className="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-8 relative">
-                            <div className="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-10 animate-pulse"></div>
-                            <svg className="w-12 h-12 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
+                            {/* <div className="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-10 animate-pulse"></div>
+                            <svg className="w-12 h-12 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg> */}
                         </div>
                         <h3 className="text-2xl font-black text-gray-800 mb-3 tracking-tight"> waiting...</h3>
                         <p className="text-gray-400 font-semibold mb-10 max-w-sm mx-auto leading-relaxed">Student story</p>
