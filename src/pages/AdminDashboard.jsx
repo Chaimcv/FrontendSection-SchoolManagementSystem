@@ -25,12 +25,12 @@ const AdminDashboard = () => {
     <div className='bg-amber-100 flex-wrap h-screen'>
         {/* <button className="bg-amber-400 rounded-xl shadow-md py-1 px-2 m-3" onClick={ViewProfile}>My Profile</button><br/> */}
 
-        <div className='flex row-span-3 mx-[10%]'>
-         <button className="bg-white text-amber-500 border-amber-700 rounded-xl py-1 shadow-lg px-2 m-3 h-[70%] w-[30%]" onClick={announcements}>Announcements</button><br/>
-         <button className="bg-amber-400 rounded-xl shadow-md py-1 px-2 m-3" onClick={ViewTeachers}>Teachers</button><br />
+        <div className='flex row-span-3 mx-[20%]'>
+         <button className="bg-white text-amber-600 text-2xl border-amber-700 rounded-xl py-1 shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out" onClick={announcements}>Announcements</button><br/>
+         <button className="bg-white text-amber-600 text-2xl border-amber-700 rounded-xl py-1 shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out " onClick={ViewTeachers}>Teacher Section</button><br />
         {/* <button className="bg-amber-400"onClick={AddNewTeachers}>Add Teacher</button><br/> */}
         {/* <label>Class <button className="bg-amber-400 rounded-2xl py-1 px-2 m-3" onClick={ViewClasses}>View Classes</button></label><br/> */}
-        <button className="bg-amber-400 rounded-xl shadow-md py-1 px-2 m-3" onClick={ViewParents}> Parents</button>
+        <button className="bg-white text-amber-600 text-2xl border-amber-700 rounded-xl py-1 shadow-lg px-[5%] py-[15%] m-3 transition hover:scale-110 duration-300 ease-in-out " onClick={ViewParents}> Parent Section</button>
        </div>
     </div>
   )

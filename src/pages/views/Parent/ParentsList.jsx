@@ -41,9 +41,9 @@ const ParentsList = () => {
         
          <h3>Add Parent  <button className='rounded-md bg-amber-500 px-7 ml-14 mt-1' onClick={AddParent}>+</button></h3></div> */}
       <div>
-        <h3 className='font-semibold p-3'>Parents</h3>
-          <table className='auto p-2 mx-15 shadow-md rounded-md mb-[50%]'>
-            <thead className='bg-amber-200 border rounded-md'>
+        <h3 className='font-bold p-3 text-amber-800 text-2xl'>Parents</h3>
+          <table className='auto p-2 mx-[15%] shadow-md rounded-md mb-[50%]'>
+            <thead className='bg-white text-amber-700 border rounded-lg'>
               <tr className='p-5'>
                 <th className='p-5'> NAME </th>
                 <th className='p-5'> EMAIL </th>

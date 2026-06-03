@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const AddTeacherForm = ({ OnAddTeacherClick }) => {
 
@@ -14,6 +15,7 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
   const [tsubject, setTsubjectata] = useState("");
   const [tphoneNumber, setTphonenumber] = useState("");
   const [tstandard, setTstandard] = useState("");
+  const navigate=useNavigate();
 
 //    const generatePassword=()=> {
 //     var length = 8,
@@ -58,13 +60,17 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
     }
   };
 
+  const BackToAdminDashboard=()=>{
+    navigate("/admin/dashboard");
+   }
+
   return (
     <div>
       {OnAddTeacherClick && (
         <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-40 z-50">
      
       <form onSubmit={AddNewTeacher}>
-        <div className='border border-black flex flex-col m-5 p-5 space-y-5'>
+        <div className='border border-black rounded-md shadow-xl bg-amber-100 flex flex-col m-5 p-5 space-y-5 w-[120%] h-[110%]'>
 
           <label>NAME: <input type='text' value={tname} onChange={(e)=>setTname(e.target.value)} /></label>
           <label>EMAIL: <input type='text' value={temail} onChange={(e)=>setTemail(e.target.value)} /></label>
@@ -75,7 +81,8 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
           <label>PHONE: <input type='number' value={tphoneNumber} onChange={(e)=>setTphonenumber(e.target.value)} /></label>
           <label>STANDARD: <input type='text' value={tstandard} onChange={(e)=>setTstandard(e.target.value)} /></label>
 
-          <button type='submit'>SUBMIT</button>
+          <button type='submit' className='bg-white text-amber-800 p-2'>SUBMIT</button>
+          <button type='submit' className='bg-white text-amber-800 p-2'>CANCEL</button>
 
         </div>
       </form>

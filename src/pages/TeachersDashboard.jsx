@@ -58,16 +58,16 @@ const TeachersDashboard = () => {
       )}
                        <div className={`${formvisible ? "blur-sm" : ""}`}>
       <div >
-        <h3>Add New Teacher  <button className="bg-amber-400 rounded-lg py-1 px-4" onClick={AddTeacher}>+</button></h3></div>
+        <h3>Add New Teacher  <button className="bg-white rounded-lg py-1 px-4 font-extrabold m-1" onClick={AddTeacher}>+</button></h3></div>
       <div>
-        <h3 className='font-bold p-2 underline'>List of teachers</h3>
-          <table className='auto p-2 my-2 mx-10 rounded-lg'>
+        <h3 className='font-extrabold p-2 text-4xl text-amber-900 '>List of teachers</h3>
+          <table className='auto p-2 my-2 mx-[10%] rounded-lg'>
             <thead>
-              <tr className='bg-amber-800'>
-                <th className='m-3 p-2'>NAME</th>
-                <th className='m-3 p-2'>CLASS IN CHARGE</th>
-                <th></th>
-                <th></th>
+              <tr className='bg-white text-amber-700 rounded-md p-2 m-10'>
+                <th className='m-3 p-2'> NAME </th>
+                <th className='m-3 p-2'> CLASS IN CHARGE </th>
+                <th className='col-span-2'> ACTIONS </th>
+                {/* <th></th> */}
               </tr>
             </thead>
             
@@ -76,14 +76,14 @@ const TeachersDashboard = () => {
               <tr key={item._id}>
                 <td>{item?.name}</td>
                    <td>{item?.standard}</td>
-                      <td><button className='bg-amber-400 rounded-lg m-2 p-2' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
-                         <td><button className='bg-amber-400 rounded-lg m-2 p-2' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
+                      <td><button className='text-amber-400  bg-white rounded-lg m-2 p-2' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button></td>
+                         <td><button className='text-amber-400 bg-white rounded-lg m-2 p-2' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button></td>
               </tr>
                ))}
             </tbody>
             
           </table>
-         <button className='bg-amber-400 rounded-lg m-2 p-2' onClick={BackToAdminDashboard}>Back</button> 
+         <button className='bg-white text-amber-700 rounded-lg m-1 p-2' onClick={BackToAdminDashboard}>Back</button> 
       </div>
                          </div>
       
