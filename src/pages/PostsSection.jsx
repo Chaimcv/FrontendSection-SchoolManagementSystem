@@ -190,7 +190,7 @@ const PostsSection = () => {
                     </h2>
                     <div className="w-20 h-2 bg-amber-600 rounded-full mb-8"></div>
 
-                    {hasToken && (
+                    {/* {hasToken && (
                         <button
                             onClick={() => setIsFormOpen(true)}
                             className="group relative px-8 py-4 bg-indigo-600 rounded-[2rem] shadow-2xl shadow-indigo-200 overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300"
@@ -202,7 +202,7 @@ const PostsSection = () => {
                                 <span className="text-white font-black uppercase text-sm tracking-widest">Share your story</span>
                             </div>
                         </button>
-                    )}
+                    )} */}
                 </header>
 
                 {isFormOpen && <AddPostForm onClose={() => setIsFormOpen(false)} />}
