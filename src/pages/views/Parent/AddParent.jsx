@@ -95,7 +95,7 @@ const Back=()=>{
   ))}
 </select>
 </label>
-              <label>NAME :   <input type='text' className='border-amber-700' name="name" value={formData.name} onChange={handleChange}></input></label>
+              <label>NAME :   <input type='text' class='border border-amber-700' name="name" value={formData.name} onChange={handleChange}></input></label>
                  <label>STUDENT ID :  <input type='text' defaultValue={disId} ></input></label>
      <label>PROFILE PICTURE: <input
         type="file"
