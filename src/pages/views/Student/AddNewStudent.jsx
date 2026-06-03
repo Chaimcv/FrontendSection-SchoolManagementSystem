@@ -163,11 +163,14 @@ const AddNewStudent = () => {
                             className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'>
                             {loading ? 'Adding student...' : 'REGISTER STUDENT'}
                         </button>
-                        <button
-                        onClick={Back} 
-                         className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'>CANCEL</button>
+                    
+
+                    
                     </div>
                 </form>
+                 <button
+                        onClick={Back} 
+                         className='w-full py-4 bg-amber-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:bg-amber-700 transition-all transform active:scale-95 disabled:bg-amber-300'>CANCEL</button>
             </div>
         </div>
     );
