@@ -41,8 +41,8 @@ const AdminLogin = () => {
             <label>Email <input className='p-1 mx-1 mt-20 rounded-lg w-[85%] ' type='email' placeholder='Enter  registered email' value={adminEmail} onChange={(e)=>setAdminemail(e.target.value)} /></label><br />
              <label>Password <input  className='p-1 m-1 rounded-lg w-[75%]' type='password' placeholder='Enter password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)} /></label><br />
              <br />
-             <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={checkValidAdmin}>Login</button> <br />
-              <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={BackToLogin}>BACK</button>      
+             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={checkValidAdmin}>Login</button> <br />
+              <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>      
         </div>
         {/* <div><h5>New Admin? Register here</h5><button onClick={navigateToRegistration()}>SignUp</button></div> */}
     </div>
