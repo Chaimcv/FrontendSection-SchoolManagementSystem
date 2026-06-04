@@ -45,7 +45,7 @@ const Header = () => {
         {token ? (
           <div className="w-[20%]">
             <button
-              className="rounded-3xl bg-amber-600 p-1 m-5 shadow-lg"
+              className="rounded-3xl bg-amber-600 p-1 m-5  shadow-xl"
               onClick={handleLogout}
             >
               Logout
@@ -54,7 +54,7 @@ const Header = () => {
           </div>
         ) : (
           <div className="w-[20%]">
-            <button className="rounded-3xl bg-amber-600 p-[2%] mt-[10%] shadow-lg">
+            <button className="rounded-3xl bg-amber-600 p-[2%] mt-[10%] shadow-xl">
               <Link to="/login">Login</Link>
             </button>
           </div>
