@@ -43,8 +43,8 @@ const TeacherLogin = () => {
             <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]'type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
           <div>
             <br />
-            <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={LoginAsTeacher}>LOGIN</button><br /><br />
-             <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={BackToLogin}>BACK</button>
+            <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginAsTeacher}>LOGIN</button><br /><br />
+             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>
              </div>
         </div>
     </div>

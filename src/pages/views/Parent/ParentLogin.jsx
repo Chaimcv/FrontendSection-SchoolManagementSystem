@@ -70,8 +70,8 @@ const ParentLogin = () => {
                <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] ' type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
             <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
            <br />
-            <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={LoginAsParent}>LOGIN</button><br />
-            <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={BackToLogin}>BACK</button>
+            <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginAsParent}>LOGIN</button><br />
+            <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>
         </div>
     </div>
   )
