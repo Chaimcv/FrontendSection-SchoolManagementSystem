@@ -68,14 +68,14 @@ const Login = () => {
         <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-[15%] ' />
       </div> */}
       <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit'>
-        <button className="bg-amber-100 rounded-lg w-full p-1" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
-        <button className="bg-amber-100 rounded-lg  w-full p-1" onClick={PrincipalLoginPage}>LOGIN AS PRINCIPAL</button>
-        <button className="bg-amber-100 rounded-lg w-full p-1" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
+        <button className="bg-amber-100 rounded-lg w-full p-1 shadow-lg" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
+        <button className="bg-amber-100 rounded-lg  w-full p-1 shadow-lg" onClick={PrincipalLoginPage}>LOGIN AS PRINCIPAL</button>
+        <button className="bg-amber-100 rounded-lg w-full p-1 shadow-lg" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
         <br />
         <h2>STUDENT LOGIN</h2>
         <label >Email:  <input className='p-1 my-1 w-[85%] rounded-lg' type='text' value={inputtedEmail} onChange={(e) => setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label>
         <label >Password: <input className='p-1 rounded-lg w-[76%]' type='password' value={inputtedPassword} onChange={(e) => setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label>
-        <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={LoginFunction}>LOGIN</button>
+        <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginFunction}>LOGIN</button>
       </div>
     </div>
     </div>
