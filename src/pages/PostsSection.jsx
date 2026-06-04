@@ -47,7 +47,7 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                         <div className="absolute inset-0 bg-indigo-500 rounded-full blur-lg opacity-20 animate-pulse"></div>
                         <img
                             src={post.student?.ProfileImageUrl} //|| `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.student?._id}`}
-                            alt="Avatar"
+                            alt=""
                             className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md relative z-10"
                         />
                     </div>
