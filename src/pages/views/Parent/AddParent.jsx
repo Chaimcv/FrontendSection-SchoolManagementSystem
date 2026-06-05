@@ -67,7 +67,7 @@ const[parentName,setParentName]=useState();
 const AddNewParent=(e)=>{
     e.preventDefault();
   dispatch(addNewParentToDb(formData));
-  navigate(`/allStudentslisted/${loggedteacherId}`);
+  navigate(`/parentslist/${loggedteacherId}`);
 }
 const Back=()=>{
   navigate(-1);
@@ -108,9 +108,10 @@ const Back=()=>{
                 <label>PINCODE :<input type='number'   class='border border-amber-500 rounded-md' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
                <label>PHONENUMBER:  <input type='number'  class='border border-amber-500 rounded-md' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
                 <button className='bg-amber-600 p-2 rounded-lg text-white shadow-lg font-bold'>Sumbit</button>
-                 <button className='bg-amber-600  text-white p-2 rounded-lg shadow-lg font-bold' onClick={Back}>Back</button>
+                
             </div>
         </form>
+        <button className='bg-amber-600  text-white p-2 rounded-lg shadow-lg font-bold' onClick={Back}>Back</button>
         {/* <button className='bg-amber-400 p-2 rounded-lg' onClick={BackTo}>Back</button> */}
     </div>
   )
