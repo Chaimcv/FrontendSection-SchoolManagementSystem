@@ -25,7 +25,7 @@ const StudentDashboard = () => {
             <div className="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-md bg-white/80">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">Student Dashboard</h1>
-                    <Link to="/" className="text-sm font-medium text-amber-600 hover:text-amber-700 font-semibold tracking-wide uppercase">View Community Feed</Link>
+                    {/* <Link to="/" className="text-sm font-medium text-amber-600 hover:text-amber-700 font-semibold tracking-wide uppercase">View Community Feed</Link> */}
                 </div>
             </div>
 
@@ -74,7 +74,7 @@ const StudentDashboard = () => {
                 </div>
 
                 {/* Dashboard Stats / Quick Actions */}
-                <div className="md:col-span-2 space-y-8">
+                {/* <div className="md:col-span-2 space-y-8">
                    <div className="bg-amber-50 rounded-3xl p-8 border border-amber-100 relative overflow-hidden">
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-amber-900 mb-2">Welcome Back!</h3>
@@ -91,7 +91,7 @@ const StudentDashboard = () => {
                         </div>
                         <div className="absolute -right-12 -bottom-12 w-64 h-64 bg-amber-200 rounded-full blur-3xl opacity-30"></div>
                    </div>
-                </div>
+                </div> */}
             </div>
 
             {/* Post Form Modal */}
