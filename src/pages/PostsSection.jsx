@@ -52,7 +52,7 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                         />
                     </div>
                     <div>
-                        <h4 className="font-extrabold text-gray-800 text-lg tracking-tight group-hover:text-indigo-600 transition-colors">{post.student?.Name}</h4>
+                        <h4 className="font-extrabold text-gray-800 text-lg tracking-tight group-hover:text-indigo-600 transition-colors">////{post.student?.Name}</h4>
                         <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.2em]">
                             {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                         </p>
