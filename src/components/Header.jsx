@@ -15,6 +15,7 @@ const Header = () => {
     localStorage.removeItem("studentId");
     localStorage.removeItem("teacherId");
     localStorage.removeItem("name");
+    localStorage.removeItem("id");
     navigate("/login"); // redirect to login page
   };
   // const redirectToHome = () => {
