@@ -72,6 +72,9 @@ const StudentDashboard = () => {
                         )}
                     </div>
                 </div>
+                <div>
+                    <h4>Report card</h4>
+                </div>
 
                 {/* Dashboard Stats / Quick Actions */}
                 {/* <div className="md:col-span-2 space-y-8">
