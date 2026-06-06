@@ -77,7 +77,7 @@ const StudentDashboard = () => {
                     <h3>Exam schedule</h3>
                     {/* add more sections */}
                     <h4>Attendance</h4>
-                    <h4></h4>
+                    <h4> Posts</h4>
                 </div>
 
                 {/* Dashboard Stats / Quick Actions */}
