@@ -6,7 +6,7 @@ import youtube from "../assets/youTube.png";
 const Footer = () => {
   return (
 
-    //  footer section to be done
+    //  footer section incomplete
     <div className='bg-amber-700 w-full mb-0'>
       <div className='flex' >
          <div className='m-5 w-[50%]'>
