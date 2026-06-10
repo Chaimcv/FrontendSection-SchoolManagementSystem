@@ -60,11 +60,11 @@ const AnnouncementCarousel = ({ announcements }) => {
                   {item.Description}
                 </p>
                 
-                <div className="mt-8">
-                  {/* <button className="px-6 py-2 bg-amber-600 text-white rounded-full font-medium shadow-md hover:bg-amber-700 transition-colors">
+                {/* <div className="mt-8">
+                  <button className="px-6 py-2 bg-amber-600 text-white rounded-full font-medium shadow-md hover:bg-amber-700 transition-colors">
                     Read More
-                  </button> */}
-                </div>
+                  </button>
+                </div> */}
               </div>
             </div>
           );
