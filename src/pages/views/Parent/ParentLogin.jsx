@@ -59,6 +59,9 @@ const ParentLogin = () => {
    navigate("/login");
     }
   return (
+    <>
+    {/* large screen */}
+    <div className='hidden lg:flex'>
      <div className='flex rounded-lg  w-[90%] m-2 h-screen'>
       <div className='w-[40%] ml-20'>
          <img src={SchoolImage} alt='imageOf' className='h-[100%] w-[100%] ml-52 ' />
@@ -68,12 +71,29 @@ const ParentLogin = () => {
               <h2>PARENT LOGIN</h2>
               <br />
                <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] ' type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
-            <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
-           <br />
-            <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginAsParent}>LOGIN</button><br />
-            <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>
+               <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
+               <br />
+               <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginAsParent}>LOGIN</button><br />
+               <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>
+           </div>
+      </div>
+    </div>
+    {/* small screen */}
+    <div>
+        <div className='flex rounded-lg  w-screen m-2 h-screen'>
+         
+            <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
+               <h2>PARENT LOGIN</h2>
+                 <br />
+               <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] ' type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
+               <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
+                 <br />
+               <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={LoginAsParent}>LOGIN</button><br />
+               <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg" onClick={BackToLogin}>BACK</button>
+           </div>
         </div>
     </div>
+    </>
   )
 }
 
