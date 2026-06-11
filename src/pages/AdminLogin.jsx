@@ -57,8 +57,8 @@ const AdminLogin = () => {
     {/* small screen */}
     <div className='flex lg:hidden'>
 
-         <div className='flex rounded-lg w-[90%] m-2 h-screen'>
-           <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
+         <div className='flex rounded-lg w-screen m-2 h-screen'>
+           <div className=' bg-amber-400  p-1 w-[90%] space-y-5'>
               <h2>ADMIN LOGIN</h2>
               <br />
               <label>Email <input className='p-1 mx-1 mt-20 rounded-lg w-[85%] ' type='email' placeholder='Enter  registered email' value={adminEmail} onChange={(e)=>setAdminemail(e.target.value)} /></label><br />
