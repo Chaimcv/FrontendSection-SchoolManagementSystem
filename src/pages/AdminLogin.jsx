@@ -21,6 +21,7 @@ const AdminLogin = () => {
         navigate("/admin/dashboard");
         localStorage.setItem("token",token);
         localStorage.setItem("name",Admin);
+        window.location.reload();
      }
     else{
        
