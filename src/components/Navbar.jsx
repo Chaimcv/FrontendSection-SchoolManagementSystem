@@ -15,7 +15,7 @@ const Navbar = () => {
     if(Admin==="Principal"){
     setIfAdmin(true)
   }
-  },[ifAdmin])
+  },[])
  
  
     const BackToAdminDashboard=()=>{
