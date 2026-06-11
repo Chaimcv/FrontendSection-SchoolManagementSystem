@@ -35,7 +35,7 @@ const AdminLogin = () => {
     {/* large screen */}
     <div className='hidden lg:flex'>
 
-      <div className='flex rounded-lg w-[90%] m-2 h-screen'>
+      <div className='flex rounded-lg w-screen m-2 h-screen'>
           <div className='w-[40%] ml-20'>
               <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 ' />
           </div>
