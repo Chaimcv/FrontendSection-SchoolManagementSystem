@@ -17,7 +17,7 @@ const Header = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("id");
     navigate("/login"); // redirect to login page
-  //  window.location.reload();    //check this
+    window.location.reload();    //check this
   };
   // const redirectToHome = () => {
   //   navigate("/");
