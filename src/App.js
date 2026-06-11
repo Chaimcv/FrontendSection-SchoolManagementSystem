@@ -37,7 +37,8 @@ function App() {
        
       <BrowserRouter>
       <Header />
-         {token&&<div><Navbar /></div>}
+         {/* {token&&<div><Navbar /></div>} */}
+        <div><Navbar /></div>
       <Routes>
        
         <Route path="/admin/*" element={<AdminRoutes />}/>
