@@ -59,7 +59,7 @@ const AdminLogin = () => {
 
           <div className='flex rounded-lg  w-screen  h-screen '>
            <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit'>
-              <h2>ADMIN LOGIN</h2>
+              <h1>ADMIN LOGIN</h1>
               <br />
               <label>Email <input className='p-1 mx-1 mt-20 rounded-lg w-[85%] ' type='email' placeholder='Enter  registered email' value={adminEmail} onChange={(e)=>setAdminemail(e.target.value)} /></label><br />
               <label>Password <input  className='p-1 m-1 rounded-lg w-[75%]' type='password' placeholder='Enter password' value={adminPassword} onChange={(e)=>setAdminPassword(e.target.value)} /></label><br />

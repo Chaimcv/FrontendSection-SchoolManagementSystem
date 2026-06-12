@@ -82,8 +82,8 @@ const ParentLogin = () => {
     <div>
         <div className='flex rounded-lg  w-screen m-2 h-screen'>
          
-            <div className=' bg-amber-400  p-1 w-[30%] space-y-5'>
-               <h2>PARENT LOGIN</h2>
+            <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit'>
+               <h1>PARENT LOGIN</h1>
                  <br />
                <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] ' type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
                <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e)=>setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
