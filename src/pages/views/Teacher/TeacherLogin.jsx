@@ -55,7 +55,7 @@ const TeacherLogin = () => {
 {/* small screen */}
 <div className='flex lg:hidden'>
      <div className='flex rounded-lg  w-screen my-2 bg-amber-100 h-screen'>
-       <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit'>
+       <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit mx-[3%] rounded-md'>
               <h1>TEACHER LOGIN</h1>
               <br />
               <label >Email:<input className='p-1 mx-1 mt-10 rounded-lg w-[85%] 'type='text'value={inputtedEmail} onChange={(e)=>setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label><br/> 
