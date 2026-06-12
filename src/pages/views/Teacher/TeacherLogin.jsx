@@ -22,7 +22,7 @@ const TeacherLogin = () => {
          localStorage.setItem("name",name);
           localStorage.setItem("id",id);
            navigate(`/teacher/profile/${id}`);
-
+           window.location.reload();
          }
          else{
           alert("Error");

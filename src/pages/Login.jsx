@@ -27,6 +27,7 @@ const Login = () => {
       // console.log(name, "NAME");
 
       navigate(`/studentDashboard/${studentId}`);
+       window.location.reload();
     }
 
   }

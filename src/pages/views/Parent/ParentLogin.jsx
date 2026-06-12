@@ -30,6 +30,7 @@ const ParentLogin = () => {
          localStorage.setItem("token",token);
          localStorage.setItem("name",name);
     navigate(`/parentDashboard/${id}`);  //if success
+     window.location.reload();
   } else {
     alert(result.message);          // show error
   }
