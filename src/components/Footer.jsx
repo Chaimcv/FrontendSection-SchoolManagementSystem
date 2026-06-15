@@ -10,7 +10,7 @@ const Footer = () => {
     <div className='bg-amber-700 w-full mb-0'>
       <div className='flex' >
          <div className='m-5 w-[50%]'>
-          <ul className='font-semibold list-disc ml-30'>
+          <ul className='font-semibold list-disc ml-32'>
             <li>Online Admission</li>
             <li>Fee Collection</li>
            <li>Cyber Security Awareness </li>  
