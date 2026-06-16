@@ -52,7 +52,7 @@ const Header = () => {
             >
               Logout
             </button>
-            <h5 className="font-bold text-red-950">WELCOME, {name}</h5>
+            <h5 className="font-bold text-red-900">WELCOME, {name}</h5>
           </div>
         ) : (
           <div className="w-[20%]">
