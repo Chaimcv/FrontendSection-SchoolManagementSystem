@@ -56,7 +56,9 @@ const Header = () => {
           </div>
         ) : (
           <div className="w-[20%]">
-            <button className="rounded-3xl border-amber-500 bg-amber-100 font-semibold text-amber-950 p-[2%] mt-[10%] shadow-xl transition hover:scale-110 duration-300 ease-in-out">
+            <button
+             className="rounded-3xl border-border-amber-500 bg-amber-100 font-semibold text-amber-950 p-[2%] mt-[10%] shadow-xl transition hover:scale-110 duration-300 ease-in-out"
+             >
               <Link to="/login">Login</Link>
             </button>
           </div>
