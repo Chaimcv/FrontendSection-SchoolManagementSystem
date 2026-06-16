@@ -47,7 +47,7 @@ const Header = () => {
         {token ? (
           <div className="w-[20%]">
             <button
-              className="rounded-3xl bg-amber-600 p-1 m-5  shadow-xl"
+              className="rounded-3xl  border border-amber-300 bg-amber-100 font-semibold text-amber-950 p-1 m-5  shadow-xl"
               onClick={handleLogout}
             >
               Logout
