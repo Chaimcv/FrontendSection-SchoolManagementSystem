@@ -47,12 +47,12 @@ const Header = () => {
         {token ? (
           <div className="w-[20%]">
             <button
-              className="rounded-3xl  border border-amber-300 bg-amber-100 font-semibold text-amber-950 p-1 m-5  shadow-xl"
+              className="rounded-3xl  border border-amber-300 bg-amber-100 font-semibold text-amber-950 p-1 m-5  shadow-xl transition hover:scale-110 duration-300 ease-in-out"
               onClick={handleLogout}
             >
               Logout
             </button>
-            <h5 className="font-bold text-red-900">WELCOME, {name}</h5>
+            <h5 className="font-bold text-blue-900">WELCOME, {name}</h5>
           </div>
         ) : (
           <div className="w-[20%]">
