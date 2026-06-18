@@ -88,10 +88,10 @@ export const addNewStudentToDb = (formData) => async (dispatch) => {
 }
 
 //edited student posted
-export const postEditedStudentDetails = ({ id, formData }) => async (dispatch) => {
+export const postEditedStudentDetails = ({ id, studentForm }) => async (dispatch) => {
     try {
-        console.log(id, "edit id in teacherslice");
-        const response = await axios.put(`${baseUrl}/student/${id}`, formData)
+        console.log(id, "edit id in studentslice");
+        const response = await axios.put(`${baseUrl}/student/${id}`, studentForm)
         if (response.data) {
 
             dispatch(setPostEditedStudentData(response.data));
