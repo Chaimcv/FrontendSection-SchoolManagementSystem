@@ -60,10 +60,10 @@ const BackToStudentDetails=()=>{
         <div className='border border-black flex flex-col m-5 p-5 space-y-5'>
            <h2>Name : <input type='text' name='Name' value={studentForm.Name}  onchange={handleChange}></input></h2>
            <h2>Age : <input type='number' name='Age' value={studentForm.Age}  onchange={handleChange}></input></h2>
-           <h2>Gender : <select  onchange={handleChange}>
-            <option value="">{studentForm.Gender}</option>
-             <option value="Female"></option>
-              <option value="Male"></option>
+            <h2>Gender : <select  onchange={handleChange}>
+              <option value="">{studentForm.Gender}</option>
+               <option value="Female"></option>
+               <option value="Male"></option>
             </select></h2>
            <h2>Standard : <input type='number' name='Standard' value={studentForm.Standard}  onchange={handleChange}></input></h2>
            <h2>Division :<input type='text' name='Division' value={studentForm.Division}  onchange={handleChange}></input> </h2>
