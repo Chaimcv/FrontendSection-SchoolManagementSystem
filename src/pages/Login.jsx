@@ -63,7 +63,7 @@ const Login = () => {
 </div>
     {/* small screen */}
 <div className='flex lg:hidden'>
-    {/* lg-hidden */}
+  
      <div className='flex rounded-lg  w-screen  h-screen '>
       {/* <div className='w-[50%] ml-[10%]'>
         <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-[15%] ' />
