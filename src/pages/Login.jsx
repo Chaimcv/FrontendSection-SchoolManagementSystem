@@ -55,8 +55,8 @@ const Login = () => {
         <button className="bg-amber-100 rounded-lg w-full p-1" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
         <br />
         <h2>STUDENT LOGIN</h2>
-        <label >Email:  <input className='p-1 my-1 w-[85%] rounded-lg' type='text' value={inputtedEmail} onChange={(e) => setInputtedEmail(e.target.value)} placeholder='Enter your email'></input></label>
-        <label >Password: <input className='p-1 rounded-lg w-[76%]' type='password' value={inputtedPassword} onChange={(e) => setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label>
+        <label >Email:  <input className='p-1 my-1 w-[85%] rounded-lg' type='text' value={inputtedEmail} onChange={(e) => setInputtedEmail(e.target.value)} placeholder='Enter email'></input></label>
+        <label >Password: <input className='p-1 rounded-lg w-[76%]' type='password' value={inputtedPassword} onChange={(e) => setInputtedPassword(e.target.value)} placeholder='Enter password'></input></label>
         <button className="bg-amber-100 rounded-lg p-1 w-full" onClick={LoginFunction}>LOGIN</button>
       </div>
     </div>
