@@ -49,8 +49,8 @@ console.log(oneTeacherDetail,"oneteacher");
     ) : (
       <h2>No teacher</h2>
     )}
-    <button className='bg-amber-400 rounded-xl py-1 px-3 m-1' onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
-     <button className='bg-amber-400 rounded-xl py-1 px-3 m-1' onClick={BackToTeacherDashboard} >Back</button>
+    <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white' onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
+     <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white' onClick={BackToTeacherDashboard} >Back</button>
     </div>
     </div>
     

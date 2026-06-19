@@ -20,7 +20,7 @@ console.log(TeacherDataFromDatabase,"teacher to be Edited");
    useEffect(()=>{
    if(TeacherDataFromDatabase){
       setFormData({
-        name: TeacherDataFromDatabase.name || "",
+        name: TeacherDataFromDatabase.name ,
         class: TeacherDataFromDatabase.class || "",
         pin: TeacherDataFromDatabase.pin || "",
         city: TeacherDataFromDatabase.city || "",
