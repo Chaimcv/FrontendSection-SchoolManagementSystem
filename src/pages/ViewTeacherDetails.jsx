@@ -39,7 +39,12 @@ console.log(oneTeacherDetail,"oneteacher");
          <h1 className='font-bold text-xl text-amber-900'>Teacher Details</h1>
 
     {oneTeacherDetail ? (
-      <div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
+      //<div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12'>
+       <div>
+        <p className='text-xs font-bold text-gray-400 '>Name :</p>
+        <p className='text-lg font-medium text-gray-800'>{oneTeacherDetail.name}</p>
+       </div>
         <h2 className='text-lg'>Name: {oneTeacherDetail.name}</h2>
         <h2 className='text-lg'>Class: {oneTeacherDetail.standard}</h2>
         <h2 className='text-lg'>Subject: {oneTeacherDetail.subject}</h2>
