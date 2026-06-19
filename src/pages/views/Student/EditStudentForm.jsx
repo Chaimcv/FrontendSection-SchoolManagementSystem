@@ -67,8 +67,8 @@ const BackToStudentDetails=()=>{
             </select></h2>
            <h2>Standard : <input type='number' name='Standard' value={studentForm.Standard}  onChange={handleChange}></input></h2>
            <h2>Division :<input type='text' name='Division' value={studentForm.Division}  onChange={handleChange}></input> </h2>
-           <h2>Guardian Name : <input type='text' name='Guardian' value={studentForm.Guardian_Name}  onChange={handleChange}></input></h2>
-           <h2>Guardian Phonenumber :<input type='number' name='Guardian number' value={studentForm.Guardian_Phonenumber}  onChange={handleChange}></input> </h2>
+           <h2>Guardian Name : <input type='text' name='Guardian_Name' value={studentForm.Guardian_Name}  onChange={handleChange}></input></h2>
+           <h2>Guardian Phonenumber :<input type='number' name='Guardian_Phonenumber' value={studentForm.Guardian_Phonenumber}  onChange={handleChange}></input> </h2>
            <h2>Address :<input type='text' name='Address' value={studentForm.Address}  onChange={handleChange}></input> </h2>
            <h2>Pincode : <input type='number' name='pincode' value={studentForm.Pincode}  onChange={handleChange}></input></h2>
            <button type='submit'>Submit</button>

@@ -53,9 +53,9 @@ const handleChange=(e)=>{
             <label>PINCODE: <input type='text' name="pin" value={formData.pin}  onChange={handleChange} /></label>
             <label>CITY: <input type='text'   name="city" value={formData.city}  onChange={handleChange} /></label>
             <label>SUBJECT: <input type='text' name="subject"  value={formData.subject}  onChange={handleChange} /></label>
-            <label>PHONE: <input type='number'  name="phonenumber"value={formData.phonenumber}  onChange={handleChange} /></label>
+            <label>PHONE: <input type='number'  name="phonenumber"value={formData.phoneNumber}  onChange={handleChange} /></label>
             <label>STANDARD: <input type='text'  name="standard" value={formData.standard}  onChange={handleChange} /></label>
-            <label>SUBJECT: <input type='text'  name="standard" value={formData.subject}  onChange={handleChange} /></label>
+            {/* <label>SUBJECT: <input type='text'  name="subject" value={formData.subject}  onChange={handleChange} /></label> */}
           <button type='submit'>SUBMIT</button>
         </div>
         ):
