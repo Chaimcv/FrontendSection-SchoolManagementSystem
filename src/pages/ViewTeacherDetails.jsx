@@ -36,21 +36,22 @@ console.log(oneTeacherDetail,"oneteacher");
         OnEditBtnClick={()=>setEditFormVisibility(false)} />
       )}
          <div className={`${editformVisibility ? "blur-sm" : ""}`}>
-         <h1 className='font-bold'>Teacher Details</h1>
+         <h1 className='font-bold text-xl text-amber-900'>Teacher Details</h1>
 
     {oneTeacherDetail ? (
-      <div className='bg-amber-50 p-[1%] mx-[20%]'>
-        <h2>Name: {oneTeacherDetail.name}</h2>
-        <h2>Class: {oneTeacherDetail.standard}</h2>
-        <h2>City: {oneTeacherDetail.city}</h2>
-        <h2>Pincode: {oneTeacherDetail.pin}</h2>
-        <h2>Phonenumber: {oneTeacherDetail.phoneNumber}</h2>
+      <div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
+        <h2 className='text-lg'>Name: {oneTeacherDetail.name}</h2>
+        <h2 className='text-lg'>Class: {oneTeacherDetail.standard}</h2>
+        <h2 className='text-lg'>Subject: {oneTeacherDetail.subject}</h2>
+        <h2 className='text-lg'>City: {oneTeacherDetail.city}</h2>
+        <h2 className='text-lg'>Pincode: {oneTeacherDetail.pin}</h2>
+        <h2 className='text-lg'>Phonenumber: {oneTeacherDetail.phoneNumber}</h2>
       </div>
     ) : (
       <h2>No teacher</h2>
     )}
-    <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white' onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
-     <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white' onClick={BackToTeacherDashboard} >Back</button>
+    <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white text-lg' onClick={()=>EditTeacherDetails(oneTeacherDetail?._id)} >Edit</button>
+     <button className='bg-amber-400 rounded-xl py-1 px-3 m-1 text-white text-lg' onClick={BackToTeacherDashboard} >Back</button>
     </div>
     </div>
     
