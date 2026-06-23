@@ -21,7 +21,7 @@ const Footer = () => {
             <h3>Follow us</h3>
              <div className='flex justify-evenly py-2'>
               {/* <img src={facebook} alt='facebook.'/> */}
-               //<img src={instagram} alt='instagram'/>
+               <img src={instagram} alt='instagram'/>
                <img src={youtube} alt='youtube'/>
              </div>
           </div>
