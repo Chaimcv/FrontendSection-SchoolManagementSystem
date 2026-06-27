@@ -57,11 +57,11 @@ const TeachersDashboard = () => {
         OnAddTeacherClick={()=>setFormvisible(false)} />
       )}
                        <div className={`${formvisible ? "blur-sm" : ""}`}>
-      <div >
+      <div className='overflow-hidden' >
         <h3>Add Teacher  <button className="bg-white rounded-lg py-1 px-5 font-extrabold m-1" onClick={AddTeacher}>+</button></h3></div>
       <div>
         <h3 className='font-extrabold p-2 text-4xl text-amber-900 '>Teachers</h3>
-          <table className='auto p-2 my-2 mx-[10%] rounded-lg  w-full'>
+          <table className=' rounded-lg  w-full'>
             <thead className='shadow-sm border-b'>
               <tr className='bg-white text-amber-700 rounded-md p-2 m-10'>
                 <th className='m-3 p-2'> NAME </th>
