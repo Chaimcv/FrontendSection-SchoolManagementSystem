@@ -66,7 +66,7 @@ const TeachersDashboard = () => {
               <tr className='bg-white text-amber-700 rounded-md p-2 m-10'>
                 <th className='m-3 p-2'> NAME </th>
                 <th className='m-3 p-2'> CLASS IN CHARGE </th>
-                <th className='col-span-2 m-2 text-right'> ACTIONS </th>
+                <th className='col-span-2 m-2 text-right px-4'> ACTIONS </th>
                 {/* <th></th> */}
               </tr>
             </thead>
