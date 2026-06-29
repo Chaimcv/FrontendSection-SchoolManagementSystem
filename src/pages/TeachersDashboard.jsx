@@ -60,13 +60,13 @@ const TeachersDashboard = () => {
       <div >
         <h3>Add Teacher  <button className="bg-white rounded-lg py-1 px-5 font-extrabold m-1" onClick={AddTeacher}>+</button></h3></div>
       <div>
-        <h3 className='font-extrabold p-2 text-4xl text-amber-900 '>Teachers</h3>
+        <h3 className='font-extrabold p-2 text-3xl text-amber-900 '>Teachers</h3>
           <table className=' rounded-lg ml-[1%] w-[90%]'>
             <thead className='shadow-sm border-b'>
               <tr className='bg-white text-amber-700 rounded-md p-2 m-10'>
                 <th className='m-3 p-2'> NAME </th>
                 <th className='m-3 p-2'> CLASS IN CHARGE </th>
-                <th className='col-span-2 m-2 text-right px-6'> ACTIONS </th>
+                <th className='col-span-2 m-2 text-center px-6'> ACTIONS </th>
             
               </tr>
             </thead>
