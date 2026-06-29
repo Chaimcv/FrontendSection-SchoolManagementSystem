@@ -42,7 +42,7 @@ console.log(oneTeacherDetail,"oneteacher");
       <div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
         {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12'> */}
       
-        <h2 className='text-lg'>Name: {oneTeacherDetail.name}</h2>
+        <h2 className='text-lg'>Name:</h2> <h2>{oneTeacherDetail.name}</h2>
         <h2 className='text-lg'>Class: {oneTeacherDetail.standard}</h2>
         <h2 className='text-lg'>Subject: {oneTeacherDetail.subject}</h2>
         <h2 className='text-lg'>City: {oneTeacherDetail.city}</h2>
