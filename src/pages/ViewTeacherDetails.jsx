@@ -39,8 +39,8 @@ console.log(oneTeacherDetail,"oneteacher");
          <h1 className='font-bold text-xl text-amber-900'>Teacher Details</h1>
 
     {oneTeacherDetail ? (
-      //<div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12'>
+      <div className='bg-amber-50 p-[1%] mx-[20%] flex flex-col'>
+        {/* <div className='grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12'> */}
       
         <h2 className='text-lg'>Name: {oneTeacherDetail.name}</h2>
         <h2 className='text-lg'>Class: {oneTeacherDetail.standard}</h2>
