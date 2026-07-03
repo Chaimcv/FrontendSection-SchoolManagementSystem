@@ -71,7 +71,8 @@ const handleChange=(e)=>{
           <button type='submit'>SUBMIT</button>
         </div>
         ):
-        <><h1>no teacher</h1></>}
+        <><h1>no teacher</h1></>
+        }
       </form>
     </div>
   )
