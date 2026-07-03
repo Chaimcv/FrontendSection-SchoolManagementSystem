@@ -18,15 +18,17 @@ const Footer = () => {
           </ul>
          </div>
           <div className='w-[50%]'>
-            <h3>Follow us</h3>
+            <h3>Follow us  </h3>
              <div className='flex justify-evenly py-2'>
+<<<<<<< HEAD
           
+=======
+>>>>>>> 1885cd9848bb7e1bc56c0831121c4782408dfe9e
                <img src={instagram} alt='instagram'/>
                <img src={youtube} alt='youtube'/>
              </div>
           </div>
       </div>
-      <div> </div>
     </div>
   )
 }
