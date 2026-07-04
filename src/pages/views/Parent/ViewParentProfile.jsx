@@ -5,7 +5,7 @@ import { fetchOneParentDetails } from '../../../Redux/Slices/ParentSlice';
 
 const ViewParentProfile = () => {
   const{id}=useParams();
-  console.log(id,"parent id");
+  //console.log(id,"parent id");
    const getParticularParentData=useSelector((store)=>store.parent.oneParentDetailsData);
   console.log(getParticularParentData,"parent data fetched in view parent profile page");
   const dispatch=useDispatch();
