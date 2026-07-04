@@ -20,7 +20,7 @@ dispatch(fetchOneParentDetails(id))
             <h4>Name: {getParticularParentData.Name}</h4>
             <h4>Address: {getParticularParentData.address}</h4>
             <h4>Phonenumber: {getParticularParentData.phonenumber}</h4>
-             <h4>Student name: {getParticularParentData.Student_name}</h4>
+            <h4>Student name: {getParticularParentData.Student_name}</h4>
         </div>
       ):(
         <>no data</>
