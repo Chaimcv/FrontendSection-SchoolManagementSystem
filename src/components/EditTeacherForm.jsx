@@ -49,7 +49,7 @@ const handleChange=(e)=>{
         <form onSubmit={EditTeacher(TeacherDataFromDatabase?._id)}>
             {TeacherDataFromDatabase ? (
         <div className='border border-black flex flex-col m-5 p-5 space-y-5 bg-amber-100'>
-            <label>NAME: 
+            <label>NAME:
               <input type='text' name="name" value={formData.name}   onChange={handleChange} />
               </label>
             <label>PINCODE:
