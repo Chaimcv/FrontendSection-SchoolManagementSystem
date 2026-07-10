@@ -13,7 +13,7 @@ const Footer = () => {
           <ul className='font-semibold list-disc ml-32'>
             <li>Online Admission</li>
            <li>Cyber Security Awareness </li>  
-            <li>Right to Information</li>   
+            <li>Right to Information</li> 
           </ul>
          </div>
           <div className='w-[50%]'>
