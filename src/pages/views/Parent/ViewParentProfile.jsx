@@ -7,7 +7,7 @@ const ViewParentProfile = () => {
   const{id}=useParams();
   //console.log(id,"parent id");
    const getParticularParentData=useSelector((store)=>store.parent.oneParentDetailsData);
-  console.log(getParticularParentData,"parent data fetched in view parent profile page");
+ // console.log(getParticularParentData,"parent data fetched in view parent profile page");
   const dispatch=useDispatch();
 useEffect(()=>{
 dispatch(fetchOneParentDetails(id))
