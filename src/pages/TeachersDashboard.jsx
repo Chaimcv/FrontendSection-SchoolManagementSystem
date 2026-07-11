@@ -75,11 +75,11 @@ const TeachersDashboard = () => {
                {TeachersDataInfo.map((item)=>(
               <tr key={item._id}>
                 <td>{item?.name}</td>
-                   <td>{item?.standard}</td>
-                      <td>
+                <td>{item?.standard}</td>
+                    <td>
                         <button className='bg-amber-500  text-white rounded-lg m-2 p-2 px-4 shadow-lg hover:bg-amber-600 ' onClick={ ()=> viewTeacherDetails(item?._id)}>View Details</button>
                          <button className='text-amber-600 border-amber-600 bg-white rounded-lg m-2 p-2 px-4 shadow-lg hover:bg-red-100 hover:border-red-100' onClick={ ()=> deleteTeacher(item?._id)}>Delete</button>
-                      </td>
+                    </td>
               </tr>
                ))}
             </tbody>
