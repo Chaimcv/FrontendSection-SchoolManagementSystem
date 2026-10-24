@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { fetchOneStudentDetails } from '../../../Redux/Slices/StudentSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import AddPostForm from '../../../components/AddPostForm';
 
 const StudentDashboard = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [postForm, setPostForm] = useState(false);
     const dispatch = useDispatch();
 
@@ -24,8 +25,26 @@ const StudentDashboard = () => {
             {/* Premium Header */}
             <div className="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-md bg-white/80">
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">Student Dashboard</h1>
-                    {/* <Link to="/" className="text-sm font-medium text-amber-600 hover:text-amber-700 font-semibold tracking-wide uppercase">View Community Feed</Link> */}
+                    <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">
+                        Student Dashboard
+                    </h1>
+                    
+                    <div className="flex items-center gap-3">
+                        <button
+                            type="button"
+                            onClick={() => navigate(`/studentExams/${id}`)}
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition-colors"
+                        >
+                            <span>📝</span> Exams
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => navigate(`/studentAttendance/${id}`)}
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors"
+                        >
+                            <span>📊</span> Attendance Sheet
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -57,9 +76,34 @@ const StudentDashboard = () => {
                                     </div>
                                 </div>
 
+                                {/* Quick Navigation Buttons inside Profile Card */}
+                                <div className="mt-6 w-full space-y-2.5">
+                                    <button
+                                        type="button"
+                                        onClick={() => navigate(`/studentExams/${id}`)}
+                                        className="w-full py-3 px-4 bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold text-sm rounded-xl hover:bg-indigo-100 transition-all flex items-center justify-between"
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            <span>📝</span> Examination Schedule
+                                        </span>
+                                        <span>→</span>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => navigate(`/studentAttendance/${id}`)}
+                                        className="w-full py-3 px-4 bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold text-sm rounded-xl hover:bg-emerald-100 transition-all flex items-center justify-between"
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            <span>📊</span> Attendance Sheet
+                                        </span>
+                                        <span>→</span>
+                                    </button>
+                                </div>
+
                                 <button 
                                     onClick={togglePostForm}
-                                    className="mt-8 w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold rounded-2xl shadow-lg shadow-amber-200 hover:shadow-xl hover:from-amber-600 hover:to-amber-700 transition-all active:scale-95 flex items-center justify-center gap-2"
+                                    className="mt-6 w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold rounded-2xl shadow-lg shadow-amber-200 hover:shadow-xl hover:from-amber-600 hover:to-amber-700 transition-all active:scale-95 flex items-center justify-center gap-2 text-sm"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -72,33 +116,104 @@ const StudentDashboard = () => {
                         )}
                     </div>
                 </div>
-                <div>
-                    <h4>Report card</h4>
-                    <h3>Exam schedule</h3>
-                    {/* add more sections */}
-                    
-                    <h4> Posts</h4>
-                </div>
 
-                {/* Dashboard Stats / Quick Actions */}
-                {/* <div className="md:col-span-2 space-y-8">
-                   <div className="bg-amber-50 rounded-3xl p-8 border border-amber-100 relative overflow-hidden">
+                {/* Dashboard Main Panel: Core Action Cards */}
+                <div className="md:col-span-2 space-y-6">
+                    {/* Welcome Banner */}
+                    <div className="bg-gradient-to-br from-amber-50 via-amber-100/40 to-orange-50 rounded-3xl p-7 border border-amber-200/80 shadow-xs relative overflow-hidden">
                         <div className="relative z-10">
-                            <h3 className="text-2xl font-bold text-amber-900 mb-2">Welcome Back!</h3>
-                            <p className="text-amber-800/80 mb-6 max-w-md">Share your latest updates, projects, or questions with your school community in the social feed.</p>
-                            <Link 
-                                to="/" 
-                                className="inline-flex items-center gap-2 py-3 px-6 bg-white text-amber-600 font-bold rounded-xl shadow-sm hover:shadow-md transition-all"
-                            >
-                                Jump to Feed
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </Link>
+                            <span className="inline-block px-3 py-1 rounded-full bg-amber-500/10 border border-amber-300 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">
+                                Academic Workspace
+                            </span>
+                            <h2 className="text-2xl font-extrabold text-amber-950 mb-1.5">
+                                Welcome Back, {getStudentInfo?.Name || 'Student'}!
+                            </h2>
+                            <p className="text-amber-900/80 text-sm max-w-lg mb-4">
+                                Access your examination timetable, check upcoming paper schedules, or track your roll-call attendance sheet for the semester.
+                            </p>
                         </div>
-                        <div className="absolute -right-12 -bottom-12 w-64 h-64 bg-amber-200 rounded-full blur-3xl opacity-30"></div>
-                   </div>
-                </div> */}
+                        <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-200/60 rounded-full blur-2xl"></div>
+                    </div>
+
+                    {/* TWO PRIMARY ACTION BUTTONS/CARDS: EXAMS & ATTENDANCE SHEET */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        {/* 1. BUTTON / CARD FOR EXAMS */}
+                        <div
+                            onClick={() => navigate(`/studentExams/${id}`)}
+                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-indigo-100 hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
+                        >
+                            <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-50 rounded-full blur-xl group-hover:bg-indigo-100 transition-colors"></div>
+
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl shadow-md mb-4 group-hover:scale-110 transition-transform">
+                                    📝
+                                </div>
+                                <span className="inline-block px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-indigo-200">
+                                    Academic Schedule
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                    Exams
+                                </h3>
+                                <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
+                                    View your examination timetable, test timings, room allocations, and subject syllabus.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm relative z-10">
+                                <span>Open Exam Schedule</span>
+                                <span className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-700 group-hover:translate-x-1 transition-transform">
+                                    →
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* 2. BUTTON / CARD FOR ATTENDANCE SHEET */}
+                        <div
+                            onClick={() => navigate(`/studentAttendance/${id}`)}
+                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-emerald-100 hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
+                        >
+                            <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-50 rounded-full blur-xl group-hover:bg-emerald-100 transition-colors"></div>
+
+                            <div className="relative z-10">
+                                <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-md mb-4 group-hover:scale-110 transition-transform">
+                                    📊
+                                </div>
+                                <span className="inline-block px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-emerald-200">
+                                    Monthly Roll-Call
+                                </span>
+                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                                    Attendance Sheet
+                                </h3>
+                                <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
+                                    Inspect your day-by-day attendance sheet, total working days, present/absent counts, and rates.
+                                </p>
+                            </div>
+
+                            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-emerald-600 font-bold text-sm relative z-10">
+                                <span>Open Attendance Sheet</span>
+                                <span className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 group-hover:translate-x-1 transition-transform">
+                                    →
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Quick Community / Social Action */}
+                    <div className="rounded-3xl bg-white p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <h4 className="text-sm font-bold text-slate-900">School Community Feed</h4>
+                            <p className="text-xs text-slate-500 mt-0.5">
+                                Connect with your classmates and teachers on the campus bulletin feed.
+                            </p>
+                        </div>
+                        <Link
+                            to="/"
+                            className="inline-flex items-center gap-2 py-2.5 px-5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors shrink-0"
+                        >
+                            View Feed →
+                        </Link>
+                    </div>
+                </div>
             </div>
 
             {/* Post Form Modal */}
