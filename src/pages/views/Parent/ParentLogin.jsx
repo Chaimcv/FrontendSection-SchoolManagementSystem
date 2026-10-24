@@ -18,23 +18,20 @@ const ParentLogin = () => {
     const navigate=useNavigate();
     const dispatch=useDispatch();
 
-    const LoginAsParent=async()=>{
-     const result=await dispatch(loginParent({inputtedEmail,inputtedPassword}));
+    const LoginAsParent = async () => {
+      const result = await dispatch(loginParent({ inputtedEmail, inputtedPassword }));
+      console.log(result, "result testing");
 
- console.log(result,"result testing");
-  console.log(result?.data.id,"data");
- const{token,name}=result?.data;
-  const{id}=result?.data;
-//  console.log(id,"login id");
-      if (result.success) {
-         localStorage.setItem("token",token);
-         localStorage.setItem("name",name);
-    navigate(`/parentDashboard/${id}`);  //if success
-     window.location.reload();
-  } else {
-    alert(result.message);          // show error
-  }
-}
+      if (result?.success) {
+        const { token, name, id } = result.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("name", name);
+        navigate(`/parentDashboard/${id}`);
+        window.location.reload();
+      } else {
+        alert("Invalid email or password");
+      }
+    };
 
 
   

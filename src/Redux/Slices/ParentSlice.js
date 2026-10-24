@@ -126,19 +126,16 @@ const ParentSlice=createSlice({
  export const loginParent=({inputtedEmail,inputtedPassword})=>async(dispatch)=>{
   console.log(inputtedEmail,"inputted email");
   try {
-   
     const response=await axios.post(`${baseUrl}/parent/login`,{inputtedEmail,inputtedPassword}) 
     console.log(response," login response");
-      console.log(response?.data,"response in parent slice");
+    console.log(response?.data,"response in parent slice");
     if (response.data.message === "Login successful") {
-     
-        dispatch(setParentLogin(response.data.data));
+        dispatch(setParentLogin(response.data));
 
         return {
           success: true,
-          message: "Login Successful",
-          data:response.data
-         
+          message: "Login successful",
+          data: response.data
         };
     }
   } catch (error) {
