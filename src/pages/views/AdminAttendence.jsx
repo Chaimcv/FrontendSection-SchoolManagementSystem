@@ -260,9 +260,6 @@ const AdminAttendance = () => {
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-slate-200">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-md bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider">
-                Admin Portal
-              </span>
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
                 Attendance Management
               </h1>
@@ -271,14 +268,6 @@ const AdminAttendance = () => {
               Inspect whole-class monthly attendance registers, view assigned class teachers, and filter records.
             </p>
           </div>
-
-          <button
-            type="button"
-            onClick={() => navigate("/admin/dashboard")}
-            className="self-start sm:self-auto inline-flex items-center gap-2 rounded-xl bg-white border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-colors"
-          >
-            ← Back to Dashboard
-          </button>
         </div>
 
         {/* View Mode Navigation Tabs */}
@@ -287,24 +276,22 @@ const AdminAttendance = () => {
             <button
               type="button"
               onClick={() => setActiveTab("monthly")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-                activeTab === "monthly"
-                  ? "bg-white text-indigo-700 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "monthly"
+                ? "bg-white text-indigo-700 shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
+                }`}
             >
-              <span>📊</span> Whole Class Monthly Register
+              Whole Class Monthly Register
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("raw")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-                activeTab === "raw"
-                  ? "bg-white text-indigo-700 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "raw"
+                ? "bg-white text-indigo-700 shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
+                }`}
             >
-              <span>🔍</span> Single Date & Raw Records Filter
+              Single Date & Raw Records Filter
             </button>
           </div>
         </div>
@@ -358,9 +345,6 @@ const AdminAttendance = () => {
               <div className="lg:col-span-4">
                 <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-600">
                   <span>Select Month</span>
-                  <span className="font-semibold text-indigo-700 capitalize">
-                    {formatMonthName(selectedMonth)}
-                  </span>
                 </label>
 
                 <div className="flex items-center gap-2">
@@ -397,7 +381,7 @@ const AdminAttendance = () => {
                   type="button"
                   onClick={loadClassMonthlyAttendance}
                   disabled={loading || !selectedClassDetails || !selectedMonth}
-                  className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full rounded-xl bg-indigo-400 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -418,9 +402,6 @@ const AdminAttendance = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-gradient-to-r from-indigo-50 via-white to-slate-50 p-5 border border-indigo-100 shadow-xs">
                 {/* 1. Class Teacher Card */}
                 <div className="flex items-center gap-3.5 sm:border-r border-indigo-100 pr-4">
-                  <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-                    👨‍🏫
-                  </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-700">
                       Class Teacher
@@ -438,12 +419,9 @@ const AdminAttendance = () => {
 
                 {/* 2. Selected Class Info */}
                 <div className="flex items-center gap-3.5 sm:border-r border-indigo-100 pr-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-                    🏫
-                  </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                      Active Class
+                      Class
                     </div>
                     <div className="text-base font-extrabold text-slate-900 mt-0.5">
                       Standard {selectedClassDetails.standard} - Division {selectedClassDetails.division}
@@ -456,12 +434,9 @@ const AdminAttendance = () => {
 
                 {/* 3. Month & Working Days */}
                 <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-                    📅
-                  </div>
                   <div>
                     <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
-                      Month Period
+                      Month
                     </div>
                     <div className="text-base font-extrabold text-slate-900 mt-0.5 capitalize">
                       {formatMonthName(selectedMonth)}
@@ -479,10 +454,6 @@ const AdminAttendance = () => {
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div className="flex items-center gap-2 text-sm text-slate-600">
                   <span className="font-bold text-slate-900">Whole Class Attendance Register</span>
-                  <span className="text-slate-300">•</span>
-                  <span>Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division}</span>
-                  <span className="text-slate-300">•</span>
-                  <span className="font-semibold text-indigo-700">{formatMonthName(selectedMonth)}</span>
                 </div>
 
                 <div className="relative">
@@ -511,7 +482,7 @@ const AdminAttendance = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Legend:</span>
+
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800">
                     <span className="w-5 h-5 rounded bg-emerald-100 flex items-center justify-center text-[10px]">P</span>
                     Present
@@ -552,11 +523,10 @@ const AdminAttendance = () => {
                       {monthDates.map((item) => (
                         <th
                           key={item.date}
-                          className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-slate-200 ${
-                            item.isWeekend
-                              ? "bg-slate-200/60 text-slate-400"
-                              : "bg-slate-100 text-slate-700"
-                          }`}
+                          className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-slate-200 ${item.isWeekend
+                            ? "bg-slate-200/60 text-slate-400"
+                            : "bg-slate-100 text-slate-700"
+                            }`}
                           title={`${item.date} (${item.dayName})`}
                         >
                           <div className="text-[11px] font-extrabold leading-tight">
@@ -636,9 +606,8 @@ const AdminAttendance = () => {
                           return (
                             <td
                               key={item.date}
-                              className={`py-2 px-0.5 text-center border-r border-slate-100 ${
-                                item.isWeekend ? "bg-slate-50/40" : ""
-                              }`}
+                              className={`py-2 px-0.5 text-center border-r border-slate-100 ${item.isWeekend ? "bg-slate-50/40" : ""
+                                }`}
                             >
                               {status === "Present" ? (
                                 <span
@@ -727,25 +696,6 @@ const AdminAttendance = () => {
                   </tbody>
                 </table>
               </div>
-
-              {/* Bottom Print / Export Helper Bar */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-slate-50 border-t border-slate-200">
-                <div className="text-xs text-slate-500">
-                  Class Teacher:{" "}
-                  <span className="font-semibold text-slate-700">
-                    {localTeacherName || selectedClassDetails?.classTeacherName || "Not Assigned"}
-                  </span>{" "}
-                  • Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => window.print()}
-                  className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors flex items-center gap-1.5"
-                >
-                  <span>🖨️</span> Print / Save Register
-                </button>
-              </div>
             </div>
 
             {/* MODAL: CHRONOLOGICAL LIST OF ALL DATES IN THE MONTH FOR ONE STUDENT */}
@@ -826,9 +776,8 @@ const AdminAttendance = () => {
                           return (
                             <tr
                               key={item.date}
-                              className={`hover:bg-slate-50 transition-colors ${
-                                item.isWeekend ? "bg-slate-50/50" : ""
-                              }`}
+                              className={`hover:bg-slate-50 transition-colors ${item.isWeekend ? "bg-slate-50/50" : ""
+                                }`}
                             >
                               <td className="py-2.5 px-3 text-center text-xs font-medium text-slate-400">
                                 {item.day}

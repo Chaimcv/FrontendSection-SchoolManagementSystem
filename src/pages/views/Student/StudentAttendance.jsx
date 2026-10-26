@@ -136,9 +136,7 @@ const StudentAttendance = () => {
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-slate-200">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-1 rounded-md bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider">
-                Attendance Record
-              </span>
+
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
                 My Attendance Sheet
               </h1>
@@ -148,21 +146,12 @@ const StudentAttendance = () => {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={() => navigate(`/studentDashboard/${id}`)}
-            className="self-start sm:self-auto inline-flex items-center gap-2 rounded-xl bg-white border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-colors"
-          >
-            ← Back to Dashboard
-          </button>
+
         </div>
 
         {/* Student Profile & Active Month Banner */}
-        <div className="mb-6 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-slate-50 p-5 border border-emerald-100 shadow-xs">
-          <div className="flex items-center gap-3.5 sm:border-r border-emerald-100 pr-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-              👨‍🎓
-            </div>
+        <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-slate-50 p-5 border border-emerald-100 shadow-xs">
+          <div className="flex items-center gap-4 sm:border-r border-emerald-100 pr-4">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
                 Student Name
@@ -177,10 +166,8 @@ const StudentAttendance = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-3.5 sm:border-r border-emerald-100 pr-4">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-              📅
-            </div>
+          <div className="flex items-center gap-4 sm:border-r border-emerald-100 pr-4">
+
             <div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-700">
                 Selected Month
@@ -190,23 +177,6 @@ const StudentAttendance = () => {
               </div>
               <div className="text-[11px] text-slate-500">
                 {monthDates.length} Days in month
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-xl font-bold shadow-sm">
-              📊
-            </div>
-            <div>
-              <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                Attendance Rate
-              </div>
-              <div className="text-base font-extrabold text-slate-900 mt-0.5">
-                {summary.percentage}%
-              </div>
-              <div className="text-[11px] text-slate-500">
-                {summary.present} of {summary.total} marked days present
               </div>
             </div>
           </div>
@@ -275,30 +245,6 @@ const StudentAttendance = () => {
             >
               ▶
             </button>
-
-            <button
-              type="button"
-              onClick={() => setSelectedMonth(getCurrentMonth())}
-              className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 transition-colors"
-            >
-              This Month
-            </button>
-          </div>
-
-          {/* Status Filter */}
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-bold text-slate-600">Filter:</label>
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-semibold text-slate-700 focus:bg-white focus:outline-none"
-            >
-              <option value="all">All Dates ({monthDates.length})</option>
-              <option value="Present">Present Only ({summary.present})</option>
-              <option value="Absent">Absent Only ({summary.absent})</option>
-              <option value="Late">Late Only ({summary.late})</option>
-              <option value="unmarked">Unmarked / Holidays</option>
-            </select>
           </div>
         </div>
 
@@ -323,7 +269,6 @@ const StudentAttendance = () => {
               <table className="w-full text-left text-sm border-collapse">
                 <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
                   <tr>
-                    <th className="py-3 px-4 w-16 text-center">Day</th>
                     <th className="py-3 px-4">Date</th>
                     <th className="py-3 px-4">Day of Week</th>
                     <th className="py-3 px-4 text-center">Status</th>
@@ -337,14 +282,9 @@ const StudentAttendance = () => {
                     return (
                       <tr
                         key={item.date}
-                        className={`hover:bg-slate-50 transition-colors ${
-                          item.isWeekend ? "bg-slate-50/50" : ""
-                        }`}
+                        className={`hover:bg-slate-50 transition-colors ${item.isWeekend ? "bg-slate-50/50" : ""
+                          }`}
                       >
-                        <td className="py-3 px-4 text-center text-xs font-extrabold text-slate-400">
-                          {String(item.day).padStart(2, "0")}
-                        </td>
-
                         <td className="py-3 px-4 font-semibold text-slate-800 text-xs">
                           {item.date}
                         </td>
@@ -390,21 +330,6 @@ const StudentAttendance = () => {
               </table>
             </div>
           )}
-
-          {/* Bottom Print / Save Helper Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-slate-50 border-t border-slate-200">
-            <div className="text-xs text-slate-500">
-              Student Attendance Record for {formatMonthName(selectedMonth)}.
-            </div>
-
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors flex items-center gap-1.5"
-            >
-              <span>🖨️</span> Print Attendance Sheet
-            </button>
-          </div>
         </div>
       </div>
     </div>

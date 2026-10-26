@@ -28,22 +28,9 @@ const StudentDashboard = () => {
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-400 bg-clip-text text-transparent">
                         Student Dashboard
                     </h1>
-                    
+
                     <div className="flex items-center gap-3">
-                        <button
-                            type="button"
-                            onClick={() => navigate(`/studentExams/${id}`)}
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-700 hover:bg-indigo-100 transition-colors"
-                        >
-                            <span>📝</span> Exams
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => navigate(`/studentAttendance/${id}`)}
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors"
-                        >
-                            <span>📊</span> Attendance Sheet
-                        </button>
+
                     </div>
                 </div>
             </div>
@@ -56,15 +43,15 @@ const StudentDashboard = () => {
                             <div className="p-8 flex flex-col items-center text-center">
                                 <div className="relative mb-6">
                                     <div className="absolute inset-0 bg-amber-400 rounded-full blur-xl opacity-20 animate-pulse"></div>
-                                    <img 
-                                        className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg relative z-10" 
-                                        src={getStudentInfo?.ProfileImageUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"} 
+                                    <img
+                                        className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg relative z-10"
+                                        src={getStudentInfo?.ProfileImageUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"}
                                         alt='profile'
                                     />
                                 </div>
                                 <h2 className="text-2xl font-bold text-gray-800 mb-1">{getStudentInfo?.Name}</h2>
                                 <p className="text-amber-600 font-semibold text-sm mb-6">Student</p>
-                                
+
                                 <div className="w-full space-y-3 text-left">
                                     <div className="flex justify-between p-3 bg-gray-50 rounded-xl">
                                         <span className="text-gray-500 text-sm">Standard</span>
@@ -76,32 +63,11 @@ const StudentDashboard = () => {
                                     </div>
                                 </div>
 
-                                {/* Quick Navigation Buttons inside Profile Card */}
-                                <div className="mt-6 w-full space-y-2.5">
-                                    <button
-                                        type="button"
-                                        onClick={() => navigate(`/studentExams/${id}`)}
-                                        className="w-full py-3 px-4 bg-indigo-50 border border-indigo-200 text-indigo-700 font-bold text-sm rounded-xl hover:bg-indigo-100 transition-all flex items-center justify-between"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <span>📝</span> Examination Schedule
-                                        </span>
-                                        <span>→</span>
-                                    </button>
 
-                                    <button
-                                        type="button"
-                                        onClick={() => navigate(`/studentAttendance/${id}`)}
-                                        className="w-full py-3 px-4 bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold text-sm rounded-xl hover:bg-emerald-100 transition-all flex items-center justify-between"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <span>📊</span> Attendance Sheet
-                                        </span>
-                                        <span>→</span>
-                                    </button>
-                                </div>
 
-                                <button 
+
+
+                                <button
                                     onClick={togglePostForm}
                                     className="mt-6 w-full py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-bold rounded-2xl shadow-lg shadow-amber-200 hover:shadow-xl hover:from-amber-600 hover:to-amber-700 transition-all active:scale-95 flex items-center justify-center gap-2 text-sm"
                                 >
@@ -122,15 +88,11 @@ const StudentDashboard = () => {
                     {/* Welcome Banner */}
                     <div className="bg-gradient-to-br from-amber-50 via-amber-100/40 to-orange-50 rounded-3xl p-7 border border-amber-200/80 shadow-xs relative overflow-hidden">
                         <div className="relative z-10">
-                            <span className="inline-block px-3 py-1 rounded-full bg-amber-500/10 border border-amber-300 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">
-                                Academic Workspace
-                            </span>
+
                             <h2 className="text-2xl font-extrabold text-amber-950 mb-1.5">
                                 Welcome Back, {getStudentInfo?.Name || 'Student'}!
                             </h2>
-                            <p className="text-amber-900/80 text-sm max-w-lg mb-4">
-                                Access your examination timetable, check upcoming paper schedules, or track your roll-call attendance sheet for the semester.
-                            </p>
+
                         </div>
                         <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-200/60 rounded-full blur-2xl"></div>
                     </div>
@@ -154,16 +116,7 @@ const StudentDashboard = () => {
                                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                                     Exams
                                 </h3>
-                                <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
-                                    View your examination timetable, test timings, room allocations, and subject syllabus.
-                                </p>
-                            </div>
 
-                            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm relative z-10">
-                                <span>Open Exam Schedule</span>
-                                <span className="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-700 group-hover:translate-x-1 transition-transform">
-                                    →
-                                </span>
                             </div>
                         </div>
 
@@ -184,16 +137,6 @@ const StudentDashboard = () => {
                                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
                                     Attendance Sheet
                                 </h3>
-                                <p className="text-slate-500 text-xs mt-1.5 leading-relaxed">
-                                    Inspect your day-by-day attendance sheet, total working days, present/absent counts, and rates.
-                                </p>
-                            </div>
-
-                            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-emerald-600 font-bold text-sm relative z-10">
-                                <span>Open Attendance Sheet</span>
-                                <span className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-700 group-hover:translate-x-1 transition-transform">
-                                    →
-                                </span>
                             </div>
                         </div>
                     </div>

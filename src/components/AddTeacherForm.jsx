@@ -15,41 +15,43 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
   const [tsubject, setTsubjectata] = useState("");
   const [tphoneNumber, setTphonenumber] = useState("");
   const [tstandard, setTstandard] = useState("");
-  const navigate=useNavigate();
+  const [tdivision, setTdivision] = useState("");
+  const navigate = useNavigate();
 
-//    const generatePassword=()=> {
-//     var length = 8,
-//         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-//         retVal = "";
-//     for (var i = 0, n = charset.length; i < length; ++i) {
-//         retVal += charset.charAt(Math.floor(Math.random() * n));
-//     }
-//     setTpassword(retVal);
-//     console.log(tpassword,"password generated");
-// }
+  //    const generatePassword=()=> {
+  //     var length = 8,
+  //         charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+  //         retVal = "";
+  //     for (var i = 0, n = charset.length; i < length; ++i) {
+  //         retVal += charset.charAt(Math.floor(Math.random() * n));
+  //     }
+  //     setTpassword(retVal);
+  //     console.log(tpassword,"password generated");
+  // }
   const AddNewTeacher = async () => {
 
-  
+
     const Data = {      //backend:frontend
       name: tname,
-     age: tage,
-     email: temail,
-    //  password: tpassword,
-     city: tcity,
-     pin: tpin,
-     subject: tsubject,
-     phonenumber: tphoneNumber,
-     standard: tstandard
+      age: tage,
+      email: temail,
+      //  password: tpassword,
+      city: tcity,
+      pin: tpin,
+      subject: tsubject,
+      phonenumber: tphoneNumber,
+      standard: tstandard,
+      division: tdivision
     };
 
-   
 
 
- //generatePassword();
+
+    //generatePassword();
 
 
     try {
-     
+
       const res = await axios.post(`${SchoolUrl}/teacher`, Data);
       console.log(res.data, "added");
 
@@ -60,34 +62,35 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
     }
   };
 
-  const BackToAdminDashboard=()=>{
+  const BackToAdminDashboard = () => {
     navigate("/admin/dashboard");
-   }
+  }
 
   return (
     <div>
       {OnAddTeacherClick && (
         <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-40 z-50">
-     
-      <form onSubmit={AddNewTeacher}>
-        <div className='border border-black rounded-md shadow-xl bg-amber-100 flex flex-col m-5 p-5 space-y-5 w-[120%] h-[110%]'>
 
-          <label>NAME: <input type='text' value={tname} onChange={(e)=>setTname(e.target.value)} /></label>
-          <label>EMAIL: <input type='text' value={temail} onChange={(e)=>setTemail(e.target.value)} /></label>
-          {/* <label>PASSWORD: <input type='text' value={tpassword} onChange={(e)=>setTpassword(e.target.value)} /></label> */}
-          <label>PINCODE: <input type='text' value={tpin} onChange={(e)=>setTpin(e.target.value)} /></label>
-          <label>CITY: <input type='text' value={tcity} onChange={(e)=>setTcity(e.target.value)} /></label>
-          <label>SUBJECT: <input type='text' value={tsubject} onChange={(e)=>setTsubjectata(e.target.value)} /></label>
-          <label>PHONE: <input type='number' value={tphoneNumber} onChange={(e)=>setTphonenumber(e.target.value)} /></label>
-          <label>STANDARD: <input type='text' value={tstandard} onChange={(e)=>setTstandard(e.target.value)} /></label>
+          <form onSubmit={AddNewTeacher}>
+            <div className='border border-black rounded-md shadow-xl bg-amber-100 flex flex-col m-5 p-5 space-y-5 w-[120%] h-[110%]'>
 
-          <button type='submit' className='bg-white text-amber-800 p-2'>SUBMIT</button>
-          <button type='submit' className='bg-white text-amber-800 p-2'>CANCEL</button>
+              <label>NAME: <input type='text' value={tname} onChange={(e) => setTname(e.target.value)} /></label>
+              <label>EMAIL: <input type='text' value={temail} onChange={(e) => setTemail(e.target.value)} /></label>
+              {/* <label>PASSWORD: <input type='text' value={tpassword} onChange={(e)=>setTpassword(e.target.value)} /></label> */}
+              <label>PINCODE: <input type='text' value={tpin} onChange={(e) => setTpin(e.target.value)} /></label>
+              <label>CITY: <input type='text' value={tcity} onChange={(e) => setTcity(e.target.value)} /></label>
+              <label>SUBJECT: <input type='text' value={tsubject} onChange={(e) => setTsubjectata(e.target.value)} /></label>
+              <label>PHONE: <input type='number' value={tphoneNumber} onChange={(e) => setTphonenumber(e.target.value)} /></label>
+              <label>CLASS IN CHARGE: <input type='text' value={tstandard} onChange={(e) => setTstandard(e.target.value)} /></label>
+              <label>DIVISION: <input type='text' value={tdivision} onChange={(e) => setTdivision(e.target.value)} /></label>
 
+              <button type='submit' className='bg-white text-amber-800 p-2'>SUBMIT</button>
+              <button type='submit' className='bg-white text-amber-800 p-2'>CANCEL</button>
+
+            </div>
+          </form>
         </div>
-      </form>
-        </div>
-       )}
+      )}
     </div>
   )
 }
