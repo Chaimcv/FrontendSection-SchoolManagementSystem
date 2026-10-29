@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchNoticeData, deleteNotice } from "../../../Redux/Slices/AnnouncementSlice";
 import AddAnnouncementForm from "./AddAnnouncementForm";
@@ -8,7 +8,6 @@ const AnnouncementDashboard = () => {
   const dispatch = useDispatch();
   const allAnnouncements = useSelector((state) => state.announcement.AnnouncementData) || [];
   const [formDisplay, setFormDisplay] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,15 +21,6 @@ const AnnouncementDashboard = () => {
     }
   };
 
-  // const filteredAnnouncements = useMemo(() => {
-  //   if (!searchQuery.trim()) return allAnnouncements;
-  //   const q = searchQuery.toLowerCase().trim();
-  //   return allAnnouncements.filter(
-  //     (item) =>
-  //       (item?.Title || "").toLowerCase().includes(q) ||
-  //       (item?.Description || "").toLowerCase().includes(q)
-  //   );
-  // }, [allAnnouncements, searchQuery]);
 
   return (
     <div className="relative min-h-screen bg-linear-to-b from-amber-50/80 via-amber-50/30 to-white text-stone-800 pb-16">
@@ -134,18 +124,6 @@ const AnnouncementDashboard = () => {
             </div>
           ))}
         </div>
-
-        {/* {filteredAnnouncements.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-3xl border border-amber-200 shadow-sm mt-4">
-            <span className="text-4xl block mb-2">📢</span>
-            <h3 className="text-lg font-bold text-amber-950">No announcements found</h3>
-            <p className="text-xs text-stone-500 mt-1 max-w-sm mx-auto">
-              {searchQuery
-                ? `No announcements matching "${searchQuery}".`
-                : "No announcements have been published yet. Click 'Post New Notice' to create one."}
-            </p>
-          </div>
-        )} */}
       </div>
     </div>
   );
