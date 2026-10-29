@@ -46,7 +46,7 @@ const Login = () => {
 
         <div className='flex rounded-lg  w-[100%] m-2 h-screen '>
           <div className='w-[50%] ml-[10%] h-[55.3%]'>
-            <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-[15%] ' />
+            <img src={SchoolImage} alt='image' className='h-[101.2%] w-[100%] ml-[15%] ' />
           </div>
           <div className=' bg-amber-400  p-1 w-[50%] space-y-4 mr-[15%] pb-[5%] flex-row h-fit'>
             <button className="bg-amber-100 rounded-lg w-full p-1" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
