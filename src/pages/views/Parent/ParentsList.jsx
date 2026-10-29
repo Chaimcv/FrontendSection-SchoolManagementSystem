@@ -1,94 +1,114 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import { fetchParentsData, deleteParent, deleteAParent } from '../../../Redux/Slices/ParentSlice';
+import React, { useEffect, useState, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchParentsData, deleteAParent } from "../../../Redux/Slices/ParentSlice";
 
 const ParentsList = () => {
   const { loggedteacherId } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const AllParents = useSelector((state) => state.parent.parentData) || [];
-  console.log(AllParents, "All");
+  const allParents = useSelector((state) => state.parent.parentData) || [];
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     dispatch(fetchParentsData());
-  }, []);
+  }, [dispatch]);
 
-  // const viewParentDetails=(parenttID)=>{
-  //   navigate(`//${parentID}`);
-  // }
-
-  const deleteParent = async (parentIdToDelete) => {
-    await dispatch(deleteAParent(parentIdToDelete));
-    dispatch(fetchParentsData());
+  const handleDelete = async (parentIdToDelete) => {
+    if (window.confirm("Are you sure you want to delete this guardian record?")) {
+      await dispatch(deleteAParent(parentIdToDelete));
+      dispatch(fetchParentsData());
+    }
   };
-  const BackToDashboard = () => {
-    navigate(-1);
-  }
 
-  const AddParent = () => navigate(`/addingParent/${loggedteacherId}`);
   return (
-    <div className='bg-white '>
-      <div>{loggedteacherId && <button
-        className='bg-white border-2 border-amber-600 text-amber-600 hover:bg-amber-50 font-bold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2'
-        onClick={AddParent}
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-        </svg>
-        Add Parent
-      </button>}</div>
+    <div className="min-h-screen bg-linear-to-b from-amber-50/80 via-amber-50/30 to-white text-stone-800 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        {/* Header Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-amber-200 pb-6 mb-8">
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-amber-950 font-serif">
+                Parent & Guardian Directory
+              </h1>
+              {/* <div className="flex items-center gap-3 "> */}
+              {loggedteacherId && (
+                <button
+                  onClick={() => navigate(`/addingParent/${loggedteacherId}`)}
+                  className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
+                >
+                  <span className="text-base leading-none">+</span> Add Parent
+                </button>
+              )}
+              {/* </div> */}
+            </div>
 
-      {/*         
-         <div >
-        
-         <h3>Add Parent  <button className='rounded-md bg-amber-500 px-7 ml-14 mt-1' onClick={AddParent}>+</button></h3></div> */}
-      <div>
-        <h1 className="text-2xl  text-left pl-[5%] pt-[2%] font-bold tracking-tight text-slate-900 md:text-3xl">Parents List</h1>
-        <p className="text-left pl-[5%] text-sm text-slate-500 pb-[2%]">List all parents</p>
-        {/* <button className="text-black bg-amber-300  p-2 rounded-lg px-4 shadow-lg m-[1%] ml-[80%] hover:transition ease-out" onClick={BackToDashboard}> BACK </button> */}
-        <div>
+          </div>
 
         </div>
+        {/* Parent Directory Table */}
+        <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm border-collapse">
+              <thead className="bg-amber-100/70 text-xs font-bold uppercase tracking-wider text-amber-900 border-b border-amber-200">
+                <tr>
 
-        <table className='auto p-2 mx-[5%] shadow-md rounded-3xl mb-[1%] '>
-          <thead className='bg-amber-100 text-amber-700 border rounded-3xl'>
-            <tr className='p-5'>
-              <th className='p-5 '> NAME </th>
-              <th className='p-5'> EMAIL </th>
-              <th className='p-5'>STUDENT NAME </th>
-              <th className='p-5'> STUDENT ID </th>
-              <th className='p-5'> PHONENUMBER </th>
-              <th className='p-5'>ADDRESS </th>
-              <th className='p-5'>PINCODE </th>
+                  <th className="py-3.5 px-4">Guardian Name</th>
+                  <th className="py-3.5 px-4">Email</th>
+                  <th className="py-3.5 px-4">Linked Student</th>
+                  <th className="py-3.5 px-4">Student ID</th>
+                  <th className="py-3.5 px-4">Phone Number</th>
+                  <th className="py-3.5 px-4">Address</th>
+                  <th className="py-3.5 px-4 text-center">Action</th>
+                </tr>
+              </thead>
 
-              <th className='p-5'> ACTION </th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
+              <tbody className="divide-y divide-amber-100 text-stone-700">
+                {allParents.map((item, index) => (
+                  <tr key={item._id} className="hover:bg-amber-50/40 transition-colors">
 
-          <tbody className='bg-amber-50 text-amber-500' >
-            {AllParents?.map((item) => (
-              <tr className="hover:bg-amber-100" key={item._id}>
-                <td>{item?.Name}</td>
-                <td>{item?.email}</td>
-                <td>{item?.Student_name}</td>
-                <td>{item?.student_id}</td>
-                <td>{item?.phonenumber}</td>
-                <td>{item?.address}</td>
-                <td>{item?.pincode}</td>
-                {/* <td><button className='bg-amber-500 rounded-lg m-2 p-2' onClick={ ()=> viewParentDetails(item?._id)}>View Details</button></td> */}
-                <td><button className='bg-amber-400 rounded-lg m-2 p-2 text-white  shadow-lg' onClick={() => deleteParent(item?._id)}>Delete</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
 
+                    <td className="py-3.5 px-4">
+                      <div className="flex items-center gap-2.5">
+
+                        <span className="font-bold text-stone-900">{item?.Name}</span>
+                      </div>
+                    </td>
+                    <td className="py-3.5 px-4 text-xs text-stone-600 font-medium">
+                      {item?.email || "—"}
+                    </td>
+                    <td className="py-3.5 px-4 text-xs font-semibold text-stone-900">
+                      {item?.Student_name || "—"}
+                    </td>
+                    <td className="py-3.5 px-4 text-xs font-mono text-stone-600">
+                      {item?.student_id || "—"}
+                    </td>
+                    <td className="py-3.5 px-4 text-xs font-medium text-stone-800">
+                      {item?.phonenumber || "—"}
+                    </td>
+                    <td className="py-3.5 px-4 text-xs text-stone-600 max-w-xs truncate">
+                      {item?.address ? `${item.address}-${item.pincode} ` : ""}
+                    </td>
+                    <td className="py-3.5 px-4 text-center">
+                      <button
+                        onClick={() => handleDelete(item?._id)}
+                        className="text-red-600 hover:bg-red-50 border border-red-200 text-xs font-bold px-3 py-1.5 rounded-lg transition-all"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ParentsList
+export default ParentsList;

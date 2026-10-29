@@ -254,42 +254,50 @@ const AdminAttendance = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8 text-slate-800">
+    <div className="min-h-screen bg-linear-to-b from-amber-50/80 via-amber-50/30 to-white p-4 md:p-8 text-stone-800">
       <div className="mx-auto max-w-7xl">
         {/* Header Bar */}
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-slate-200">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-amber-200">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+              <h1 className="text-2xl font-extrabold tracking-tight text-amber-950 font-serif md:text-3xl">
                 Attendance Management
               </h1>
             </div>
-            <p className="mt-1 text-sm text-slate-500">
-              Inspect whole-class monthly attendance registers, view assigned class teachers, and filter records.
+            <p className="mt-1 text-sm text-stone-600">
+              Inspect whole-class monthly attendance registers, review assigned class teachers, and audit student roll calls.
             </p>
           </div>
+          <button
+            onClick={() => navigate("/admin/dashboard")}
+            className="self-start sm:self-auto inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 hover:text-amber-950 bg-white hover:bg-amber-100/70 border border-amber-200 px-4 py-2 rounded-xl shadow-xs transition-all"
+          >
+            ← Back to Dashboard
+          </button>
         </div>
 
         {/* View Mode Navigation Tabs */}
         <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
-          <div className="inline-flex rounded-xl bg-slate-200/80 p-1 border border-slate-300">
+          <div className="inline-flex rounded-xl bg-amber-100/70 p-1 border border-amber-200">
             <button
               type="button"
               onClick={() => setActiveTab("monthly")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "monthly"
-                ? "bg-white text-indigo-700 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
-                }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
+                activeTab === "monthly"
+                  ? "bg-amber-600 text-white shadow-xs"
+                  : "text-amber-900 hover:text-amber-950 hover:bg-amber-100/50"
+              }`}
             >
               Whole Class Monthly Register
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("raw")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "raw"
-                ? "bg-white text-indigo-700 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
-                }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
+                activeTab === "raw"
+                  ? "bg-amber-600 text-white shadow-xs"
+                  : "text-amber-900 hover:text-amber-950 hover:bg-amber-100/50"
+              }`}
             >
               Single Date & Raw Records Filter
             </button>
@@ -313,21 +321,21 @@ const AdminAttendance = () => {
         )}
 
         {/* ========================================================================= */}
-        {/* VIEW 1: WHOLE CLASS ATTENDANCE LIST BY MONTH & CLASS (MAIN REQUEST)        */}
+        {/* VIEW 1: WHOLE CLASS ATTENDANCE LIST BY MONTH & CLASS                       */}
         {/* ========================================================================= */}
         {activeTab === "monthly" && (
           <div className="space-y-6">
             {/* Control Panel: Class Selector, Month Picker, & Class Teacher Display */}
-            <div className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-slate-200 lg:grid-cols-12">
+            <div className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-amber-200 lg:grid-cols-12">
               {/* Class Selector Dropdown */}
               <div className="lg:col-span-4">
-                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-amber-800">
                   Select Class
                 </label>
                 <select
                   value={selectedClassIndex}
                   onChange={(e) => setSelectedClassIndex(e.target.value)}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-stone-800 shadow-xs focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
                 >
                   <option value="">Select a class</option>
                   {(assignedClasses || []).map((item, index) => (
@@ -343,7 +351,7 @@ const AdminAttendance = () => {
 
               {/* Month Picker with Prev/Next Controls */}
               <div className="lg:col-span-4">
-                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-amber-800">
                   <span>Select Month</span>
                 </label>
 
@@ -352,7 +360,7 @@ const AdminAttendance = () => {
                     type="button"
                     onClick={handlePrevMonth}
                     title="Previous Month"
-                    className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm font-bold text-amber-800 hover:bg-amber-50 transition-colors"
                   >
                     ◀
                   </button>
@@ -361,14 +369,14 @@ const AdminAttendance = () => {
                     type="month"
                     value={selectedMonth}
                     onChange={(e) => setSelectedMonth(e.target.value)}
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                    className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-stone-800 shadow-xs focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
                   />
 
                   <button
                     type="button"
                     onClick={handleNextMonth}
                     title="Next Month"
-                    className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="rounded-xl border border-amber-200 bg-white px-3 py-2.5 text-sm font-bold text-amber-800 hover:bg-amber-50 transition-colors"
                   >
                     ▶
                   </button>
@@ -381,7 +389,7 @@ const AdminAttendance = () => {
                   type="button"
                   onClick={loadClassMonthlyAttendance}
                   disabled={loading || !selectedClassDetails || !selectedMonth}
-                  className="w-full rounded-xl bg-indigo-400 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-bold text-white shadow-md hover:bg-amber-700 disabled:opacity-50 transition-all flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <>
@@ -399,17 +407,17 @@ const AdminAttendance = () => {
 
             {/* CLASS TEACHER & CLASS INFO BANNER */}
             {selectedClassDetails && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-gradient-to-r from-indigo-50 via-white to-slate-50 p-5 border border-indigo-100 shadow-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-linear-to-r from-amber-100/70 via-amber-50/50 to-white p-5 border border-amber-200 shadow-xs">
                 {/* 1. Class Teacher Card */}
-                <div className="flex items-center gap-3.5 sm:border-r border-indigo-100 pr-4">
+                <div className="flex items-center gap-3.5 sm:border-r border-amber-200/80 pr-4">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-indigo-700">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-amber-800">
                       Class Teacher
                     </div>
-                    <div className="text-base font-extrabold text-slate-900 mt-0.5">
+                    <div className="text-base font-extrabold text-amber-950 mt-0.5">
                       {localTeacherName || selectedClassDetails.classTeacherName || "Not Assigned"}
                     </div>
-                    <div className="text-[11px] text-slate-500">
+                    <div className="text-[11px] text-stone-500">
                       {localTeacherName && localTeacherName !== "Not Assigned"
                         ? "Assigned class in-charge"
                         : "No teacher assigned for this class"}
@@ -418,15 +426,15 @@ const AdminAttendance = () => {
                 </div>
 
                 {/* 2. Selected Class Info */}
-                <div className="flex items-center gap-3.5 sm:border-r border-indigo-100 pr-4">
+                <div className="flex items-center gap-3.5 sm:border-r border-amber-200/80 pr-4">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-stone-500">
                       Class
                     </div>
-                    <div className="text-base font-extrabold text-slate-900 mt-0.5">
+                    <div className="text-base font-extrabold text-amber-950 mt-0.5">
                       Standard {selectedClassDetails.standard} - Division {selectedClassDetails.division}
                     </div>
-                    <div className="text-[11px] text-slate-500">
+                    <div className="text-[11px] text-stone-500">
                       {filteredMonthlyStudents.length} Students registered
                     </div>
                   </div>
@@ -435,13 +443,13 @@ const AdminAttendance = () => {
                 {/* 3. Month & Working Days */}
                 <div className="flex items-center gap-3.5">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-amber-700">
                       Month
                     </div>
-                    <div className="text-base font-extrabold text-slate-900 mt-0.5 capitalize">
+                    <div className="text-base font-extrabold text-amber-950 mt-0.5 capitalize">
                       {formatMonthName(selectedMonth)}
                     </div>
-                    <div className="text-[11px] text-slate-500">
+                    <div className="text-[11px] text-stone-500">
                       {monthDates.length} Calendar days in month
                     </div>
                   </div>
@@ -450,10 +458,10 @@ const AdminAttendance = () => {
             )}
 
             {/* Monthly Search & Legend Toolbar */}
-            <div className="flex flex-col gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-200">
+            <div className="flex flex-col gap-4 rounded-2xl bg-white p-4 shadow-sm border border-amber-200">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                <div className="flex items-center gap-2 text-sm text-slate-600">
-                  <span className="font-bold text-slate-900">Whole Class Attendance Register</span>
+                <div className="flex items-center gap-2 text-sm text-stone-700">
+                  <span className="font-bold text-amber-950">Whole Class Attendance Register</span>
                 </div>
 
                 <div className="relative">
@@ -462,12 +470,12 @@ const AdminAttendance = () => {
                     placeholder="Search student by name..."
                     value={monthlySearchQuery}
                     onChange={(e) => setMonthlySearchQuery(e.target.value)}
-                    className="w-full sm:w-64 rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:outline-none"
+                    className="w-full sm:w-64 rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 placeholder-stone-400 focus:bg-white focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
                   />
                   {monthlySearchQuery && (
                     <button
                       onClick={() => setMonthlySearchQuery("")}
-                      className="absolute right-3 top-2.5 text-xs text-slate-400 hover:text-slate-600"
+                      className="absolute right-3 top-2 text-xs text-stone-400 hover:text-stone-600"
                     >
                       ✕
                     </button>
@@ -476,13 +484,12 @@ const AdminAttendance = () => {
               </div>
 
               {/* Status Badges Legend */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs">
-                <div className="text-xs text-slate-500">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-amber-100 pt-3 text-xs">
+                <div className="text-xs text-stone-500">
                   Showing daily roll call across all {monthDates.length} days of the month.
                 </div>
 
                 <div className="flex items-center gap-3">
-
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800">
                     <span className="w-5 h-5 rounded bg-emerald-100 flex items-center justify-center text-[10px]">P</span>
                     Present
@@ -495,8 +502,8 @@ const AdminAttendance = () => {
                     <span className="w-5 h-5 rounded bg-amber-100 flex items-center justify-center text-[10px]">L</span>
                     Late
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400">
-                    <span className="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-[10px]">—</span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-stone-400">
+                    <span className="w-5 h-5 rounded bg-amber-50 flex items-center justify-center text-[10px]">—</span>
                     No Record
                   </span>
                 </div>
@@ -504,18 +511,18 @@ const AdminAttendance = () => {
             </div>
 
             {/* Whole Class Monthly Attendance Register Table */}
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-200">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm border-collapse">
-                  <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                  <thead className="bg-amber-100/70 text-xs font-bold uppercase tracking-wider text-amber-900 border-b border-amber-200">
                     <tr>
                       {/* Sticky Index */}
-                      <th className="py-3 px-3 w-12 text-center sticky left-0 bg-slate-100 z-30 border-r border-slate-200">
+                      <th className="py-3 px-3 w-12 text-center sticky left-0 bg-amber-100 z-30 border-r border-amber-200">
                         #
                       </th>
 
                       {/* Sticky Student Name */}
-                      <th className="py-3 px-4 min-w-[200px] sticky left-12 bg-slate-100 z-30 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
+                      <th className="py-3 px-4 min-w-[200px] sticky left-12 bg-amber-100 z-30 border-r border-amber-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.06)]">
                         Student Name
                       </th>
 
@@ -523,16 +530,17 @@ const AdminAttendance = () => {
                       {monthDates.map((item) => (
                         <th
                           key={item.date}
-                          className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-slate-200 ${item.isWeekend
-                            ? "bg-slate-200/60 text-slate-400"
-                            : "bg-slate-100 text-slate-700"
-                            }`}
+                          className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-amber-200/80 ${
+                            item.isWeekend
+                              ? "bg-amber-200/50 text-amber-800/80"
+                              : "bg-amber-100/70 text-amber-900"
+                          }`}
                           title={`${item.date} (${item.dayName})`}
                         >
                           <div className="text-[11px] font-extrabold leading-tight">
                             {String(item.day).padStart(2, "0")}
                           </div>
-                          <div className="text-[9px] font-medium leading-tight text-slate-500">
+                          <div className="text-[9px] font-medium leading-tight text-amber-800/70">
                             {item.dayName}
                           </div>
                         </th>
@@ -558,39 +566,39 @@ const AdminAttendance = () => {
                         L
                       </th>
                       <th
-                        className="py-3 px-2 text-center bg-slate-100 text-slate-700 min-w-[56px] border-r border-slate-200"
+                        className="py-3 px-2 text-center bg-amber-100/70 text-amber-900 min-w-[56px] border-r border-amber-200"
                         title="Total Days Marked"
                       >
                         Total
                       </th>
-                      <th className="py-3 px-3 text-center bg-slate-100 text-slate-700 min-w-[90px]">
+                      <th className="py-3 px-3 text-center bg-amber-100/70 text-amber-900 min-w-[90px]">
                         Breakdown
                       </th>
                     </tr>
                   </thead>
 
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-amber-100">
                     {filteredMonthlyStudents.map((student, index) => (
                       <tr
                         key={student.studentId || index}
-                        className="hover:bg-indigo-50/20 transition-colors"
+                        className="hover:bg-amber-50/40 transition-colors"
                       >
                         {/* Sticky Row Index */}
-                        <td className="py-2.5 px-3 text-center text-xs font-medium text-slate-400 sticky left-0 bg-white z-20 border-r border-slate-100">
+                        <td className="py-2.5 px-3 text-center text-xs font-medium text-stone-400 sticky left-0 bg-white z-20 border-r border-amber-100">
                           {index + 1}
                         </td>
 
                         {/* Sticky Student Name */}
-                        <td className="py-2.5 px-4 font-semibold text-slate-800 sticky left-12 bg-white z-20 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
+                        <td className="py-2.5 px-4 font-semibold text-stone-800 sticky left-12 bg-white z-20 border-r border-amber-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.06)]">
                           <div className="flex items-center gap-2.5">
-                            <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs uppercase shadow-xs shrink-0">
+                            <div className="w-7 h-7 rounded-full bg-amber-100 border border-amber-200 text-amber-800 flex items-center justify-center font-bold text-xs uppercase shadow-xs shrink-0">
                               {(student.name || "S").charAt(0)}
                             </div>
                             <div className="truncate max-w-[150px]" title={student.name}>
-                              <div className="text-xs font-semibold text-slate-900 truncate">
+                              <div className="text-xs font-semibold text-stone-900 truncate">
                                 {student.name || "Unnamed Student"}
                               </div>
-                              <div className="text-[10px] text-slate-400">
+                              <div className="text-[10px] text-stone-400">
                                 ID: {student.studentId}
                               </div>
                             </div>
@@ -606,8 +614,9 @@ const AdminAttendance = () => {
                           return (
                             <td
                               key={item.date}
-                              className={`py-2 px-0.5 text-center border-r border-slate-100 ${item.isWeekend ? "bg-slate-50/40" : ""
-                                }`}
+                              className={`py-2 px-0.5 text-center border-r border-amber-100 ${
+                                item.isWeekend ? "bg-amber-50/30" : ""
+                              }`}
                             >
                               {status === "Present" ? (
                                 <span
@@ -632,7 +641,7 @@ const AdminAttendance = () => {
                                 </span>
                               ) : (
                                 <span
-                                  className="text-slate-300 font-bold text-xs select-none"
+                                  className="text-stone-300 font-bold text-xs select-none"
                                   title={`No record on ${item.date}`}
                                 >
                                   ·
@@ -643,28 +652,28 @@ const AdminAttendance = () => {
                         })}
 
                         {/* Summary: Present */}
-                        <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-emerald-50/20">
+                        <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-emerald-50/20">
                           <span className="text-xs font-bold text-emerald-700">
                             {student.present || 0}
                           </span>
                         </td>
 
                         {/* Summary: Absent */}
-                        <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-rose-50/20">
+                        <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-rose-50/20">
                           <span className="text-xs font-bold text-rose-700">
                             {student.absent || 0}
                           </span>
                         </td>
 
                         {/* Summary: Late */}
-                        <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-amber-50/20">
+                        <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-amber-50/20">
                           <span className="text-xs font-bold text-amber-700">
                             {student.late || 0}
                           </span>
                         </td>
 
                         {/* Summary: Total Working Days */}
-                        <td className="py-2.5 px-2 text-center font-bold text-xs text-slate-800 border-r border-slate-200">
+                        <td className="py-2.5 px-2 text-center font-bold text-xs text-amber-950 border-r border-amber-200">
                           {student.totalMarked || 0}
                         </td>
 
@@ -673,7 +682,7 @@ const AdminAttendance = () => {
                           <button
                             type="button"
                             onClick={() => setSelectedStudentForModal(student)}
-                            className="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200 transition-colors"
+                            className="text-[11px] font-bold text-amber-800 hover:text-amber-950 hover:bg-amber-100/70 px-2 py-1 rounded-lg border border-amber-200 transition-colors"
                           >
                             📋 All Dates
                           </button>
@@ -685,7 +694,7 @@ const AdminAttendance = () => {
                       <tr>
                         <td
                           colSpan={monthDates.length + 7}
-                          className="py-12 text-center text-slate-500"
+                          className="py-12 text-center text-stone-500"
                         >
                           {monthlySearchQuery
                             ? `No students matching "${monthlySearchQuery}" found.`
@@ -701,41 +710,41 @@ const AdminAttendance = () => {
             {/* MODAL: CHRONOLOGICAL LIST OF ALL DATES IN THE MONTH FOR ONE STUDENT */}
             {selectedStudentForModal && (
               <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/40 p-4 backdrop-blur-xs"
                 onClick={() => setSelectedStudentForModal(null)}
               >
                 <div
-                  className="w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200 flex flex-col"
+                  className="w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl border border-amber-200 flex flex-col"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Modal Header */}
-                  <div className="flex items-center justify-between border-b border-slate-200 p-5 bg-slate-50">
+                  <div className="flex items-center justify-between border-b border-amber-100 p-5 bg-amber-50/70">
                     <div>
-                      <h3 className="text-lg font-bold text-slate-900">
+                      <h3 className="text-lg font-bold text-amber-950 font-serif">
                         {selectedStudentForModal.name}&apos;s Attendance Breakdown
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-stone-600 mt-0.5">
                         Class: Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division} • Class Teacher:{" "}
-                        <span className="font-semibold text-indigo-700">
+                        <span className="font-semibold text-amber-800">
                           {localTeacherName || selectedClassDetails?.classTeacherName || "Not Assigned"}
                         </span>{" "}
-                        • Month: <span className="font-semibold text-slate-700">{formatMonthName(selectedMonth)}</span>
+                        • Month: <span className="font-semibold text-stone-800">{formatMonthName(selectedMonth)}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setSelectedStudentForModal(null)}
-                      className="rounded-xl p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors"
+                      className="rounded-xl p-2 text-stone-400 hover:bg-amber-100 hover:text-stone-700 transition-colors"
                     >
                       ✕
                     </button>
                   </div>
 
                   {/* Summary Metric Badges */}
-                  <div className="grid grid-cols-4 gap-2 p-4 bg-slate-100/70 border-b border-slate-200 text-center">
-                    <div className="rounded-xl bg-white p-2.5 border border-slate-200">
-                      <div className="text-[10px] uppercase font-bold text-slate-500">Total Days</div>
-                      <div className="text-base font-extrabold text-slate-800">{monthDates.length}</div>
+                  <div className="grid grid-cols-4 gap-2 p-4 bg-amber-50/30 border-b border-amber-100 text-center">
+                    <div className="rounded-xl bg-white p-2.5 border border-amber-200">
+                      <div className="text-[10px] uppercase font-bold text-stone-500">Total Days</div>
+                      <div className="text-base font-extrabold text-amber-950">{monthDates.length}</div>
                     </div>
                     <div className="rounded-xl bg-emerald-50 p-2.5 border border-emerald-200">
                       <div className="text-[10px] uppercase font-bold text-emerald-700">Present</div>
@@ -760,7 +769,7 @@ const AdminAttendance = () => {
                   {/* All Dates Chronological List */}
                   <div className="overflow-y-auto p-4 flex-1">
                     <table className="w-full text-left text-sm border-collapse">
-                      <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200 sticky top-0">
+                      <thead className="bg-amber-100/70 text-xs font-bold uppercase tracking-wider text-amber-900 border-b border-amber-200 sticky top-0">
                         <tr>
                           <th className="py-2.5 px-3 w-12 text-center">#</th>
                           <th className="py-2.5 px-3">Date</th>
@@ -768,7 +777,7 @@ const AdminAttendance = () => {
                           <th className="py-2.5 px-3 text-right">Attendance Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100">
+                      <tbody className="divide-y divide-amber-100">
                         {monthDates.map((item) => {
                           const status = selectedStudentForModal.dailyAttendance
                             ? selectedStudentForModal.dailyAttendance[item.date]
@@ -776,17 +785,18 @@ const AdminAttendance = () => {
                           return (
                             <tr
                               key={item.date}
-                              className={`hover:bg-slate-50 transition-colors ${item.isWeekend ? "bg-slate-50/50" : ""
-                                }`}
+                              className={`hover:bg-amber-50/50 transition-colors ${
+                                item.isWeekend ? "bg-amber-50/20" : ""
+                              }`}
                             >
-                              <td className="py-2.5 px-3 text-center text-xs font-medium text-slate-400">
+                              <td className="py-2.5 px-3 text-center text-xs font-medium text-stone-400">
                                 {item.day}
                               </td>
-                              <td className="py-2.5 px-3 font-semibold text-xs text-slate-800">
+                              <td className="py-2.5 px-3 font-semibold text-xs text-stone-800">
                                 {item.date}
                               </td>
-                              <td className="py-2.5 px-3 text-xs text-slate-500">
-                                <span className={item.isWeekend ? "font-semibold text-slate-400" : ""}>
+                              <td className="py-2.5 px-3 text-xs text-stone-500">
+                                <span className={item.isWeekend ? "font-semibold text-amber-800/70" : ""}>
                                   {item.dayName}
                                   {item.isWeekend ? " (Weekend)" : ""}
                                 </span>
@@ -805,7 +815,7 @@ const AdminAttendance = () => {
                                     ⏱ Late
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-stone-100 text-stone-400 border border-stone-200">
                                     — No Record / Holiday
                                   </span>
                                 )}
@@ -818,18 +828,18 @@ const AdminAttendance = () => {
                   </div>
 
                   {/* Modal Footer */}
-                  <div className="border-t border-slate-200 p-4 bg-slate-50 flex items-center justify-between">
+                  <div className="border-t border-amber-100 p-4 bg-amber-50/50 flex items-center justify-between">
                     <button
                       type="button"
                       onClick={() => window.print()}
-                      className="px-4 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+                      className="px-4 py-2 rounded-xl border border-amber-200 bg-white text-xs font-bold text-amber-900 hover:bg-amber-50 transition-colors"
                     >
                       🖨️ Print Student Report
                     </button>
                     <button
                       type="button"
                       onClick={() => setSelectedStudentForModal(null)}
-                      className="px-5 py-2 rounded-xl bg-slate-800 text-xs font-bold text-white hover:bg-slate-900 transition-colors"
+                      className="px-5 py-2 rounded-xl bg-amber-600 text-xs font-bold text-white hover:bg-amber-700 transition-colors shadow-sm"
                     >
                       Close
                     </button>
@@ -847,10 +857,10 @@ const AdminAttendance = () => {
           <div className="space-y-6">
             <form
               onSubmit={handleLegacyFilter}
-              className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-slate-200 md:grid-cols-4"
+              className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-amber-200 md:grid-cols-4"
             >
               <div>
-                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-amber-800">
                   Standard
                 </label>
                 <input
@@ -858,12 +868,12 @@ const AdminAttendance = () => {
                   value={filterStandard}
                   onChange={(e) => setFilterStandard(e.target.value)}
                   placeholder="e.g. 6"
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-amber-800">
                   Division
                 </label>
                 <input
@@ -871,26 +881,26 @@ const AdminAttendance = () => {
                   value={filterDivision}
                   onChange={(e) => setFilterDivision(e.target.value)}
                   placeholder="e.g. A"
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1 block text-xs font-bold uppercase tracking-wider text-amber-800">
                   Specific Date
                 </label>
                 <input
                   type="date"
                   value={filterDate}
                   onChange={(e) => setFilterDate(e.target.value)}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2.5 text-sm font-medium text-stone-800 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-200"
                 />
               </div>
 
               <div className="flex items-end gap-2">
                 <button
                   type="submit"
-                  className="flex-1 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 transition-colors"
+                  className="flex-1 rounded-xl bg-amber-600 px-4 py-2.5 text-sm font-bold text-white shadow-md hover:bg-amber-700 transition-colors"
                 >
                   Apply Filter
                 </button>
@@ -898,7 +908,7 @@ const AdminAttendance = () => {
                 <button
                   type="button"
                   onClick={handleLegacyReset}
-                  className="rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
+                  className="rounded-xl border border-amber-200 px-4 py-2.5 text-sm font-bold text-amber-800 hover:bg-amber-50 transition-colors"
                 >
                   Reset
                 </button>
@@ -906,13 +916,13 @@ const AdminAttendance = () => {
             </form>
 
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-stone-500">
                 Total Records Displayed:{" "}
-                <span className="font-bold text-slate-800">{filteredLegacyRecords.length}</span>
+                <span className="font-bold text-amber-950">{filteredLegacyRecords.length}</span>
               </p>
 
               <div className="flex items-center gap-2">
-                <label htmlFor="attendance-sort" className="text-xs font-bold text-slate-600">
+                <label htmlFor="attendance-sort" className="text-xs font-bold text-amber-800">
                   Sort by:
                 </label>
 
@@ -920,7 +930,7 @@ const AdminAttendance = () => {
                   id="attendance-sort"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="rounded-xl border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700"
+                  className="rounded-xl border border-amber-200 bg-white px-3 py-1.5 text-xs font-medium text-stone-700 focus:border-amber-500 focus:outline-none"
                 >
                   <option value="date">Latest Date</option>
                   <option value="name">Student Name</option>
@@ -929,10 +939,10 @@ const AdminAttendance = () => {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-200">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[700px] text-left text-sm border-collapse">
-                  <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                  <thead className="bg-amber-100/70 text-xs font-bold uppercase tracking-wider text-amber-900 border-b border-amber-200">
                     <tr>
                       <th className="py-3 px-4 w-12 text-center">#</th>
                       <th className="py-3 px-4">Student</th>
@@ -943,25 +953,25 @@ const AdminAttendance = () => {
                     </tr>
                   </thead>
 
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-amber-100">
                     {filteredLegacyRecords.map((record, index) => (
                       <tr
                         key={record._id || `${record.studentId}-${record.date}-${index}`}
-                        className="hover:bg-slate-50 transition-colors"
+                        className="hover:bg-amber-50/40 transition-colors"
                       >
-                        <td className="py-3 px-4 text-center text-xs font-medium text-slate-400">
+                        <td className="py-3 px-4 text-center text-xs font-medium text-stone-400">
                           {index + 1}
                         </td>
-                        <td className="py-3 px-4 font-semibold text-slate-800">
+                        <td className="py-3 px-4 font-semibold text-stone-800">
                           {record.name || record.studentName || "—"}
                         </td>
-                        <td className="py-3 px-4 text-center text-xs text-slate-600">
+                        <td className="py-3 px-4 text-center text-xs text-stone-600">
                           {record.standard || "—"}
                         </td>
-                        <td className="py-3 px-4 text-center text-xs text-slate-600">
+                        <td className="py-3 px-4 text-center text-xs text-stone-600">
                           {record.division || "—"}
                         </td>
-                        <td className="py-3 px-4 text-center text-xs text-slate-600">
+                        <td className="py-3 px-4 text-center text-xs text-stone-600">
                           {record.date || "—"}
                         </td>
                         <td className="py-3 px-4 text-center">
@@ -978,7 +988,7 @@ const AdminAttendance = () => {
 
                     {filteredLegacyRecords.length === 0 && (
                       <tr>
-                        <td colSpan="6" className="py-12 text-center text-slate-500">
+                        <td colSpan="6" className="py-12 text-center text-stone-500">
                           No attendance records found matching filters.
                         </td>
                       </tr>

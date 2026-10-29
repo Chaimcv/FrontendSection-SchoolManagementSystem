@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { postEditedTeacherDetails } from '../Redux/Slices/TeacherSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { postEditedTeacherDetails } from "../Redux/Slices/TeacherSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditTeacherForm = () => {
+const EditTeacherForm = ({ OnEditBtnClick }) => {
   const dispatch = useDispatch();
-  const TeacherDataFromDatabase = useSelector((store) => store.teacher.oneTeacherDetailsData);
-  console.log(TeacherDataFromDatabase, "teacher to be Edited");
+  const teacherData = useSelector((store) => store.teacher.oneTeacherDetailsData);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,72 +14,177 @@ const EditTeacherForm = () => {
     subject: "",
     standard: "",
     class: "",
-    division: ""
+    division: "",
   });
 
   useEffect(() => {
-    if (TeacherDataFromDatabase) {
+    if (teacherData) {
       setFormData({
-        name: TeacherDataFromDatabase.name,
-        class: TeacherDataFromDatabase.class || "",
-        pin: TeacherDataFromDatabase.pin || "",
-        city: TeacherDataFromDatabase.city || "",
-        phonenumber: TeacherDataFromDatabase.phoneNumber || "",
-        subject: TeacherDataFromDatabase.subject || "",
-        standard: TeacherDataFromDatabase.standard || "",
-        division: TeacherDataFromDatabase.division || ""
+        name: teacherData.name || "",
+        class: teacherData.class || "",
+        pin: teacherData.pin || "",
+        city: teacherData.city || "",
+        phonenumber: teacherData.phoneNumber || teacherData.phonenumber || "",
+        subject: teacherData.subject || "",
+        standard: teacherData.standard || "",
+        division: teacherData.division || "",
       });
     }
-  }, [TeacherDataFromDatabase])
+  }, [teacherData]);
+
   const handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,            // Spread the previous state to retain other values
-      [name]: value,            // Update the specific field using the input's 'name' attribute
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
     }));
-    console.log(formData, "formdata");
-  }
+  };
 
-  const EditTeacher = (id) => {
-    console.log(id, "manipulation id");
-    dispatch(postEditedTeacherDetails({ id, formData }))
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (teacherData?._id) {
+      dispatch(postEditedTeacherDetails({ id: teacherData._id, formData }));
+      if (OnEditBtnClick) OnEditBtnClick();
+    }
+  };
+
   return (
-    <div>
-      <form onSubmit={EditTeacher(TeacherDataFromDatabase?._id)}>
-        {TeacherDataFromDatabase ? (
-          <div className='border border-black flex flex-col m-5 p-5 space-y-5 bg-amber-100'>
-            <label>NAME:
-              <input type='text' name="name" value={formData.name} onChange={handleChange} />
-            </label>
-            <label>PINCODE:
-              <input type='text' name="pin" value={formData.pin} onChange={handleChange} />
-            </label>
-            <label>CITY:
-              <input type='text' name="city" value={formData.city} onChange={handleChange} />
-            </label>
-            <label>SUBJECT:
-              <input type='text' name="subject" value={formData.subject} onChange={handleChange} />
-            </label>
-            <label>PHONE:
-              <input type='number' name="phonenumber" value={formData.phonenumber} onChange={handleChange} />
-            </label>
-            <label>CLASS IN CHARGE:
-              <input type='text' name="standard" value={formData.standard} onChange={handleChange} />
-            </label>
-            <label>DIVISION:
-              <input type='text' name="division" value={formData.division} onChange={handleChange} />
-            </label>
-            {/* <label>SUBJECT: <input type='text'  name="subject" value={formData.subject}  onChange={handleChange} /></label> */}
-            <button type='submit'>SUBMIT</button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/40 p-4 backdrop-blur-xs">
+      <div className="w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl border border-amber-200 animate-in fade-in zoom-in-95 duration-200">
+        {/* Modal Header */}
+        <div className="flex items-center justify-between border-b border-amber-100 p-6 bg-linear-to-r from-amber-50/80 via-white to-amber-50/40">
+          <div>
+            <h2 className="text-xl font-extrabold text-amber-950 font-serif">
+              Edit Faculty Profile
+            </h2>
+            <p className="text-xs text-stone-600 mt-0.5">
+              Update instructor assignments, class in-charge, and contact information.
+            </p>
           </div>
-        ) :
-          <><h1>no teacher</h1></>
-        }
-      </form>
-    </div>
-  )
-}
+          <button
+            type="button"
+            onClick={OnEditBtnClick}
+            className="rounded-xl p-2 text-stone-400 hover:bg-amber-100 hover:text-stone-700 transition-colors"
+          >
+            ✕
+          </button>
+        </div>
 
-export default EditTeacherForm
+        {/* Modal Body Form */}
+        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Subject
+              </label>
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Class In-Charge (Standard)
+              </label>
+              <input
+                type="text"
+                name="standard"
+                value={formData.standard}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Division
+              </label>
+              <input
+                type="text"
+                name="division"
+                value={formData.division}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Contact Phone
+              </label>
+              <input
+                type="tel"
+                name="phonenumber"
+                value={formData.phonenumber}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                City / Location
+              </label>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-amber-800 mb-1">
+                Pincode
+              </label>
+              <input
+                type="text"
+                name="pin"
+                value={formData.pin}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Modal Action Buttons */}
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-amber-100">
+            <button
+              type="button"
+              onClick={OnEditBtnClick}
+              className="px-5 py-2.5 rounded-xl border border-amber-200 text-xs font-bold text-amber-800 hover:bg-amber-50 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-xs font-bold text-white shadow-md transition-all hover:scale-105"
+            >
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default EditTeacherForm;
