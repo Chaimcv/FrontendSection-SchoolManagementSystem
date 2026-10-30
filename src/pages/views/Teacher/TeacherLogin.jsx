@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTeachersData, loginTeacher } from '../../../Redux/Slices/TeacherSlice';
+import { useDispatch } from 'react-redux';
+import { loginTeacher } from '../../../Redux/Slices/TeacherSlice';
 import { useNavigate } from 'react-router-dom';
 import SchoolImage from "../../../assets/SchoolImage.png";
 
@@ -37,7 +37,7 @@ const TeacherLogin = () => {
       <div className='hidden lg:flex'>
         <div className='flex rounded-lg w-screen m-2 h-screen shadow-2xl mt-[3%]'>
           <div className='w-[55%] ml-[3%] h-[55.3%]'>
-            <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 border rounded-l-xl ' />
+            <img src={SchoolImage} alt='School building' className='h-[100%] w-[100%] ml-52 border rounded-l-xl ' />
           </div>
           <div className=' bg-amber-400  p-1 w-[40%] space-y-3 mr-[15%] pb-[5%] flex-row h-[55.3%] border rounded-r-xl'>
             <h2 className='font-bold text-amber-800 pt-2'>TEACHER LOGIN</h2>
