@@ -24,10 +24,10 @@ const Header = () => {
       className="relative w-full bg-cover bg-center border-b border-amber-200 shadow-sm"
       style={{ backgroundImage: `url(${HeaderImage})` }}
     >
-      {/* Warm amber translucent tint overlay for enhanced readability */}
+
       <div className="bg-amber-950/20 backdrop-blur-[2px] w-full py-3 px-4 md:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          {/* Left: School Branding & Emblem */}
+
           <Link to="/" className="flex items-center gap-3.5 group">
             <div className="h-14 w-14 rounded-full bg-white/90 p-1 shadow-md border border-amber-200 flex items-center justify-center transition-transform group-hover:scale-105">
               <img src={Emblem} alt="School Emblem" className="h-full w-full object-contain" />
@@ -47,7 +47,7 @@ const Header = () => {
             {token ? (
               <div className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-amber-200 shadow-sm">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  {/* <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> */}
                   <div className="text-left">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 block leading-tight">
                       Signed in as

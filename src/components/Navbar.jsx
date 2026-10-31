@@ -25,11 +25,10 @@ const Navbar = () => {
         <div className="flex items-center gap-2 shrink-0">
           <Link
             to="/"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-              location.pathname === "/"
-                ? "bg-amber-600 text-white shadow-xs"
-                : "text-amber-900 hover:bg-amber-100/70"
-            }`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${location.pathname === "/"
+              ? "bg-amber-600 text-white shadow-xs"
+              : "text-amber-900 hover:bg-amber-100/70"
+              }`}
             title="School Homepage"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,69 +48,63 @@ const Navbar = () => {
           <div className="flex items-center gap-1.5 shrink-0 overflow-x-auto py-0.5">
             <Link
               to="/admin/dashboard"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/admin/dashboard")
-                  ? "bg-amber-600 text-white shadow-xs"
-                  : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/admin/dashboard")
+                ? "bg-amber-600 text-white shadow-xs"
+                : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
+                }`}
             >
               <span>Dashboard</span>
             </Link>
 
-            <Link
+            {/* <Link
               to="/admin/announcementsDashboard"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/admin/announcementsDashboard")
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/admin/announcementsDashboard")
                   ? "bg-amber-600 text-white shadow-xs"
                   : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+                }`}
             >
               <span>Announcements</span>
             </Link>
 
             <Link
               to="/teacher/teacherDashboard"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/teacher/teacherDashboard")
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/teacher/teacherDashboard")
                   ? "bg-amber-600 text-white shadow-xs"
                   : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+                }`}
             >
               <span>Faculty</span>
             </Link>
 
             <Link
               to="/parentslist"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/parentslist")
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/parentslist")
                   ? "bg-amber-600 text-white shadow-xs"
                   : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+                }`}
             >
               <span>Parents</span>
             </Link>
 
             <Link
               to="/admin/adminAttendence"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/admin/adminAttendence")
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/admin/adminAttendence")
                   ? "bg-amber-600 text-white shadow-xs"
                   : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+                }`}
             >
               <span>Attendance</span>
             </Link>
 
             <Link
               to="/admin/profile"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                isActive("/admin/profile")
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${isActive("/admin/profile")
                   ? "bg-amber-600 text-white shadow-xs"
                   : "text-amber-800 hover:bg-amber-100 hover:text-amber-950"
-              }`}
+                }`}
             >
-              <span>Profile</span>
-            </Link>
+               <span>Profile</span> 
+            </Link> */}
           </div>
         )}
 
@@ -141,4 +134,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

@@ -86,11 +86,25 @@ export const deleteExamTimetable = createAsyncThunk(
   }
 );
 
+// 6. Fetch all exam timetables across all teachers and classes (Admin master view)
+export const fetchAllExams = createAsyncThunk(
+  "exam/fetchAllExams",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${EXAM_URL}/all`, getAuthConfig());
+      return response.data.data || [];
+    } catch (error) {
+      return rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
 const examSlice = createSlice({
   name: "exam",
   initialState: {
     teacherExams: [],
     classExams: [],
+    allExams: [],
     loading: false,
     deleting: false,
     error: null,
@@ -163,9 +177,26 @@ const examSlice = createSlice({
         state.teacherExams = state.teacherExams.filter(
           (item) => item._id !== action.payload.id
         );
+        state.allExams = state.allExams.filter(
+          (item) => item._id !== action.payload.id
+        );
       })
       .addCase(deleteExamTimetable.rejected, (state, action) => {
         state.deleting = false;
+        state.error = action.payload;
+      })
+
+      // Fetch All Exams (Admin Master View)
+      .addCase(fetchAllExams.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllExams.fulfilled, (state, action) => {
+        state.loading = false;
+        state.allExams = action.payload;
+      })
+      .addCase(fetchAllExams.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       });
   },

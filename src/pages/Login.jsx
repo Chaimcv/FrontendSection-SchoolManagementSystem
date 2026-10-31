@@ -49,7 +49,7 @@ const Login = () => {
             <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 border rounded-l-xl ' />
           </div>
           <div className=' bg-amber-400  p-1 w-[40%] space-y-3 mr-[15%] pb-[5%] flex-row h-[55.3%] border rounded-r-xl'>
-            <button className="bg-amber-100 rounded-lg w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
+            <button className="bg-amber-100 rounded-lg w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold mt-3" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
             <button className="bg-amber-100 rounded-lg  w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={PrincipalLoginPage}>LOGIN AS PRINCIPAL</button>
             <button className="bg-amber-100 rounded-lg w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
             <br />
@@ -68,7 +68,7 @@ const Login = () => {
         <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-[15%] ' />
       </div> */}
           <div className=' bg-amber-400  p-1 w-[100%] space-y-4 pb-[5%] flex-row h-fit mx-[3%] rounded-md'>
-            <button className="bg-amber-100 rounded-lg w-full p-1 shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
+            <button className="bg-amber-100 rounded-lg w-full p-1 shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold mt-3" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
             <button className="bg-amber-100 rounded-lg  w-full p-1 shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={PrincipalLoginPage}>LOGIN AS PRINCIPAL</button>
             <button className="bg-amber-100 rounded-lg w-full p-1 shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
             <br />

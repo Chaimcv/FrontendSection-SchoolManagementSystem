@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AdminRoutes from './Routes/AdminRoutes';
@@ -18,6 +17,7 @@ import ParentDashboard from './pages/views/Parent/ParentDashboard';
 import StudentDashboard from './pages/views/Student/StudentDashboard';
 import Navbar from './components/Navbar';
 import AdminAttendance from './pages/views/AdminAttendence';
+import AdminExamSchedules from './pages/views/AdminExamSchedules';
 import StudentAttendance from './pages/views/Student/StudentAttendance';
 import StudentExams from './pages/views/Student/StudentExams';
 
@@ -50,6 +50,8 @@ function App() {
         <Route path='/:id' element={<Homepage />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/admin/adminAttendence' element={<AdminAttendance />}/>
+        <Route path='/admin/examSchedules' element={<AdminExamSchedules />}/>
+        <Route path='/admin/adminExams' element={<AdminExamSchedules />}/>
 
         {/* student */}
          <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />}/>
