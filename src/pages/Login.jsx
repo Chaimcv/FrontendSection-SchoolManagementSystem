@@ -44,11 +44,11 @@ const Login = () => {
       {/* large screen */}
       <div className='hidden lg:flex '>
 
-        <div className='flex rounded-lg  w-[100%] m-2 h-screen mt-[3%]'>
-          <div className='w-[50%] ml-[10%] h-[55.3%]'>
-            <img src={SchoolImage} alt='image' className='h-[101.2%] w-[100%] ml-[15%] ' />
+        <div className='flex rounded-lg w-screen m-2 h-screen shadow-2xl mt-[3%]'>
+          <div className='w-[55%] ml-[3%] h-[55.3%]'>
+            <img src={SchoolImage} alt='image' className='h-[100%] w-[100%] ml-52 border rounded-l-xl ' />
           </div>
-          <div className=' bg-amber-400  p-1 w-[50%] space-y-4 mr-[15%] pb-[5%] flex-row h-fit'>
+          <div className=' bg-amber-400  p-1 w-[40%] space-y-3 mr-[15%] pb-[5%] flex-row h-[55.3%] border rounded-r-xl'>
             <button className="bg-amber-100 rounded-lg w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={TeacherLoginPage}>LOGIN AS TEACHER</button>
             <button className="bg-amber-100 rounded-lg  w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={PrincipalLoginPage}>LOGIN AS PRINCIPAL</button>
             <button className="bg-amber-100 rounded-lg w-full p-1 hover:bg-amber-600 hover:text-white hover:font-bold" onClick={ParentLoginPage}>LOGIN AS PARENT</button>
