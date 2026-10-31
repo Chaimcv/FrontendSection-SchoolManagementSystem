@@ -7,21 +7,24 @@ const Footer = () => {
   return (
     // footer section incomplete 
     <div className='bg-amber-700 w-full mb-0'>
+      <p className='items-center'>Content owned by CENTRAL PUBLIC SCHOOL</p>
       <div className='flex' >
-         <div className='m-5 w-[50%]'>
+
+        <div className='m-5 w-[50%]'>
+
           <ul className='font-semibold list-disc ml-32'>
-            <li>Online Admission</li> 
-            <li>Cyber Security Awareness</li>  
-            <li>Right to Information</li> 
+            {/* corressponding link to be provided */}
+            <li>Cyber Security Awareness</li>
+            <li>Right to Information</li>
           </ul>
-         </div>
-          <div className='w-[50%]'>
-            <h3>Follow us </h3>
-             <div className='flex justify-evenly py-2'>
-               <img src={instagram} alt='instagram'/>
-               <img src={youtube} alt='youtube'/>
-             </div>
+        </div>
+        <div className='w-[50%]'>
+          <h3>Follow us </h3>
+          <div className='flex justify-evenly py-2'>
+            <img src={instagram} alt='instagram' />
+            <img src={youtube} alt='youtube' />
           </div>
+        </div>
       </div>
     </div>
   )
