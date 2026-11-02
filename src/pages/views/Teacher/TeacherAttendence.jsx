@@ -343,15 +343,15 @@ const TeacherAttendance = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8 text-slate-800">
+    <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-amber-800">
       <div className="mx-auto max-w-6xl">
         {/* Top Header Bar */}
-        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-slate-200">
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-amber-200">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h1 className="text-2xl font-bold tracking-tight text-amber-900 md:text-3xl">
               Teacher Attendance Section
             </h1>
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-amber-500">
               Manage daily roll-call attendance and view monthly reports for your assigned class.
             </p>
           </div>
@@ -359,88 +359,58 @@ const TeacherAttendance = () => {
           <button
             type="button"
             onClick={() => navigate(teacherId ? `/teacher/profile/${teacherId}` : -1)}
-            className="self-start sm:self-auto inline-flex items-center gap-2 rounded-xl bg-white border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            className="self-start sm:self-auto inline-flex items-center gap-2 rounded-xl bg-white border border-amber-200 px-4 py-2 text-sm font-semibold text-amber-700 shadow-sm hover:bg-amber-50 hover:text-amber-900 transition-colors"
           >
-            ← Back to Dashboard
+            Back to Dashboard
           </button>
         </div>
 
         {/* View Mode Navigation Tabs */}
         <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
-          <div className="inline-flex rounded-xl bg-slate-200/80 p-1 border border-slate-300">
+          <div className="inline-flex rounded-xl bg-amber-200/80 p-1 border border-amber-300">
             <button
               type="button"
               onClick={() => setActiveTab("daily")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-                activeTab === "daily"
-                  ? "bg-white text-indigo-700 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "daily"
+                ? "bg-white text-amber-700 shadow-sm"
+                : "text-amber-600 hover:text-amber-900"
+                }`}
             >
-              <span>📅</span> Daily Roll Call
+              Daily Roll Call
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("monthly")}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-                activeTab === "monthly"
-                  ? "bg-white text-indigo-700 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900"
-              }`}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-bold transition-all ${activeTab === "monthly"
+                ? "bg-white text-amber-700 shadow-sm"
+                : "text-amber-600 hover:text-amber-900"
+                }`}
             >
-              <span>📊</span> Monthly Attendance Report
+              Monthly Attendance Report
             </button>
           </div>
 
           {selectedClassDetails && (
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-50 border border-indigo-200 text-xs font-bold text-indigo-800">
-              <span>🏫 Active Class:</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-xs font-bold text-amber-800">
+              <span>  Class:</span>
               <span>Standard {selectedClassDetails.standard} - Division {selectedClassDetails.division}</span>
             </div>
           )}
         </div>
 
-        {/* Alerts */}
-        {error && (
-          <div className="mb-6 flex items-center justify-between rounded-xl bg-rose-50 border border-rose-200 p-4 text-sm text-rose-800 shadow-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">⚠️</span>
-              <span>{error}</span>
-            </div>
-            <button
-              onClick={() => dispatch(clearAttendanceError())}
-              className="font-bold hover:text-rose-950 ml-4"
-            >
-              ✕
-            </button>
-          </div>
-        )}
 
-        {successMessage && (
-          <div className="mb-6 flex items-center justify-between rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-800 shadow-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">✅</span>
-              <span>{successMessage}</span>
-            </div>
-            <button
-              onClick={() => dispatch(clearAttendanceMessage())}
-              className="font-bold hover:text-emerald-950 ml-4"
-            >
-              ✕
-            </button>
-          </div>
-        )}
 
-        {/* ========================================================================= */}
-        {/* VIEW 1: DAILY INDIVIDUAL ATTENDANCE ROLL CALL                              */}
-        {/* ========================================================================= */}
+
+
+        {/*   VIEW 1: DAILY INDIVIDUAL ATTENDANCE ROLL CALL   */}
+
         {activeTab === "daily" && (
           <div>
             {/* Class & Date Selection Bar */}
-            <div className="mb-6 grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-slate-200 md:grid-cols-12">
+            <div className="mb-6 grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-amber-200 md:grid-cols-12">
               {/* Class Select */}
               <div className="md:col-span-5">
-                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-amber-600">
                   Class & Division
                 </label>
                 <select
@@ -450,7 +420,7 @@ const TeacherAttendance = () => {
                     setRegisterLoaded(false);
                     setAttendance({});
                   }}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2.5 text-sm font-medium text-amber-800 shadow-sm focus:border-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 >
                   <option value="">Select class</option>
                   {(assignedClasses || []).map((item, index) => (
@@ -466,24 +436,22 @@ const TeacherAttendance = () => {
 
               {/* Date Picker */}
               <div className="md:col-span-4">
-                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-amber-600">
                   <span>Attendance Date</span>
                   <div className="space-x-1.5 font-normal">
                     <button
                       type="button"
                       onClick={() => setDate(getToday())}
-                      className={`text-[11px] underline hover:text-indigo-600 ${
-                        date === getToday() ? "font-bold text-indigo-600" : "text-slate-500"
-                      }`}
+                      className={`text-[11px] underline hover:text-amber-600 ${date === getToday() ? "font-bold text-amber-600" : "text-amber-500"
+                        }`}
                     >
                       Today
                     </button>
                     <button
                       type="button"
                       onClick={() => setDate(getYesterday())}
-                      className={`text-[11px] underline hover:text-indigo-600 ${
-                        date === getYesterday() ? "font-bold text-indigo-600" : "text-slate-500"
-                      }`}
+                      className={`text-[11px] underline hover:text-amber-600 ${date === getYesterday() ? "font-bold text-amber-600" : "text-amber-500"
+                        }`}
                     >
                       Yesterday
                     </button>
@@ -496,30 +464,10 @@ const TeacherAttendance = () => {
                     setDate(e.target.value);
                     setRegisterLoaded(false);
                   }}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2.5 text-sm font-medium text-amber-800 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 />
               </div>
 
-              {/* Refresh Button */}
-              <div className="md:col-span-3 flex items-end">
-                <button
-                  type="button"
-                  onClick={loadRegister}
-                  disabled={loading || !selectedClassDetails || !date}
-                  className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
-                >
-                  {loading ? (
-                    <>
-                      <span className="inline-block animate-spin">⏳</span>
-                      Loading...
-                    </>
-                  ) : (
-                    <>
-                      <span>↻</span> Refresh Sheet
-                    </>
-                  )}
-                </button>
-              </div>
             </div>
 
             {/* Register Details and Individual Marking Area */}
@@ -527,10 +475,10 @@ const TeacherAttendance = () => {
               <div className="space-y-6">
                 {/* Live Metrics Cards */}
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-                  <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total</div>
-                    <div className="mt-1 text-2xl font-extrabold text-slate-800">{dailyMetrics.total}</div>
-                    <div className="mt-1 text-xs text-slate-400">Class Size</div>
+                  <div className="rounded-xl border border-amber-200 bg-white p-4 shadow-sm">
+                    <div className="text-xs font-semibold text-amber-500 uppercase tracking-wider">Total</div>
+                    <div className="mt-1 text-2xl font-extrabold text-amber-800">{dailyMetrics.total}</div>
+                    <div className="mt-1 text-xs text-amber-400">Class Size</div>
                   </div>
 
                   <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 shadow-sm">
@@ -557,31 +505,29 @@ const TeacherAttendance = () => {
                   </div>
 
                   <div
-                    className={`rounded-xl border p-4 shadow-sm ${
-                      dailyMetrics.unmarked > 0
-                        ? "border-amber-300 bg-amber-50"
-                        : "border-slate-200 bg-white"
-                    }`}
-                  >
-                    <div className="text-xs font-semibold text-slate-600 uppercase tracking-wider">Unmarked</div>
-                    <div
-                      className={`mt-1 text-2xl font-extrabold ${
-                        dailyMetrics.unmarked > 0 ? "text-amber-700" : "text-slate-400"
+                    className={`rounded-xl border p-4 shadow-sm ${dailyMetrics.unmarked > 0
+                      ? "border-amber-300 bg-amber-50"
+                      : "border-amber-200 bg-white"
                       }`}
+                  >
+                    <div className="text-xs font-semibold text-amber-600 uppercase tracking-wider">Unmarked</div>
+                    <div
+                      className={`mt-1 text-2xl font-extrabold ${dailyMetrics.unmarked > 0 ? "text-amber-700" : "text-amber-400"
+                        }`}
                     >
                       {dailyMetrics.unmarked}
                     </div>
-                    <div className="mt-1 text-xs text-slate-500">
+                    <div className="mt-1 text-xs text-amber-500">
                       {dailyMetrics.unmarked > 0 ? "⚠️ Needs marking" : "All marked"}
                     </div>
                   </div>
                 </div>
 
                 {/* Individual Search & Filter Bar */}
-                <div className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm border border-slate-200 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <span className="font-semibold text-slate-900">Student Roll Call</span>
-                    <span className="text-slate-400">•</span>
+                <div className="flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-sm border border-amber-200 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2 text-sm text-amber-600">
+                    <span className="font-semibold text-amber-900">Student Roll Call</span>
+                    <span className="text-amber-400">•</span>
                     <span>Click a status to mark & save that student individually</span>
                   </div>
 
@@ -592,12 +538,12 @@ const TeacherAttendance = () => {
                         placeholder="Search by name..."
                         value={dailySearchQuery}
                         onChange={(e) => setDailySearchQuery(e.target.value)}
-                        className="w-48 sm:w-56 rounded-lg border border-slate-300 bg-slate-50 px-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:outline-none"
+                        className="w-48 sm:w-56 rounded-lg border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs text-amber-800 placeholder-amber-400 focus:bg-white focus:border-amber-500 focus:outline-none"
                       />
                       {dailySearchQuery && (
                         <button
                           onClick={() => setDailySearchQuery("")}
-                          className="absolute right-2 top-1.5 text-xs text-slate-400 hover:text-slate-600"
+                          className="absolute right-2 top-1.5 text-xs text-amber-400 hover:text-amber-600"
                         >
                           ✕
                         </button>
@@ -607,7 +553,7 @@ const TeacherAttendance = () => {
                     <select
                       value={dailyStatusFilter}
                       onChange={(e) => setDailyStatusFilter(e.target.value)}
-                      className="rounded-lg border border-slate-300 bg-slate-50 px-2.5 py-1.5 text-xs font-medium text-slate-700 focus:bg-white focus:outline-none"
+                      className="rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-xs font-medium text-amber-700 focus:bg-white focus:outline-none"
                     >
                       <option value="all">All Students ({dailyMetrics.total})</option>
                       <option value="unmarked">Unmarked Only ({dailyMetrics.unmarked})</option>
@@ -619,10 +565,10 @@ const TeacherAttendance = () => {
                 </div>
 
                 {/* Attendance Sheet Table with Individual Student Rows */}
-                <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-200">
+                <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm border-collapse">
-                      <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                      <thead className="bg-amber-100 text-xs font-bold uppercase tracking-wider text-amber-600 border-b border-amber-200">
                         <tr>
                           <th className="py-3.5 px-4 w-12 text-center">#</th>
                           <th className="py-3.5 px-4">Student Name</th>
@@ -631,7 +577,7 @@ const TeacherAttendance = () => {
                         </tr>
                       </thead>
 
-                      <tbody className="divide-y divide-slate-100">
+                      <tbody className="divide-y divide-amber-100">
                         {filteredDailyStudents.map((student, index) => {
                           const currentStatus = attendance[String(student.studentId)] || "";
                           const isSaving = rowSaving[String(student.studentId)];
@@ -640,24 +586,24 @@ const TeacherAttendance = () => {
                           return (
                             <tr
                               key={student.studentId || index}
-                              className="hover:bg-slate-50/80 transition-colors"
+                              className="hover:bg-amber-50/80 transition-colors"
                             >
                               {/* Row Number */}
-                              <td className="py-3.5 px-4 text-center text-xs font-medium text-slate-400">
+                              <td className="py-3.5 px-4 text-center text-xs font-medium text-amber-400">
                                 {index + 1}
                               </td>
 
                               {/* Student Name */}
-                              <td className="py-3.5 px-4 font-semibold text-slate-800">
+                              <td className="py-3.5 px-4 font-semibold text-amber-800">
                                 <div className="flex items-center gap-3">
-                                  <div className="w-9 h-9 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 flex items-center justify-center font-bold text-xs uppercase shadow-sm">
+                                  <div className="w-9 h-9 rounded-full bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center font-bold text-xs uppercase shadow-sm">
                                     {(student.name || "S").charAt(0)}
                                   </div>
                                   <div>
-                                    <div className="text-sm font-semibold text-slate-900">
+                                    <div className="text-sm font-semibold text-amber-900">
                                       {student.name || "Unnamed Student"}
                                     </div>
-                                    <div className="text-[11px] text-slate-400">
+                                    <div className="text-[11px] text-amber-400">
                                       Class: Standard {selectedClassDetails.standard}-{selectedClassDetails.division}
                                     </div>
                                   </div>
@@ -666,22 +612,20 @@ const TeacherAttendance = () => {
 
                               {/* Individual 1-Click Status Marking Buttons */}
                               <td className="py-3.5 px-4 text-center">
-                                <div className="inline-flex rounded-xl bg-slate-100 p-1 gap-1 border border-slate-200">
+                                <div className="inline-flex rounded-xl bg-amber-100 p-1 gap-1 border border-amber-200">
                                   {/* Present Button */}
                                   <button
                                     type="button"
                                     onClick={() => handleMarkIndividual(student.studentId, "Present")}
                                     disabled={isSaving}
-                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                                      currentStatus === "Present"
-                                        ? "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-600 ring-offset-1"
-                                        : "text-slate-600 hover:text-emerald-700 hover:bg-emerald-50"
-                                    }`}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${currentStatus === "Present"
+                                      ? "bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-600 ring-offset-1"
+                                      : "text-amber-600 hover:text-emerald-700 hover:bg-emerald-50"
+                                      }`}
                                   >
                                     <span
-                                      className={`w-2 h-2 rounded-full ${
-                                        currentStatus === "Present" ? "bg-white" : "bg-emerald-500"
-                                      }`}
+                                      className={`w-2 h-2 rounded-full ${currentStatus === "Present" ? "bg-white" : "bg-emerald-500"
+                                        }`}
                                     ></span>
                                     Present
                                   </button>
@@ -691,16 +635,14 @@ const TeacherAttendance = () => {
                                     type="button"
                                     onClick={() => handleMarkIndividual(student.studentId, "Absent")}
                                     disabled={isSaving}
-                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                                      currentStatus === "Absent"
-                                        ? "bg-rose-600 text-white shadow-sm ring-2 ring-rose-600 ring-offset-1"
-                                        : "text-slate-600 hover:text-rose-700 hover:bg-rose-50"
-                                    }`}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${currentStatus === "Absent"
+                                      ? "bg-rose-600 text-white shadow-sm ring-2 ring-rose-600 ring-offset-1"
+                                      : "text-amber-600 hover:text-rose-700 hover:bg-rose-50"
+                                      }`}
                                   >
                                     <span
-                                      className={`w-2 h-2 rounded-full ${
-                                        currentStatus === "Absent" ? "bg-white" : "bg-rose-500"
-                                      }`}
+                                      className={`w-2 h-2 rounded-full ${currentStatus === "Absent" ? "bg-white" : "bg-rose-500"
+                                        }`}
                                     ></span>
                                     Absent
                                   </button>
@@ -710,16 +652,14 @@ const TeacherAttendance = () => {
                                     type="button"
                                     onClick={() => handleMarkIndividual(student.studentId, "Late")}
                                     disabled={isSaving}
-                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
-                                      currentStatus === "Late"
-                                        ? "bg-amber-500 text-white shadow-sm ring-2 ring-amber-500 ring-offset-1"
-                                        : "text-slate-600 hover:text-amber-700 hover:bg-amber-50"
-                                    }`}
+                                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${currentStatus === "Late"
+                                      ? "bg-amber-500 text-white shadow-sm ring-2 ring-amber-500 ring-offset-1"
+                                      : "text-amber-600 hover:text-amber-700 hover:bg-amber-50"
+                                      }`}
                                   >
                                     <span
-                                      className={`w-2 h-2 rounded-full ${
-                                        currentStatus === "Late" ? "bg-white" : "bg-amber-400"
-                                      }`}
+                                      className={`w-2 h-2 rounded-full ${currentStatus === "Late" ? "bg-white" : "bg-amber-400"
+                                        }`}
                                     ></span>
                                     Late
                                   </button>
@@ -729,8 +669,8 @@ const TeacherAttendance = () => {
                               {/* Individual Saved Status Badge */}
                               <td className="py-3.5 px-4 text-right">
                                 {isSaving ? (
-                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 animate-pulse">
-                                    <span>⏳</span> Saving...
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
+                                    Saving...
                                   </span>
                                 ) : isSaved ? (
                                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
@@ -749,7 +689,7 @@ const TeacherAttendance = () => {
                                     <span>⏱</span> Late
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-500 border border-slate-200">
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-500 border border-amber-200">
                                     <span>○</span> Not Marked
                                   </span>
                                 )}
@@ -760,7 +700,7 @@ const TeacherAttendance = () => {
 
                         {filteredDailyStudents.length === 0 && (
                           <tr>
-                            <td colSpan="4" className="py-12 text-center text-slate-500">
+                            <td colSpan="4" className="py-12 text-center text-amber-500">
                               {dailySearchQuery
                                 ? `No students matching "${dailySearchQuery}" found.`
                                 : "No students registered in this class."}
@@ -771,51 +711,39 @@ const TeacherAttendance = () => {
                     </table>
                   </div>
 
-                  {/* Bottom Summary Bar */}
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-slate-50 border-t border-slate-200">
-                    <div className="text-xs text-slate-600">
-                      {dailyMetrics.unmarked > 0 ? (
-                        <span className="text-amber-700 font-semibold">
-                          ⚠️ {dailyMetrics.unmarked} of {dailyMetrics.total} students still need individual marking
-                        </span>
-                      ) : (
-                        <span className="text-emerald-700 font-semibold">
-                          ✓ All {dailyMetrics.total} students individually marked and saved
-                        </span>
-                      )}
-                    </div>
 
-                    <button
+
+                  {/* <button
                       type="button"
                       onClick={handleDelete}
                       disabled={deleting}
                       className="rounded-xl border border-rose-300 bg-white px-4 py-2 text-xs font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-50 transition-colors"
                     >
                       {deleting ? "Deleting..." : "Delete Class Register"}
-                    </button>
-                  </div>
+                    </button> */}
                 </div>
               </div>
+
             )}
           </div>
         )}
 
-        {/* ========================================================================= */}
+
         {/* VIEW 2: MONTHLY ATTENDANCE REPORT FOR HER CLASS                           */}
-        {/* ========================================================================= */}
+
         {activeTab === "monthly" && (
           <div className="space-y-6">
             {/* Monthly Controls Bar */}
-            <div className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-slate-200 md:grid-cols-12">
+            <div className="grid grid-cols-1 gap-4 rounded-2xl bg-white p-5 shadow-sm border border-amber-200 md:grid-cols-12">
               {/* Class Select */}
               <div className="md:col-span-5">
-                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-amber-600">
                   Select Class
                 </label>
                 <select
                   value={selectedClassIndex}
                   onChange={(e) => setSelectedClassIndex(e.target.value)}
-                  className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2.5 text-sm font-medium text-amber-800 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
                 >
                   <option value="">Select class</option>
                   {(assignedClasses || []).map((item, index) => (
@@ -831,9 +759,9 @@ const TeacherAttendance = () => {
 
               {/* Month Picker with Prev/Next Controls */}
               <div className="md:col-span-5">
-                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-600">
+                <label className="mb-1.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-amber-600">
                   <span>Select Month</span>
-                  <span className="font-semibold text-indigo-700 capitalize">
+                  <span className="font-semibold text-amber-700 capitalize">
                     {formatMonthName(selectedMonth)}
                   </span>
                 </label>
@@ -843,7 +771,7 @@ const TeacherAttendance = () => {
                     type="button"
                     onClick={handlePrevMonth}
                     title="Previous Month"
-                    className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="rounded-xl border border-amber-300 bg-white px-3 py-2.5 text-sm font-bold text-amber-700 hover:bg-amber-50 transition-colors"
                   >
                     ◀
                   </button>
@@ -852,66 +780,45 @@ const TeacherAttendance = () => {
                     type="month"
                     value={selectedMonth}
                     onChange={(e) => setSelectedMonth(e.target.value)}
-                    className="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-800 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
+                    className="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2.5 text-sm font-medium text-amber-800 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-100"
                   />
 
                   <button
                     type="button"
                     onClick={handleNextMonth}
                     title="Next Month"
-                    className="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                    className="rounded-xl border border-amber-300 bg-white px-3 py-2.5 text-sm font-bold text-amber-700 hover:bg-amber-50 transition-colors"
                   >
                     ▶
                   </button>
                 </div>
               </div>
 
-              {/* Refresh Report Button */}
-              <div className="md:col-span-2 flex items-end">
-                <button
-                  type="button"
-                  onClick={loadMonthlyReport}
-                  disabled={loading || !selectedClassDetails || !selectedMonth}
-                  className="w-full rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
-                >
-                  {loading ? (
-                    <>
-                      <span className="inline-block animate-spin">⏳</span>
-                      Loading...
-                    </>
-                  ) : (
-                    <>
-                      <span>↻</span> Refresh
-                    </>
-                  )}
-                </button>
-              </div>
+
             </div>
 
             {/* Monthly View Mode Switcher, Search & Legend Toolbar */}
-            <div className="flex flex-col gap-4 rounded-2xl bg-white p-4 shadow-sm border border-slate-200">
+            <div className="flex flex-col gap-4 rounded-2xl bg-white p-4 shadow-sm border border-amber-200">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 {/* Sub-view switcher */}
-                <div className="inline-flex rounded-xl bg-slate-100 p-1 border border-slate-200 self-start sm:self-auto">
+                <div className="inline-flex rounded-xl bg-amber-100 p-1 border border-amber-200 self-start sm:self-auto">
                   <button
                     type="button"
                     onClick={() => setMonthlySubView("matrix")}
-                    className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all ${
-                      monthlySubView === "matrix"
-                        ? "bg-white text-indigo-700 shadow-sm"
-                        : "text-slate-600 hover:text-slate-900"
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all ${monthlySubView === "matrix"
+                      ? "bg-white text-amber-700 shadow-sm"
+                      : "text-amber-600 hover:text-amber-900"
+                      }`}
                   >
                     <span>📊</span> Full Month Matrix (All Dates)
                   </button>
                   <button
                     type="button"
                     onClick={() => setMonthlySubView("date_roster")}
-                    className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all ${
-                      monthlySubView === "date_roster"
-                        ? "bg-white text-indigo-700 shadow-sm"
-                        : "text-slate-600 hover:text-slate-900"
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-bold transition-all ${monthlySubView === "date_roster"
+                      ? "bg-white text-amber-700 shadow-sm"
+                      : "text-amber-600 hover:text-amber-900"
+                      }`}
                   >
                     <span>📅</span> Date-by-Date Log
                   </button>
@@ -924,12 +831,12 @@ const TeacherAttendance = () => {
                     placeholder="Search student by name..."
                     value={monthlySearchQuery}
                     onChange={(e) => setMonthlySearchQuery(e.target.value)}
-                    className="w-full sm:w-64 rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2 text-xs text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:outline-none"
+                    className="w-full sm:w-64 rounded-xl border border-amber-300 bg-amber-50 px-3.5 py-2 text-xs text-amber-800 placeholder-amber-400 focus:bg-white focus:border-amber-500 focus:outline-none"
                   />
                   {monthlySearchQuery && (
                     <button
                       onClick={() => setMonthlySearchQuery("")}
-                      className="absolute right-3 top-2.5 text-xs text-slate-400 hover:text-slate-600"
+                      className="absolute right-3 top-2.5 text-xs text-amber-400 hover:text-amber-600"
                     >
                       ✕
                     </button>
@@ -938,18 +845,18 @@ const TeacherAttendance = () => {
               </div>
 
               {/* Status Legend & Info */}
-              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs">
-                <div className="flex items-center gap-2 text-slate-600 font-medium">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-amber-100 pt-3 text-xs">
+                <div className="flex items-center gap-2 text-amber-600 font-medium">
                   <span>Class: Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division}</span>
-                  <span className="text-slate-300">•</span>
+                  <span className="text-amber-300">•</span>
                   <span>{filteredMonthlyList.length} Students</span>
-                  <span className="text-slate-300">•</span>
+                  <span className="text-amber-300">•</span>
                   <span>{monthDates.length} Days in {formatMonthName(selectedMonth)}</span>
                 </div>
 
                 {/* Badges Legend */}
                 <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Legend:</span>
+                  <span className="text-[11px] font-semibold text-amber-500 uppercase tracking-wider">Legend:</span>
                   <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-800">
                     <span className="w-5 h-5 rounded bg-emerald-100 flex items-center justify-center text-[10px]">P</span>
                     Present
@@ -962,8 +869,8 @@ const TeacherAttendance = () => {
                     <span className="w-5 h-5 rounded bg-amber-100 flex items-center justify-center text-[10px]">L</span>
                     Late
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-400">
-                    <span className="w-5 h-5 rounded bg-slate-100 flex items-center justify-center text-[10px]">—</span>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-400">
+                    <span className="w-5 h-5 rounded bg-amber-100 flex items-center justify-center text-[10px]">—</span>
                     No Record
                   </span>
                 </div>
@@ -974,18 +881,18 @@ const TeacherAttendance = () => {
             {/* SUB-VIEW A: FULL MONTH MATRIX (All Dates 1..31 across table columns)      */}
             {/* ========================================================================= */}
             {monthlySubView === "matrix" && (
-              <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-200">
+              <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-sm border-collapse">
-                    <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                    <thead className="bg-amber-100 text-xs font-bold uppercase tracking-wider text-amber-600 border-b border-amber-200">
                       <tr>
                         {/* Sticky Index Column */}
-                        <th className="py-3 px-3 w-12 text-center sticky left-0 bg-slate-100 z-30 border-r border-slate-200">
+                        <th className="py-3 px-3 w-12 text-center sticky left-0 bg-amber-100 z-30 border-r border-amber-200">
                           #
                         </th>
 
                         {/* Sticky Student Name Column */}
-                        <th className="py-3 px-4 min-w-[200px] sticky left-12 bg-slate-100 z-30 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
+                        <th className="py-3 px-4 min-w-[200px] sticky left-12 bg-amber-100 z-30 border-r border-amber-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
                           Student Name
                         </th>
 
@@ -993,17 +900,16 @@ const TeacherAttendance = () => {
                         {monthDates.map((item) => (
                           <th
                             key={item.date}
-                            className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-slate-200 ${
-                              item.isWeekend
-                                ? "bg-slate-200/60 text-slate-400"
-                                : "bg-slate-100 text-slate-700"
-                            }`}
+                            className={`py-2 px-1 text-center min-w-[38px] max-w-[42px] border-r border-amber-200 ${item.isWeekend
+                              ? "bg-amber-200/60 text-amber-400"
+                              : "bg-amber-100 text-amber-700"
+                              }`}
                             title={`${item.date} (${item.dayName})`}
                           >
                             <div className="text-[11px] font-extrabold leading-tight">
                               {String(item.day).padStart(2, "0")}
                             </div>
-                            <div className="text-[9px] font-medium leading-tight text-slate-500">
+                            <div className="text-[9px] font-medium leading-tight text-amber-500">
                               {item.dayName}
                             </div>
                           </th>
@@ -1029,39 +935,39 @@ const TeacherAttendance = () => {
                           L
                         </th>
                         <th
-                          className="py-3 px-2 text-center bg-slate-100 text-slate-700 min-w-[56px] border-r border-slate-200"
+                          className="py-3 px-2 text-center bg-amber-100 text-amber-700 min-w-[56px] border-r border-amber-200"
                           title="Total Days Marked"
                         >
                           Total
                         </th>
-                        <th className="py-3 px-3 text-center bg-slate-100 text-slate-700 min-w-[90px]">
+                        <th className="py-3 px-3 text-center bg-amber-100 text-amber-700 min-w-[90px]">
                           Breakdown
                         </th>
                       </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-slate-100">
+                    <tbody className="divide-y divide-amber-100">
                       {filteredMonthlyList.map((student, index) => (
                         <tr
                           key={student.studentId || index}
-                          className="hover:bg-indigo-50/20 transition-colors"
+                          className="hover:bg-amber-50/20 transition-colors"
                         >
                           {/* Sticky Row Index */}
-                          <td className="py-2.5 px-3 text-center text-xs font-medium text-slate-400 sticky left-0 bg-white z-20 border-r border-slate-100">
+                          <td className="py-2.5 px-3 text-center text-xs font-medium text-amber-400 sticky left-0 bg-white z-20 border-r border-amber-100">
                             {index + 1}
                           </td>
 
                           {/* Sticky Student Name */}
-                          <td className="py-2.5 px-4 font-semibold text-slate-800 sticky left-12 bg-white z-20 border-r border-slate-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
+                          <td className="py-2.5 px-4 font-semibold text-amber-800 sticky left-12 bg-white z-20 border-r border-amber-200 shadow-[2px_0_4px_-1px_rgba(0,0,0,0.08)]">
                             <div className="flex items-center gap-2.5">
-                              <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs uppercase shadow-xs shrink-0">
+                              <div className="w-7 h-7 rounded-full bg-amber-100 border border-amber-200 text-amber-700 flex items-center justify-center font-bold text-xs uppercase shadow-xs shrink-0">
                                 {(student.name || "S").charAt(0)}
                               </div>
                               <div className="truncate max-w-[150px]" title={student.name}>
-                                <div className="text-xs font-semibold text-slate-900 truncate">
+                                <div className="text-xs font-semibold text-amber-900 truncate">
                                   {student.name || "Unnamed Student"}
                                 </div>
-                                <div className="text-[10px] text-slate-400">
+                                <div className="text-[10px] text-amber-400">
                                   ID: {student.studentId}
                                 </div>
                               </div>
@@ -1077,9 +983,8 @@ const TeacherAttendance = () => {
                             return (
                               <td
                                 key={item.date}
-                                className={`py-2 px-0.5 text-center border-r border-slate-100 ${
-                                  item.isWeekend ? "bg-slate-50/40" : ""
-                                }`}
+                                className={`py-2 px-0.5 text-center border-r border-amber-100 ${item.isWeekend ? "bg-amber-50/40" : ""
+                                  }`}
                               >
                                 {status === "Present" ? (
                                   <span
@@ -1104,7 +1009,7 @@ const TeacherAttendance = () => {
                                   </span>
                                 ) : (
                                   <span
-                                    className="text-slate-300 font-bold text-xs select-none"
+                                    className="text-amber-300 font-bold text-xs select-none"
                                     title={`No record on ${item.date}`}
                                   >
                                     ·
@@ -1115,28 +1020,28 @@ const TeacherAttendance = () => {
                           })}
 
                           {/* Summary: Present Days */}
-                          <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-emerald-50/20">
+                          <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-emerald-50/20">
                             <span className="text-xs font-bold text-emerald-700">
                               {student.present || 0}
                             </span>
                           </td>
 
                           {/* Summary: Absent Days */}
-                          <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-rose-50/20">
+                          <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-rose-50/20">
                             <span className="text-xs font-bold text-rose-700">
                               {student.absent || 0}
                             </span>
                           </td>
 
                           {/* Summary: Late Days */}
-                          <td className="py-2.5 px-2 text-center border-r border-slate-100 bg-amber-50/20">
+                          <td className="py-2.5 px-2 text-center border-r border-amber-100 bg-amber-50/20">
                             <span className="text-xs font-bold text-amber-700">
                               {student.late || 0}
                             </span>
                           </td>
 
                           {/* Summary: Total Working Days */}
-                          <td className="py-2.5 px-2 text-center font-bold text-xs text-slate-800 border-r border-slate-200">
+                          <td className="py-2.5 px-2 text-center font-bold text-xs text-amber-800 border-r border-amber-200">
                             {student.totalMarked || 0}
                           </td>
 
@@ -1145,7 +1050,7 @@ const TeacherAttendance = () => {
                             <button
                               type="button"
                               onClick={() => setSelectedStudentForModal(student)}
-                              className="text-[11px] font-semibold text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200 transition-colors"
+                              className="text-[11px] font-semibold text-amber-600 hover:text-amber-800 hover:bg-amber-50 px-2 py-1 rounded-lg border border-amber-200 transition-colors"
                             >
                               📋 All Dates
                             </button>
@@ -1157,7 +1062,7 @@ const TeacherAttendance = () => {
                         <tr>
                           <td
                             colSpan={monthDates.length + 7}
-                            className="py-12 text-center text-slate-500"
+                            className="py-12 text-center text-amber-500"
                           >
                             {monthlySearchQuery
                               ? `No students matching "${monthlySearchQuery}" found in this month.`
@@ -1169,31 +1074,18 @@ const TeacherAttendance = () => {
                   </table>
                 </div>
 
-                {/* Bottom Print / Helper Bar */}
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-slate-50 border-t border-slate-200">
-                  <div className="text-xs text-slate-500">
-                    Showing daily roll call records across all {monthDates.length} days of {formatMonthName(selectedMonth)}.
-                  </div>
 
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors flex items-center gap-1.5"
-                  >
-                    <span>🖨️</span> Print / Save Register
-                  </button>
-                </div>
               </div>
             )}
 
-            {/* ========================================================================= */}
+
             {/* SUB-VIEW B: DATE-BY-DATE LOG (Select any date of the month to inspect)   */}
-            {/* ========================================================================= */}
+
             {monthlySubView === "date_roster" && (
               <div className="space-y-4">
                 {/* Date Selection Strip */}
-                <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-200">
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-slate-600">
+                <div className="rounded-2xl bg-white p-4 shadow-sm border border-amber-200">
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-amber-600">
                     Select Date in {formatMonthName(selectedMonth)}:
                   </label>
                   <div className="flex flex-wrap gap-1.5">
@@ -1204,16 +1096,15 @@ const TeacherAttendance = () => {
                           key={dObj.date}
                           type="button"
                           onClick={() => setSelectedRosterDate(dObj.date)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex flex-col items-center min-w-[48px] ${
-                            isSelected
-                              ? "bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-600 ring-offset-1"
-                              : dObj.isWeekend
-                              ? "bg-slate-100 text-slate-400 hover:bg-slate-200"
-                              : "bg-slate-50 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 border border-slate-200"
-                          }`}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex flex-col items-center min-w-[48px] ${isSelected
+                            ? "bg-amber-600 text-white shadow-sm ring-2 ring-amber-600 ring-offset-1"
+                            : dObj.isWeekend
+                              ? "bg-amber-100 text-amber-400 hover:bg-amber-200"
+                              : "bg-amber-50 text-amber-700 hover:bg-amber-50 hover:text-amber-700 border border-amber-200"
+                            }`}
                         >
                           <span className="text-[11px] font-extrabold">{String(dObj.day).padStart(2, "0")}</span>
-                          <span className={`text-[9px] ${isSelected ? "text-indigo-100" : "text-slate-400"}`}>
+                          <span className={`text-[9px] ${isSelected ? "text-amber-100" : "text-amber-400"}`}>
                             {dObj.dayName}
                           </span>
                         </button>
@@ -1224,15 +1115,13 @@ const TeacherAttendance = () => {
 
                 {/* Roster for the Selected Date */}
                 {selectedRosterDate && (
-                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-200">
-                    <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  <div className="overflow-hidden rounded-2xl bg-white shadow-sm border border-amber-200">
+                    <div className="p-4 bg-amber-50 border-b border-amber-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                       <div>
-                        <h3 className="text-sm font-bold text-slate-900">
-                          Class Roster for {selectedRosterDate}
+                        <h3 className="text-sm font-bold text-amber-900">
+                          Date:  {selectedRosterDate}
                         </h3>
-                        <p className="text-xs text-slate-500">
-                          Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division}
-                        </p>
+
                       </div>
 
                       {/* Live Date Count Badges */}
@@ -1259,7 +1148,7 @@ const TeacherAttendance = () => {
                             <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-100 text-amber-800">
                               Late: {lt}
                             </span>
-                            <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-200 text-slate-700">
+                            <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-200 text-amber-700">
                               Unmarked: {unmk}
                             </span>
                           </div>
@@ -1269,7 +1158,7 @@ const TeacherAttendance = () => {
 
                     <div className="overflow-x-auto">
                       <table className="w-full text-left text-sm border-collapse">
-                        <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200">
+                        <thead className="bg-amber-100 text-xs font-bold uppercase tracking-wider text-amber-600 border-b border-amber-200">
                           <tr>
                             <th className="py-3 px-4 w-12 text-center">#</th>
                             <th className="py-3 px-4">Student Name</th>
@@ -1277,28 +1166,28 @@ const TeacherAttendance = () => {
                             <th className="py-3 px-4 text-center">Attendance Status</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-100">
+                        <tbody className="divide-y divide-amber-100">
                           {filteredMonthlyList.map((student, idx) => {
                             const status = student.dailyAttendance
                               ? student.dailyAttendance[selectedRosterDate]
                               : "";
                             return (
-                              <tr key={student.studentId || idx} className="hover:bg-slate-50 transition-colors">
-                                <td className="py-3 px-4 text-center text-xs font-medium text-slate-400">
+                              <tr key={student.studentId || idx} className="hover:bg-amber-50 transition-colors">
+                                <td className="py-3 px-4 text-center text-xs font-medium text-amber-400">
                                   {idx + 1}
                                 </td>
-                                <td className="py-3 px-4 font-semibold text-slate-800">
+                                <td className="py-3 px-4 font-semibold text-amber-800">
                                   <div className="flex items-center gap-2.5">
-                                    <div className="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs uppercase">
+                                    <div className="w-7 h-7 rounded-full bg-amber-100 border border-amber-200 text-amber-700 flex items-center justify-center font-bold text-xs uppercase">
                                       {(student.name || "S").charAt(0)}
                                     </div>
                                     <div>
-                                      <div className="text-xs font-semibold text-slate-900">{student.name}</div>
-                                      <div className="text-[10px] text-slate-400">ID: {student.studentId}</div>
+                                      <div className="text-xs font-semibold text-amber-900">{student.name}</div>
+                                      <div className="text-[10px] text-amber-400">ID: {student.studentId}</div>
                                     </div>
                                   </div>
                                 </td>
-                                <td className="py-3 px-4 text-center text-xs text-slate-600 font-medium">
+                                <td className="py-3 px-4 text-center text-xs text-amber-600 font-medium">
                                   {selectedRosterDate}
                                 </td>
                                 <td className="py-3 px-4 text-center">
@@ -1315,7 +1204,7 @@ const TeacherAttendance = () => {
                                       ⏱ Late
                                     </span>
                                   ) : (
-                                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-400 border border-amber-200">
                                       ○ Not Marked / Holiday
                                     </span>
                                   )}
@@ -1336,38 +1225,38 @@ const TeacherAttendance = () => {
             {/* ========================================================================= */}
             {selectedStudentForModal && (
               <div
-                className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-amber-900/60 p-4 backdrop-blur-xs"
                 onClick={() => setSelectedStudentForModal(null)}
               >
                 <div
-                  className="w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200 flex flex-col"
+                  className="w-full max-w-2xl max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-2xl border border-amber-200 flex flex-col"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Modal Header */}
-                  <div className="flex items-center justify-between border-b border-slate-200 p-5 bg-slate-50">
+                  <div className="flex items-center justify-between border-b border-amber-200 p-5 bg-amber-50">
                     <div>
-                      <h3 className="text-lg font-bold text-slate-900">
+                      <h3 className="text-lg font-bold text-amber-900">
                         {selectedStudentForModal.name}&apos;s Attendance Breakdown
                       </h3>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-amber-500 mt-0.5">
                         Class: Standard {selectedClassDetails?.standard}-{selectedClassDetails?.division} • Month:{" "}
-                        <span className="font-semibold text-slate-700">{formatMonthName(selectedMonth)}</span>
+                        <span className="font-semibold text-amber-700">{formatMonthName(selectedMonth)}</span>
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={() => setSelectedStudentForModal(null)}
-                      className="rounded-xl p-2 text-slate-400 hover:bg-slate-200 hover:text-slate-700 transition-colors"
+                      className="rounded-xl p-2 text-amber-400 hover:bg-amber-200 hover:text-amber-700 transition-colors"
                     >
                       ✕
                     </button>
                   </div>
 
                   {/* Summary Metric Pills */}
-                  <div className="grid grid-cols-4 gap-2 p-4 bg-slate-100/70 border-b border-slate-200 text-center">
-                    <div className="rounded-xl bg-white p-2.5 border border-slate-200">
-                      <div className="text-[10px] uppercase font-bold text-slate-500">Total Days</div>
-                      <div className="text-base font-extrabold text-slate-800">{monthDates.length}</div>
+                  <div className="grid grid-cols-4 gap-2 p-4 bg-amber-100/70 border-b border-amber-200 text-center">
+                    <div className="rounded-xl bg-white p-2.5 border border-amber-200">
+                      <div className="text-[10px] uppercase font-bold text-amber-500">Total Days</div>
+                      <div className="text-base font-extrabold text-amber-800">{monthDates.length}</div>
                     </div>
                     <div className="rounded-xl bg-emerald-50 p-2.5 border border-emerald-200">
                       <div className="text-[10px] uppercase font-bold text-emerald-700">Present</div>
@@ -1391,11 +1280,11 @@ const TeacherAttendance = () => {
 
                   {/* All Dates Chronological List */}
                   <div className="overflow-y-auto p-4 flex-1">
-                    <div className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                    <div className="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">
                       Complete Dates Schedule ({monthDates.length} Days)
                     </div>
                     <table className="w-full text-left text-sm border-collapse">
-                      <thead className="bg-slate-100 text-xs font-bold uppercase tracking-wider text-slate-600 border-b border-slate-200 sticky top-0">
+                      <thead className="bg-amber-100 text-xs font-bold uppercase tracking-wider text-amber-600 border-b border-amber-200 sticky top-0">
                         <tr>
                           <th className="py-2.5 px-3 w-12 text-center">#</th>
                           <th className="py-2.5 px-3">Date</th>
@@ -1403,7 +1292,7 @@ const TeacherAttendance = () => {
                           <th className="py-2.5 px-3 text-right">Attendance Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-100">
+                      <tbody className="divide-y divide-amber-100">
                         {monthDates.map((item) => {
                           const status = selectedStudentForModal.dailyAttendance
                             ? selectedStudentForModal.dailyAttendance[item.date]
@@ -1411,18 +1300,17 @@ const TeacherAttendance = () => {
                           return (
                             <tr
                               key={item.date}
-                              className={`hover:bg-slate-50 transition-colors ${
-                                item.isWeekend ? "bg-slate-50/50" : ""
-                              }`}
+                              className={`hover:bg-amber-50 transition-colors ${item.isWeekend ? "bg-amber-50/50" : ""
+                                }`}
                             >
-                              <td className="py-2.5 px-3 text-center text-xs font-medium text-slate-400">
+                              <td className="py-2.5 px-3 text-center text-xs font-medium text-amber-400">
                                 {item.day}
                               </td>
-                              <td className="py-2.5 px-3 font-semibold text-xs text-slate-800">
+                              <td className="py-2.5 px-3 font-semibold text-xs text-amber-800">
                                 {item.date}
                               </td>
-                              <td className="py-2.5 px-3 text-xs text-slate-500">
-                                <span className={item.isWeekend ? "font-semibold text-slate-400" : ""}>
+                              <td className="py-2.5 px-3 text-xs text-amber-500">
+                                <span className={item.isWeekend ? "font-semibold text-amber-400" : ""}>
                                   {item.dayName}
                                   {item.isWeekend ? " (Weekend)" : ""}
                                 </span>
@@ -1441,7 +1329,7 @@ const TeacherAttendance = () => {
                                     ⏱ Late
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-400 border border-slate-200">
+                                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-400 border border-amber-200">
                                     — No Record / Holiday
                                   </span>
                                 )}
@@ -1454,18 +1342,18 @@ const TeacherAttendance = () => {
                   </div>
 
                   {/* Modal Footer */}
-                  <div className="border-t border-slate-200 p-4 bg-slate-50 flex items-center justify-between">
+                  <div className="border-t border-amber-200 p-4 bg-amber-50 flex items-center justify-between">
                     <button
                       type="button"
                       onClick={() => window.print()}
-                      className="px-4 py-2 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 transition-colors"
+                      className="px-4 py-2 rounded-xl border border-amber-300 bg-white text-xs font-bold text-amber-700 hover:bg-amber-100 transition-colors"
                     >
                       🖨️ Print Student Report
                     </button>
                     <button
                       type="button"
                       onClick={() => setSelectedStudentForModal(null)}
-                      className="px-5 py-2 rounded-xl bg-slate-800 text-xs font-bold text-white hover:bg-slate-900 transition-colors"
+                      className="px-5 py-2 rounded-xl bg-amber-800 text-xs font-bold text-white hover:bg-amber-900 transition-colors"
                     >
                       Close
                     </button>

@@ -26,6 +26,7 @@ const ParentLogin = () => {
       const { token, name, id } = result.data;
       localStorage.setItem("token", token);
       localStorage.setItem("name", name);
+      localStorage.setItem("parentId", id);
       navigate(`/parentDashboard/${id}`);
       window.location.reload();
     } else {

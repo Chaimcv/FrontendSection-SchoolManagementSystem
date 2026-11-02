@@ -25,11 +25,9 @@ const TeacherHomepage = () => {
         <div className='bg-amber-100 min-h-screen py-12 flex flex-col items-center justify-center'>
             <div className='text-center mb-8'>
                 <h1 className='text-3xl sm:text-4xl font-extrabold text-amber-950 font-serif tracking-tight'>
-                    Teacher Portal Dashboard
+                    Teacher  Dashboard
                 </h1>
-                <p className='text-sm text-stone-600 mt-2'>
-                    Select an operational module to view and manage class records.
-                </p>
+
             </div>
 
             <div className='flex flex-wrap justify-center items-center gap-6 max-w-6xl px-4'>

@@ -58,9 +58,6 @@ const TeachersDashboard = () => {
                 Faculty & Teacher Management
               </h1>
             </div>
-            <p className="mt-1 text-sm text-stone-600">
-              Manage school faculty roster, teaching assignments, class teachers, and contact profiles.
-            </p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -82,9 +79,6 @@ const TeachersDashboard = () => {
         {/* Search & Statistics Filter Bar */}
         <div className="bg-white rounded-2xl border border-amber-200 p-4 shadow-sm mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-xs font-bold text-amber-900">
-            <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-            Total Faculty:{" "}
-            <span className="text-stone-800 font-extrabold ml-1">{teachers.length} Active Instructors</span>
           </div>
 
           <div className="relative w-full sm:w-72">
@@ -129,12 +123,10 @@ const TeachersDashboard = () => {
                     </td>
                     <td className="py-3.5 px-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-amber-100 border border-amber-200 text-amber-800 flex items-center justify-center font-bold text-xs uppercase shadow-xs shrink-0">
-                          {(item?.name || "T").charAt(0)}
-                        </div>
+
                         <div>
                           <div className="font-bold text-stone-900">{item?.name}</div>
-                          <div className="text-[11px] text-stone-400">{item?.email || "No email"}</div>
+
                         </div>
                       </div>
                     </td>
@@ -148,11 +140,7 @@ const TeachersDashboard = () => {
                       {item?.subject}
                     </td>
 
-                    {/* <td className="py-3.5 px-4 text-xs font-medium text-amber-900">
-                      <span className="inline-block px-2.5 py-1 rounded-md bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold">
-                        {item?.subject || "General"}
-                      </span>
-                    </td> */}
+
                     <td className="py-3.5 px-4 text-center">
                       <div className="inline-flex items-center gap-2">
                         <button

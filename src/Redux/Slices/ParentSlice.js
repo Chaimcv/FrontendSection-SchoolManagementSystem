@@ -95,10 +95,9 @@ const ParentSlice=createSlice({
             const response=await axios.put(`${baseUrl}/parent/${id}`,formData)
             if(response.data)
                {
-               
                   dispatch(setPostEditedParentData(response.data));
-    
                  }
+            return response.data;
         } catch (error) {
            dispatch(setError(error));     
         }

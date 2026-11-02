@@ -19,10 +19,10 @@ const StudentListing = () => {
     };
 
     const deleteStudent = async (studentIdToDelete) => {
-      
-            await dispatch(deleteAStudent(studentIdToDelete));
-            dispatch(fetchStudentsData());
-        
+
+        await dispatch(deleteAStudent(studentIdToDelete));
+        dispatch(fetchStudentsData());
+
     };
 
     const AddStudent = () => navigate(`/addNewStudent/${loggedteacherId}`);
@@ -39,7 +39,7 @@ const StudentListing = () => {
                         {/* <p className='text-gray-500 mt-1'>Manage academic records and personal details of all students.</p> */}
                     </div>
                     <div className='flex gap-3'>
-                        <button 
+                        <button
                             className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all flex items-center gap-2'
                             onClick={AddStudent}
                         >
@@ -48,7 +48,7 @@ const StudentListing = () => {
                             </svg>
                             New Student
                         </button>
-                        <button 
+                        <button
                             className='bg-white border-2 border-amber-600 text-amber-600 hover:bg-amber-50 font-bold py-2.5 px-6 rounded-xl transition-all flex items-center gap-2'
                             onClick={AddParent}
                         >
@@ -61,6 +61,14 @@ const StudentListing = () => {
                 </div>
             </div>
 
+            <div className='mt-8 flex  mr-[5%] justify-end'>
+                <button
+                    className='bg-amber-100 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-xl transition-all'
+                    onClick={BackToProfile}
+                >
+                    Back to Dashboard
+                </button>
+            </div>
             {/* Content Area */}
             <div className='max-w-7xl mx-auto px-6 mt-10'>
                 <div className='bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden'>
@@ -98,13 +106,13 @@ const StudentListing = () => {
                                     <td className='py-4 px-6 text-gray-600 text-center font-bold'>{item.Division}</td>
                                     <td className='py-4 px-6 text-gray-600'>{item.Guardian}</td>
                                     <td className='py-4 px-6 text-right space-x-2'>
-                                        <button 
+                                        <button
                                             className='bg-amber-100 text-amber-700 hover:bg-amber-200 px-4 py-2 rounded-lg font-medium transition-colors'
                                             onClick={() => viewStudentDetails(item._id)}
                                         >
                                             View
                                         </button>
-                                        <button 
+                                        <button
                                             className='bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg font-medium transition-colors'
                                             onClick={() => deleteStudent(item._id)}
                                         >
@@ -123,14 +131,7 @@ const StudentListing = () => {
                     )}
                 </div>
 
-                <div className='mt-8 flex justify-start'>
-                    <button 
-                        className='bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-xl transition-all'
-                        onClick={BackToProfile}
-                    >
-                        Back
-                    </button>
-                </div>
+
             </div>
         </div>
     );

@@ -199,25 +199,18 @@ const TeacherExamPage = () => {
       <div className="bg-white border-b border-amber-200 sticky top-0 z-30 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => navigate(`/teacher/profile/${teacherId}`)}
-              className="inline-flex items-center gap-1.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs px-3.5 py-2 rounded-xl transition-all shadow-xs"
-            >
-              ← Back to Dashboard
-            </button>
+
             <div>
               <h1 className="text-xl sm:text-2xl font-extrabold text-amber-950 font-serif">
                 Exam Section
               </h1>
-              <p className="text-xs text-stone-500">
-                Create, inspect, and manage examination schedules for your classes.
-              </p>
+
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-100/80 border border-amber-300 text-xs font-bold text-amber-900">
-              <span>🏫 Assigned Class: Std {assignedStandard || "Not Assigned"}-{assignedDivision || "—"}</span>
+              <span> Assigned Class: Std {assignedStandard || "Not Assigned"}-{assignedDivision || "—"}</span>
             </div>
 
             {/* THE PRIMARY BUTTON TO CREATE AN EXAM TABLE */}
@@ -225,8 +218,8 @@ const TeacherExamPage = () => {
               onClick={handleOpenCreateModal}
               disabled={!hasAssignedClass}
               className={`inline-flex items-center gap-2 font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all ${hasAssignedClass
-                  ? "bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white hover:scale-105 active:scale-95"
-                  : "bg-stone-300 text-stone-500 cursor-not-allowed"
+                ? "bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white hover:scale-105 active:scale-95"
+                : "bg-stone-300 text-stone-500 cursor-not-allowed"
                 }`}
               title={hasAssignedClass ? "Create Exam Table" : "You have no assigned class to create timetables for"}
             >
@@ -245,16 +238,14 @@ const TeacherExamPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div className="rounded-2xl bg-white border border-amber-200 p-5 shadow-xs flex items-center justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
+              <span className="text-xs font-bold uppercase  text-stone-500">
                 Published Timetables
               </span>
               <div className="text-2xl font-extrabold text-amber-950 mt-1">
                 {teacherExams?.length || 0}
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-amber-100 border border-amber-200 text-amber-800 flex items-center justify-center text-xl font-bold">
-              📋
-            </div>
+
           </div>
 
           <div className="rounded-2xl bg-white border border-amber-200 p-5 shadow-xs flex items-center justify-between">
@@ -266,9 +257,7 @@ const TeacherExamPage = () => {
                 Standard {teacherInfo?.standard || "—"} - {teacherInfo?.division || "—"}
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-amber-100 border border-amber-200 text-amber-800 flex items-center justify-center text-xl font-bold">
-              🏫
-            </div>
+
           </div>
 
 
@@ -313,18 +302,13 @@ const TeacherExamPage = () => {
                     </div>
 
                     <div className="flex items-center gap-2 self-start sm:self-auto">
-                      <button
-                        onClick={() => window.print()}
-                        className="px-3.5 py-1.5 bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 font-bold text-xs rounded-xl shadow-xs transition-all"
-                      >
-                        🖨️ Print
-                      </button>
+
                       <button
                         onClick={() => handleDelete(exam._id, exam.examTitle)}
                         disabled={deleting}
                         className="px-3.5 py-1.5 bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 font-bold text-xs rounded-xl transition-all"
                       >
-                        Delete 🗑️
+                        Delete
                       </button>
                     </div>
                   </div>
@@ -365,7 +349,7 @@ const TeacherExamPage = () => {
             </div>
           ) : (
             <div className="text-center py-16 bg-amber-50/30 rounded-2xl border border-dashed border-amber-300">
-              <span className="text-4xl mb-3 block">📋</span>
+
               <h3 className="text-base font-bold text-amber-950">No Exam Tables Created Yet</h3>
 
             </div>
@@ -405,18 +389,13 @@ const TeacherExamPage = () => {
 
             {/* Modal Scrollable Body */}
             <form onSubmit={handleSubmitTimetable} className="p-6 space-y-6 overflow-y-auto flex-1">
-              {modalError && (
-                <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-bold text-rose-700 flex items-center gap-2">
-                  <span>⚠️</span>
-                  <span>{modalError}</span>
-                </div>
-              )}
+
 
               {/* Class & Exam Meta Inputs */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-2xl bg-amber-50/50 border border-amber-200">
                 <div className="sm:col-span-2">
                   <label className="block text-[11px] font-bold text-amber-950 uppercase tracking-wider mb-1">
-                    Exam Title *
+                    Exam Title
                   </label>
                   <input
                     type="text"
@@ -430,11 +409,11 @@ const TeacherExamPage = () => {
 
                 <div className="sm:col-span-2">
                   <label className="block text-[11px] font-bold text-amber-950 uppercase tracking-wider mb-1">
-                    Class Standard & Division (Assigned) 🔒
+                    Class Standard & Division (Assigned)
                   </label>
                   <div className="flex items-center justify-between px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-100/70 text-amber-950 text-xs font-bold shadow-xs">
                     <span className="flex items-center gap-1.5">
-                      <span>🏫</span> Standard {assignedStandard} - Division {assignedDivision}
+                      Standard {assignedStandard} - Division {assignedDivision}
                     </span>
                     <span className="text-[10px] bg-amber-600 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
                       Locked to Assigned Class
@@ -612,16 +591,7 @@ const TeacherExamPage = () => {
                   disabled={loading}
                   className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-extrabold text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 flex items-center gap-2"
                 >
-                  {loading ? (
-                    <>
-                      <span className="inline-block animate-spin">⏳</span>
-                      Publishing...
-                    </>
-                  ) : (
-                    <>
-                      <span>✓</span> Save & Publish Timetable
-                    </>
-                  )}
+
                 </button>
               </div>
             </form>

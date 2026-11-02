@@ -19,8 +19,8 @@ const ViewTeacherDetails = () => {
 
   const handleEdit = () => {
     setEditFormVisibility(true);
-    if (teacher?._id) {
-      dispatch(fetchOneTeacherDetails(teacher._id));
+    if (teacherid) {
+      dispatch(fetchOneTeacherDetails(teacherid));
     }
   };
 
@@ -28,9 +28,12 @@ const ViewTeacherDetails = () => {
     <div className="relative min-h-screen bg-linear-to-b from-amber-50/80 via-amber-50/30 to-white text-stone-800 pb-16">
       {editFormVisibility && (
         <EditTeacherForm
+          teacher={teacher}
           OnEditBtnClick={() => {
             setEditFormVisibility(false);
-            if (teacherid) dispatch(fetchOneTeacherDetails(teacherid));
+            if (teacherid) {
+              dispatch(fetchOneTeacherDetails(teacherid));
+            }
           }}
         />
       )}
@@ -42,7 +45,7 @@ const ViewTeacherDetails = () => {
             onClick={() => navigate("/teacher/teacherDashboard")}
             className="inline-flex items-center gap-2 text-xs font-bold text-amber-800 hover:text-amber-950 bg-white hover:bg-amber-100/70 border border-amber-200 px-4 py-2 rounded-xl shadow-xs transition-all"
           >
-            ← Back to Faculty Roster
+            ← Back to Faculty
           </button>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full border border-amber-200">
             Faculty Profile
@@ -63,11 +66,6 @@ const ViewTeacherDetails = () => {
             <div className="px-6 sm:px-8 pb-8 pt-0">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between -mt-12 gap-4 mb-6">
                 <div className="flex items-end gap-4">
-                  <div className="w-24 h-24 rounded-2xl bg-white p-1 border-4 border-white shadow-xl flex items-center justify-center ring-2 ring-amber-300">
-                    <div className="w-full h-full rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-3xl font-extrabold uppercase">
-                      {(teacher.name || "T").charAt(0)}
-                    </div>
-                  </div>
                   <div>
                     <h1 className="text-2xl font-extrabold text-amber-950 font-serif">
                       {teacher.name}
@@ -82,7 +80,7 @@ const ViewTeacherDetails = () => {
                   onClick={handleEdit}
                   className="bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  Edit Profile ✏️
+                  Edit Profile
                 </button>
               </div>
 
@@ -154,4 +152,4 @@ const ViewTeacherDetails = () => {
   );
 };
 
-export default ViewTeacherDetails;
+export default ViewTeacherDetails;

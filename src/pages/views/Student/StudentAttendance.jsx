@@ -130,20 +130,17 @@ const StudentAttendance = () => {
   }, [monthDates, dailyMap, statusFilter]);
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 md:p-8 text-slate-800">
+    <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-amber-800">
       <div className="mx-auto max-w-5xl">
         {/* Header Bar */}
         <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b pb-4 border-slate-200">
           <div>
             <div className="flex items-center gap-2">
-
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
                 My Attendance Sheet
               </h1>
             </div>
-            <p className="mt-1 text-sm text-slate-500">
-              Review your monthly attendance history, working days, and present/absent status.
-            </p>
+
           </div>
 
 

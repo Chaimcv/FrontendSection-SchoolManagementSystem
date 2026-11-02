@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { postEditedTeacherDetails } from "../Redux/Slices/TeacherSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const EditTeacherForm = ({ OnEditBtnClick }) => {
+const EditTeacherForm = ({ OnEditBtnClick, teacher }) => {
   const dispatch = useDispatch();
-  const teacherData = useSelector((store) => store.teacher.oneTeacherDetailsData);
+  const reduxTeacher = useSelector((store) => store.teacher.oneTeacherDetailsData);
+  const teacherData = teacher || reduxTeacher;
+
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -13,7 +17,6 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
     phonenumber: "",
     subject: "",
     standard: "",
-    class: "",
     division: "",
   });
 
@@ -21,12 +24,11 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
     if (teacherData) {
       setFormData({
         name: teacherData.name || "",
-        class: teacherData.class || "",
-        pin: teacherData.pin || "",
+        pin: teacherData.pin ?? "",
         city: teacherData.city || "",
-        phonenumber: teacherData.phoneNumber || teacherData.phonenumber || "",
+        phonenumber: teacherData.phoneNumber ?? teacherData.phonenumber ?? "",
         subject: teacherData.subject || "",
-        standard: teacherData.standard || "",
+        standard: teacherData.standard ?? "",
         division: teacherData.division || "",
       });
     }
@@ -40,11 +42,34 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (teacherData?._id) {
-      dispatch(postEditedTeacherDetails({ id: teacherData._id, formData }));
-      if (OnEditBtnClick) OnEditBtnClick();
+    if (!teacherData?._id) return;
+
+    setLoading(true);
+    setErrorMessage("");
+
+    const payload = {
+      name: formData.name,
+      subject: formData.subject,
+      standard: formData.standard,
+      division: formData.division,
+      city: formData.city,
+      pin: formData.pin,
+      phoneNumber: formData.phonenumber,
+      phonenumber: formData.phonenumber,
+    };
+
+    try {
+      await dispatch(postEditedTeacherDetails({ id: teacherData._id, formData: payload }));
+      if (OnEditBtnClick) {
+        OnEditBtnClick();
+      }
+    } catch (err) {
+      console.error("Failed to update teacher:", err);
+
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,9 +82,6 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
             <h2 className="text-xl font-extrabold text-amber-950 font-serif">
               Edit Faculty Profile
             </h2>
-            <p className="text-xs text-stone-600 mt-0.5">
-              Update instructor assignments, class in-charge, and contact information.
-            </p>
           </div>
           <button
             type="button"
@@ -69,6 +91,8 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
             ✕
           </button>
         </div>
+
+
 
         {/* Modal Body Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
@@ -82,6 +106,7 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                required
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
               />
             </div>
@@ -104,10 +129,11 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
                 Class In-Charge (Standard)
               </label>
               <input
-                type="text"
+                type="number"
                 name="standard"
                 value={formData.standard}
                 onChange={handleChange}
+                placeholder="e.g. 10"
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
               />
             </div>
@@ -121,6 +147,7 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
                 name="division"
                 value={formData.division}
                 onChange={handleChange}
+                placeholder="e.g. A"
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
               />
             </div>
@@ -134,6 +161,7 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
                 name="phonenumber"
                 value={formData.phonenumber}
                 onChange={handleChange}
+                placeholder="e.g. 9876543210"
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
               />
             </div>
@@ -156,7 +184,7 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
                 Pincode
               </label>
               <input
-                type="text"
+                type="number"
                 name="pin"
                 value={formData.pin}
                 onChange={handleChange}
@@ -170,15 +198,17 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
             <button
               type="button"
               onClick={OnEditBtnClick}
-              className="px-5 py-2.5 rounded-xl border border-amber-200 text-xs font-bold text-amber-800 hover:bg-amber-50 transition-colors"
+              disabled={loading}
+              className="px-5 py-2.5 rounded-xl border border-amber-200 text-xs font-bold text-amber-800 hover:bg-amber-50 transition-colors disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-xs font-bold text-white shadow-md transition-all hover:scale-105"
+              disabled={loading}
+              className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-xs font-bold text-white shadow-md transition-all hover:scale-105 disabled:opacity-50"
             >
-              Save Changes
+              {loading ? "Saving..." : "Save Changes"}
             </button>
           </div>
         </form>
@@ -187,4 +217,4 @@ const EditTeacherForm = ({ OnEditBtnClick }) => {
   );
 };
 
-export default EditTeacherForm;
+export default EditTeacherForm;

@@ -1,120 +1,199 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNewParentToDb } from '../../../Redux/Slices/ParentSlice';
+import { fetchStudentsData } from '../../../Redux/Slices/StudentSlice';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const AddParent = () => {
-  const loggedteacherId=useParams();
-const [selectedUser, setSelectedUser] = useState(null);
-const [disId,setDisId]=useState();
-const[parentName,setParentName]=useState();
-    const students= useSelector((state)=>state.student.studentData);
-   const dispatch=useDispatch();                                              //email: 'q@gmail.com',
-                                                                                //password: 'sXRwzGHV1r'
-   const navigate=useNavigate();
-   //const[nameSelection,setNameSelection]=useState();
-   const[formData,setFormData]=useState({
-    name:"",
-    email:"",
-    studentname:"",
-    studentId:"",
-    phonenumber:"",
-    address:"",
-    pincode:"",
-    image:""
+  const { loggedteacherId } = useParams();
 
-   });
-    //console.log(students);
-     const handleChange = (e) => {
-  const { name, value,file } = e.target;
-   
-//   const selectedId = e.target.value;
-//    const selectedObj = users.find(user => user._id == selectedId);
-// console.log(selectedObj?._id,"id testing");
-//  setDisId(selectedObj?._id);
-//  console.log(disId);
-//   setSelectedUser(selectedObj);
+  const rawStudents = useSelector((state) => state.student.studentData);
+  const students = Array.isArray(rawStudents) ? rawStudents : [];
 
-   // Dropdown selection
-  if (e.target.tagName === "SELECT") {
-    const selectedObj = students.find(student => student._id == value);
-    setDisId(selectedObj?._id);
-    setSelectedUser(selectedObj);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    setFormData((prev) => ({
-      ...prev,
-      studentId: selectedObj?._id,
-      studentname: selectedObj?.Name,
-    }));
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    studentname: "",
+    studentId: "",
+    phonenumber: "",
+    address: "",
+    pincode: "",
+    image: ""
+  });
 
-    return;
-  }
+  useEffect(() => {
+    dispatch(fetchStudentsData());
+  }, [dispatch]);
 
-  // File input
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    // Dropdown selection
+    if (e.target.tagName === "SELECT") {
+      const selectedObj = students.find((student) => String(student._id) === String(value));
+
+      setFormData((prev) => ({
+        ...prev,
+        studentId: selectedObj?._id || "",
+        studentname: selectedObj?.Name || "",
+      }));
+
+      return;
+    }
+
+    // File input
     if (name === "image") {
-    setFormData((prev) => ({
-      ...prev,
-      image: file[0],   // store file object
-    }));
-  } else {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-  
-};
-const AddNewParent=(e)=>{
-    e.preventDefault();
-  dispatch(addNewParentToDb(formData));
-  navigate(`/parentslist/${loggedteacherId}`);
-}
-const Back=()=>{
-  navigate(-1);
-}
-  return (
-    <div className='bg-white h-screen '>
-       
-        <form onSubmit={AddNewParent}>
-            <div className='flex flex-col m-16 p-4 space-y-4 bg-amber-50 rounded-xl shadow-xl'>
-                  {/* <label>STUDENT NAME: 
-                <select 
-                name="studentname" value={formData.studentname} onChange={handleChange}>
-                    {students.map((item)=>(  
-              <option key={item?._id} value={item.Name} >{item.Name}</option>
-             ))}
-        </select>
-        </label> */}
-        <label> STUDENT NAME:
-        <select onChange={(e) => handleChange(e)}  class='border border-amber-500 rounded-md'>
-  <option value="">Select Student</option>
-  {students.map(student => (
-    <option key={student?._id} value={student?._id}>
-      {student.Name}
-    </option>
-  ))}
-</select>
-</label>
-              <label>NAME :   <input type='text' class='border border-amber-500 rounded-md' name="name" value={formData.name} onChange={handleChange}></input></label>
-                 <label>STUDENT ID :  <input type='text' defaultValue={disId}  class='border border-amber-500 rounded-md' ></input></label>
-     <label>PROFILE PICTURE: <input
-        type="file"
-        accept="image/*"
-        onChange={handleChange}
-         class='border border-amber-500 rounded-md'
-      /></label> 
-              <label>EMAIL :  <input type='email'  class='border border-amber-500 rounded-md' name="email" value={formData.email} onChange={handleChange}></input></label>
-               <label>ADDRESS :  <input type='text'  class='border border-amber-500 rounded-md' name="address" value={formData.address} onChange={handleChange}></input></label>
-                <label>PINCODE :<input type='number'   class='border border-amber-500 rounded-md' name="pincode" value={formData.pincode} onChange={handleChange}></input></label>
-               <label>PHONENUMBER:  <input type='number'  class='border border-amber-500 rounded-md' name="phonenumber" value={formData.phonenumber} onChange={handleChange}></input></label>
-                <button className='bg-amber-600 p-2 rounded-lg text-white shadow-lg font-bold'>Sumbit</button>
-                
-            </div>
-        </form>
-        <button className='bg-amber-600  text-white p-2 rounded-lg shadow-lg font-bold' onClick={Back}>Back</button>
-        {/* <button className='bg-amber-400 p-2 rounded-lg' onClick={BackTo}>Back</button> */}
-    </div>
-  )
-}
+      setFormData((prev) => ({
+        ...prev,
+        image: files && files.length > 0 ? files[0] : null,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
 
-export default AddParent
+  const AddNewParent = (e) => {
+    e.preventDefault();
+    dispatch(addNewParentToDb(formData));
+    if (loggedteacherId) {
+      navigate(`/parentslist/${loggedteacherId}`);
+    } else {
+      navigate('/parentslist');
+    }
+  };
+
+  const Back = () => {
+    navigate(-1);
+  };
+
+  return (
+    <div className='bg-white min-h-screen pb-16'>
+      <form onSubmit={AddNewParent}>
+        <div className='flex flex-col m-16 p-6 space-y-4 bg-amber-50 rounded-xl shadow-xl border border-amber-200 max-w-2xl mx-auto'>
+          <h2 className='text-2xl font-bold text-amber-900 mb-2'>Add New Guardian / Parent</h2>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            STUDENT NAME:
+            <select
+              value={formData.studentId || ""}
+              onChange={handleChange}
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500'
+            >
+              <option value="">Select Student</option>
+              {students.map((student) => (
+                <option key={student?._id} value={student?._id}>
+                  {student.Name} {student.Standard ? `(${student.Standard}th - ${student.Division || ""})` : ""}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            NAME :
+            <input
+              type='text'
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            STUDENT ID :
+            <input
+              type='text'
+              name="studentId"
+              value={formData.studentId}
+              onChange={handleChange}
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white font-mono'
+              placeholder='Auto-filled on selecting student'
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            PROFILE PICTURE:
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            EMAIL :
+            <input
+              type='email'
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            ADDRESS :
+            <input
+              type='text'
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            PINCODE :
+            <input
+              type='number'
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+              name="pincode"
+              value={formData.pincode}
+              onChange={handleChange}
+            />
+          </label>
+
+          <label className='flex flex-col text-sm font-semibold text-amber-950'>
+            PHONENUMBER:
+            <input
+              type='number'
+              className='border border-amber-500 rounded-md p-2 mt-1 bg-white'
+              name="phonenumber"
+              value={formData.phonenumber}
+              onChange={handleChange}
+              required
+            />
+          </label>
+
+          <div className='flex gap-3 pt-4'>
+            <button
+              type='submit'
+              className='bg-amber-600 hover:bg-amber-700 transition-colors p-2.5 px-6 rounded-lg text-white shadow-lg font-bold'
+            >
+              Submit
+            </button>
+            <button
+              type='button'
+              className='bg-stone-200 hover:bg-stone-300 transition-colors text-stone-800 p-2.5 px-6 rounded-lg font-bold'
+              onClick={Back}
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AddParent;

@@ -7,6 +7,7 @@ const Navbar = () => {
 
   const studentId = localStorage.getItem("studentId");
   const teacherId = localStorage.getItem("id");
+  const parentId = localStorage.getItem("parentId");
   const adminName = localStorage.getItem("name");
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -116,7 +117,7 @@ const Navbar = () => {
                 className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
                 onClick={() => navigate(`/studentDashboard/${studentId}`)}
               >
-                Student Portal
+                Student Dashboard
               </button>
             )}
             {teacherId && (
@@ -124,7 +125,7 @@ const Navbar = () => {
                 className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
                 onClick={() => navigate(`/teacher/profile/${teacherId}`)}
               >
-                Teacher Portal
+                Teacher Dashboard
               </button>
             )}
           </div>

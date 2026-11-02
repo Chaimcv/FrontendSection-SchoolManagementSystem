@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const announcements = useSelector((state) => state.announcement.AnnouncementData) || [];
   const classes = useSelector((state) => state.attendance.assignedClasses) || [];
   const rawExams = useSelector((state) => state.exam.allExams);
-  const allExams = useMemo(() => (Array.isArray(rawExams) ? rawExams : []), [rawExams]);
+  //const allExams = useMemo(() => (Array.isArray(rawExams) ? rawExams : []), [rawExams]);
 
   useEffect(() => {
     dispatch(fetchTeachersData());
@@ -29,96 +29,9 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-linear-to-b from-amber-50/80 via-amber-50/30 to-white pb-16 text-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        {/* Live Metric KPI Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-          {/* Total Faculty */}
-          <div className="bg-white rounded-2xl p-5 border border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
-                Teaching Faculty
-              </span>
-              <span className="text-3xl font-extrabold text-amber-950 mt-1 block">
-                {teachers.length}
-              </span>
-              <span className="text-[11px] text-stone-500 font-medium">Registered teachers</span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl shadow-xs">
-              👨‍🏫
-            </div>
-          </div>
-
-          {/* Total Parents */}
-          <div className="bg-white rounded-2xl p-5 border border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
-                Parent Directory
-              </span>
-              <span className="text-3xl font-extrabold text-amber-950 mt-1 block">
-                {parents.length}
-              </span>
-              <span className="text-[11px] text-stone-500 font-medium">Guardian records</span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl shadow-xs">
-              👨‍👩‍👧
-            </div>
-          </div>
-
-          {/* Announcements */}
-          <div className="bg-white rounded-2xl p-5 border border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
-                Active Notices
-              </span>
-              <span className="text-3xl font-extrabold text-amber-950 mt-1 block">
-                {announcements.length}
-              </span>
-              <span className="text-[11px] text-stone-500 font-medium">Published bulletins</span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl shadow-xs">
-              📢
-            </div>
-          </div>
-
-          {/* Class Registers */}
-          <div className="bg-white rounded-2xl p-5 border border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
-                Class Sections
-              </span>
-              <span className="text-3xl font-extrabold text-amber-950 mt-1 block">
-                {classes.length}
-              </span>
-              <span className="text-[11px] text-stone-500 font-medium">Tracked divisions</span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl shadow-xs">
-              🏛️
-            </div>
-          </div>
-
-          {/* Exam Schedules KPI */}
-          <div
-            onClick={() => navigate("/admin/examSchedules")}
-            className="bg-white rounded-2xl p-5 border border-amber-200/90 shadow-sm hover:shadow-md transition-all flex items-center justify-between cursor-pointer group hover:border-amber-400"
-          >
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block group-hover:text-amber-800">
-                Exam Schedules
-              </span>
-              <span className="text-3xl font-extrabold text-amber-950 mt-1 block">
-                {allExams.length}
-              </span>
-              <span className="text-[11px] text-stone-500 font-medium">Master timetables</span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl shadow-xs group-hover:scale-110 transition-transform">
-              🗓️
-            </div>
-          </div>
-        </div>
-
         {/* Primary Management Hub Modules */}
         <div className="mb-6">
           <h2 className="text-xl font-extrabold text-amber-950 tracking-tight flex items-center gap-2 mb-4">
-            <span className="w-2.5 h-6 rounded-full bg-amber-600 inline-block"></span>
             Administrative Portals
           </h2>
 
@@ -239,7 +152,7 @@ const AdminDashboard = () => {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800">
-                    {allExams.length} Master Timetables
+                    Master Timetables
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-amber-950 mb-2 group-hover:text-amber-700 transition-colors">

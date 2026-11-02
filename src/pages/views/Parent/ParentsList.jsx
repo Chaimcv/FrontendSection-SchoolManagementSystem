@@ -152,6 +152,13 @@ const ParentsList = () => {
                             View
                           </button>
                           <button
+                            onClick={() => navigate(`/editParent/${item._id}`)}
+                            className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all hover:scale-105 active:scale-95 shadow-2xs"
+                            title="Edit guardian record"
+                          >
+                            Edit
+                          </button>
+                          <button
                             onClick={() => handleDelete(item?._id)}
                             className="text-red-600 hover:bg-red-50 border border-red-200 text-xs font-bold px-3 py-1.5 rounded-lg transition-all hover:scale-105 active:scale-95 shadow-2xs"
                             title="Delete guardian record"
@@ -217,9 +224,7 @@ const ParentsList = () => {
             <div className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
               {/* Profile Card Banner */}
               <div className="flex items-center gap-4 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80">
-                <div className="w-14 h-14 rounded-2xl bg-amber-200 text-amber-900 font-extrabold text-xl flex items-center justify-center shadow-xs shrink-0">
-                  {selectedParent.Name ? selectedParent.Name.charAt(0).toUpperCase() : "P"}
-                </div>
+
                 <div className="min-w-0 flex-1">
                   <h4 className="text-xl font-extrabold text-amber-950 truncate">
                     {selectedParent.Name || "Unnamed Guardian"}
@@ -321,10 +326,10 @@ const ParentsList = () => {
             {/* Modal Footer */}
             <div className="bg-stone-50 px-6 py-4 border-t border-stone-200 flex flex-wrap items-center justify-between gap-3">
               <button
-                onClick={() => navigate(`/viewParentProfile/${selectedParent._id}`)}
-                className="bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold text-xs px-4 py-2 rounded-xl transition-all"
+                onClick={() => navigate(`/editParent/${selectedParent._id}`)}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-4 py-2 rounded-xl transition-all shadow-sm hover:scale-105 active:scale-95"
               >
-                Open Profile Page →
+                Edit Profile Page
               </button>
 
               <button

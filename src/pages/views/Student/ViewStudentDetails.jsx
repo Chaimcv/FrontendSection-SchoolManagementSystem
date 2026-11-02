@@ -28,17 +28,17 @@ const ViewStudentDetails = () => {
             {editform && (
                 <EditStudentForm
                     studentId={id}
-                    OnEditClick={() => setEditform(false)} 
+                    OnEditClick={() => setEditform(false)}
                 />
             )}
-            
+
             <div className={`max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden transition-all ${editform ? "blur-sm opacity-50 pointer-events-none" : ""}`}>
                 {getStudentDetails ? (
                     <div>
                         {/* Profile Header */}
-                        <div className='relative h-64 bg-amber-600'>
-                            <div className='absolute -bottom-16 left-8 flex items-end gap-6'>
-                                <div className='w-40 h-40 rounded-3xl overflow-hidden border-8 border-white shadow-2xl bg-white'>
+                        <div>
+                            <div className='pt-[4%] left-8 flex items-end gap-6'>
+                                {/* <div className='w-40 h-40 rounded-3xl overflow-hidden border-8 border-white shadow-2xl bg-white'>
                                     {getStudentDetails.ProfileImageUrl ? (
                                         <img src={getStudentDetails.ProfileImageUrl} alt={getStudentDetails.Name} className='w-full h-full object-cover' />
                                     ) : (
@@ -48,30 +48,23 @@ const ViewStudentDetails = () => {
                                             </svg>
                                         </div>
                                     )}
-                                </div>
-                                <div className='mb-4'>
-                                    <h1 className='text-4xl font-black text-amber-950 drop-shadow-md'>{getStudentDetails.Name}</h1>
-                                    <p className='text-amber-200 font-medium flex items-center gap-2'>
-                                        <span className='bg-white/20 px-3 py-0.5 rounded-full text-sm capitalize'>{getStudentDetails.Gender}</span>
-                                        <span>•</span>
-                                        <span>Standard {getStudentDetails.Standard}th ({getStudentDetails.Division})</span>
-                                    </p>
-                                </div>
+                                </div> */}
+
                             </div>
                         </div>
 
                         {/* Details Content */}
-                        <div className='pt-24 pb-12 px-10'>
+                        <div className=' pb-12 px-10'>
                             <div className='flex justify-between items-center mb-8 pb-4 border-b border-gray-100'>
-                                <h3 className='text-xl font-bold text-amber-900 uppercase tracking-widest'>Student Information</h3>
+                                <h3 className='text-xl font-bold text-amber-900 uppercase tracking-widest'>{getStudentDetails.Name}</h3>
                                 <div className='flex gap-3'>
-                                    <button 
+                                    <button
                                         className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 px-8 rounded-xl shadow-lg transition-all active:scale-95'
                                         onClick={handleEdit}
                                     >
                                         Edit Profile
                                     </button>
-                                    <button 
+                                    <button
                                         className='bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-8 rounded-xl transition-all'
                                         onClick={handleBack}
                                     >
@@ -90,15 +83,25 @@ const ViewStudentDetails = () => {
                                     <p className='text-lg font-medium text-gray-800'>{getStudentDetails.Age} Years Old</p>
                                 </div>
                                 <div>
+                                    <p className='text-xs font-bold text-gray-400 uppercase mb-1'>Gender</p>
+                                    <p className='text-lg font-medium text-gray-800 leading-snug'>{getStudentDetails.Gender}</p>
+                                </div>
+                                <div>
+                                    <p className='text-xs font-bold text-gray-400 uppercase mb-1'>Class </p>
+                                    <p className='text-lg font-medium text-gray-800 leading-snug'> <span> {getStudentDetails.Standard}th ({getStudentDetails.Division})</span></p>
+                                </div>
+                                <div>
                                     <p className='text-xs font-bold text-gray-400 uppercase mb-1'>Guardian Details</p>
                                     <p className='text-lg font-medium text-gray-800'>{getStudentDetails.Guardian}</p>
-                                    <p className='text-sm text-amber-600 font-semibold mt-1'>{getStudentDetails.Guardian_Phonenumber}</p>
+                                    <p className='text-sm text-gray-00 font-semibold mt-1'>{getStudentDetails.Guardian_Phonenumber}</p>
                                 </div>
                                 <div>
                                     <p className='text-xs font-bold text-gray-400 uppercase mb-1'>Address</p>
                                     <p className='text-lg font-medium text-gray-800 leading-snug'>{getStudentDetails.Address}</p>
                                     <p className='text-sm text-gray-500 mt-1 font-mono'>PIN: {getStudentDetails.Pincode}</p>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>

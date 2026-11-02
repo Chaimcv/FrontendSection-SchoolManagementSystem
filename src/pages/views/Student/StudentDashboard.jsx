@@ -43,11 +43,11 @@ const StudentDashboard = () => {
                             <div className="p-8 flex flex-col items-center text-center">
                                 <div className="relative mb-6">
                                     <div className="absolute inset-0 bg-amber-400 rounded-full blur-xl opacity-20 animate-pulse"></div>
-                                    <img
+                                    {/* <img
                                         className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg relative z-10"
                                         src={getStudentInfo?.ProfileImageUrl || "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"}
                                         alt='profile'
-                                    />
+                                    /> */}
                                 </div>
                                 <h2 className="text-2xl font-bold text-gray-800 mb-1">{getStudentInfo?.Name}</h2>
                                 <p className="text-amber-600 font-semibold text-sm mb-6">Student</p>
@@ -102,18 +102,16 @@ const StudentDashboard = () => {
                         {/* 1. BUTTON / CARD FOR EXAMS */}
                         <div
                             onClick={() => navigate(`/studentExams/${id}`)}
-                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-indigo-100 hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
+                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-amber-100 hover:border-amber-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
                         >
-                            <div className="absolute top-0 right-0 w-28 h-28 bg-indigo-50 rounded-full blur-xl group-hover:bg-indigo-100 transition-colors"></div>
+                            <div className="absolute top-0 right-0 w-28 h-28 bg-amber-50 rounded-full blur-xl group-hover:bg-amber-100 transition-colors"></div>
 
                             <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-2xl shadow-md mb-4 group-hover:scale-110 transition-transform">
-                                    📝
-                                </div>
-                                <span className="inline-block px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-indigo-200">
+
+                                <span className="inline-block px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-amber-200">
                                     Academic Schedule
                                 </span>
-                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-600 transition-colors">
                                     Exams
                                 </h3>
 
@@ -123,18 +121,16 @@ const StudentDashboard = () => {
                         {/* 2. BUTTON / CARD FOR ATTENDANCE SHEET */}
                         <div
                             onClick={() => navigate(`/studentAttendance/${id}`)}
-                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-emerald-100 hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
+                            className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-amber-100 hover:border-amber-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
                         >
-                            <div className="absolute top-0 right-0 w-28 h-28 bg-emerald-50 rounded-full blur-xl group-hover:bg-emerald-100 transition-colors"></div>
+                            <div className="absolute top-0 right-0 w-28 h-28 bg-amber-50 rounded-full blur-xl group-hover:bg-amber-100 transition-colors"></div>
 
                             <div className="relative z-10">
-                                <div className="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl shadow-md mb-4 group-hover:scale-110 transition-transform">
-                                    📊
-                                </div>
-                                <span className="inline-block px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-emerald-200">
+
+                                <span className="inline-block px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-emerald-200">
                                     Monthly Roll-Call
                                 </span>
-                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                                <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-600 transition-colors">
                                     Attendance Sheet
                                 </h3>
                             </div>
@@ -145,15 +141,13 @@ const StudentDashboard = () => {
                     <div className="rounded-3xl bg-white p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div>
                             <h4 className="text-sm font-bold text-slate-900">School Community Feed</h4>
-                            <p className="text-xs text-slate-500 mt-0.5">
-                                Connect with your classmates and teachers on the campus bulletin feed.
-                            </p>
+
                         </div>
                         <Link
                             to="/"
-                            className="inline-flex items-center gap-2 py-2.5 px-5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors shrink-0"
+                            className="inline-flex items-center gap-2 py-2.5 px-5 bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold rounded-xl transition-colors shrink-0"
                         >
-                            View Feed →
+                            View Feed
                         </Link>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ import StudentListing from './pages/views/Student/StudentListing';
 import AddNewStudent from './pages/views/Student/AddNewStudent';
 import ViewStudentDetails from './pages/views/Student/ViewStudentDetails';
 import AddParent from './pages/views/Parent/AddParent';
+import EditParent from './pages/views/Parent/EditParent';
 import ParentLogin from './pages/views/Parent/ParentLogin';
 import ParentsList from './pages/views/Parent/ParentsList';
 import ViewParentProfile from './pages/views/Parent/ViewParentProfile';
@@ -33,7 +34,7 @@ function App() {
   
   // }, []);
   // console.log(data,"data accessed from backend");
-   const token=localStorage.getItem("token");
+  // const token=localStorage.getItem("token");
   
   return (
     <div className="App">
@@ -66,9 +67,12 @@ function App() {
 
            {/* parent */}
             <Route path='/addingParent/:loggedteacherId' element={<AddParent />}/>
+            <Route path='/addingParent' element={<AddParent />}/>
             <Route path='/parentLogin' element={<ParentLogin />}/>
              <Route path='/parentslist/:loggedteacherId' element={<ParentsList />}/>
              <Route path='/parentslist' element={<ParentsList />}/>
+             <Route path='/editParent/:id' element={<EditParent />}/>
+             <Route path='/editParent/:id/:loggedteacherId' element={<EditParent />}/>
              <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
              <Route path='/parentDashboard/:id' element={<ParentDashboard/>}/>
       </Routes>
