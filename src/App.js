@@ -17,9 +17,9 @@ import ViewParentProfile from './pages/views/Parent/ViewParentProfile';
 import ParentDashboard from './pages/views/Parent/ParentDashboard';
 import StudentDashboard from './pages/views/Student/StudentDashboard';
 import Navbar from './components/Navbar';
-import AdminAttendance from './pages/views/AdminAttendence';
+// import AdminAttendance from './pages/views/AdminAttendence';
 import AdminExamSchedules from './pages/views/AdminExamSchedules';
-import StudentAttendance from './pages/views/Student/StudentAttendance';
+// import StudentAttendance from './pages/views/Student/StudentAttendance';
 import StudentExams from './pages/views/Student/StudentExams';
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
         <Route path='/' element={<Homepage />}/>
         <Route path='/:id' element={<Homepage />}/>
         <Route path='/login' element={<Login />}/>
-        <Route path='/admin/adminAttendence' element={<AdminAttendance />}/>
+        {/* <Route path='/admin/adminAttendence' element={<AdminAttendance />}/> */}
         <Route path='/admin/examSchedules' element={<AdminExamSchedules />}/>
         <Route path='/admin/adminExams' element={<AdminExamSchedules />}/>
 
@@ -59,8 +59,8 @@ function App() {
           <Route path='/addNewStudent/:loggedteacherId' element={<AddNewStudent />}/>
            <Route path='/viewAStudent/:id' element={<ViewStudentDetails />}/>
            <Route path='/studentDashboard/:id' element={<StudentDashboard/>}/>
-           <Route path='/studentAttendance/:id' element={<StudentAttendance/>}/>
-           <Route path='/student/attendance/:id' element={<StudentAttendance/>}/>
+           {/* <Route path='/studentAttendance/:id' element={<StudentAttendance/>}/> */}
+           {/* <Route path='/student/attendance/:id' element={<StudentAttendance/>}/> */}
            <Route path='/studentExams/:id' element={<StudentExams/>}/>
            <Route path='/student/exams/:id' element={<StudentExams/>}/>
 

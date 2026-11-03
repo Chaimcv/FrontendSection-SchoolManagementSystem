@@ -4,7 +4,7 @@ import StudentSlice from "./Slices/StudentSlice";
 import ParentSlice from "./Slices/ParentSlice";
 import AnnouncementSlice from "./Slices/AnnouncementSlice";
 import PostSlice from "./Slices/PostSlice";
-import attendanceReducer from "./Slices/AttendenceSlice";
+// import attendanceReducer from "./Slices/AttendenceSlice";
 import examReducer from "./Slices/ExamSlice";
 const store=configureStore({
     reducer:{
@@ -13,8 +13,8 @@ const store=configureStore({
         parent:ParentSlice,
         announcement:AnnouncementSlice,
         post:PostSlice,
-       attendance: attendanceReducer,
-       exam: examReducer,
+        // attendance: attendanceReducer,
+        exam: examReducer,
     }
 });
 export default store;

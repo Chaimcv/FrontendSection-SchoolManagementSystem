@@ -14,9 +14,9 @@ const TeacherHomepage = () => {
     const ProfileView = () => {
         navigate(`/teacher/viewProfile/${loggedteacherId}`);
     }
-    const StudentAttendence = () => {
-        navigate(`/teacher/studentAttendence/${loggedteacherId}`);
-    }
+    // const StudentAttendence = () => {
+    //     navigate(`/teacher/studentAttendence/${loggedteacherId}`);
+    // }
     const ExamSection = () => {
         navigate(`/teacher/exams/${loggedteacherId}`);
     }
@@ -52,12 +52,12 @@ const TeacherHomepage = () => {
                     Parents
                 </button>
 
-                <button
+                {/* <button
                     className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
                     onClick={StudentAttendence}
                 >
                     Attendence
-                </button>
+                </button> */}
 
                 <button
                     className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'

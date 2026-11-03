@@ -5,7 +5,7 @@ import ViewTeacherDetails from '../pages/ViewTeacherDetails'
 import TeacherLogin from '../pages/views/Teacher/TeacherLogin'
 import TeacherHomepage from '../pages/views/Teacher/TeacherHomepage'
 import TeacherProfile from '../pages/views/Teacher/TeacherProfile'
-import TeacherAttendance from '../pages/views/Teacher/TeacherAttendence'
+// import TeacherAttendance from '../pages/views/Teacher/TeacherAttendence'
 import TeacherExamPage from '../pages/views/Teacher/TeacherExamPage'
 
 const TeacherRoutes = () => {
@@ -22,7 +22,7 @@ const TeacherRoutes = () => {
 
         <Route path="/profile/:loggedteacherId" element={<TeacherHomepage />} />
         <Route path='/viewProfile/:myId' element={<TeacherProfile />} />
-        <Route path='/studentAttendence/:loggedteacherId' element={<TeacherAttendance />} />
+        {/* <Route path='/studentAttendence/:loggedteacherId' element={<TeacherAttendance />} /> */}
         <Route path='/exams/:loggedteacherId' element={<TeacherExamPage />} />
         <Route path='/exams' element={<TeacherExamPage />} />
         <Route path="/details/:teacherid" element={<ViewTeacherDetails />} />

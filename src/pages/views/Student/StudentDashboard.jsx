@@ -118,7 +118,8 @@ const StudentDashboard = () => {
                             </div>
                         </div>
 
-                        {/* 2. BUTTON / CARD FOR ATTENDANCE SHEET */}
+                        {/* 2. BUTTON / CARD FOR ATTENDANCE SHEET (Commented out per CTO instruction) */}
+                        {/*
                         <div
                             onClick={() => navigate(`/studentAttendance/${id}`)}
                             className="group cursor-pointer rounded-3xl bg-white p-6 shadow-md hover:shadow-xl border border-amber-100 hover:border-amber-300 transition-all duration-300 flex flex-col justify-between relative overflow-hidden active:scale-[0.98]"
@@ -135,6 +136,7 @@ const StudentDashboard = () => {
                                 </h3>
                             </div>
                         </div>
+                        */}
                     </div>
 
                     {/* Quick Community / Social Action */}

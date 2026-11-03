@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTeachersData } from "../Redux/Slices/TeacherSlice";
 import { fetchParentsData } from "../Redux/Slices/ParentSlice";
 import { fetchNoticeData } from "../Redux/Slices/AnnouncementSlice";
-import { fetchAllSchoolClasses } from "../Redux/Slices/AttendenceSlice";
+// import { fetchAllSchoolClasses } from "../Redux/Slices/AttendenceSlice";
 import { fetchAllExams } from "../Redux/Slices/ExamSlice";
 
 const AdminDashboard = () => {
@@ -14,15 +14,13 @@ const AdminDashboard = () => {
   const teachers = useSelector((state) => state.teacher.teacherData) || [];
   const parents = useSelector((state) => state.parent.parentData) || [];
   const announcements = useSelector((state) => state.announcement.AnnouncementData) || [];
-  const classes = useSelector((state) => state.attendance.assignedClasses) || [];
-  const rawExams = useSelector((state) => state.exam.allExams);
-  //const allExams = useMemo(() => (Array.isArray(rawExams) ? rawExams : []), [rawExams]);
+  // const classes = useSelector((state) => state.attendance?.assignedClasses) || [];
 
   useEffect(() => {
     dispatch(fetchTeachersData());
     dispatch(fetchParentsData());
     dispatch(fetchNoticeData());
-    dispatch(fetchAllSchoolClasses());
+    // dispatch(fetchAllSchoolClasses());
     dispatch(fetchAllExams());
   }, [dispatch]);
 
@@ -117,7 +115,8 @@ const AdminDashboard = () => {
               </div>
             </div>
 
-            {/* Attendance Hub */}
+            {/* Attendance Hub (Commented out completely per CTO instruction) */}
+            {/*
             <div className="group bg-white rounded-3xl p-6 sm:p-7 border border-amber-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -143,8 +142,9 @@ const AdminDashboard = () => {
                 </button>
               </div>
             </div>
+            */}
 
-            {/* Exam Schedules Hub (Clickable card like Attendance) */}
+            {/* Exam Schedules Hub */}
             <div
               onClick={() => navigate("/admin/examSchedules")}
               className="group bg-white rounded-3xl p-6 sm:p-7 border border-amber-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between cursor-pointer"
