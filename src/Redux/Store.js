@@ -7,6 +7,7 @@ import PostSlice from "./Slices/PostSlice";
 // import attendanceReducer from "./Slices/AttendenceSlice";
 import examReducer from "./Slices/ExamSlice";
 import MessageReducer from "./Slices/MessageSlice";
+import LeaveReducer from "./Slices/LeaveSlice";
 const store=configureStore({
     reducer:{
         teacher:TeacherReducer,
@@ -17,6 +18,7 @@ const store=configureStore({
         // attendance: attendanceReducer,
         exam: examReducer,
         message: MessageReducer,
+        leave: LeaveReducer,
     }
 });
 export default store;

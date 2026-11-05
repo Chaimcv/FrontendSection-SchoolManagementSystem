@@ -7,6 +7,7 @@ import { fetchOneParentDetails } from "../../../Redux/Slices/ParentSlice";
 import { fetchOneStudentDetails, fetchStudentsData } from "../../../Redux/Slices/StudentSlice";
 import { fetchClassExams } from "../../../Redux/Slices/ExamSlice";
 import { fetchParentMessages, fetchAssignedTeacherForParent, sendMessageToTeacher } from "../../../Redux/Slices/MessageSlice";
+import { applyLeave, fetchParentLeaves, deleteLeave } from "../../../Redux/Slices/LeaveSlice";
 
 // const API_URL = (process.env.REACT_APP_API_SCHOOL || "http://localhost:8000").trim().replace(/\/+$/, "");
 
@@ -46,6 +47,7 @@ const ParentDashboard = () => {
   const { classExams, loading: examsLoading } = useSelector((state) => state.exam);
   const parentMessages = useSelector((state) => state.message.parentMessages) || [];
   const assignedData = useSelector((state) => state.message.assignedTeacherData);
+  const parentLeaves = useSelector((state) => state.leave?.parentLeaves) || [];
 
   // Message Form State
   const [teacherModal, setTeacherModal] = useState(false);
@@ -53,6 +55,15 @@ const ParentDashboard = () => {
   const [msgContent, setMsgContent] = useState("");
   const [msgSending, setMsgSending] = useState(false);
   const [msgFeedback, setMsgFeedback] = useState({ type: "", text: "" });
+
+  // Leave Form State
+  const [leaveModal, setLeaveModal] = useState(false);
+  const [leaveType, setLeaveType] = useState("Medical / Sick Leave");
+  const [leaveStartDate, setLeaveStartDate] = useState("");
+  const [leaveEndDate, setLeaveEndDate] = useState("");
+  const [leaveReason, setLeaveReason] = useState("");
+  const [leaveSending, setLeaveSending] = useState(false);
+  const [leaveFeedback, setLeaveFeedback] = useState({ type: "", text: "" });
 
   const primaryTeacher = assignedData?.primaryTeacher;
   const allAssignedTeachers = assignedData?.teachers || [];
@@ -81,6 +92,7 @@ const ParentDashboard = () => {
       dispatch(fetchOneParentDetails(id));
       dispatch(fetchParentMessages(id));
       dispatch(fetchAssignedTeacherForParent(id));
+      dispatch(fetchParentLeaves(id));
     }
     dispatch(fetchStudentsData());
   }, [id, dispatch]);
@@ -170,6 +182,80 @@ const ParentDashboard = () => {
       );
     }
   }, [resolvedStudent, dispatch]);
+
+  const calculateDays = (start, end) => {
+    if (!start || !end) return 1;
+    const s = new Date(start);
+    const e = new Date(end);
+    const diff = Math.round((e - s) / (1000 * 60 * 60 * 24)) + 1;
+    return diff > 0 ? diff : 1;
+  };
+
+  const handleApplyLeave = async (e) => {
+    e.preventDefault();
+    setLeaveFeedback({ type: "", text: "" });
+
+    if (!targetStudentId) {
+      setLeaveFeedback({ type: "error", text: "Child student record could not be resolved." });
+      return;
+    }
+
+    const targetTeacherId = chosenTeacherId || primaryTeacher?._id || allAssignedTeachers[0]?._id;
+    if (!targetTeacherId) {
+      setLeaveFeedback({ type: "error", text: "No assigned teacher found for your child's class." });
+      return;
+    }
+
+    if (!leaveStartDate || !leaveEndDate) {
+      setLeaveFeedback({ type: "error", text: "Please select start and end dates." });
+      return;
+    }
+
+    if (new Date(leaveStartDate) > new Date(leaveEndDate)) {
+      setLeaveFeedback({ type: "error", text: "Start date cannot be after end date." });
+      return;
+    }
+
+    if (!leaveReason.trim()) {
+      setLeaveFeedback({ type: "error", text: "Please specify the reason for leave." });
+      return;
+    }
+
+    setLeaveSending(true);
+    const res = await dispatch(
+      applyLeave({
+        parentId: id,
+        studentId: targetStudentId,
+        teacherId: targetTeacherId,
+        leaveType,
+        startDate: leaveStartDate,
+        endDate: leaveEndDate,
+        reason: leaveReason.trim()
+      })
+    );
+
+    setLeaveSending(false);
+    if (res && res.success) {
+      setLeaveFeedback({ type: "success", text: "Leave application submitted to teacher successfully!" });
+      setLeaveStartDate("");
+      setLeaveEndDate("");
+      setLeaveReason("");
+      setTimeout(() => {
+        setLeaveModal(false);
+        setLeaveFeedback({ type: "", text: "" });
+      }, 1500);
+      dispatch(fetchParentLeaves(id));
+    } else {
+      setLeaveFeedback({ type: "error", text: res?.error || "Failed to submit leave application." });
+    }
+  };
+
+  const handleCancelLeave = async (leaveId) => {
+    if (window.confirm("Cancel this leave request?")) {
+      await dispatch(deleteLeave(leaveId));
+      dispatch(fetchParentLeaves(id));
+    }
+  };
 
   // 4. Fetch child student attendance records for selected month (Commented out per CTO instruction)
   /*
@@ -443,6 +529,137 @@ const ParentDashboard = () => {
           )}
         </div>
 
+        {/* CHILD LEAVE APPLICATIONS */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200/80 shadow-md space-y-5">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-100 pb-4">
+            <div className="flex items-center gap-3">
+              <span className="p-2.5 bg-amber-100 rounded-2xl text-amber-700 text-xl">📋</span>
+              <div>
+                <h3 className="text-xl font-extrabold text-amber-950">Child Leave Applications</h3>
+                <p className="text-xs text-stone-500 font-medium">
+                  Submit formal leave requests to your child's assigned class teacher and monitor status
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setLeaveModal(true)}
+                className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer shrink-0 hover:scale-105 active:scale-95"
+              >
+                <span>✍️</span> Apply for Leave
+              </button>
+              <span className="text-xs font-black px-3 py-1.5 bg-amber-50 text-amber-700 rounded-xl border border-amber-200">
+                {parentLeaves.length} Applications
+              </span>
+            </div>
+          </div>
+
+          {parentLeaves && parentLeaves.length > 0 ? (
+            <div className="space-y-4 max-h-[480px] overflow-y-auto pr-1">
+              {parentLeaves.map((leave) => {
+                const days = calculateDays(leave.startDate, leave.endDate);
+                const isPending = leave.status === "Pending";
+                const isApproved = leave.status === "Approved";
+                const isRejected = leave.status === "Rejected";
+
+                return (
+                  <div
+                    key={leave._id}
+                    className={`p-5 rounded-2xl border transition-all space-y-3 ${
+                      isPending
+                        ? "border-amber-200 bg-amber-50/25 hover:bg-amber-50/40"
+                        : isApproved
+                        ? "border-emerald-200 bg-emerald-50/20 hover:bg-emerald-50/35"
+                        : "border-rose-200 bg-rose-50/20 hover:bg-rose-50/35"
+                    }`}
+                  >
+                    {/* Top Row: Type, Dates & Status */}
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-black px-2.5 py-0.5 rounded-lg bg-amber-100 text-amber-800 border border-amber-200">
+                          {leave.leaveType}
+                        </span>
+                        <span className="text-xs font-bold text-stone-700">
+                          {leave.startDate} ➔ {leave.endDate} ({days} {days === 1 ? "Day" : "Days"})
+                        </span>
+                      </div>
+
+                      {/* Status Badge */}
+                      <span
+                        className={`text-xs font-black px-3 py-1 rounded-xl border flex items-center gap-1.5 ${
+                          isPending
+                            ? "bg-amber-100 text-amber-800 border-amber-300"
+                            : isApproved
+                            ? "bg-emerald-100 text-emerald-800 border-emerald-300"
+                            : "bg-rose-100 text-rose-800 border-rose-300"
+                        }`}
+                      >
+                        {isPending && "⏳ Pending Teacher Review"}
+                        {isApproved && "✅ Approved by Faculty"}
+                        {isRejected && "❌ Rejected by Faculty"}
+                      </span>
+                    </div>
+
+                    {/* Faculty in charge & Submitted At */}
+                    <div className="flex flex-wrap items-center justify-between text-xs text-stone-500 font-medium">
+                      <span>
+                        Assigned Faculty:{" "}
+                        <span className="font-bold text-amber-950">
+                          {leave.teacherName || leave.teacher?.name || "Class Teacher"}
+                        </span>
+                      </span>
+                      <span className="text-[11px] text-stone-400">
+                        Submitted:{" "}
+                        {new Date(leave.createdAt).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric"
+                        })}
+                      </span>
+                    </div>
+
+                    {/* Reason */}
+                    <div className="bg-white p-3 rounded-xl border border-amber-100/70 text-xs text-stone-700 leading-relaxed">
+                      <span className="font-bold text-stone-900 block mb-0.5">Application Reason:</span>
+                      {leave.reason}
+                    </div>
+
+                    {/* If Rejected: Show Teacher's Rejection Reason */}
+                    {isRejected && leave.rejectionReason && (
+                      <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs space-y-1">
+                        <span className="font-black text-rose-800 flex items-center gap-1.5">
+                          <span>⚠️</span> Faculty Reason for Rejection:
+                        </span>
+                        <p className="text-rose-900 font-medium">{leave.rejectionReason}</p>
+                      </div>
+                    )}
+
+                    {/* Cancel Option if Pending */}
+                    {isPending && (
+                      <div className="text-right pt-1">
+                        <button
+                          onClick={() => handleCancelLeave(leave._id)}
+                          className="text-xs text-rose-700 hover:text-rose-900 font-bold hover:underline cursor-pointer"
+                        >
+                          Cancel Application
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="text-center py-10 bg-amber-50/30 rounded-2xl border border-dashed border-amber-200 text-stone-400">
+              <span className="text-3xl block mb-2">🏖️</span>
+              <p className="text-xs font-bold text-stone-600">No leave applications submitted yet.</p>
+              <p className="text-[11px] mt-1">
+                Click "Apply for Leave" above to request an excused absence for your child.
+              </p>
+            </div>
+          )}
+        </div>
+
         {/* TEACHER COMMUNICATIONS & GUARDIAN NOTICES */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200/80 shadow-md space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-100 pb-4">
@@ -623,6 +840,146 @@ const ParentDashboard = () => {
                 className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {msgSending ? "Dispatching Message..." : "🚀 Send Message to Teacher"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+      {/* Modal: Apply for Leave */}
+      {leaveModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-amber-200 shadow-2xl relative space-y-5">
+            <div className="flex items-center justify-between border-b border-amber-100 pb-3">
+              <div>
+                <h3 className="text-lg font-black text-amber-950">
+                  Submit Child Leave Application
+                </h3>
+                <p className="text-xs text-stone-500">
+                  For: <span className="font-bold text-stone-800">{resolvedStudent?.Name || "Your Child"}</span>
+                  {resolvedStudent?.Standard && ` (Std ${resolvedStudent.Standard}${resolvedStudent.Division ? `-${resolvedStudent.Division}` : ""})`}
+                </p>
+              </div>
+              <button
+                onClick={() => setLeaveModal(false)}
+                className="w-8 h-8 rounded-full bg-amber-50 text-amber-800 hover:bg-amber-100 flex items-center justify-center text-sm font-bold cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {leaveFeedback.text && (
+              <div
+                className={`p-3.5 rounded-xl text-xs font-bold border ${
+                  leaveFeedback.type === "success"
+                    ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                    : "bg-rose-50 border-rose-200 text-rose-800"
+                }`}
+              >
+                {leaveFeedback.text}
+              </div>
+            )}
+
+            <form onSubmit={handleApplyLeave} className="space-y-4">
+              {/* Recipient Teacher Info */}
+              <div>
+                <label className="text-xs font-bold text-amber-900 block mb-1.5">
+                  Recipient Class Faculty
+                </label>
+                {allAssignedTeachers.length > 1 ? (
+                  <select
+                    value={chosenTeacherId}
+                    onChange={(e) => setChosenTeacherId(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-amber-200 bg-amber-50/20 text-xs font-bold text-stone-800 focus:outline-hidden"
+                  >
+                    {allAssignedTeachers.map((t) => (
+                      <option key={t._id} value={t._id}>
+                        {t.name} ({t.subject || "Faculty"} • Std {t.standard}
+                        {t.division ? `-${t.division}` : ""})
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-bold text-amber-950 flex items-center justify-between">
+                    <span>
+                      {primaryTeacher
+                        ? `${primaryTeacher.name} (${primaryTeacher.subject || "Class Teacher"} • Std ${primaryTeacher.standard}${primaryTeacher.division ? `-${primaryTeacher.division}` : ""})`
+                        : "Class Faculty In-Charge"}
+                    </span>
+                    <span className="text-[10px] text-amber-700 bg-white px-2 py-0.5 rounded-md border border-amber-200">
+                      Assigned
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Leave Type */}
+              <div>
+                <label className="text-xs font-bold text-amber-900 block mb-1.5">
+                  Leave Category *
+                </label>
+                <select
+                  value={leaveType}
+                  onChange={(e) => setLeaveType(e.target.value)}
+                  className="w-full p-3 rounded-xl border border-amber-200 bg-amber-50/10 text-xs font-semibold text-stone-800 focus:outline-hidden"
+                >
+                  <option value="Medical / Sick Leave">Medical / Sick Leave</option>
+                  <option value="Family Function">Family Function / Event</option>
+                  <option value="Personal / Emergency">Personal / Family Emergency</option>
+                  <option value="Vacation / Travel">Vacation / Travel</option>
+                  <option value="Other">Other Reason</option>
+                </select>
+              </div>
+
+              {/* Start & End Dates */}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-xs font-bold text-amber-900 block mb-1.5">
+                    Start Date *
+                  </label>
+                  <input
+                    type="date"
+                    required
+                    value={leaveStartDate}
+                    onChange={(e) => setLeaveStartDate(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-amber-200 bg-amber-50/10 text-xs font-semibold text-stone-800 focus:outline-hidden"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-bold text-amber-900 block mb-1.5">
+                    End Date *
+                  </label>
+                  <input
+                    type="date"
+                    required
+                    min={leaveStartDate || undefined}
+                    value={leaveEndDate}
+                    onChange={(e) => setLeaveEndDate(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-amber-200 bg-amber-50/10 text-xs font-semibold text-stone-800 focus:outline-hidden"
+                  />
+                </div>
+              </div>
+
+              {/* Reason Description */}
+              <div>
+                <label className="text-xs font-bold text-amber-900 block mb-1.5">
+                  Detailed Reason for Leave *
+                </label>
+                <textarea
+                  value={leaveReason}
+                  onChange={(e) => setLeaveReason(e.target.value)}
+                  placeholder="Explain the reason for absence, doctor consultation details, or planned family events..."
+                  rows="3"
+                  required
+                  className="w-full p-3 rounded-xl border border-amber-200 bg-amber-50/10 text-xs font-medium text-stone-800 focus:outline-hidden resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={leaveSending}
+                className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                {leaveSending ? "Transmitting Application..." : "🚀 Submit Application to Faculty"}
               </button>
             </form>
           </div>
