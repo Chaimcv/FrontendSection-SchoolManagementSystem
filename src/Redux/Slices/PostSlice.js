@@ -70,28 +70,36 @@ export const fetchAllPost = () => async (dispatch) => {
 export const addNewPost = (formdata) => async (dispatch) => {
   try {
     const response = await axios.post(`${baseUrl}/post/create`, formdata, {
-      headers: { ...getAuthHeader(), "Content-Type": "multipart/form-data" }
+      headers: getAuthHeader()
     });
     if (response.data && response.data.data) {
       dispatch(addPostToState(response.data.data));
       dispatch(setMessage(response.data.message));
+      return { success: true, data: response.data.data };
     }
+    return { success: false, error: response.data?.message || "Failed to create post" };
   } catch (error) {
-    dispatch(setError(error.response?.data?.message || error.message));
+    const errorMsg = error.response?.data?.message || error.response?.data?.error || error.message;
+    dispatch(setError(errorMsg));
+    return { success: false, error: errorMsg };
   }
 };
 
 export const updatePost = (id, formdata) => async (dispatch) => {
   try {
     const response = await axios.put(`${baseUrl}/post/${id}`, formdata, {
-      headers: { ...getAuthHeader(), "Content-Type": "multipart/form-data" }
+      headers: getAuthHeader()
     });
     if (response.data && response.data.data) {
       dispatch(updatePostInState(response.data.data));
       dispatch(setMessage(response.data.message));
+      return { success: true, data: response.data.data };
     }
+    return { success: false, error: response.data?.message || "Failed to update post" };
   } catch (error) {
-    dispatch(setError(error.response?.data?.message || error.message));
+    const errorMsg = error.response?.data?.message || error.response?.data?.error || error.message;
+    dispatch(setError(errorMsg));
+    return { success: false, error: errorMsg };
   }
 };
 

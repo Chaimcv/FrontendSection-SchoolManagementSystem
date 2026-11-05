@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchAllPost, likePost, addComment, deletePost, updatePost } from '../Redux/Slices/PostSlice';
 import AddPostForm from '../components/AddPostForm';
 
@@ -46,13 +47,13 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                     <div className="relative group-hover:scale-110 transition-transform duration-500">
                         <div className="absolute inset-0 bg-indigo-500 rounded-full blur-lg opacity-20 animate-pulse"></div>
                         <img
-                            src={post.student?.ProfileImageUrl} //|| `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.student?._id}`}
+                            src={post.student?.ProfileImageUrl || `https://api.dicebear.com/7.x/avataaars/svg?seed=${post.student?._id || post._id}`}
                             alt=""
                             className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-md relative z-10"
                         />
                     </div>
                     <div>
-                        <h4 className="font-extrabold text-gray-800 text-lg">{post.student?.Name}</h4>
+                        <h4 className="font-extrabold text-gray-800 text-lg">{post.student?.Name || "Student"}</h4>
                         <p className="text-[10px] text-gray-400 font-black uppercase tracking-[0.2em]">
                             {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                         </p>
@@ -81,14 +82,14 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
                         </div>
                     </form>
                 ) : (
-                    <p className="text-gray-700 text-xl leading-relaxed mb-6 font-semibold tracking-tight whitespace-pre-wrap selection:bg-indigo-100">{post.text}</p>
+                    <p className="text-gray-700 text-xl leading-relaxed mb-6 font-semibold tracking-tight whitespace-pre-wrap selection:bg-indigo-100">{post.text || post.Text}</p>
                 )}
             </div>
 
-            {post.imageUrl && !isEditing && (
+            {(post.imageUrl || post.ImageUrl) && !isEditing && (
                 <div className="px-8 pb-6">
                     <div className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-200/50 ring-1 ring-gray-100 group/image">
-                        <img src={post.imageUrl} alt="Visual Story" className="w-full object-cover max-h-[600px] hover:scale-105 transition-transform duration-[1.5s] ease-out" />
+                        <img src={post.imageUrl || post.ImageUrl} alt="Visual Story" className="w-full object-cover max-h-[600px] hover:scale-105 transition-transform duration-[1.5s] ease-out" />
                     </div>
                 </div>
             )}
@@ -165,46 +166,47 @@ const PostCard = ({ post, currentStudentId, hasToken }) => {
 
 const PostsSection = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { PostData } = useSelector((state) => state.post);
     const currentStudent = useSelector((state) => state.student.loginAsStudent);
     const [isFormOpen, setIsFormOpen] = useState(false);
-    
+
     // Robust identification: Check multiple storage locations
     const hasToken = localStorage.getItem("token");
-    const currentStudentId = currentStudent?.id || 
-                             currentStudent?.data?.id || 
-                             localStorage.getItem("studentId") || 
-                             localStorage.getItem("id");
+    const currentStudentId = currentStudent?.id ||
+        currentStudent?.data?.id ||
+        localStorage.getItem("studentId") ||
+        localStorage.getItem("id");
 
     useEffect(() => {
         dispatch(fetchAllPost());
     }, [dispatch]);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-50/50 via-white to-rose-50/30 py-16 px-6">
+        <div className="min-h-screen bg-gradient-to-br from-amber-50/50 via-white to-rose-50/30 py-16 px-6">
             <div className="max-w-2xl mx-auto">
-                <header className="flex flex-col items-center mb-16 relative">
-                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-indigo-500/10 blur-[80px] rounded-full"></div>
-                    <h2 className="text-5xl md:text-6xl font-[1000] text-amber-950">POSTS   
-                        {/*  <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-rose-600 bg-clip-text text-transparent italic">Verse</span> */}
-                    </h2>
-                    <div className="w-20 h-2 bg-amber-600 rounded-full mb-8"></div>
+                <header className="flex flex-col items-center mb-12 relative">
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-40 h-40 bg-amber-500/10 blur-[80px] rounded-full"></div>
+                    <h2 className="text-5xl md:text-6xl font-[1000] text-amber-950 mb-3 tracking-tight">POSTS</h2>
+                    <div className="w-20 h-2 bg-amber-600 rounded-full mb-6"></div>
 
-                    {/* {hasToken && (
-                        <button
-                            onClick={() => setIsFormOpen(true)}
-                            className="group relative px-8 py-4 bg-indigo-600 rounded-[2rem] shadow-2xl shadow-indigo-200 overflow-hidden hover:scale-105 active:scale-95 transition-all duration-300"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 transition-opacity group-hover:opacity-0"></div>
-                            <div className="absolute inset-0 bg-gradient-to-r from-violet-600 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            <div className="relative flex items-center gap-3">
-                                <svg className="w-6 h-6 text-white group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-                                <span className="text-white font-black uppercase text-sm tracking-widest">Share your story</span>
-                            </div>
-                        </button>
-                    )} */}
+                    {/* Share Post Button */}
+                    {/* <button
+                        onClick={() => {
+                            if (!hasToken) {
+                                navigate("/login");
+                            } else {
+                                setIsFormOpen(true);
+                            }
+                        }}
+                        className="group px-8 py-4 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-white font-extrabold rounded-[2rem] shadow-xl shadow-amber-200 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 uppercase text-xs tracking-widest cursor-pointer"
+                    >
+                        <svg className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span>Share Your Story</span>
+                    </button> */}
                 </header>
-
                 {isFormOpen && <AddPostForm onClose={() => setIsFormOpen(false)} />}
 
                 {PostData && PostData.length > 0 ? (
@@ -215,7 +217,7 @@ const PostsSection = () => {
                     </div>
                 ) : (
                     <div className="text-center py-24 bg-white/50 backdrop-blur-xl rounded-[3rem] border border-white shadow-xl p-12">
-                        <div className="w-24 h-24 bg-indigo-50 rounded-full flex items-center justify-center mx-auto mb-8 relative">
+                        <div className="w-24 h-24 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-8 relative">
                             {/* <div className="absolute inset-0 bg-indigo-500 rounded-full blur-2xl opacity-10 animate-pulse"></div>
                             <svg className="w-12 h-12 text-indigo-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg> */}
                         </div>

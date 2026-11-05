@@ -8,6 +8,7 @@ const StudentDashboard = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [postForm, setPostForm] = useState(false);
+    const [successMsg, setSuccessMsg] = useState("");
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -85,6 +86,26 @@ const StudentDashboard = () => {
 
                 {/* Dashboard Main Panel: Core Action Cards */}
                 <div className="md:col-span-2 space-y-6">
+                    {/* Post Success Notification Banner */}
+                    {successMsg && (
+                        <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-2xl flex items-center justify-between gap-4 animate-in fade-in duration-300">
+                            <div className="flex items-center gap-3">
+                                <span className="p-2 bg-emerald-100 rounded-xl text-emerald-600">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </span>
+                                <span className="text-xs font-bold">{successMsg}</span>
+                            </div>
+                            <Link
+                                to="/"
+                                className="px-3.5 py-1.5 bg-emerald-600 text-white font-bold rounded-xl text-xs hover:bg-emerald-700 transition-colors shrink-0"
+                            >
+                                View on Feed
+                            </Link>
+                        </div>
+                    )}
+
                     {/* Welcome Banner */}
                     <div className="bg-gradient-to-br from-amber-50 via-amber-100/40 to-orange-50 rounded-3xl p-7 border border-amber-200/80 shadow-xs relative overflow-hidden">
                         <div className="relative z-10">
@@ -156,7 +177,12 @@ const StudentDashboard = () => {
             </div>
 
             {/* Post Form Modal */}
-            {postForm && <AddPostForm onClose={togglePostForm} />}
+            {postForm && (
+                <AddPostForm
+                    onClose={togglePostForm}
+                    onSuccess={() => setSuccessMsg("Post published successfully! It is now live on the School Feed.")}
+                />
+            )}
         </div>
     )
 }
