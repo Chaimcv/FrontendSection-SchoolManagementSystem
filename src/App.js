@@ -21,6 +21,7 @@ import Navbar from './components/Navbar';
 import AdminExamSchedules from './pages/views/AdminExamSchedules';
 // import StudentAttendance from './pages/views/Student/StudentAttendance';
 import StudentExams from './pages/views/Student/StudentExams';
+import TeacherMessages from './pages/views/Teacher/TeacherMessages';
 
 function App() {
 
@@ -45,7 +46,11 @@ function App() {
         <div><Navbar /></div>
       <Routes>
        
-        <Route path="/admin/*" element={<AdminRoutes />}/>
+        <Route path='/teacherMessages/:loggedteacherId' element={<TeacherMessages />}/>
+        <Route path='/teacherMessages' element={<TeacherMessages />}/>
+        <Route path='/teacher/messages/:loggedteacherId' element={<TeacherMessages />}/>
+        <Route path='/teacher/messages' element={<TeacherMessages />}/>
+        <Route path='/admin/*' element={<AdminRoutes />}/>
         <Route path='/teacher/*' element={<TeacherRoutes />}/>  
         <Route path='/' element={<Homepage />}/>
         <Route path='/:id' element={<Homepage />}/>

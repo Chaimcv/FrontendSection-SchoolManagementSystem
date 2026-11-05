@@ -19,10 +19,8 @@ const StudentListing = () => {
     };
 
     const deleteStudent = async (studentIdToDelete) => {
-
         await dispatch(deleteAStudent(studentIdToDelete));
         dispatch(fetchStudentsData());
-
     };
 
     const AddStudent = () => navigate(`/addNewStudent/${loggedteacherId}`);
@@ -36,9 +34,17 @@ const StudentListing = () => {
                 <div className='max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4'>
                     <div>
                         <h1 className='text-3xl font-extrabold text-amber-900'>Student Records</h1>
-                        {/* <p className='text-gray-500 mt-1'>Manage academic records and personal details of all students.</p> */}
                     </div>
                     <div className='flex gap-3'>
+                        {loggedteacherId && (
+                            <button
+                                className='bg-amber-700 hover:bg-amber-800 text-white font-bold py-2.5 px-5 rounded-xl shadow-md transition-all flex items-center gap-2'
+                                onClick={() => navigate(`/teacher/messages/${loggedteacherId}`)}
+                            >
+                                <span>✉️</span>
+                                Message Hub
+                            </button>
+                        )}
                         <button
                             className='bg-amber-600 hover:bg-amber-700 text-white font-bold py-2.5 px-6 rounded-xl shadow-md transition-all flex items-center gap-2'
                             onClick={AddStudent}
@@ -61,7 +67,7 @@ const StudentListing = () => {
                 </div>
             </div>
 
-            <div className='mt-8 flex  mr-[5%] justify-end'>
+            <div className='mt-8 flex mr-[5%] justify-end'>
                 <button
                     className='bg-amber-100 hover:bg-gray-300 text-gray-700 font-bold py-3 px-8 rounded-xl transition-all'
                     onClick={BackToProfile}
@@ -106,6 +112,15 @@ const StudentListing = () => {
                                     <td className='py-4 px-6 text-gray-600 text-center font-bold'>{item.Division}</td>
                                     <td className='py-4 px-6 text-gray-600'>{item.Guardian}</td>
                                     <td className='py-4 px-6 text-right space-x-2'>
+                                        {loggedteacherId && (
+                                            <button
+                                                className='bg-amber-600 hover:bg-amber-700 text-white px-3.5 py-2 rounded-lg font-bold transition-all text-xs shadow-xs hover:scale-105 active:scale-95'
+                                                onClick={() => navigate(`/teacher/messages/${loggedteacherId}?type=Student&studentId=${item._id}`)}
+                                                title="Send direct message to this student"
+                                            >
+                                                ✉️ Message
+                                            </button>
+                                        )}
                                         <button
                                             className='bg-amber-100 text-amber-700 hover:bg-amber-200 px-4 py-2 rounded-lg font-medium transition-colors'
                                             onClick={() => viewStudentDetails(item._id)}
@@ -130,8 +145,6 @@ const StudentListing = () => {
                         </div>
                     )}
                 </div>
-
-
             </div>
         </div>
     );

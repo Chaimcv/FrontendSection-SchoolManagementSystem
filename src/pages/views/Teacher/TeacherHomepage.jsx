@@ -20,6 +20,9 @@ const TeacherHomepage = () => {
     const ExamSection = () => {
         navigate(`/teacher/exams/${loggedteacherId}`);
     }
+    const MessagesView = () => {
+        navigate(`/teacher/messages/${loggedteacherId}`);
+    }
 
     return (
         <div className='bg-amber-100 min-h-screen py-12 flex flex-col items-center justify-center'>
@@ -64,6 +67,13 @@ const TeacherHomepage = () => {
                     onClick={ExamSection}
                 >
                     Exams
+                </button>
+
+                <button
+                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    onClick={MessagesView}
+                >
+                    Messages
                 </button>
             </div>
         </div>

@@ -63,12 +63,20 @@ const ParentsList = () => {
 
           <div className="flex items-center gap-3">
             {loggedteacherId && (
-              <button
-                onClick={() => navigate(`/addingParent/${loggedteacherId}`)}
-                className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
-              >
-                <span className="text-base leading-none">+</span> Add Parent
-              </button>
+              <>
+                <button
+                  onClick={() => navigate(`/teacher/messages/${loggedteacherId}`)}
+                  className="inline-flex items-center gap-2 bg-amber-700 hover:bg-amber-800 active:bg-amber-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
+                >
+                  <span>✉️</span> Message Hub
+                </button>
+                <button
+                  onClick={() => navigate(`/addingParent/${loggedteacherId}`)}
+                  className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 active:scale-95"
+                >
+                  <span className="text-base leading-none">+</span> Add Parent
+                </button>
+              </>
             )}
           </div>
         </div>
@@ -144,6 +152,15 @@ const ParentsList = () => {
                       </td>
                       <td className="py-3.5 px-4 text-center">
                         <div className="flex items-center justify-center gap-2">
+                          {loggedteacherId && (
+                            <button
+                              onClick={() => navigate(`/teacher/messages/${loggedteacherId}?type=Parent&parentId=${item._id}`)}
+                              className="bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all hover:scale-105 active:scale-95 shadow-2xs"
+                              title="Message this guardian"
+                            >
+                              ✉️ Message
+                            </button>
+                          )}
                           <button
                             onClick={() => setSelectedParent(item)}
                             className="bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 text-xs font-bold px-3 py-1.5 rounded-lg transition-all hover:scale-105 active:scale-95 shadow-2xs"

@@ -121,12 +121,20 @@ const Navbar = () => {
               </button>
             )}
             {teacherId && (
-              <button
-                className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
-                onClick={() => navigate(`/teacher/profile/${teacherId}`)}
-              >
-                Teacher Dashboard
-              </button>
+              <>
+                <button
+                  className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
+                  onClick={() => navigate(`/teacher/profile/${teacherId}`)}
+                >
+                  Teacher Dashboard
+                </button>
+                <button
+                  className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
+                  onClick={() => navigate(`/teacher/messages/${teacherId}`)}
+                >
+                  Messages
+                </button>
+              </>
             )}
           </div>
         )}
