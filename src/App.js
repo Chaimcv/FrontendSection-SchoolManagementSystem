@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminRoutes from './Routes/AdminRoutes';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -27,67 +27,65 @@ import TeacherLeaves from './pages/views/Teacher/TeacherLeaves';
 function App() {
 
   //  const[data,setData]=useState([]);
-  
+
   //   useEffect(() => {
   //   fetch('http://127.0.0.1:8000/teacher')               //backend connection api
   //     .then((res) => res.json())
   //     .then((data) => setData(data.message)
   //   );
-  
+
   // }, []);
   // console.log(data,"data accessed from backend");
   // const token=localStorage.getItem("token");
-  
+
   return (
     <div className="App">
-       
+
       <BrowserRouter>
-      <Header />
-         {/* {token&&<div><Navbar /></div>} */}
+        <Header />
+        {/* {token&&<div><Navbar /></div>} */}
         <div><Navbar /></div>
-      <Routes>
-       
-        <Route path='/teacherMessages/:loggedteacherId' element={<TeacherMessages />}/>
-        <Route path='/teacherMessages' element={<TeacherMessages />}/>
-        <Route path='/teacher/messages/:loggedteacherId' element={<TeacherMessages />}/>
-        <Route path='/teacher/messages' element={<TeacherMessages />}/>
-        <Route path='/teacherLeaves/:loggedteacherId' element={<TeacherLeaves />}/>
-        <Route path='/teacherLeaves' element={<TeacherLeaves />}/>
-        <Route path='/teacher/leaves/:loggedteacherId' element={<TeacherLeaves />}/>
-        <Route path='/teacher/leaves' element={<TeacherLeaves />}/>
-        <Route path='/admin/*' element={<AdminRoutes />}/>
-        <Route path='/teacher/*' element={<TeacherRoutes />}/>  
-        <Route path='/' element={<Homepage />}/>
-        <Route path='/:id' element={<Homepage />}/>
-        <Route path='/login' element={<Login />}/>
-        {/* <Route path='/admin/adminAttendence' element={<AdminAttendance />}/> */}
-        <Route path='/admin/examSchedules' element={<AdminExamSchedules />}/>
-        <Route path='/admin/adminExams' element={<AdminExamSchedules />}/>
+        <Routes>
 
-        {/* student */}
-         <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />}/>
-          <Route path='/addNewStudent/:loggedteacherId' element={<AddNewStudent />}/>
-           <Route path='/viewAStudent/:id' element={<ViewStudentDetails />}/>
-           <Route path='/studentDashboard/:id' element={<StudentDashboard/>}/>
-           {/* <Route path='/studentAttendance/:id' element={<StudentAttendance/>}/> */}
-           {/* <Route path='/student/attendance/:id' element={<StudentAttendance/>}/> */}
-           <Route path='/studentExams/:id' element={<StudentExams/>}/>
-           <Route path='/student/exams/:id' element={<StudentExams/>}/>
+          <Route path='/teacherMessages/:loggedteacherId' element={<TeacherMessages />} />
+          <Route path='/teacherMessages' element={<TeacherMessages />} />
+          <Route path='/teacher/messages/:loggedteacherId' element={<TeacherMessages />} />
+          <Route path='/teacher/messages' element={<TeacherMessages />} />
+          <Route path='/teacherLeaves/:loggedteacherId' element={<TeacherLeaves />} />
+          <Route path='/teacherLeaves' element={<TeacherLeaves />} />
+          <Route path='/teacher/leaves/:loggedteacherId' element={<TeacherLeaves />} />
+          <Route path='/teacher/leaves' element={<TeacherLeaves />} />
+          <Route path='/admin/*' element={<AdminRoutes />} />
+          <Route path='/teacher/*' element={<TeacherRoutes />} />
+          <Route path='/' element={<Homepage />} />
+          <Route path='/:id' element={<Homepage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/admin/examSchedules' element={<AdminExamSchedules />} />
+          <Route path='/admin/adminExams' element={<AdminExamSchedules />} />
+
+          {/* student */}
+          <Route path='/allStudentslisted/:loggedteacherId' element={<StudentListing />} />
+          <Route path='/addNewStudent/:loggedteacherId' element={<AddNewStudent />} />
+          <Route path='/viewAStudent/:id' element={<ViewStudentDetails />} />
+          <Route path='/studentDashboard/:id' element={<StudentDashboard />} />
+
+          <Route path='/studentExams/:id' element={<StudentExams />} />
+          <Route path='/student/exams/:id' element={<StudentExams />} />
 
 
-           {/* parent */}
-            <Route path='/addingParent/:loggedteacherId' element={<AddParent />}/>
-            <Route path='/addingParent' element={<AddParent />}/>
-            <Route path='/parentLogin' element={<ParentLogin />}/>
-             <Route path='/parentslist/:loggedteacherId' element={<ParentsList />}/>
-             <Route path='/parentslist' element={<ParentsList />}/>
-             <Route path='/editParent/:id' element={<EditParent />}/>
-             <Route path='/editParent/:id/:loggedteacherId' element={<EditParent />}/>
-             <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
-             <Route path='/parentDashboard/:id' element={<ParentDashboard/>}/>
-      </Routes>
+          {/* parent */}
+          <Route path='/addingParent/:loggedteacherId' element={<AddParent />} />
+          <Route path='/addingParent' element={<AddParent />} />
+          <Route path='/parentLogin' element={<ParentLogin />} />
+          <Route path='/parentslist/:loggedteacherId' element={<ParentsList />} />
+          <Route path='/parentslist' element={<ParentsList />} />
+          <Route path='/editParent/:id' element={<EditParent />} />
+          <Route path='/editParent/:id/:loggedteacherId' element={<EditParent />} />
+          <Route path='/viewParentProfile/:id' element={<ViewParentProfile />} />
+          <Route path='/parentDashboard/:id' element={<ParentDashboard />} />
+        </Routes>
       </BrowserRouter>
-         <Footer />
+      <Footer />
     </div>
   );
 }

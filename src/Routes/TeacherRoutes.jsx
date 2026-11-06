@@ -24,7 +24,6 @@ const TeacherRoutes = () => {
 
         <Route path="/profile/:loggedteacherId" element={<TeacherHomepage />} />
         <Route path='/viewProfile/:myId' element={<TeacherProfile />} />
-        {/* <Route path='/studentAttendence/:loggedteacherId' element={<TeacherAttendance />} /> */}
         <Route path='/exams/:loggedteacherId' element={<TeacherExamPage />} />
         <Route path='/exams' element={<TeacherExamPage />} />
         <Route path='/messages/:loggedteacherId' element={<TeacherMessages />} />

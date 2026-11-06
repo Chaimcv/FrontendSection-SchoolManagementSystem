@@ -125,7 +125,7 @@ const TeacherExamPage = () => {
     }
 
     if (!examTitle.trim()) {
-      setModalError("Please enter an Exam Title (e.g. Mid-Term Examination 2026).");
+      setModalError("Please enter an Exam Title ");
       return;
     }
 
@@ -209,9 +209,7 @@ const TeacherExamPage = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-100/80 border border-amber-300 text-xs font-bold text-amber-900">
-              <span> Assigned Class: Std {assignedStandard || "Not Assigned"}-{assignedDivision || "—"}</span>
-            </div>
+
 
             {/* THE PRIMARY BUTTON TO CREATE AN EXAM TABLE */}
             <button
@@ -223,7 +221,7 @@ const TeacherExamPage = () => {
                 }`}
               title={hasAssignedClass ? "Create Exam Table" : "You have no assigned class to create timetables for"}
             >
-              <span className="text-base leading-none font-black">+</span> Create Exam Table
+              Create Exam Table
             </button>
           </div>
         </div>
@@ -364,17 +362,15 @@ const TeacherExamPage = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/50 backdrop-blur-xs p-4 overflow-y-auto animate-fade-in">
           <div className="w-full max-w-4xl max-h-[92vh] flex flex-col bg-white rounded-3xl shadow-2xl border border-amber-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
-            <div className="p-6 bg-linear-to-r from-amber-700 via-amber-600 to-amber-500 text-white flex items-center justify-between shrink-0">
+            <div className="p-6 text-amber-600 text-bold flex items-center justify-between shrink-0">
               <div>
-                <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-wider mb-1">
+                {/* <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-wider mb-1">
                   New Exam Schedule
-                </span>
-                <h3 className="text-xl font-black">
+                </span> */}
+                <h3 className="text-xl font-amber-600">
                   Create Exam Table
                 </h3>
-                <p className="text-xs text-amber-100 mt-0.5">
-                  Fill in the empty table below with subjects, dates, and times of exam.
-                </p>
+
               </div>
 
               <button
@@ -402,21 +398,17 @@ const TeacherExamPage = () => {
                     required
                     value={examTitle}
                     onChange={(e) => setExamTitle(e.target.value)}
-                    placeholder="e.g. Mid-Term Examination 2026"
                     className="w-full rounded-xl border border-amber-300 bg-white px-3.5 py-2 text-xs font-semibold text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
                   <label className="block text-[11px] font-bold text-amber-950 uppercase tracking-wider mb-1">
-                    Class Standard & Division (Assigned)
+                    Class Standard & Division
                   </label>
                   <div className="flex items-center justify-between px-3.5 py-2 rounded-xl border border-amber-300 bg-amber-100/70 text-amber-950 text-xs font-bold shadow-xs">
                     <span className="flex items-center gap-1.5">
                       Standard {assignedStandard} - Division {assignedDivision}
-                    </span>
-                    <span className="text-[10px] bg-amber-600 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
-                      Locked to Assigned Class
                     </span>
                   </div>
                 </div>
@@ -439,7 +431,7 @@ const TeacherExamPage = () => {
                     onClick={handleAddRow}
                     className="inline-flex items-center gap-1.5 bg-amber-600 hover:bg-amber-700 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow-xs transition-all hover:scale-105 active:scale-95"
                   >
-                    <span className="text-sm leading-none">+</span> Add Subject Row
+                    Add Subject Row
                   </button>
                 </div>
 
@@ -448,12 +440,12 @@ const TeacherExamPage = () => {
                   <table className="w-full text-left text-xs border-collapse">
                     <thead className="bg-amber-100 text-amber-950 font-bold uppercase tracking-wider border-b border-amber-200">
                       <tr>
-                        <th className="py-3 px-3 w-10 text-center">#</th>
+                        <th className="py-3 px-3 w-10 text-center"></th>
                         <th className="py-3 px-3 min-w-[160px]">Subject Name *</th>
                         <th className="py-3 px-3 min-w-[140px]">Date of Exam *</th>
                         <th className="py-3 px-3 min-w-[200px]">Time of Exam (Start - End) *</th>
                         <th className="py-3 px-3 w-24 text-center">Max Marks</th>
-                        <th className="py-3 px-3 w-28 text-center">Room/Hall</th>
+                        <th className="py-3 px-3 w-28 text-center">Room no</th>
                         <th className="py-3 px-3 w-12 text-center">Action</th>
                       </tr>
                     </thead>
@@ -534,7 +526,6 @@ const TeacherExamPage = () => {
                               type="text"
                               value={row.roomNumber}
                               onChange={(e) => handleRowChange(row.id, "roomNumber", e.target.value)}
-                              placeholder="Hall A"
                               className="w-24 rounded-lg border border-stone-300 px-2 py-1.5 text-xs font-semibold text-stone-800 text-center focus:outline-none focus:border-amber-500"
                             />
                           </td>
@@ -556,23 +547,12 @@ const TeacherExamPage = () => {
                       {tableRows.length === 0 && (
                         <tr>
                           <td colSpan="7" className="py-8 text-center text-stone-400">
-                            The table is currently empty. Click <strong>"+ Add Subject Row"</strong> above to add subjects.
+                            The table is currently empty.
                           </td>
                         </tr>
                       )}
                     </tbody>
                   </table>
-                </div>
-
-                <div className="flex items-center justify-between mt-3 text-xs text-stone-500">
-                  <span>Total Scheduled Papers: <strong>{tableRows.length}</strong></span>
-                  <button
-                    type="button"
-                    onClick={handleAddRow}
-                    className="text-amber-700 hover:text-amber-900 font-bold underline"
-                  >
-                    + Add Another Subject Row
-                  </button>
                 </div>
               </div>
 
@@ -590,7 +570,7 @@ const TeacherExamPage = () => {
                   type="submit"
                   disabled={loading}
                   className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-extrabold text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 flex items-center gap-2"
-                >
+                > Submit
 
                 </button>
               </div>

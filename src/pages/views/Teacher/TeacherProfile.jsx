@@ -146,7 +146,7 @@ const TeacherProfile = () => {
                   {/* Assigned Division */}
                   <div className="p-4 rounded-2xl bg-amber-50/40 border border-amber-100">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
-                      Assigned Division
+                      Division
                     </span>
                     <p className="text-sm font-semibold text-stone-900">
                       {getDetails.division ? `Division ${getDetails.division}` : "—"}
@@ -207,7 +207,7 @@ const TeacherProfile = () => {
                     <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
                       Teacher ID
                     </span>
-                    <code className="text-xs text-amber-900 font-mono bg-amber-100/70 px-2 py-0.5 rounded-lg inline-block">
+                    <code className="text-sm font-semibold text-stone-900">
                       {getDetails._id || myId}
                     </code>
                   </div>

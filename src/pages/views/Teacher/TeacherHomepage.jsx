@@ -31,56 +31,49 @@ const TeacherHomepage = () => {
         <div className='bg-amber-100 min-h-screen py-12 flex flex-col items-center justify-center'>
             <div className='text-center mb-8'>
                 <h1 className='text-3xl sm:text-4xl font-extrabold text-amber-950 font-serif tracking-tight'>
-                    Teacher  Dashboard
+                    TEACHER DASHBOARD
                 </h1>
 
             </div>
 
             <div className='flex flex-wrap justify-center items-center gap-6 max-w-6xl px-4'>
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={ProfileView}
                 >
                     My Profile
                 </button>
 
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={StudentList}
                 >
                     Students
                 </button>
 
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={ParentList}
                 >
                     Parents
                 </button>
 
-                {/* <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
-                    onClick={StudentAttendence}
-                >
-                    Attendence
-                </button> */}
-
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={ExamSection}
                 >
                     Exams
                 </button>
 
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={MessagesView}
                 >
                     Messages
                 </button>
 
                 <button
-                    className='bg-white text-amber-600 text-2xl border-2 border-amber-700 rounded-2xl shadow-xl px-10 py-14 transition hover:scale-105 hover:bg-amber-50 duration-300 ease-in-out font-bold active:scale-95'
+                    className='hover:bg-amber-700 text-amber-600 hover:text-white text-2xl bg-white border-2 border-amber-700 rounded-2xl shadow-xl px-20 py-20 transition hover:scale-105  duration-300 ease-in-out font-bold active:scale-95'
                     onClick={LeaveSection}
                 >
                     Leave Requests

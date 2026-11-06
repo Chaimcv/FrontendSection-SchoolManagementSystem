@@ -49,9 +49,6 @@ const Header = () => {
                 <div className="flex items-center gap-2">
                   {/* <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> */}
                   <div className="text-left">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-700 block leading-tight">
-                      Signed in as
-                    </span>
                     <span className="text-xs font-bold text-amber-950 truncate max-w-[120px] sm:max-w-[180px] block leading-tight">
                       {name || "User"}
                     </span>

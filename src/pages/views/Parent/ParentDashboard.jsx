@@ -366,9 +366,7 @@ const ParentDashboard = () => {
                   }
                   alt={resolvedStudent?.Name || "Student photo"}
                 />
-                <span className="absolute -bottom-2 -right-2 bg-emerald-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase shadow-xs">
-                  Enrolled
-                </span>
+
               </div>
 
               <div className="text-center sm:text-left flex-1">
@@ -411,23 +409,6 @@ const ParentDashboard = () => {
           </div>
         )}
 
-        {/* Tab Switcher (Commented out per CTO instruction) */}
-        {/*
-        <div className="flex items-center gap-2 border-b border-amber-200 pb-2">
-          ...
-        </div>
-        */}
-
-        {/* ========================================================================= */}
-        {/* CHILD'S ATTENDANCE SHEET (Commented out completely per CTO instruction)   */}
-        {/* ========================================================================= */}
-        {/*
-        <div className="space-y-6">
-          <div className="bg-white rounded-3xl shadow-xl border border-amber-200 p-6 md:p-8 space-y-6">
-            ...
-          </div>
-        </div>
-        */}
 
         {/* ========================================================================= */}
         {/* CHILD'S CLASS EXAMINATION TIMETABLE (STRICTLY READ-ONLY FOR PARENTS)       */}
@@ -533,11 +514,10 @@ const ParentDashboard = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200/80 shadow-md space-y-5">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-100 pb-4">
             <div className="flex items-center gap-3">
-              <span className="p-2.5 bg-amber-100 rounded-2xl text-amber-700 text-xl">📋</span>
               <div>
                 <h3 className="text-xl font-extrabold text-amber-950">Child Leave Applications</h3>
                 <p className="text-xs text-stone-500 font-medium">
-                  Submit formal leave requests to your child's assigned class teacher and monitor status
+                  Submit formal leave requests to your child's assigned class teacher
                 </p>
               </div>
             </div>
@@ -546,7 +526,7 @@ const ParentDashboard = () => {
                 onClick={() => setLeaveModal(true)}
                 className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer shrink-0 hover:scale-105 active:scale-95"
               >
-                <span>✍️</span> Apply for Leave
+                Apply for Leave
               </button>
               <span className="text-xs font-black px-3 py-1.5 bg-amber-50 text-amber-700 rounded-xl border border-amber-200">
                 {parentLeaves.length} Applications
@@ -565,13 +545,12 @@ const ParentDashboard = () => {
                 return (
                   <div
                     key={leave._id}
-                    className={`p-5 rounded-2xl border transition-all space-y-3 ${
-                      isPending
-                        ? "border-amber-200 bg-amber-50/25 hover:bg-amber-50/40"
-                        : isApproved
+                    className={`p-5 rounded-2xl border transition-all space-y-3 ${isPending
+                      ? "border-amber-200 bg-amber-50/25 hover:bg-amber-50/40"
+                      : isApproved
                         ? "border-emerald-200 bg-emerald-50/20 hover:bg-emerald-50/35"
                         : "border-rose-200 bg-rose-50/20 hover:bg-rose-50/35"
-                    }`}
+                      }`}
                   >
                     {/* Top Row: Type, Dates & Status */}
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -586,13 +565,12 @@ const ParentDashboard = () => {
 
                       {/* Status Badge */}
                       <span
-                        className={`text-xs font-black px-3 py-1 rounded-xl border flex items-center gap-1.5 ${
-                          isPending
-                            ? "bg-amber-100 text-amber-800 border-amber-300"
-                            : isApproved
+                        className={`text-xs font-black px-3 py-1 rounded-xl border flex items-center gap-1.5 ${isPending
+                          ? "bg-amber-100 text-amber-800 border-amber-300"
+                          : isApproved
                             ? "bg-emerald-100 text-emerald-800 border-emerald-300"
                             : "bg-rose-100 text-rose-800 border-rose-300"
-                        }`}
+                          }`}
                       >
                         {isPending && "⏳ Pending Teacher Review"}
                         {isApproved && "✅ Approved by Faculty"}
@@ -628,7 +606,7 @@ const ParentDashboard = () => {
                     {isRejected && leave.rejectionReason && (
                       <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs space-y-1">
                         <span className="font-black text-rose-800 flex items-center gap-1.5">
-                          <span>⚠️</span> Faculty Reason for Rejection:
+                          Faculty Reason for Rejection:
                         </span>
                         <p className="text-rose-900 font-medium">{leave.rejectionReason}</p>
                       </div>
@@ -651,11 +629,9 @@ const ParentDashboard = () => {
             </div>
           ) : (
             <div className="text-center py-10 bg-amber-50/30 rounded-2xl border border-dashed border-amber-200 text-stone-400">
-              <span className="text-3xl block mb-2">🏖️</span>
+
               <p className="text-xs font-bold text-stone-600">No leave applications submitted yet.</p>
-              <p className="text-[11px] mt-1">
-                Click "Apply for Leave" above to request an excused absence for your child.
-              </p>
+
             </div>
           )}
         </div>
@@ -664,10 +640,8 @@ const ParentDashboard = () => {
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-amber-200/80 shadow-md space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-100 pb-4">
             <div className="flex items-center gap-3">
-              <span className="p-2.5 bg-amber-100 rounded-2xl text-amber-700 text-xl">✉️</span>
               <div>
                 <h3 className="text-xl font-extrabold text-amber-950">Communications from Class Faculty</h3>
-                <p className="text-xs text-stone-500 font-medium">Direct guardian notes, class announcements, and your queries to faculty</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -675,7 +649,7 @@ const ParentDashboard = () => {
                 onClick={() => setTeacherModal(true)}
                 className="px-4 py-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer shrink-0 hover:scale-105 active:scale-95"
               >
-                <span>✍️</span> Message Class Teacher
+                Message Class Teacher
               </button>
               <span className="text-xs font-black px-3 py-1.5 bg-amber-50 text-amber-700 rounded-xl border border-amber-200">
                 {parentMessages.length} Messages
@@ -690,34 +664,15 @@ const ParentDashboard = () => {
                 return (
                   <div
                     key={msg._id}
-                    className={`p-5 rounded-2xl border transition-all space-y-2.5 ${
-                      isFromMe
-                        ? "border-sky-200 bg-sky-50/30 hover:bg-sky-50/50"
-                        : "border-amber-100 bg-amber-50/20 hover:bg-amber-50/40"
-                    }`}
+                    className={`p-5 rounded-2xl border transition-all space-y-2.5 ${isFromMe
+                      ? "border-sky-200 bg-sky-50/30 hover:bg-sky-50/50"
+                      : "border-amber-100 bg-amber-50/20 hover:bg-amber-50/40"
+                      }`}
                   >
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span
-                          className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                            isFromMe
-                              ? "bg-sky-600 text-white"
-                              : "bg-amber-600 text-white"
-                          }`}
-                        >
-                          {isFromMe
-                            ? "📤 Sent to Faculty"
-                            : msg.recipientType === "Parent"
-                            ? "Personal Note to You"
-                            : "Class Guardian Notice"}
-                        </span>
-                        <span className="text-xs font-extrabold text-stone-900">
-                          {isFromMe
-                            ? `To: ${msg.recipientTeacherName || "Class Teacher"}`
-                            : `From: ${msg.senderName || msg.sender?.name || "Class Teacher"}${
-                                msg.senderSubject ? ` (${msg.senderSubject})` : ""
-                              }`}
-                        </span>
+
+
                       </div>
 
                       <span className="text-[10px] text-stone-400 font-bold">
@@ -743,7 +698,7 @@ const ParentDashboard = () => {
             </div>
           ) : (
             <div className="text-center py-10 bg-amber-50/30 rounded-2xl border border-dashed border-amber-200 text-stone-400">
-              <span className="text-3xl block mb-2">📭</span>
+
               <p className="text-xs font-bold text-stone-600">No communications yet.</p>
               <p className="text-[11px] mt-1">Click "Message Class Teacher" above to ask a question, report attendance, or message the teacher directly.</p>
             </div>
@@ -770,11 +725,10 @@ const ParentDashboard = () => {
 
             {msgFeedback.text && (
               <div
-                className={`p-3.5 rounded-xl text-xs font-bold border ${
-                  msgFeedback.type === "success"
-                    ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                    : "bg-rose-50 border-rose-200 text-rose-800"
-                }`}
+                className={`p-3.5 rounded-xl text-xs font-bold border ${msgFeedback.type === "success"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                  : "bg-rose-50 border-rose-200 text-rose-800"
+                  }`}
               >
                 {msgFeedback.text}
               </div>
@@ -839,7 +793,7 @@ const ParentDashboard = () => {
                 disabled={msgSending}
                 className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                {msgSending ? "Dispatching Message..." : "🚀 Send Message to Teacher"}
+                {msgSending ? "Dispatching Message..." : " Send Message to Teacher"}
               </button>
             </form>
           </div>
@@ -869,11 +823,10 @@ const ParentDashboard = () => {
 
             {leaveFeedback.text && (
               <div
-                className={`p-3.5 rounded-xl text-xs font-bold border ${
-                  leaveFeedback.type === "success"
-                    ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                    : "bg-rose-50 border-rose-200 text-rose-800"
-                }`}
+                className={`p-3.5 rounded-xl text-xs font-bold border ${leaveFeedback.type === "success"
+                  ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                  : "bg-rose-50 border-rose-200 text-rose-800"
+                  }`}
               >
                 {leaveFeedback.text}
               </div>
@@ -979,7 +932,7 @@ const ParentDashboard = () => {
                 disabled={leaveSending}
                 className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                {leaveSending ? "Transmitting Application..." : "🚀 Submit Application to Faculty"}
+                {leaveSending ? "Transmitting Application..." : " Submit Application to Faculty"}
               </button>
             </form>
           </div>

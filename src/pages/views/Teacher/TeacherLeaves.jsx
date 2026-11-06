@@ -103,16 +103,11 @@ const TeacherLeaves = () => {
         {/* Top Bar Navigation */}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="p-3 bg-amber-600 text-white rounded-2xl text-2xl shadow-md">
-              📋
-            </span>
             <div>
               <h1 className="text-2xl sm:text-3xl font-black text-amber-950 font-serif tracking-tight">
                 Student Leave Applications
               </h1>
-              <p className="text-xs text-stone-600 font-medium">
-                Review, accept, or reject student leave requests submitted by parents of your class.
-              </p>
+
             </div>
           </div>
 
@@ -120,7 +115,7 @@ const TeacherLeaves = () => {
             onClick={() => navigate(teacherId ? `/teacher/profile/${teacherId}` : "/")}
             className="px-4 py-2 bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-bold shadow-xs transition-all flex items-center gap-1.5 cursor-pointer"
           >
-            ← Back to Dashboard
+            Back to Dashboard
           </button>
         </div>
 
@@ -164,11 +159,10 @@ const TeacherLeaves = () => {
         {/* Global Feedback Banner */}
         {feedback.text && (
           <div
-            className={`p-4 rounded-2xl text-xs font-bold border transition-all animate-in fade-in duration-200 ${
-              feedback.type === "success"
-                ? "bg-emerald-50 border-emerald-300 text-emerald-800"
-                : "bg-rose-50 border-rose-300 text-rose-800"
-            }`}
+            className={`p-4 rounded-2xl text-xs font-bold border transition-all animate-in fade-in duration-200 ${feedback.type === "success"
+              ? "bg-emerald-50 border-emerald-300 text-emerald-800"
+              : "bg-rose-50 border-rose-300 text-rose-800"
+              }`}
           >
             {feedback.text}
           </div>
@@ -181,41 +175,37 @@ const TeacherLeaves = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveTab("all")}
-                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  activeTab === "all"
-                    ? "bg-amber-600 text-white shadow-sm"
-                    : "bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${activeTab === "all"
+                  ? "bg-amber-600 text-white shadow-sm"
+                  : "bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200"
+                  }`}
               >
                 All Requests ({stats.total})
               </button>
               <button
                 onClick={() => setActiveTab("Pending")}
-                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  activeTab === "Pending"
-                    ? "bg-amber-600 text-white shadow-sm"
-                    : "bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${activeTab === "Pending"
+                  ? "bg-amber-600 text-white shadow-sm"
+                  : "bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200"
+                  }`}
               >
                 Pending ({stats.pending})
               </button>
               <button
                 onClick={() => setActiveTab("Approved")}
-                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  activeTab === "Approved"
-                    ? "bg-emerald-600 text-white shadow-sm"
-                    : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${activeTab === "Approved"
+                  ? "bg-emerald-600 text-white shadow-sm"
+                  : "bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200"
+                  }`}
               >
                 Approved ({stats.approved})
               </button>
               <button
                 onClick={() => setActiveTab("Rejected")}
-                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  activeTab === "Rejected"
-                    ? "bg-rose-600 text-white shadow-sm"
-                    : "bg-rose-50 text-rose-800 hover:bg-rose-100 border border-rose-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${activeTab === "Rejected"
+                  ? "bg-rose-600 text-white shadow-sm"
+                  : "bg-rose-50 text-rose-800 hover:bg-rose-100 border border-rose-200"
+                  }`}
               >
                 Rejected ({stats.rejected})
               </button>
@@ -242,13 +232,12 @@ const TeacherLeaves = () => {
                 return (
                   <div
                     key={leave._id}
-                    className={`p-6 rounded-2xl border transition-all space-y-4 shadow-xs ${
-                      isPending
-                        ? "border-amber-200 bg-amber-50/20 hover:bg-amber-50/40"
-                        : isApproved
+                    className={`p-6 rounded-2xl border transition-all space-y-4 shadow-xs ${isPending
+                      ? "border-amber-200 bg-amber-50/20 hover:bg-amber-50/40"
+                      : isApproved
                         ? "border-emerald-200 bg-emerald-50/15 hover:bg-emerald-50/30"
                         : "border-rose-200 bg-rose-50/15 hover:bg-rose-50/30"
-                    }`}
+                      }`}
                   >
                     {/* Header Row: Student info, Leave type, Status */}
                     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -267,13 +256,12 @@ const TeacherLeaves = () => {
 
                       {/* Status Badge */}
                       <span
-                        className={`text-xs font-black px-3 py-1 rounded-xl border flex items-center gap-1.5 ${
-                          isPending
-                            ? "bg-amber-100 text-amber-800 border-amber-300"
-                            : isApproved
+                        className={`text-xs font-black px-3 py-1 rounded-xl border flex items-center gap-1.5 ${isPending
+                          ? "bg-amber-100 text-amber-800 border-amber-300"
+                          : isApproved
                             ? "bg-emerald-100 text-emerald-800 border-emerald-300"
                             : "bg-rose-100 text-rose-800 border-rose-300"
-                        }`}
+                          }`}
                       >
                         {isPending && "⏳ Pending Action"}
                         {isApproved && "✅ Approved"}
@@ -290,14 +278,10 @@ const TeacherLeaves = () => {
                         </span>
                         {(leave.parentPhone || leave.parent?.phonenumber) && (
                           <span className="text-stone-500 block text-[11px]">
-                            📞 {leave.parentPhone || leave.parent?.phonenumber}
+                            {leave.parentPhone || leave.parent?.phonenumber}
                           </span>
                         )}
-                        {(leave.parentEmail || leave.parent?.email) && (
-                          <span className="text-stone-500 block text-[11px]">
-                            ✉️ {leave.parentEmail || leave.parent?.email}
-                          </span>
-                        )}
+
                       </div>
 
                       <div>
@@ -338,7 +322,7 @@ const TeacherLeaves = () => {
                     {isRejected && leave.rejectionReason && (
                       <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs space-y-1">
                         <span className="font-black text-rose-800 flex items-center gap-1.5">
-                          <span>⚠️</span> Rejection Reason Specified by You:
+                          Rejection Reason Specified by You:
                         </span>
                         <p className="text-rose-900 font-medium">{leave.rejectionReason}</p>
                       </div>
@@ -371,12 +355,7 @@ const TeacherLeaves = () => {
                               ? new Date(leave.reviewedAt).toLocaleDateString()
                               : "record"}
                           </span>
-                          <button
-                            onClick={() => (isApproved ? openRejectModal(leave) : handleApprove(leave._id))}
-                            className="text-xs font-bold text-amber-700 hover:underline cursor-pointer"
-                          >
-                            Change Decision
-                          </button>
+
                         </div>
                       )}
                     </div>
@@ -386,7 +365,6 @@ const TeacherLeaves = () => {
             </div>
           ) : (
             <div className="text-center py-16 bg-amber-50/30 rounded-3xl border border-dashed border-amber-200">
-              <span className="text-4xl block mb-2">🏖️</span>
               <h3 className="text-base font-bold text-amber-950">No Leave Applications Found</h3>
               <p className="text-xs text-stone-500 mt-1 max-w-sm mx-auto">
                 {activeTab === "all"
