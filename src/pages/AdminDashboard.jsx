@@ -56,7 +56,7 @@ const AdminDashboard = () => {
                   onClick={() => navigate("/admin/announcementsDashboard")}
                   className="bg-amber-600 ml-[35%] hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  Manage Notices →
+                  Manage Notices
                 </button>
               </div>
             </div>
@@ -83,7 +83,7 @@ const AdminDashboard = () => {
                   onClick={() => navigate("/teacher/teacherDashboard")}
                   className="bg-amber-600 ml-[35%] hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  Manage Faculty →
+                  Manage Faculty
                 </button>
               </div>
             </div>
@@ -110,39 +110,12 @@ const AdminDashboard = () => {
                   onClick={() => navigate("/parentslist")}
                   className="bg-amber-600 ml-[35%] hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  Open Directory →
+                  Open Directory
                 </button>
               </div>
             </div>
 
-            {/* Attendance Hub (Commented out completely per CTO instruction) */}
-            {/*
-            <div className="group bg-white rounded-3xl p-6 sm:p-7 border border-amber-200 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-amber-100 text-amber-800">
-                    Whole School Register
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-amber-950 mb-2 group-hover:text-amber-700 transition-colors">
-                  School Attendance Register
-                </h3>
-                <p className="text-sm text-stone-600 leading-relaxed mb-6">
-                  Inspect comprehensive monthly class registers, monitor daily roll calls, review
-                  class teacher audits, and filter student records.
-                </p>
-              </div>
 
-              <div className="pt-4 border-t border-amber-100 flex items-center justify-between">
-                <button
-                  onClick={() => navigate("/admin/adminAttendence")}
-                  className="bg-amber-600 ml-[35%] hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
-                >
-                  Attendence Register →
-                </button>
-              </div>
-            </div>
-            */}
 
             {/* Exam Schedules Hub */}
             <div
@@ -160,7 +133,7 @@ const AdminDashboard = () => {
                 </h3>
                 <p className="text-sm text-stone-600 leading-relaxed mb-6">
                   Inspect comprehensive examination timetables, review paper dates and times created
-                  by faculty teachers, print schedules, and manage class exam rosters.
+                  by faculty teachers, print schedules, and manage class exam .
                 </p>
               </div>
 
@@ -172,7 +145,7 @@ const AdminDashboard = () => {
                   }}
                   className="bg-amber-600 ml-[35%] hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
                 >
-                  Exam Schedules →
+                  Exam Schedules
                 </button>
               </div>
             </div>
