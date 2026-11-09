@@ -27,8 +27,9 @@ const ParentLogin = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("name", name);
       localStorage.setItem("parentId", id);
-      navigate(`/parentDashboard/${id}`);
-      window.location.reload();
+      // navigate(`/parentDashboard/${id}`);
+      // window.location.reload();
+      window.location.href = `/parentDashboard/${id}`;
     } else {
       alert("Invalid email or password");
     }

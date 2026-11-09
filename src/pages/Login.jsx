@@ -25,8 +25,11 @@ const Login = () => {
       // console.log(studentId, "ID");
       // console.log(name, "NAME");
 
-      navigate(`/studentDashboard/${studentId}`);
-      window.location.reload();
+      // navigate(`/studentDashboard/${studentId}`);
+      // window.location.reload();
+
+      // ✅ Atomic: changes the URL AND loads the new page in one step
+      window.location.href = `/studentDashboard/${studentId}`;
     }
 
   }

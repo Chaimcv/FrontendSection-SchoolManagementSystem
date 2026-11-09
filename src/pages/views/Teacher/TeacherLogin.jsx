@@ -21,8 +21,9 @@ const TeacherLogin = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("name", name);
       localStorage.setItem("id", id);
-      navigate(`/teacher/profile/${id}`);
-      window.location.reload();
+      // navigate(`/teacher/profile/${id}`);
+      // window.location.reload();
+      window.location.href = `/teacher/profile/${id}`;
     }
     else {
       alert("Error");
