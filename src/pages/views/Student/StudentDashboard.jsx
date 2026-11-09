@@ -167,7 +167,7 @@ const StudentDashboard = () => {
                     <div className="bg-gradient-to-br from-amber-50 via-amber-100/40 to-orange-50 rounded-3xl p-7 border border-amber-200/80 shadow-xs relative overflow-hidden">
                         <div className="relative z-10">
                             <h2 className="text-2xl font-extrabold text-amber-950 mb-1.5">
-                                Welcome Back, {getStudentInfo?.Name || 'Student'}!
+                                Welcome Back,
                             </h2>
                         </div>
                         <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-200/60 rounded-full blur-2xl"></div>
