@@ -169,9 +169,6 @@ const StudentDashboard = () => {
                             <h2 className="text-2xl font-extrabold text-amber-950 mb-1.5">
                                 Welcome Back, {getStudentInfo?.Name || 'Student'}!
                             </h2>
-                            <p className="text-xs text-amber-800 font-medium">
-                                Standard {getStudentInfo?.Standard || "-"}{getStudentInfo?.Division ? ` • Division ${getStudentInfo.Division}` : ""}
-                            </p>
                         </div>
                         <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-amber-200/60 rounded-full blur-2xl"></div>
                     </div>
@@ -214,10 +211,9 @@ const StudentDashboard = () => {
                     <div className="bg-white rounded-3xl p-6 sm:p-7 border border-amber-100 shadow-md space-y-4">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-amber-100 pb-4">
                             <div className="flex items-center gap-2.5">
-                                <span className="p-2 bg-amber-100 rounded-xl text-amber-700 text-lg">✉️</span>
+
                                 <div>
                                     <h3 className="text-lg font-extrabold text-amber-950">Communications with Class Teacher</h3>
-                                    <p className="text-xs text-stone-400 font-medium">Class announcements, personal feedback, and direct teacher queries</p>
                                 </div>
                             </div>
 
@@ -225,7 +221,7 @@ const StudentDashboard = () => {
                                 onClick={() => setTeacherModal(true)}
                                 className="px-4 py-2.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer shrink-0 hover:scale-105 active:scale-95"
                             >
-                                <span>✍️</span> Message Teacher
+                                Message Teacher
                             </button>
                         </div>
 
@@ -236,28 +232,26 @@ const StudentDashboard = () => {
                                     return (
                                         <div
                                             key={msg._id}
-                                            className={`p-4 rounded-2xl border transition-all space-y-2 ${
-                                                isFromMe
-                                                    ? "bg-amber-50/40 border-amber-200/80"
-                                                    : "bg-white border-amber-100 hover:bg-amber-50/20"
-                                            }`}
+                                            className={`p-4 rounded-2xl border transition-all space-y-2 ${isFromMe
+                                                ? "bg-amber-50/40 border-amber-200/80"
+                                                : "bg-white border-amber-100 hover:bg-amber-50/20"
+                                                }`}
                                         >
                                             <div className="flex flex-wrap items-center justify-between gap-2">
                                                 <div className="flex items-center gap-2">
                                                     <span
-                                                        className={`text-[10px] font-black px-2.5 py-0.5 rounded-md ${
-                                                            isFromMe
-                                                                ? "bg-stone-700 text-white"
-                                                                : msg.recipientType === "Student"
+                                                        className={`text-[10px] font-black px-2.5 py-0.5 rounded-md ${isFromMe
+                                                            ? "bg-stone-700 text-white"
+                                                            : msg.recipientType === "Student"
                                                                 ? "bg-amber-600 text-white"
                                                                 : "bg-amber-100 text-amber-800 border border-amber-200"
-                                                        }`}
+                                                            }`}
                                                     >
                                                         {isFromMe
                                                             ? `Sent to Teacher: ${msg.recipientTeacherName || "Faculty"}`
                                                             : msg.recipientType === "Student"
-                                                            ? "Direct To You"
-                                                            : "Class Announcement"}
+                                                                ? "Direct To You"
+                                                                : "Class Announcement"}
                                                     </span>
 
                                                     {!isFromMe && (
@@ -291,7 +285,6 @@ const StudentDashboard = () => {
                             </div>
                         ) : (
                             <div className="text-center py-8 text-stone-400">
-                                <span className="text-2xl block mb-1">📭</span>
                                 <p className="text-xs font-bold">No communications yet.</p>
                                 <p className="text-[11px] mt-1">Click "Message Teacher" above to ask a question or share an update with your class teacher.</p>
                             </div>
@@ -319,11 +312,10 @@ const StudentDashboard = () => {
 
                         {msgFeedback.text && (
                             <div
-                                className={`p-3.5 rounded-xl text-xs font-bold border ${
-                                    msgFeedback.type === "success"
-                                        ? "bg-emerald-50 border-emerald-200 text-emerald-800"
-                                        : "bg-rose-50 border-rose-200 text-rose-800"
-                                }`}
+                                className={`p-3.5 rounded-xl text-xs font-bold border ${msgFeedback.type === "success"
+                                    ? "bg-emerald-50 border-emerald-200 text-emerald-800"
+                                    : "bg-rose-50 border-rose-200 text-rose-800"
+                                    }`}
                             >
                                 {msgFeedback.text}
                             </div>
@@ -388,7 +380,7 @@ const StudentDashboard = () => {
                                 disabled={msgSending}
                                 className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white font-extrabold rounded-xl shadow-md transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                             >
-                                {msgSending ? "Dispatching Message..." : "🚀 Send Message to Teacher"}
+                                {msgSending ? "Dispatching Message..." : " Send"}
                             </button>
                         </form>
                     </div>
