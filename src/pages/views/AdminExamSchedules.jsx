@@ -129,7 +129,6 @@ const AdminExamSchedules = () => {
               <span className="text-2xl sm:text-3xl font-extrabold text-amber-950 mt-1 block">
                 {metrics.totalTimetables}
               </span>
-              <span className="text-[11px] text-stone-500 font-medium">Published timetables</span>
             </div>
           </div>
 
@@ -337,7 +336,7 @@ const AdminExamSchedules = () => {
                                 <td className="py-3.5 px-4 text-stone-600">
                                   {sub.roomNumber ? (
                                     <span className="font-semibold text-stone-800">
-                                      📍 {sub.roomNumber}
+                                      {sub.roomNumber}
                                     </span>
                                   ) : (
                                     <span className="text-stone-400 italic">Not Assigned</span>
