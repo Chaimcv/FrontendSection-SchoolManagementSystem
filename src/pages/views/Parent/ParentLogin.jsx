@@ -17,13 +17,21 @@ const ParentLogin = () => {
   const [inputtedPassword, setInputtedPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const activeParentId = localStorage.getItem("parentId");
 
   const LoginAsParent = async () => {
+    if (!inputtedEmail || !inputtedPassword) {
+      alert("Please enter both email and password.");
+      return;
+    }
     const result = await dispatch(loginParent({ inputtedEmail, inputtedPassword }));
-    console.log(result, "result testing");
 
-    if (result?.success) {
+    if (result?.success && result.data?.id) {
       const { token, name, id } = result.data;
+      localStorage.removeItem("studentId");
+      localStorage.removeItem("id");
+      localStorage.removeItem("teacherId");
+      localStorage.removeItem("adminEmail");
       localStorage.setItem("token", token);
       localStorage.setItem("name", name);
       localStorage.setItem("parentId", id);
@@ -35,11 +43,16 @@ const ParentLogin = () => {
     }
   };
 
-
-
   const BackToLogin = () => {
     navigate("/login");
-  }
+  };
+
+  const GoToParentDashboard = () => {
+    if (activeParentId) {
+      navigate(`/parentDashboard/${activeParentId}`);
+    }
+  };
+
   return (
     <>
       {/* large screen */}
@@ -55,6 +68,14 @@ const ParentLogin = () => {
             <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e) => setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
             <br />
             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={LoginAsParent}>LOGIN</button><br />
+            {activeParentId && (
+              <button
+                className="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs p-1.5 rounded-lg w-full shadow-md transition-all mt-1"
+                onClick={GoToParentDashboard}
+              >
+                PARENT DASHBOARD
+              </button>
+            )}
             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={BackToLogin}>BACK</button>
           </div>
         </div>
@@ -70,6 +91,14 @@ const ParentLogin = () => {
             <label >Password: <input className='p-1 m-1 rounded-lg w-[75%]' type='password' value={inputtedPassword} onChange={(e) => setInputtedPassword(e.target.value)} placeholder='Enter your password'></input></label> <br />
             <br />
             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={LoginAsParent}>LOGIN</button><br />
+            {activeParentId && (
+              <button
+                className="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs p-2 rounded-lg w-full shadow-md transition-all"
+                onClick={GoToParentDashboard}
+              >
+                PARENT DASHBOARD
+              </button>
+            )}
             <button className="bg-amber-100 rounded-lg p-1 w-full shadow-lg hover:bg-amber-600 hover:text-white hover:font-bold" onClick={BackToLogin}>BACK</button>
           </div>
         </div>

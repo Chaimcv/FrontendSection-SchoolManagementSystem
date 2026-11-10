@@ -128,6 +128,14 @@ const Navbar = () => {
                 Teacher Dashboard
               </button>
             )}
+            {parentId && (
+              <button
+                className="text-amber-800 hover:bg-amber-100 font-bold px-3 py-1.5 rounded-lg text-xs transition-all"
+                onClick={() => navigate(`/parentDashboard/${parentId}`)}
+              >
+                Parent Dashboard
+              </button>
+            )}
           </div>
         )}
       </div>

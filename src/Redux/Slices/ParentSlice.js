@@ -136,9 +136,18 @@ const ParentSlice=createSlice({
           message: "Login successful",
           data: response.data
         };
+    } else {
+        return {
+          success: false,
+          message: response.data?.message || "Invalid credentials"
+        };
     }
   } catch (error) {
      dispatch(setError(error)); 
+     return {
+       success: false,
+       message: error.response?.data?.message || error.message || "Login failed"
+     };
   }
  }
  export const{setError,setParentData,setMessage,setOneParentData,setAddNewParentToDb,setPostEditedParentData,setDeleteParent,setParentLogin}=ParentSlice.actions;

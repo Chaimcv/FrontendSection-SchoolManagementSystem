@@ -1,10 +1,11 @@
 import React from "react";
 import HeaderImage from "../assets/HeaderImage.png";
 import Emblem from "../assets/emblem.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const token = localStorage.getItem("token");
   const name = localStorage.getItem("name");
 
@@ -12,11 +13,11 @@ const Header = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("studentId");
     localStorage.removeItem("teacherId");
+    localStorage.removeItem("parentId");
     localStorage.removeItem("name");
     localStorage.removeItem("id");
     localStorage.removeItem("adminEmail");
-    navigate("/login");
-    window.location.reload();
+    window.location.href = "/login";
   };
 
   return (
