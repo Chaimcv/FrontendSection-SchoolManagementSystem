@@ -44,8 +44,7 @@ const ViewTeacherDetails = () => {
           <button
             onClick={() => navigate("/teacher/teacherDashboard")}
             className="inline-flex items-center gap-2 text-xs font-bold text-amber-800 hover:text-amber-950 bg-white hover:bg-amber-100/70 border border-amber-200 px-4 py-2 rounded-xl shadow-xs transition-all"
-          >
-            ← Back to Faculty
+          > Back to Faculty
           </button>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100/80 px-3 py-1 rounded-full border border-amber-200">
             Faculty Profile

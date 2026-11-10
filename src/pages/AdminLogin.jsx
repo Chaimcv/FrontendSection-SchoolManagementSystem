@@ -18,10 +18,10 @@ const AdminLogin = () => {
   const checkValidAdmin = () => {
     if (adminEmailSaved.includes(adminEmail) && adminPasswordSaved.includes(adminPassword)) {
       alert("Login Successfull");
-      navigate("/admin/dashboard");
+      // navigate("/admin/dashboard");
       localStorage.setItem("token", token);
       localStorage.setItem("name", Admin);
-      window.location.reload();
+      window.location.href = `/admin/dashboard`;
     }
     else {
 

@@ -60,9 +60,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
             <h2 className="text-xl font-extrabold text-amber-950 font-serif">
               Register New Faculty Member
             </h2>
-            <p className="text-xs text-stone-600 mt-0.5">
-              Enter academic qualifications, assigned class in-charge, and contact info.
-            </p>
           </div>
           <button
             type="button"
@@ -89,7 +86,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               <input
                 type="text"
                 required
-                placeholder="e.g. Dr. Rajesh Sharma"
                 value={tname}
                 onChange={(e) => setTname(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -103,7 +99,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               <input
                 type="email"
                 required
-                placeholder="rajesh@centralpublicschool.edu"
                 value={temail}
                 onChange={(e) => setTemail(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -116,7 +111,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Mathematics, Science"
                 value={tsubject}
                 onChange={(e) => setTsubject(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -129,7 +123,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="tel"
-                placeholder="+91 9876543210"
                 value={tphoneNumber}
                 onChange={(e) => setTphonenumber(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -142,7 +135,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. 7 or 8"
                 value={tstandard}
                 onChange={(e) => setTstandard(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -155,7 +147,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. A, B or C"
                 value={tdivision}
                 onChange={(e) => setTdivision(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -168,7 +159,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Mumbai"
                 value={tcity}
                 onChange={(e) => setTcity(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -181,7 +171,6 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. 400001"
                 value={tpin}
                 onChange={(e) => setTpin(e.target.value)}
                 className="w-full rounded-xl border border-amber-200 bg-amber-50/20 px-3.5 py-2 text-xs text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 focus:outline-none"
@@ -203,7 +192,7 @@ const AddTeacherForm = ({ OnAddTeacherClick }) => {
               disabled={loading}
               className="px-6 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-xs font-bold text-white shadow-md transition-all hover:scale-105 disabled:opacity-50"
             >
-              {loading ? "Registering..." : "Save Faculty Member"}
+              {loading ? "Registering..." : "Save"}
             </button>
           </div>
         </form>

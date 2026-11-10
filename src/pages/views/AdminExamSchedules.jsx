@@ -25,7 +25,7 @@ const AdminExamSchedules = () => {
     dispatch(fetchAllExams());
   }, [dispatch]);
 
-
+  console.log(allExams, "all exam tables");
 
   // Filter Logic: Standard and Division only 
   const filteredExams = useMemo(() => {
@@ -110,7 +110,7 @@ const AdminExamSchedules = () => {
           <div className="space-y-1.5">
 
             <h1 className="text-2xl sm:text-3xl font-extrabold text-amber-950 tracking-tight flex items-center gap-2">
-              <span>📅</span> School Examination Schedules
+              School Examination Schedules
             </h1>
 
           </div>
@@ -130,9 +130,6 @@ const AdminExamSchedules = () => {
                 {metrics.totalTimetables}
               </span>
               <span className="text-[11px] text-stone-500 font-medium">Published timetables</span>
-            </div>
-            <div className="w-11 h-11 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-700 text-xl">
-              🗓️
             </div>
           </div>
 
@@ -212,7 +209,6 @@ const AdminExamSchedules = () => {
             </div>
           ) : filteredExams.length === 0 ? (
             <div className="bg-white rounded-3xl p-12 text-center border border-amber-200 space-y-3 no-print">
-              <div className="text-4xl">📋</div>
               <h3 className="text-lg font-bold text-amber-950">No Examination Timetables Found</h3>
               <p className="text-xs sm:text-sm text-stone-500 max-w-md mx-auto">
                 {filterStandard !== "All" || filterDivision !== "All"
@@ -295,10 +291,10 @@ const AdminExamSchedules = () => {
                       <table className="w-full text-left text-xs sm:text-sm">
                         <thead>
                           <tr className="border-b border-amber-200/80 bg-amber-50/50 text-amber-900 font-extrabold uppercase tracking-wider text-[11px]">
-                            <th className="py-3 px-4 rounded-l-xl">#</th>
+                            <th className="py-3 px-4 rounded-l-xl"></th>
                             <th className="py-3 px-4">Subject</th>
                             <th className="py-3 px-4">Exam Date</th>
-                            <th className="py-3 px-4">Time Window</th>
+                            <th className="py-3 px-4">Time </th>
                             <th className="py-3 px-4">Duration</th>
                             <th className="py-3 px-4 text-center">Max Marks</th>
                             <th className="py-3 px-4 rounded-r-xl">Hall / Room</th>

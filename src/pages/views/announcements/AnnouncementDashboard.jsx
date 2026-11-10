@@ -47,13 +47,12 @@ const AnnouncementDashboard = () => {
               onClick={() => navigate("/admin/dashboard")}
               className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 hover:text-amber-950 bg-white hover:bg-amber-100/70 border border-amber-200 px-4 py-2.5 rounded-xl shadow-xs transition-all"
             >
-              ← Back to Dashboard
+              Back to Dashboard
             </button>
             <button
               onClick={() => setFormDisplay(true)}
               className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 active:bg-amber-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105"
-            >
-              <span className="text-base leading-none">+</span> Post New Notice
+            >  New Notice
             </button>
           </div>
         </div>

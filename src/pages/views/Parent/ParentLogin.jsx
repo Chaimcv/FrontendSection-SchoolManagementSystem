@@ -37,24 +37,6 @@ const ParentLogin = () => {
 
 
 
-  //  try {
-  //  const payload = await dispatch(
-  //    loginParent({inputtedEmail,inputtedPassword})
-  //  ).unwrap();                                                      //edit this
-
-  //  localStorage.setItem("token", payload.token);
-
-  //  navigate(`/viewParentProfile/${payload.id}`);
-
-  // } catch(error) {
-
-  //  alert(error.message || "Login failed");
-  // }
-  // }
-
-
-
-
   const BackToLogin = () => {
     navigate("/login");
   }
